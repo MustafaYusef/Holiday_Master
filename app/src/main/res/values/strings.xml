@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">HolidayMaster</string>
+    <string name="membership">Membership</string>
+    <string name="favorite">Favorite</string>
+    <string name="h_o_l_i_d_a_y">H o l i d a y</string>
+    <string name="browse_as_a_user">Browse as a User</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_login_member">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_your_light">Book your light</string>
+    <string name="flight">Flight</string>
+    <string name="hotel">Hotel</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="departure">Departure</string>
+    <string name="passengers">Passengers</string>
+    <string name="search_flight">Search Flight</string>
+    <string name="beast_offfer_get_to_rup">Beast Offfer Get To rup!</string>
+    <string name="erup">Erup</string>
+    <string name="_456">456$</string>
+    <string name="username">UserName</string>
+</resources>
