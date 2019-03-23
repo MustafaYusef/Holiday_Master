@@ -26,20 +26,11 @@ class DetailsOne : AppCompatActivity() {
 
 
         detailsOneList.layoutManager= LinearLayoutManager(this)
-      if(holiday.stops.toInt()<1){
+        detailsOneList.adapter= OneDetailsAdapter(this@DetailsOne,holiday.arrCityName,
+            holiday.depCityName,holiday.depDateAndTime,holiday.arrDateAndTime,holiday.airlineLogo,holiday.totalDuration)
 
 
-
-          detailsOneList.adapter= OneDetailsAdapter(this@DetailsOne,holiday,holiday.stops.toInt())
-      }else{
-          for(i in 0 until holiday.stops.toInt()){
-              detailsOneList.adapter= OneDetailsAdapter(this@DetailsOne,holiday,i)
-
-          }
-      }
-
-
-        purOne.text="Purchase for"+holiday.price+" $"
+        purOne.text="Purchase for "+holiday.price+" $"
         }
         fun backToOne(view: View){
         val intent= Intent(this@DetailsOne,showHoliday::class.java)

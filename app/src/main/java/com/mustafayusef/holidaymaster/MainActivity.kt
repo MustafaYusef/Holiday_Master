@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 
-        member.animate()
-            .translationXBy(-700f)
-            .duration = 2000
-        userBrows.animate()
-            .translationXBy(700f)
-            .duration = 2000
+//        member.animate()
+//            .translationXBy(-700f)
+//            .duration = 2000
+//        userBrows.animate()
+//            .translationXBy(700f)
+//            .duration = 2000
        // member.animate().scaleX(0.2f).scaleY(0.2f).duration=2000
 //        member.animate()
 //            .translationXBy(500f)
@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
                 val intent=Intent(this@MainActivity,LoginMember::class.java)
                 startActivity(intent)
                 finish()
-            },100)
-        },2500)
+            },10)
+        },1500)
     }
     fun goToSearch (view:View){
         userBrows.animate()
@@ -78,8 +78,8 @@ class MainActivity : AppCompatActivity() {
                 val intent=Intent(this@MainActivity,searchActivity::class.java)
                 startActivity(intent)
                 finish()
-            },100)
-        },2500)
+            },10)
+        },1500)
 
     }
 

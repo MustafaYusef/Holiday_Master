@@ -1,31 +1,18 @@
 package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
-import android.content.Intent
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-
-import com.mustafayusef.holidaymaster.DetailsTow
-import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.details_card.view.*
-import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
-
-
-
-
-
-
-
-class OneDetailsAdapter(val context: Context,val arrCityName:List<String>,
-                        val depCityName:List<String>,val depDateAndTime:List<String>,val arrDateAndTime:List<String>,val airlineLogo:List<String>,val totalDuration:String) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
+class ReturnDetails(val context: Context, val arrCityName:List<String>,
+                        val depCityName:List<String>, val depDateAndTime:List<String>, val arrDateAndTime:List<String>, val airlineLogo:List<String>, val totalDuration:String) : RecyclerView.Adapter<ReturnDetails.CustomViewHolder>() {
 
 
 

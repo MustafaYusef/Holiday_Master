@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 import com.mustafayusef.holidaymaster.DetailsOne
+import com.mustafayusef.holidaymaster.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelTow
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.cardtowway.view.*
@@ -133,7 +134,7 @@ class TowWayAdapter(val context:Context, val holidayTowWay:List<modelTow>): Recy
 
 
         holder.itemView.detailsTow .setOnClickListener{
-            val intent = Intent(context, DetailsOne::class.java)
+            val intent = Intent(context, DetailsTow::class.java)
             intent.putExtra("holidaysTow",holidays)
             context.startActivity(intent)
         }

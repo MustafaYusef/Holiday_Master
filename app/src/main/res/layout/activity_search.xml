@@ -18,7 +18,7 @@
                 android:background="@drawable/backsearch"
 
                 android:padding="10dp"
-                android:paddingRight="0dp">
+                android:paddingRight="0dp" android:paddingLeft="10dp">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="404dp"
@@ -28,8 +28,8 @@
                         android:layout_width="194dp"
                         android:layout_height="match_parent">
                     <ImageButton
-                            android:layout_width="119dp"
-                            android:layout_height="39dp" app:srcCompat="@drawable/left_arrow"
+                            android:layout_width="117dp"
+                            android:layout_height="35dp" app:srcCompat="@drawable/left_arrow"
                             android:id="@+id/btnBack" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backSearch"
                             android:layout_weight="1" android:layout_gravity="left" android:scaleType="fitCenter"/>
@@ -45,7 +45,7 @@
                         android:layout_height="match_parent" android:gravity="right">
                     <ImageButton
                             android:layout_width="124dp"
-                            android:layout_height="match_parent" app:srcCompat="@drawable/user_profile"
+                            android:layout_height="39dp" app:srcCompat="@drawable/user_profile"
                             android:id="@+id/imageButton10" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="profile"
                             android:layout_gravity="center" android:scaleType="centerInside"/>
@@ -111,18 +111,18 @@
                             android:layout_weight="0.5">
                         <Button
                                 android:text="RoundTrip"
-                                android:layout_width="157dp"
+                                android:layout_width="148dp"
                                 android:layout_height="61dp" android:id="@+id/button10"
                                 android:layout_weight="0.5" android:background="@drawable/roundone"
                                 android:onClick="TowWay"/>
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="horizontal"
-                            android:layout_width="79dp"
+                            android:layout_width="120dp"
                             android:layout_height="match_parent" android:gravity="top" android:layout_weight="1">
                         <Button
                                 android:text="OneWay"
-                                android:layout_width="141dp"
+                                android:layout_width="150dp"
                                 android:layout_height="60dp" android:id="@+id/button17"
                                 android:layout_weight="0.5" android:background="@drawable/roundone"
                                 android:onClick="Oneway"
@@ -157,7 +157,7 @@
                         android:textColor="#000"
 
                         android:textColorHint="@color/cardview_dark_background"
-                        android:completionThreshold="1"
+                        android:completionThreshold="2"
                         android:popupBackground="#6F499C"
                         android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:textColorLink="#000"/>
@@ -169,7 +169,7 @@
                         android:textColor="#000"
 
 
-                        android:completionThreshold="1"
+                        android:completionThreshold="2"
                         android:popupBackground="#6F499C"
                         android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:layout_weight="2"
@@ -399,21 +399,21 @@
                                 android:animateLayoutChanges="true"
                                 android:background="@drawable/spinner"
                                 android:popupBackground="@drawable/spinner" android:isScrollContainer="true"
-                                android:layout_marginLeft="5dp"/>
+                                android:layout_marginLeft="5dp" android:layout_marginTop="5dp"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="361dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="93dp" android:gravity="center">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="323dp"
-                        android:layout_height="match_parent" android:gravity="bottom">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:gravity="bottom|right">
                     <Button
                             android:text="Search Flights "
-                            android:layout_width="305dp"
+                            android:layout_width="370dp"
                             android:layout_height="69dp" android:id="@+id/button5" android:layout_weight="1"
                             android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btnun"
                             android:onClick="showHolidys"/>
