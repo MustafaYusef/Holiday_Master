@@ -38,7 +38,7 @@ class TowWayAdapter(val context:Context, val holidayTowWay:List<modelTow>): Recy
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 //            val t=titels.get(position)
 //            holder.view.stopsText.text=t
-        val holidaysSort=holidayTowWay.sortedWith(compareBy({ it.stops }, { it.returnStops }))
+        val holidaysSort=holidayTowWay.sortedWith(compareBy({ it.price }))
         val holidays=holidaysSort.get(position)
        // val holidays=holidayTowWay.get(position)
 
@@ -55,21 +55,86 @@ class TowWayAdapter(val context:Context, val holidayTowWay:List<modelTow>): Recy
 
 
         holder.view.stopsRet .text=holidays.returnStops.toString()+" Stops"
-//            holder.view.depTimeRet .text=holidays.returnAepDateAndTime[0]
-////
-////
-//        holder.view.arrTimeRet.text=holidays.returnArrDateAndTime[holidays.returnStops.toInt()]
+           // holder.view.depTimeRet .text=holidays.returnAepDateAndTime[0]
+//
+//
+       // holder.view.arrTimeRet.text=holidays.returnArrDateAndTime[holidays.returnStops.toInt()]
 //       holder.view.AirNameDepRet.text=holidays.returnDepCityName[0]
 //        holder.view.AirNameArrRet .text=holidays.returnArrCityName[holidays.returnStops.toInt()]
-//        holder.view.durationRet.text=holidays.returnTotalDuration
-//        Glide.with(holder.view).load(holidays.returnairlineLogo[0]).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAirRet)
+        holder.view?.durationRet.text=holidays.returnTotalDuration
+        Glide.with(holder.view).load(holidays.returnLogoCover).apply(RequestOptions.centerCropTransform()
+              .circleCrop()).into(holder.view.LogoAirRet)
+        holder.view?.priceTow .text=holidays.price+"$"
+
+//        "ReturnStops": 2,
+//        "ReturnDepartingAirportName": [
+//        "Baghdad Intl."
+//        ],
+//        "ReturnArrivalAirportName": [
+//        "Beirut Rafic Hariri International Airport"
+//        ],
+//        "ReturnLogoCover": "https://static.flyinstatic.com/common/themes/v2/img/multiAirline.png",
+//        "ReturnDepCityName": [
+//        "Baghdad",
+//        "Cairo",
+//        "Amman"
+//        ],
+//        "ReturnArrCityName": [
+//        "Cairo",
+//        "Amman",
+//        "Beirut"
+//        ],
+//        "ReturnAepDateAndTime": [
+//        "2019-03-20T12:20:00",
+//        "2019-03-20T17:05:00",
+//        "2019-03-20T23:50:00"
+//        ],
+//        "ReturnArrDateAndTime": [
+//        "2019-03-20T12:20:00",
+//        "2019-03-20T17:05:00",
+//        "2019-03-20T23:50:00"
+//        ],
+//        "ReturnAirlineName": [
+//        "Egypt Air",
+//        "Egypt Air",
+//        "Royal Jordanian"
+//        ],
+//        "ReturnFlightNumber": [
+//        "638",
+//        "701",
+//        "3317"
+//        ],
+//        "ReturnLayOverTime": [
+//        "3h:0m",
+//        "5h:30m",
+//        "0h:0m"
+//        ],
+//        "ReturnLayOverMinutes": [
+//        "3h:0m",
+//        "5h:30m",
+//        "0h:0m"
+//        ],
+//        "ReturnLayOverCity": [
+//        "Cairo",
+//        "Amman",
+//        "Beirut"
+//        ],
+//        "ReturnArrAirportName": [
+//        "Cairo International Airport",
+//        "Queen Alia International Airport",
+//        "Beirut Rafic Hariri International Airport"
+//        ],
+//        "ReturnFlightModel": [
+//        "Airbus A320",
+//        "Boeing 737-800",
+//        "Airbus A321"
+//        ]
 
 
 
-        holder.view.priceTow .text=holidays.price+"$"
-        holder.itemView.setOnClickListener{
+        holder.itemView.detailsTow .setOnClickListener{
             val intent = Intent(context, DetailsOne::class.java)
-            intent.putExtra("holidaysOne",holidays)
+            intent.putExtra("holidaysTow",holidays)
             context.startActivity(intent)
         }
         // holder.bindModel(holiday[position])

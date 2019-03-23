@@ -20,11 +20,11 @@ import okhttp3.*
 import java.io.IOException
 
 class showHoliday : AppCompatActivity() {
-  var flag:Boolean=true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_holiday)
-         flag=intent.getBooleanExtra("flage",true)
+         var flag=intent.getBooleanExtra("flage",true)
         var adult=intent.getIntExtra("adult",0)
         var child=intent.getIntExtra("child",0)
         var ifant=intent.getIntExtra("ifant",0)
@@ -55,12 +55,12 @@ class showHoliday : AppCompatActivity() {
         var url:String=""
   if(type=="Economy"){type="e"}
   if(flag){
-      url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
-     // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from={$from}&to={$to}&data={$departure}&adt={$adult}&type={$type}&chd={$child}"
+     // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
+      url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child"
       runRequestOne(url)
   } else{
 
-      url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=BGW&to=BEY&Ddata=2019-03-22&adt=1&type=e&chd=0&Rdata=2019-04-14"
+      url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=BGW&to=BEY&Ddata=2019-02-22&adt=1&type=e&chd=0&Rdata=2019-02-24"
       runRequestTow(url)
   }
 
@@ -81,6 +81,7 @@ class showHoliday : AppCompatActivity() {
 
     fun runRequestOne(url:String){
         Holiday_list.layoutManager= LinearLayoutManager(this)
+
         val request=Request.Builder().url(url).build()
          val client=OkHttpClient()
            client.newCall(request).enqueue(object :Callback {
@@ -90,16 +91,12 @@ class showHoliday : AppCompatActivity() {
 
                    println(body)
                    val gson= GsonBuilder().create()
-                   val  holidayFeed:List<modelOne> = gson.fromJson(body, Array<modelOne>::class.java).toList()
-                 //  val homedateList: List<HomeDate> = gson.fromJson(body, Array<HomeDate>::class.java).toList()
-                  // val holidayFeed:List<HolidayOne>=gson.fromJson(body,Array<HolidayOne>::class.java).tolist()
-                  // val holidayFeed=gson?.fromJson(body,HolidayOne::class.java)
-//                   Array<WeatherObject>::class.java).toList()
-                   //println(holidayFeed)
-                   //result.text=holidayFeed.size.toString()
-               runOnUiThread {
+                   val holidayFeed:List<modelOne> = gson.fromJson(body, Array<modelOne>::class.java).toList()
 
+               runOnUiThread {
+                   noResult.text=holidayFeed.size.toString()+" Result"
                     Holiday_list.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
+
                 }
 
                }
@@ -109,6 +106,8 @@ class showHoliday : AppCompatActivity() {
 
 
            })
+
+
 
     }
     //data class HolidaysTow(val holiday: List<modelTow>)
@@ -123,15 +122,16 @@ class showHoliday : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 val body=response.body()?.string()
-                println(body)
+                //println(body)
                 val gson= GsonBuilder().create()
                 val  holidayFeed:List<modelTow> = gson.fromJson(body, Array<modelTow>::class.java).toList()
-                println(holidayFeed)
+               // println(holidayFeed)
 
                 runOnUiThread {
+                    noResult.text=holidayFeed.size.toString()+" Result"
 
                     Holiday_list.adapter= TowWayAdapter(this@showHoliday,holidayFeed)
-                   // result.text=holidayFeed.lastIndex.toString()
+
 
                 }
             }

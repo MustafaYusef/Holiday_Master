@@ -15,7 +15,7 @@
     >
         <Button
                 android:text="@string/membership"
-                android:layout_width="299dp"
+                android:layout_width="261dp"
                 android:layout_height="70dp"
                 android:id="@+id/member"
                 android:textSize="16sp"
@@ -27,7 +27,7 @@
                 android:background="@drawable/btnleft" android:paddingEnd="15dp" android:onClick="goToLogin"/>
         <Button
                 android:text="@string/browse_as_a_user"
-                android:layout_width="296dp"
+                android:layout_width="262dp"
                 android:layout_height="72dp"
                 android:id="@+id/userBrows"
                 android:textSize="16sp"
@@ -35,11 +35,12 @@
                 android:background="@drawable/btn"
                 android:textStyle="bold"
                 android:paddingStart="15dp"
-              android:onClick="goToSearch"
+                android:onClick="goToSearch"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="116dp" android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"
-                android:layout_marginBottom="132dp" app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_marginBottom="132dp" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_gravity="right"/>
     </FrameLayout>
     <ImageView
             android:layout_width="411dp"

@@ -17,7 +17,7 @@
                 android:orientation="vertical"
                 android:background="@drawable/backsearch"
 
-                android:padding="25dp"
+                android:padding="10dp"
                 android:paddingRight="0dp">
             <LinearLayout
                     android:orientation="horizontal"
@@ -28,11 +28,11 @@
                         android:layout_width="194dp"
                         android:layout_height="match_parent">
                     <ImageButton
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent" app:srcCompat="?attr/actionModeCloseDrawable"
+                            android:layout_width="119dp"
+                            android:layout_height="39dp" app:srcCompat="@drawable/left_arrow"
                             android:id="@+id/btnBack" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backSearch"
-                            android:layout_weight="1" android:layout_gravity="left"/>
+                            android:layout_weight="1" android:layout_gravity="left" android:scaleType="fitCenter"/>
                     <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="171dp"
@@ -45,10 +45,10 @@
                         android:layout_height="match_parent" android:gravity="right">
                     <ImageButton
                             android:layout_width="124dp"
-                            android:layout_height="match_parent" app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                            android:layout_height="match_parent" app:srcCompat="@drawable/user_profile"
                             android:id="@+id/imageButton10" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="profile"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center" android:scaleType="centerInside"/>
                 </LinearLayout>
             </LinearLayout>
             <TextView

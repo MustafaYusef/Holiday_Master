@@ -9,28 +9,31 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mustafayusef.holidaymaster.DetailsOne
 
 import com.mustafayusef.holidaymaster.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.activity_show_holiday.view.*
 
 
 import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
 
-class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne> ) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
+class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
 //
 val titels= listOf<String>("mustafa","yusef","latif")
     private var lastPosition = -1
     private val FADE_DURATION:Long = 1000
-
+    val holidayFeed1=holidayFeed
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
             println(holidayFeed)
 
             val layoutInflater =LayoutInflater.from(parent.context)
             val cardItem=layoutInflater.inflate(R.layout.onewaycard,parent,false)
+
             return CustomViewHolder(cardItem)
         }
 
@@ -45,21 +48,23 @@ val titels= listOf<String>("mustafa","yusef","latif")
 //            val movieAvatarImage : View = holder.findViewById(R.id.LogoAir)
 //            val t=titels.get(position)
 //            holder.view.stopsText.text=t
-            val holidaysSort=holidayFeed.sortedWith(compareBy({ it.stops }))
-                      val holidays=holidaysSort.get(position)
 
-                holder.view.stopsRet.text=holidays.stops.toString()+" Stops"
-            holder.view.priceOne .text=holidays.price+"$"
-            holder.view.depTime.text=holidays.depDateAndTime[0].subSequence(11,holidays.depDateAndTime[0].length)
-            holder.view.arrTime.text=holidays.arrDateAndTime[holidays.arrDateAndTime.lastIndex].subSequence(11,holidays.arrDateAndTime[0].length)
-            holder.view.AirNameDep.text=holidays.departingAirportName[0].subSequence(0,11)
+            val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
+                      val holidays=holidaysSort?.get(position)
+
+                holder.view.stopsRet.text=holidays?.stops.toString()+" Stops"
+            holder.view.priceOne .text=holidays?.price+"$"
+            holder.view.depTime.text=holidays!!.depDateAndTime[0].subSequence(11,holidays.depDateAndTime[0].length)
+            holder.view.arrTime.text=holidays!!.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays?.arrDateAndTime[0].length)
+            holder.view.AirNameDep.text=holidays!!.departingAirportName[0].subSequence(0,11)
             holder.view.duration.text=holidays.totalDuration
-            holder.view.airNameArr .text=holidays.arrAirportName[holidays.arrAirportName.lastIndex].subSequence(0,11)
+            holder.view.airNameArr .text=holidays!!.arrAirportName[holidays.arrAirportName.lastIndex].subSequence(0,11)
 
 
             Glide.with(context).load(holidays.airlineLogo[0]).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAir)
+
             holder.itemView.Details.setOnClickListener{
-                val intent = Intent(context, DetailsTow::class.java)
+                val intent = Intent(context, DetailsOne::class.java)
                     intent.putExtra("holidaysTow",holidays)
                 context.startActivity(intent)
             }

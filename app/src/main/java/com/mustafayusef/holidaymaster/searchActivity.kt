@@ -18,6 +18,7 @@ import java.io.IOException
 import java.util.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.mustafayusef.holidaymaster.Adapters.TowWayAdapter
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import com.mustafayusef.holidaymaster.R
@@ -40,8 +41,8 @@ lateinit var myDialog:Dialog
     var Return=""
     var fromSelect=""
     var toSelect=""
-    var name:String="mustafa yusef"
-    var email:String=""
+    val name:String="mustafa yusef"
+    var email:String = ""
     var phone:String=""
     var money:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +73,7 @@ lateinit var myDialog:Dialog
         option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                // result.text = "Please Select an Option"
-                type="class"
+                type="Economy"
 
             }
 
@@ -244,11 +245,22 @@ lateinit var myDialog:Dialog
                 val gson= GsonBuilder().create()
                 val  AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
                 //name=AuthInfo.sesson.name
-                 email=AuthInfo.sesson.email
-                 phone=AuthInfo.sesson.phone
-                 money= AuthInfo.sesson.money.toString()
+
           println(AuthInfo.sesson)
-               // LoginMember.cacheObj.token = AuthInfo.token
+                runOnUiThread {
+                    val intent =Intent(this@searchActivity,Profile::class.java)
+
+                    intent.putExtra("name",AuthInfo.sesson.name)
+                    intent.putExtra("email",AuthInfo.sesson.email)
+                    intent.putExtra("money",AuthInfo.sesson.phone)
+                    intent.putExtra("phone",AuthInfo.sesson.money.toString())
+
+
+
+                    startActivity(intent)
+
+
+                }
 
             }
             override fun onFailure(call: Call, e: IOException) {
@@ -257,16 +269,7 @@ lateinit var myDialog:Dialog
 
 
         })
-        val intent =Intent(this@searchActivity,Profile::class.java)
 
-        intent.putExtra("name",name)
-        intent.putExtra("email",email)
-        intent.putExtra("money",money)
-        intent.putExtra("phone",phone)
-
-
-
-        startActivity(intent)
 
     }
 
