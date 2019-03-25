@@ -13,7 +13,7 @@
             android:orientation="vertical" android:background="@color/cardview_light_background">
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="290dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/backsearch"
 
@@ -21,15 +21,15 @@
                 android:paddingRight="0dp" android:paddingLeft="10dp">
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="404dp"
+                    android:layout_width="match_parent"
                     android:layout_height="49dp" android:layout_gravity="center">
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="194dp"
                         android:layout_height="match_parent">
                     <ImageButton
-                            android:layout_width="117dp"
-                            android:layout_height="35dp" app:srcCompat="@drawable/left_arrow"
+                            android:layout_width="118dp"
+                            android:layout_height="31dp" app:srcCompat="@drawable/left_arrow"
                             android:id="@+id/btnBack" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backSearch"
                             android:layout_weight="1" android:layout_gravity="left" android:scaleType="fitCenter"/>
@@ -98,7 +98,7 @@
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="383dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="110dp" android:layout_marginTop="20dp">
                 <LinearLayout
                         android:orientation="horizontal"
@@ -136,7 +136,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="446dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="25dp" android:background="@color/cardview_light_background">
 

@@ -22,17 +22,17 @@
 
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="362dp"
+                android:layout_width="329dp"
                 android:layout_height="wrap_content" android:layout_marginTop="5dp" android:background="@drawable/btnb"
                 android:gravity="center" android:layout_gravity="center" android:layout_weight="0.5"
                 android:layout_marginBottom="0dp">
             <TextView
                     android:text="Departure"
-                    android:layout_width="338dp"
+                    android:layout_width="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_height="wrap_content" android:id="@+id/FromTo" android:layout_weight="1"
-                    android:textColor="#fff" android:textSize="20sp"
+                    android:textColor="#fff" android:textSize="18sp"
                     android:paddingLeft="10dp" android:background="@drawable/btnb"/>
         </LinearLayout>
         <LinearLayout

@@ -42,21 +42,14 @@ class MainActivity : AppCompatActivity() {
 //
 //            },100)
 //        },2500)
-        setanim()
+
 
     }
-    fun setanim(){
-//                member.animate()
-//            .translationXBy(700f)
-//            .duration = 2000
-//        userBrows.animate()
-//            .translationXBy(-700f)
-//            .duration = 2000
-    }
+
     fun goToLogin (view: View) {
         member.animate()
             .translationXBy(-700f)
-            .duration = 1000
+            .duration = 2000
         Handler().postDelayed({
 
             Handler().postDelayed({
@@ -70,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     fun goToSearch (view:View){
         userBrows.animate()
             .translationXBy(700f)
-            .duration = 1000
+            .duration = 2000
         Handler().postDelayed({
 
             Handler().postDelayed({

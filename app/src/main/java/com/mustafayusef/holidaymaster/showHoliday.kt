@@ -34,7 +34,17 @@ class showHoliday : AppCompatActivity() {
         var from=intent.getStringExtra("fromSelect")
         var to=intent.getStringExtra("toSelect")
 
+        var url:String=""
+        if(type=="Economy"){type="e"}
+        if(flag){
+            // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
+            url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child"
+            runRequestOne(url)
+        } else{
 
+            url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
+            runRequestTow(url)
+        }
 
 
      fromcity.text=from
@@ -53,17 +63,7 @@ class showHoliday : AppCompatActivity() {
 //  Tow way      params: from = country
 //        ,to=country ,Ddata=Departing Date , Rdata=Returning Date ,
 //        type=Class,chd= Number of Children adt=0
-        var url:String=""
-  if(type=="Economy"){type="e"}
-  if(flag){
-     // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
-      url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child"
-      runRequestOne(url)
-  } else{
 
-      url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
-      runRequestTow(url)
-  }
 
 
 
@@ -85,28 +85,37 @@ class showHoliday : AppCompatActivity() {
 
         val request=Request.Builder().url(url).build()
          val client=OkHttpClient()
-           client.newCall(request).enqueue(object :Callback {
+        try {
+            client.newCall(request).enqueue(object :Callback {
 
-               override fun onResponse(call: Call, response: Response) {
-                   val body=response.body()?.string()
+                override fun onResponse(call: Call, response: Response) {
+                    val body=response.body()?.string()
 
-                   println(body)
-                   val gson= GsonBuilder().create()
-                   val holidayFeed:List<modelOne> = gson.fromJson(body, Array<modelOne>::class.java).toList()
+                    println(body)
+                    val gson= GsonBuilder().create()
+                    val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
 
-               runOnUiThread {
-                   noResult.text=holidayFeed.size.toString()+" Result"
-                    Holiday_list.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
+                    runOnUiThread {
+                        noResult?.text=holidayFeed?.size.toString()+" Result"
+                        Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
+
+                    }
 
                 }
+                override fun onFailure(call: Call, e: IOException) {
+                    val intent=Intent(this@showHoliday,searchActivity::class.java)
+                    startActivity(intent)
+//                   Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                }
 
-               }
-               override fun onFailure(call: Call, e: IOException) {
-                   Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-               }
+
+            })
+        }catch (e:Exception){
+           Toast.makeText(applicationContext, "something Wrong", Toast.LENGTH_SHORT).show()
+
+        }
 
 
-           })
 
 
 
@@ -119,28 +128,36 @@ class showHoliday : AppCompatActivity() {
 
         val request=Request.Builder().url(url).build()
         val client=OkHttpClient()
-        client.newCall(request).enqueue(object :Callback {
+        try {
+            client.newCall(request).enqueue(object :Callback {
 
-            override fun onResponse(call: Call, response: Response) {
-                val body=response.body()?.string()
-                val gson= GsonBuilder().create()
-                val  holidayFeed:List<modelTow> = gson.fromJson(body, Array<modelTow>::class.java).toList()
+                override fun onResponse(call: Call, response: Response) {
+                    val body=response.body()?.string()
+                    val gson= GsonBuilder().create()
+                    val  holidayFeed:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
 
 
-                runOnUiThread {
-                    noResult.text=holidayFeed.size.toString()+" Result"
+                    runOnUiThread {
+                        noResult?.text=holidayFeed?.size.toString()+" Result"
 
-                    Holiday_list.adapter= TowWayAdapter(this@showHoliday,holidayFeed)
+                        Holiday_list?.adapter= TowWayAdapter(this@showHoliday,holidayFeed)
 
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call, e: IOException) {
-                Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-            }
+                override fun onFailure(call: Call, e: IOException) {
+                    val intent=Intent(this@showHoliday,searchActivity::class.java)
+                    startActivity(intent)
+                    //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                }
 
 
-        })
+            })
+        }catch (e:Exception){
+            Toast.makeText(applicationContext, "something Wrong", Toast.LENGTH_SHORT).show()
+
+        }
+
 
 
 

@@ -1,12 +1,14 @@
 package com.mustafayusef.holidaymaster
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_search.*
 //import netscape.javascript.JSObject.getWindow
@@ -18,11 +20,9 @@ import java.io.IOException
 import java.util.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.mustafayusef.holidaymaster.Adapters.TowWayAdapter
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
-import com.mustafayusef.holidaymaster.R
-import kotlinx.android.synthetic.main.activity_show_holiday.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import okhttp3.*
 
 
@@ -48,7 +48,7 @@ lateinit var myDialog:Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
+       view.hideKeyboard()
         AdultPicker.minValue=0
         AdultPicker.maxValue=10
         AdultPicker.wrapSelectorWheel=true
@@ -144,8 +144,14 @@ lateinit var myDialog:Dialog
 
 
 
-
-
+//    fun Context.hideKeyboard(view: View) {
+//        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+//        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+//    }
+    fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
 
 
     @SuppressLint("SetTextI18n")
