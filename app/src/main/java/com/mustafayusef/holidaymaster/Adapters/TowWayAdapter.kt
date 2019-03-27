@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-import com.mustafayusef.holidaymaster.DetailsOne
 import com.mustafayusef.holidaymaster.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelTow
 import com.mustafayusef.holidaymaster.R
@@ -43,29 +42,29 @@ class TowWayAdapter(val context:Context, val holidayTowWay:List<modelTow>?): Rec
         val holidays=holidaysSort?.get(position)
        // val holidays=holidayTowWay.get(position)
 
-        holder.view?.stopsDep.text=holidays?.stops.toString()+" Stops"
+        holder.view.stopsDep.text= holidays!!.stops.toString()+" Stops"
 
-        holder.view.depTimeDep.text= holidays?.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length)
-        holder.view.arrTimeDep .text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays.arrDateAndTime[0].length)
-        holder.view.AirNameDepDep .text=holidays?.depCityName[0]
-        holder.view.durationDep. text=holidays?.totalDuration
-        holder.view.AirNameArrDep .text=holidays?.arrCityName[holidays.arrCityName.lastIndex]
+        holder.view.depTimeDep.text= holidays.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length)
+        holder.view.arrTimeDep .text=
+            holidays.arrDateAndTime!![holidays.arrDateAndTime.lastIndex].subSequence(11,holidays.arrDateAndTime[0].length)
+        holder.view.AirNameDepDep .text= holidays.depCityName!![0]
+        holder.view.durationDep. text=holidays.totalDuration
+        holder.view.AirNameArrDep .text= holidays.arrCityName!![holidays.arrCityName.lastIndex]
 
-        Glide.with(holder.view).load(holidays?.airlineLogo[0]).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAirDep)
+        Glide.with(holder.view).load(holidays.airlineLogo!![0]).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAirDep)
 
 
 
         holder.view.stopsRet .text=holidays?.returnStops.toString()+" Stops"
-//            holder.view?.depTimeRet .text=holidays.returnAepDateAndTime[0]
+           holder.view?.DepTimeRet .text= holidays.returnAepDateAndTime?.get(0)
 //
 //
-      //  holder.view?.arrTimeRet.text=holidays.returnArrDateAndTime[holidays.returnStops.toInt()]
-       //holder.view?.AirNameDepRet.text=holidays.returnDepCityName[0]
-       // holder.view?.AirNameArrRet .text=holidays.returnArrCityName[holidays.returnStops.toInt()]
-        holder.view?.durationRet.text=holidays.returnTotalDuration
-//        Glide.with(holder.view)?.load(holidays.returnLogoCover).apply(RequestOptions.centerCropTransform()
-//              .circleCrop()).into(holder.view.LogoAirRet)
-        holder.view?.priceTow .text=holidays.price+"$"
+//        holder.view.arrTimeRet.text= holidays.returnArrDateAndTime!![0]
+//       holder.view.AirNameDepRet.text= holidays.returnDepCityName!![0]
+//        holder.view.AirNameArrRet .text=holidays.returnArrCityName!![0]
+//        holder.view.durationRet.text=holidays.returnTotalDuration
+//      Glide.with(holder.view).load(holidays.returnLogoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.returnLogoCover)
+        holder.view.priceTow .text=holidays.price+"$"
 
 //        "ReturnStops": 2,
 //        "ReturnDepartingAirportName": [

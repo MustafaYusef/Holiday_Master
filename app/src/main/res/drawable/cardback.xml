@@ -9,9 +9,9 @@
 
 
     >
-        <solid android:color="#fff"/>
-        <corners android:radius="35dp"  />
-    <stroke android:color="#d3d3d3" android:width="5dp"></stroke>
+        <solid android:color="#fff" />
+        <corners android:radius="35dp" />
+    <stroke android:color="#d3d3d3" android:width="2dp" ></stroke>
 
 
 

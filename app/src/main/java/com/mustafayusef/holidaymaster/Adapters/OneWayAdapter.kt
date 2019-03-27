@@ -47,8 +47,8 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
 
                 holder.view?.stopsRet.text=holidays?.stops.toString()+" Stops"
             holder.view?.priceOne .text=holidays?.price+"$"
-            holder.view?.depTime.text= holidays?.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length)
-            holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays?.arrDateAndTime[0].length)
+            holder.view?.depTime.text= holidays?.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length-3)
+            holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays?.arrDateAndTime[0].length-3)
             holder.view?.AirNameDep.text=holidays?.departingAirportName[0].subSequence(0,11)
             holder.view?.duration.text=holidays?.totalDuration
             holder.view?.airNameArr .text=holidays?.arrAirportName[holidays?.arrAirportName.lastIndex].subSequence(0,11)

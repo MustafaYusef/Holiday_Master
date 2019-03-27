@@ -41,6 +41,7 @@ class showHoliday : AppCompatActivity() {
             url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child"
             runRequestOne(url)
         } else{
+//            https://favorite-holiday.herokuapp.com/api/orders/twoway?from=BGW&to=BEY&Ddata=2019-03-22&adt=1&type=e&chd=0&Rdata=2019-04-14
 
             url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
             runRequestTow(url)
@@ -135,7 +136,7 @@ class showHoliday : AppCompatActivity() {
                     val body=response.body()?.string()
                     val gson= GsonBuilder().create()
                     val  holidayFeed:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
-
+                     println(holidayFeed)
 
                     runOnUiThread {
                         noResult?.text=holidayFeed?.size.toString()+" Result"

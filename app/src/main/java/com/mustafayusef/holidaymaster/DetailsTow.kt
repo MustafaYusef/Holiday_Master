@@ -20,14 +20,15 @@ class DetailsTow : AppCompatActivity() {
         setContentView(R.layout.activity_details_tow)
 
         var i:Int=0
-        holiday= intent.getSerializableExtra("holidaysTow") as modelTow
+        this.holiday = intent.getSerializableExtra("holidaysTow") as modelTow
 
 
 
 
         detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
-        detailsTowList.adapter= OneDetailsAdapter(this@DetailsTow,holiday.arrCityName,
-            holiday.depCityName,holiday.depDateAndTime,holiday.arrDateAndTime,holiday.airlineLogo,holiday.totalDuration)
+        detailsTowList.adapter= OneDetailsAdapter(this@DetailsTow, holiday.arrCityName!!,
+            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!, holiday.airlineLogo!!, holiday.totalDuration!!
+        )
 
 
 

@@ -51,7 +51,7 @@
                     android:layout_height="match_parent">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="41dp"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent" android:layout_weight="1">
                     <LinearLayout
                             android:orientation="horizontal"
@@ -59,8 +59,8 @@
                             android:layout_height="match_parent" android:layout_weight="1">
                         <Button
                                 android:text="-"
-                                android:layout_width="74dp"
-                                android:layout_height="wrap_content" android:id="@+id/button7"
+                                android:layout_width="77dp"
+                                android:layout_height="wrap_content" android:id="@+id/adultBtSup"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="0dp"
@@ -78,7 +78,7 @@
                         <TextView
                                 android:text="0"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" android:id="@+id/textView12"
+                                android:layout_height="match_parent" android:id="@+id/adultText"
                                 android:layout_weight="1" android:textStyle="bold" android:textAlignment="center"
                                 android:paddingTop="20dp"/>
                     </LinearLayout>
@@ -93,8 +93,8 @@
                             android:layout_height="match_parent" android:layout_weight="1">
                         <Button
                                 android:text="+"
-                                android:layout_width="31dp"
-                                android:layout_height="wrap_content" android:id="@+id/button6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/adultBtAdd"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="10dp"/>
@@ -137,16 +137,16 @@
                     android:layout_height="match_parent">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="41dp"
+                        android:layout_width="52dp"
                         android:layout_height="match_parent" android:layout_weight="1">
                     <LinearLayout
                             android:orientation="horizontal"
-                            android:layout_width="65dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent" android:layout_weight="1">
                         <Button
                                 android:text="-"
-                                android:layout_width="74dp"
-                                android:layout_height="wrap_content" android:id="@+id/button71"
+                                android:layout_width="52dp"
+                                android:layout_height="wrap_content" android:id="@+id/childSub"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="0dp"
@@ -164,7 +164,7 @@
                         <TextView
                                 android:text="0"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" android:id="@+id/textView121"
+                                android:layout_height="match_parent" android:id="@+id/childText"
                                 android:layout_weight="1" android:textStyle="bold" android:textAlignment="center"
                                 android:paddingTop="20dp"/>
                     </LinearLayout>
@@ -179,8 +179,8 @@
                             android:layout_height="match_parent" android:layout_weight="1">
                         <Button
                                 android:text="+"
-                                android:layout_width="31dp"
-                                android:layout_height="wrap_content" android:id="@+id/button61"
+                                android:layout_width="25dp"
+                                android:layout_height="wrap_content" android:id="@+id/childAdd"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="10dp"/>
@@ -223,7 +223,7 @@
                     android:layout_height="match_parent">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="41dp"
+                        android:layout_width="52dp"
                         android:layout_height="match_parent" android:layout_weight="1">
                     <LinearLayout
                             android:orientation="horizontal"
@@ -232,7 +232,7 @@
                         <Button
                                 android:text="-"
                                 android:layout_width="74dp"
-                                android:layout_height="wrap_content" android:id="@+id/minas"
+                                android:layout_height="wrap_content" android:id="@+id/infSub"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="0dp"
@@ -250,7 +250,7 @@
                         <TextView
                                 android:text="0"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" android:id="@+id/textView1211"
+                                android:layout_height="match_parent" android:id="@+id/infantText"
                                 android:layout_weight="1" android:textStyle="bold" android:textAlignment="center"
                                 android:paddingTop="20dp"/>
                     </LinearLayout>
@@ -266,7 +266,7 @@
                         <Button
                                 android:text="+"
                                 android:layout_width="31dp"
-                                android:layout_height="wrap_content" android:id="@+id/button611"
+                                android:layout_height="wrap_content" android:id="@+id/infAdd"
                                 android:layout_weight="1" android:textSize="40sp"
                                 android:textColor="@color/cardview_light_background" android:textAlignment="center"
                                 android:background="@drawable/btnun" android:layout_marginRight="10dp"/>
@@ -283,7 +283,7 @@
             <Button
                     android:text="Confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="69dp" android:id="@+id/button9" android:layout_marginTop="10dp"
+                    android:layout_height="67dp" android:id="@+id/button9" android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
                     android:textColor="@color/cardview_light_background" android:textSize="24sp"
                     android:textAllCaps="false" android:textStyle="bold" android:background="@drawable/btnun"
