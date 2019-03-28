@@ -2,23 +2,23 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#f2f4f3"
         android:paddingTop="5dp"
         android:paddingRight="5dp"
 
->
+        android:layout_marginTop="10dp">
 
     <!--<LinearLayout-->
-            <!--android:layout_width="406dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--android:background="@drawable/cardback"-->
-            <!--android:padding="5dp"-->
-            <!--android:layout_alignParentEnd="true" android:layout_marginEnd="0dp" android:layout_alignParentStart="true"-->
-            <!--android:layout_marginStart="5dp" android:layout_marginTop="0dp" android:layout_alignParentTop="true"-->
-            <!--android:layout_marginBottom="5dp" android:paddingTop="0dp">>-->
+    <!--android:layout_width="406dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="@drawable/cardback"-->
+    <!--android:padding="5dp"-->
+    <!--android:layout_alignParentEnd="true" android:layout_marginEnd="0dp" android:layout_alignParentStart="true"-->
+    <!--android:layout_marginStart="5dp" android:layout_marginTop="0dp" android:layout_alignParentTop="true"-->
+    <!--android:layout_marginBottom="5dp" android:paddingTop="0dp">>-->
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -26,13 +26,15 @@
             android:orientation="vertical"
             android:background="@drawable/cardback"
             android:padding="5dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp" android:layout_marginTop="0dp"
-            android:layout_marginBottom="5dp" android:layout_gravity="center" android:gravity="center">
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="0dp" android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" android:layout_gravity="center" android:gravity="center"
+            android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" android:layout_margin="5dp">
 
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="368dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp" android:background="@drawable/btnb">
             <TextView
                     android:text="Departure"
@@ -41,53 +43,55 @@
                     android:paddingLeft="10dp" android:gravity="center"/>
             <TextView
                     android:text="Return"
-                    android:layout_width="209dp"
+                    android:layout_width="183dp"
                     android:layout_height="match_parent" android:id="@+id/textView12" android:layout_weight="1"
                     android:textColor="#fff" android:gravity="center|right" android:paddingRight="10dp"/>
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/ddtow"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="6"
                 android:paddingRight="0dp"
                 android:paddingLeft="0dp"
-                android:gravity="center">
+                android:gravity="center" android:layout_gravity="center">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="157dp"
-                    android:orientation="vertical" android:layout_weight="6" android:gravity="top">
+                    android:orientation="vertical" android:layout_weight="6"
+                    android:gravity="center">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="157dp">
+                        android:layout_width="match_parent"
+                        android:layout_height="157dp" android:gravity="center">
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent" android:layout_gravity="left">
                         <LinearLayout
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
+                                android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:layout_gravity="left" android:gravity="center">
+                                android:layout_gravity="left" android:gravity="center|center_vertical"
+                                android:layout_marginRight="10dp">
                             <ImageView
-                                    android:layout_width="47dp"
+                                    android:layout_width="50dp"
                                     android:layout_height="51dp" android:id="@+id/LogoAirDep"
                             />
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="horizontal"
-                            android:layout_width="321dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="158dp" android:weightSum="5" android:gravity="left">
 
                         <LinearLayout
                                 android:orientation="vertical"
-                                android:layout_width="108dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent" android:weightSum="5"
-                                android:layout_weight="1.6">
+                                android:layout_weight="2">
                             <TextView
                                     android:text="TextView"
                                     android:layout_width="wrap_content"
@@ -130,11 +134,11 @@
                                 android:orientation="horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent" android:weightSum="2"
-                                android:layout_weight="2.5"
-                                android:paddingRight="10dp">
+                                android:layout_weight="2"
+                                android:paddingRight="10dp" android:layout_gravity="center" android:gravity="left">
                             <LinearLayout
                                     android:orientation="vertical"
-                                    android:layout_width="41dp"
+                                    android:layout_width="53dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="left" android:gravity="center">
                                 <ImageView
@@ -144,45 +148,43 @@
                             </LinearLayout>
                             <LinearLayout
                                     android:orientation="vertical"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="match_parent" android:weightSum="5"
-                                    android:layout_weight="1.6" android:gravity="left" android:layout_gravity="left">
+                                    android:layout_weight="2" android:gravity="center|left"
+                                    android:layout_gravity="left" android:layout_marginRight="5dp"
+                                    android:paddingLeft="10dp">
                                 <TextView
                                         android:text="TextView"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content" android:id="@+id/DepTimeRet"
                                         android:layout_weight="1" android:textColor="#000"
                                         android:gravity="bottom|center"
-                                        android:layout_gravity="center" android:textSize="16sp"/>
+                                        android:textSize="16sp"/>
                                 <TextView
                                         android:text="TextView"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content" android:id="@+id/AirNameDepRet"
                                         android:layout_weight="1" android:textColor="@android:color/darker_gray"
                                         android:gravity="center" android:textSize="14sp"
-                                        android:layout_gravity="center"/>
+                                />
                                 <TextView
                                         android:layout_width="35dp"
                                         android:layout_height="27dp" android:id="@+id/textView8"
                                         android:layout_weight="1" android:gravity="center"
-                                        android:background="@drawable/flightback" android:layout_gravity="center"/>
+                                        android:background="@drawable/flightback"/>
                                 <TextView
                                         android:text="TextView"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content" android:id="@+id/arrTimeRet"
                                         android:layout_weight="1" android:textColor="#000" android:gravity="center"
-                                        android:layout_gravity="center" android:textSize="16sp"/>
+                                        android:textSize="16sp"/>
                                 <TextView
                                         android:text="TextView"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content" android:id="@+id/AirNameArrRet"
                                         android:layout_weight="0.5" android:textColor="@android:color/darker_gray"
-                                        android:textSize="14sp" android:layout_gravity="center"/>
+                                        android:textSize="14sp"/>
                             </LinearLayout>
-                            <LinearLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -194,26 +196,26 @@
 
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="371dp"
-                android:layout_height="47dp" android:background="@drawable/btnb">
+                android:layout_width="match_parent"
+                android:layout_height="47dp" android:background="@drawable/btnb" android:layout_margin="5dp">
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="188dp"
+                    android:layout_width="175dp"
                     android:layout_height="match_parent" android:gravity="center">
                 <TextView
                         android:text="TextView"
-                        android:layout_width="match_parent"
+                        android:layout_width="156dp"
                         android:layout_height="wrap_content" android:id="@+id/durationDep" android:textColor="#fff"
                         android:paddingLeft="10dp"/>
                 <TextView
                         android:text="TextView"
-                        android:layout_width="match_parent"
+                        android:layout_width="157dp"
                         android:layout_height="wrap_content" android:id="@+id/stopsDep" android:textColor="#fff"
                         android:paddingLeft="10dp"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
+                    android:layout_width="166dp"
                     android:layout_height="match_parent">
                 <LinearLayout
                         android:orientation="vertical"
@@ -225,7 +227,7 @@
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="match_parent"
+                        android:layout_width="169dp"
                         android:layout_height="match_parent" android:gravity="center">
                     <TextView
                             android:text="TextView"
@@ -241,7 +243,7 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-                android:layout_width="355dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:orientation="horizontal"
                 android:weightSum="3"
@@ -249,9 +251,9 @@
 
             <TextView
                     android:text="TextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent" android:id="@+id/priceTow" android:layout_weight="2"
-                    android:gravity="center|left" android:layout_gravity="left" android:paddingLeft="5dp"
+                    android:gravity="center|left" android:layout_gravity="left" android:paddingLeft="10dp"
                     android:textColor="#6B4AA3" android:textStyle="bold"/>
             <Button
                     android:layout_width="48dp"
@@ -276,7 +278,6 @@
                     android:layout_marginRight="10dp"/>
         </LinearLayout>
     </LinearLayout>
-
 
 
 </RelativeLayout>

@@ -25,9 +25,10 @@ class DetailsOne : AppCompatActivity() {
 
 
 
-        detailsOneList.layoutManager= LinearLayoutManager(this)
+        this.detailsOneList.layoutManager= LinearLayoutManager(this)
         detailsOneList.adapter= OneDetailsAdapter(this@DetailsOne,holiday.arrCityName,
-            holiday.depCityName,holiday.depDateAndTime,holiday.arrDateAndTime,holiday.airlineLogo,holiday.totalDuration)
+            holiday.depCityName,holiday.depDateAndTime,holiday.arrDateAndTime
+            ,holiday.airlineLogo,holiday.totalDuration,holiday.layOverCity,holiday.airlineName,holiday.flightModel)
 
 
         purOne.text="Purchase for "+holiday.price+" $"

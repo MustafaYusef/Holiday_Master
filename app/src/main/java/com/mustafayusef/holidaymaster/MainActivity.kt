@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+        member.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.left_to_right))
+        userBrows.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.right_to_left))
 
 //        member.animate()
 //            .translationXBy(-700f)
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goToLogin (view: View) {
         member.animate()
-            .translationXBy(-700f)
+            .translationXBy(-750f)
             .duration = 2000
         Handler().postDelayed({
 
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun goToSearch (view:View){
         userBrows.animate()
-            .translationXBy(700f)
+            .translationXBy(750f)
             .duration = 2000
         Handler().postDelayed({
 

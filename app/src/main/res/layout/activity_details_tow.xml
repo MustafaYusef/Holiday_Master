@@ -16,10 +16,10 @@
             android:weightSum="3"
             android:layout_marginTop="4dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
         <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="43dp" app:srcCompat="?attr/actionModeCloseDrawable"
-                android:id="@+id/imageButton3" android:layout_weight="1" android:background="#6F499C"
-                android:onClick="backToTow"/>
+                android:layout_width="15dp"
+                android:layout_height="38dp" app:srcCompat="@drawable/left_arrow"
+                android:id="@+id/imageButton3" android:layout_weight="1" android:background="@drawable/backsearch"
+                android:onClick="backToTow" android:scaleType="fitCenter" android:layout_gravity="center"/>
         <TextView
                 android:text="Ticket info"
                 android:layout_width="221dp"

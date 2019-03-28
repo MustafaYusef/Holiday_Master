@@ -14,6 +14,7 @@ import com.mustafayusef.holidaymaster.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.details_card.view.*
+import kotlinx.android.synthetic.main.onewaycard.*
 import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
@@ -25,7 +26,10 @@ import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
 class OneDetailsAdapter(val context: Context,val arrCityName:List<String>,
-                        val depCityName:List<String>,val depDateAndTime:List<String>,val arrDateAndTime:List<String>,val airlineLogo:List<String>,val totalDuration:String) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
+                        val depCityName:List<String>,val depDateAndTime:List<String>,
+                        val arrDateAndTime:List<String>,val airlineLogo:List<String>
+                        ,val totalDuration:String,val layOverCity:List<String>,val airlineName:List<String>
+,val flightModel:List<String>) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
 
 
 
@@ -50,6 +54,10 @@ class OneDetailsAdapter(val context: Context,val arrCityName:List<String>,
         val depDateAndTime = depDateAndTime.get(position)
         val airlineLogo = airlineLogo.get(position)
         val arrDateAndTime = arrDateAndTime.get(position)
+
+        val layOverCity=layOverCity.get(position)
+        val airlineName=airlineName.get(position)
+        val flightModel=flightModel.get(position)
         "2019-03-13T19:35:00"
 
 
@@ -58,7 +66,11 @@ class OneDetailsAdapter(val context: Context,val arrCityName:List<String>,
         holder.view?.arrTimeDO .text = arrDateAndTime.subSequence(11, arrDateAndTime.length-3)
         holder.view?.durationDO.text=totalDuration
         holder.view?.AirNameDepDO.text=depCityName
+        holder.view?.LayOver.text="Layover:"+layOverCity
+        holder.view?.FlightModel.text=flightModel
+        holder.view?.AirLineName .text=airlineName
         holder.view?.airNameArrDO .text=arrCityName
+
         Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
             .into(holder.view.LogoAirDO)
 

@@ -51,6 +51,8 @@ class Lottie : AppCompatActivity() {
                                 }else{
                                     val intent = Intent(this@Lottie,MainActivity::class.java)
                                     startActivity(intent)
+
+
                                 }
                                 //println(AuthInfo?.sesson)
                             }

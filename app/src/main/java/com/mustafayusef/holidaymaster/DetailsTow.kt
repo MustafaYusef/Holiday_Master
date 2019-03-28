@@ -25,9 +25,10 @@ class DetailsTow : AppCompatActivity() {
 
 
 
-        detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
+        detailsTowList.layoutManager= LinearLayoutManager(this)
         detailsTowList.adapter= OneDetailsAdapter(this@DetailsTow, holiday.arrCityName!!,
-            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!, holiday.airlineLogo!!, holiday.totalDuration!!
+            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
+            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!, holiday.flightModel!!
         )
 
 
@@ -36,6 +37,7 @@ class DetailsTow : AppCompatActivity() {
         purTow.text="Purchase for "+holiday.price+" $"
 
     }
+
     fun backToTow(view: View){
         val intent= Intent(this@DetailsTow,showHoliday::class.java)
         startActivity(intent)
