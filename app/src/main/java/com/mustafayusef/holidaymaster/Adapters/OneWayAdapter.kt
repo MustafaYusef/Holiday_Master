@@ -6,15 +6,14 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mustafayusef.holidaymaster.DetailsOne
 
-import com.mustafayusef.holidaymaster.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
-import kotlinx.android.synthetic.main.activity_show_holiday.view.*
 
 
 import kotlinx.android.synthetic.main.onewaycard.view.*
@@ -41,11 +40,13 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
         }
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+//            holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
+//            holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
 
             val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
                       val holidays=holidaysSort?.get(position)
 
-                holder.view?.stopsRet.text=holidays?.stops.toString()+" Stops"
+                holder.view?.stops.text=holidays?.stops.toString()+" Stops"
             holder.view?.priceOne .text=holidays?.price+"$"
             holder.view?.depTime.text= holidays?.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length-3)
             holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays?.arrDateAndTime[0].length-3)
@@ -54,7 +55,7 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
             holder.view?.airNameArr .text=holidays?.arrAirportName[holidays?.arrAirportName.lastIndex].subSequence(0,11)
 
 
-            Glide.with(context).load(holidays?.airlineLogo[0]).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAir)
+            Glide.with(context).load(holidays?.logoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAir)
 
             holder.itemView.Details.setOnClickListener{
                 val intent = Intent(context, DetailsOne::class.java)

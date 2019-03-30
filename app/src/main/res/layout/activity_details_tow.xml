@@ -1,48 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".DetailsOne" android:background="#fff">
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="71dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
-            android:weightSum="3"
-            android:layout_marginTop="4dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
-        <ImageButton
-                android:layout_width="15dp"
-                android:layout_height="38dp" app:srcCompat="@drawable/left_arrow"
-                android:id="@+id/imageButton3" android:layout_weight="1" android:background="@drawable/backsearch"
-                android:onClick="backToTow" android:scaleType="fitCenter" android:layout_gravity="center"/>
-        <TextView
-                android:text="Ticket info"
-                android:layout_width="221dp"
-                android:layout_height="52dp" android:id="@+id/toShow2"
-                android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
-                android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1" android:gravity="center"/>
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="623dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:gravity="center" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-        <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        tools:context=".DetailsTow">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="481dp" android:id="@+id/detailsTowList" android:layout_marginTop="20dp"/>
+                android:layout_height="71dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp">
+            <ImageButton
+                    android:layout_width="15dp"
+                    android:layout_height="32dp" app:srcCompat="@drawable/left_arrow"
+                    android:id="@+id/imageButton3" android:layout_weight="1" android:background="@drawable/backsearch"
+                    android:onClick="backToTow" android:scaleType="fitCenter" android:layout_gravity="center"/>
+            <TextView
+                    android:text="Ticket info"
+                    android:layout_width="221dp"
+                    android:layout_height="52dp" android:id="@+id/toShow2"
+                    android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
+                    android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1"
+                    android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_marginTop="10dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="45dp"
+                          android:text="Departure" android:textAlignment="center" android:textSize="24sp"
+                          android:textColor="#fff"
+                          android:background="#FF7500" android:gravity="center"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/detailsTowList"
+                        android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
+                </androidx.recyclerview.widget.RecyclerView>
+                <TextView android:layout_width="match_parent" android:layout_height="44dp"
+                          android:text="Return" android:textAlignment="center" android:textSize="24sp"
+                          android:textColor="#fff"
+                          android:background="#FF7500" android:gravity="center"/>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/detailsTowListRet">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+
+        </LinearLayout>
         <Button
                 android:text="Purchase"
-                android:layout_width="275dp"
-                android:layout_height="58dp" android:id="@+id/purTow" android:textSize="18sp"
-                android:background="@drawable/btnun" android:textColor="#fff" android:layout_marginBottom="20dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_width="261dp"
+                android:layout_height="49dp" android:id="@+id/purTow" android:textSize="16sp"
+                android:background="@drawable/btnun" android:textColor="#fff"
+                android:layout_gravity="center" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

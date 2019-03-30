@@ -12,7 +12,9 @@ import kotlinx.android.synthetic.main.details_card.view.*
 
 
 class ReturnDetails(val context: Context, val arrCityName:List<String>,
-                        val depCityName:List<String>, val depDateAndTime:List<String>, val arrDateAndTime:List<String>, val airlineLogo:List<String>, val totalDuration:String) : RecyclerView.Adapter<ReturnDetails.CustomViewHolder>() {
+                        val depCityName:List<String>, val depDateAndTime:List<String>, val arrDateAndTime:List<String>,
+                    val airlineLogo:List<String>, val totalDuration:String,
+                    val layOverCity:List<String>, val airlineName:List<String>,val flightModel:List<String>) : RecyclerView.Adapter<ReturnDetails.CustomViewHolder>() {
 
 
 

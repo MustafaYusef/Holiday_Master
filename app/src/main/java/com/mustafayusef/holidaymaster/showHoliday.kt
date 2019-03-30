@@ -20,22 +20,32 @@ import okhttp3.*
 import java.io.IOException
 
 class showHoliday : AppCompatActivity() {
-
+     var flag:Boolean=true
+    var adult=0
+    var child=0
+    var ifant=0
+    var departure=""
+    var Return=""
+    var type=""
+    var from=""
+    var to=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_holiday)
-         var flag=intent.getBooleanExtra("flage",true)
-        var adult=intent.getIntExtra("adult",0)
-        var child=intent.getIntExtra("child",0)
-        var ifant=intent.getIntExtra("ifant",0)
-        var departure=intent.getStringExtra("departure")
-        var Return=intent.getStringExtra("Return")
-        var type=intent.getStringExtra("Type")
-        var from=intent.getStringExtra("fromSelect")
-        var to=intent.getStringExtra("toSelect")
+          flag=intent.getBooleanExtra("flage",true)
+         adult=intent.getIntExtra("adult",0)
+         child=intent.getIntExtra("child",0)
+         ifant=intent.getIntExtra("ifant",0)
+         departure=intent.getStringExtra("departure")
+         Return=intent.getStringExtra("Return")
+         type=intent.getStringExtra("Type")
+         from=intent.getStringExtra("fromSelect")
+         to=intent.getStringExtra("toSelect")
 
         var url:String=""
         if(type=="Economy"){type="e"}
+        if(type=="Class"){type="c"}
+        if(type=="First"){type="f"}
         if(flag){
             // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
             url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child"
@@ -54,32 +64,12 @@ class showHoliday : AppCompatActivity() {
         AdultShow.text=adult.toString()+"Adult"
         childShow.text=child.toString()+"child"
         dateShow.text=departure
-
-
-
-//     OneWay   params: from = country ,to=country ,Ddata=Departing Date
-// , type=Class,chd= Number of Children adt=0
-
-
-//  Tow way      params: from = country
-//        ,to=country ,Ddata=Departing Date , Rdata=Returning Date ,
-//        type=Class,chd= Number of Children adt=0
-
-
-
-
-
-
-
-
-
     }
     fun backSearch(view: View){
         val intent = Intent(this,searchActivity::class.java)
         startActivity(intent)
     }
 
-  //data class HolidayOne(val holiday: ArrayList<modelOne>)
 
     fun runRequestOne(url:String){
         Holiday_list.layoutManager= LinearLayoutManager(this)
@@ -92,7 +82,7 @@ class showHoliday : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
                     val body=response.body()?.string()
 
-                    println(body)
+                    //println(body)
                     val gson= GsonBuilder().create()
                     val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
 
@@ -116,15 +106,11 @@ class showHoliday : AppCompatActivity() {
 
         }
 
-
-
-
-
     }
-    //data class HolidaysTow(val holiday: List<modelTow>)
+
 
     fun runRequestTow(url:String){
-
+       //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
         Holiday_list.layoutManager=LinearLayoutManager(this)
 
         val request=Request.Builder().url(url).build()
@@ -134,14 +120,16 @@ class showHoliday : AppCompatActivity() {
 
                 override fun onResponse(call: Call, response: Response) {
                     val body=response.body()?.string()
+                    println(body)
                     val gson= GsonBuilder().create()
-                    val  holidayFeed:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
-                     println(holidayFeed)
+                    val holidayFeedTow:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
+                     println("the array objects")
+                    println(holidayFeedTow)
 
                     runOnUiThread {
-                        noResult?.text=holidayFeed?.size.toString()+" Result"
+                        noResult?.text=holidayFeedTow?.size.toString()+" Result"
 
-                        Holiday_list?.adapter= TowWayAdapter(this@showHoliday,holidayFeed)
+                        Holiday_list?.adapter= TowWayAdapter(this@showHoliday,holidayFeedTow)
 
                     }
                 }
@@ -159,14 +147,6 @@ class showHoliday : AppCompatActivity() {
 
         }
 
-
-
-
     }
-
-
-
-
-
 
 }

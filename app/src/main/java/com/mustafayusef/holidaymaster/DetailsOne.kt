@@ -34,8 +34,7 @@ class DetailsOne : AppCompatActivity() {
         purOne.text="Purchase for "+holiday.price+" $"
         }
         fun backToOne(view: View){
-        val intent= Intent(this@DetailsOne,showHoliday::class.java)
-        startActivity(intent)
+            super.onBackPressed()
 
     }
 }

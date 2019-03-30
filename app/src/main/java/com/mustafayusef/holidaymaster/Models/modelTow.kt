@@ -40,4 +40,5 @@ data class modelTow(
     val returnArrAirportName: List<String>? = null,
     val returnFlightModel: List<String>? = null
 
-):Serializable
+
+): Serializable

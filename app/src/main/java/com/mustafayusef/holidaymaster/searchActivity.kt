@@ -22,6 +22,7 @@ import java.io.IOException
 import java.util.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -240,7 +241,10 @@ class searchActivity : AppCompatActivity() {
 //        dilog.show()
 //
 //    }
-
+fun goToHotel(view: View){
+    val intent=Intent(this@searchActivity,SearchHotels::class.java)
+    startActivity(intent)
+}
 
     fun Oneway(view: View) {
         button17.isActivated = true
@@ -279,19 +283,28 @@ class searchActivity : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
                     val body = response.body()?.string()
 
-                    println(body)
+                  //  println(body)
                     val gson = GsonBuilder().create()
                     val AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
-                    println(AuthInfo.sesson)
+                   // println(AuthInfo.sesson)
                     runOnUiThread {
-                        val intent = Intent(this@searchActivity, Profile::class.java)
+                        if(AuthInfo.sesson!=null){
+                            val intent = Intent(this@searchActivity, Profile::class.java)
 
-                        intent.putExtra("name", AuthInfo.sesson.name)
-                        intent.putExtra("email", AuthInfo.sesson.email)
-                        intent.putExtra("money", AuthInfo.sesson.phone)
-                        intent.putExtra("phone", AuthInfo.sesson.money.toString())
+                            intent.putExtra("name", AuthInfo.sesson.name)
+                            intent.putExtra("email", AuthInfo.sesson.email)
+                            intent.putExtra("money", AuthInfo.sesson.phone)
+                            intent.putExtra("phone", AuthInfo.sesson.money.toString())
 
-                        startActivity(intent)
+                            startActivity(intent)
+                        }else{
+                            val intent = Intent(this@searchActivity, LoginMember::class.java)
+
+
+
+                            startActivity(intent)
+                        }
+
 
                     }
                 }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Adapters.OneDetailsAdapter
+import com.mustafayusef.holidaymaster.Adapters.ReturnDetails
 import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.Models.modelTow
 import com.mustafayusef.holidaymaster.R
@@ -26,7 +27,14 @@ class DetailsTow : AppCompatActivity() {
 
 
         detailsTowList.layoutManager= LinearLayoutManager(this)
+//        detailsTowList.addItemDecoration(detailsTowList.)
         detailsTowList.adapter= OneDetailsAdapter(this@DetailsTow, holiday.arrCityName!!,
+            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
+            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!, holiday.flightModel!!
+        )
+
+        detailsTowListRet.layoutManager= LinearLayoutManager(this)
+        detailsTowListRet.adapter= OneDetailsAdapter(this@DetailsTow, holiday.arrCityName!!,
             holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
             , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!, holiday.flightModel!!
         )
@@ -39,8 +47,8 @@ class DetailsTow : AppCompatActivity() {
     }
 
     fun backToTow(view: View){
-        val intent= Intent(this@DetailsTow,showHoliday::class.java)
-        startActivity(intent)
+        super.onBackPressed()
+
 
     }
 

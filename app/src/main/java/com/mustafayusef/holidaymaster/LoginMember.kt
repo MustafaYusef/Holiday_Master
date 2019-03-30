@@ -65,7 +65,7 @@ class LoginMember : AppCompatActivity() {
             }
 
         })
-        val intent = Intent(this@LoginMember,searchActivity::class.java)
+        val intent = Intent(this@LoginMember,Profile::class.java)
         startActivity(intent)
 
 

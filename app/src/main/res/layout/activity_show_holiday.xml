@@ -113,8 +113,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                 android:paddingBottom="0dp" android:layout_marginTop="10dp"
-                 android:background="#d9d9d9">
+                android:paddingBottom="0dp" android:layout_marginTop="10dp"
+                android:background="#d9d9d9" android:splitMotionEvents="false">
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Holiday_list"
                     android:layout_width="match_parent"
