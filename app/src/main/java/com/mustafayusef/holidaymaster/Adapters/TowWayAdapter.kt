@@ -53,20 +53,21 @@ class TowWayAdapter(val context:Context,  val holidayTowWay:List<modelTow>?): Re
 
 
 
-        holder.view.stopsRet .text=holidays?.returnStops.toString()+" Stops"
-          // holder.view?.DepTimeRet .text= holidays.returnAepDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length)
+        holder.view.stopsRet .text=holidays?.ReturnStops .toString()+" Stops"
+           holder.view?.DepTimeRet .text= holidays.ReturnAepDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length)
 ////
 ////
-//       holder.view.arrTimeRet.text= holidays.returnArrDateAndTime.toString()
-//       holder.view.AirNameDepRet.text= holidays.returnDepCityName!![0]
-//        holder.view.AirNameArrRet .text=holidays.returnArrCityName!![0]
-//        holder.view.durationRet.text=holidays.returnTotalDuration
-//               holder.view.arrTimeRet.text= holidays.arrDateAndTime!![holidays.arrDateAndTime.lastIndex].subSequence(11,holidays.arrDateAndTime[0].length)
+       holder.view.arrTimeRet.text= holidays.ReturnArrDateAndTime!![holidays.ReturnArrDateAndTime.lastIndex].subSequence(11,holidays.ReturnArrDateAndTime[0].length)
+       holder.view.AirNameDepRet.text= holidays.ReturnDepCityName !![0]
+        holder.view.AirNameArrRet .text=holidays.ReturnArrCityName !![holidays.ReturnArrCityName.lastIndex]
+        holder.view.durationRet.text=holidays.ReturnTotalDuration
+        Glide.with(holder.view).load(holidays.ReturnLogoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.returnLogoCover)
+        holder.view.priceTow .text=holidays.price+"$"
 //       holder.view.AirNameDepRet.text= holidays.depCityName!![0]
 //        holder.view.AirNameArrRet .text=holidays.arrCityName!![holidays.arrCityName.lastIndex]
 //        holder.view.durationRet.text=holidays.totalDuration
 //      Glide.with(holder.view).load(holidays.returnLogoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.returnLogoCover)
-//        holder.view.priceTow .text=holidays.price+"$"
+//
 
 //        "ReturnStops": 2,
 //        "ReturnDepartingAirportName": [

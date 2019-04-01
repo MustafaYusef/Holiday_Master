@@ -35,7 +35,7 @@ class Profile : AppCompatActivity() {
         LoginMember.cacheObj.bulk {
             token=""
         }
-        val intent= Intent(this@Profile,LoginMember::class.java)
+        val intent= Intent(this@Profile,searchActivity::class.java)
         startActivity(intent)
     }
 }

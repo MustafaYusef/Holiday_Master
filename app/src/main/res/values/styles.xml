@@ -4,17 +4,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
-    <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">#FDD835</item>
-        <item name="colorControlActivated">#9CFFFFFF</item>
-    </style>
-    <style name="MyRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:height">3dp</item>
-        <item name="android:width">4dp</item>
+    <style name="splashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
     </style>
+
+    <style name="HotelDTheme"  parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
 </resources>

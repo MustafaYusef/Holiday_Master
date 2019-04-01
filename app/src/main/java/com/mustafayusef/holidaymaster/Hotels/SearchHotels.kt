@@ -22,24 +22,33 @@ import androidx.core.os.HandlerCompat.postDelayed
 
 import android.os.Handler
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.searchActivity
+
 
 
 @Suppress("NAME_SHADOWING")
 class SearchHotels : AppCompatActivity() {
+     var chAge= mutableListOf<Int>(0,0,0,0,0)
     val context: Context = this
     var checkIn: String = ""
     var checkOut: String = ""
     var AdultNo: Int = 0
     var ChildNo: Int = 0
-    var InfantNo: Int = 0
     var CityHot:String=""
+
+    var chAge1=0
+    var chAge2=0
+    var chAge3=0
+    var chAge4=0
+    var chAge5=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_hotels)
         //  ratingBar.rating= 2F
-
+        PickersCh.visibility=View.INVISIBLE
 
         val options = arrayOf(0,1, 2, 3,4,5,6,7,8,9,10)
+
         // val AdultHot = findViewById(R.id.spinner) as Spinner
         AdultHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options)
         AdultHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -54,7 +63,33 @@ class SearchHotels : AppCompatActivity() {
 
             }
         }
-        ChildHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options)
+        ch1Picker.minValue = 2
+        ch1Picker.maxValue = 12
+        ch1Picker.wrapSelectorWheel = true
+
+        ch2Picker.minValue = 2
+        ch2Picker.maxValue = 12
+        ch2Picker.wrapSelectorWheel = true
+
+        ch3Picker.minValue = 2
+        ch3Picker.maxValue = 12
+        ch3Picker.wrapSelectorWheel = true
+
+        ch4Picker.minValue = 2
+        ch4Picker.maxValue = 12
+        ch4Picker.wrapSelectorWheel = true
+
+        ch5Picker.minValue = 2
+        ch5Picker.maxValue = 12
+        ch5Picker.wrapSelectorWheel = true
+
+
+
+
+
+
+        val options1 = arrayOf(0,1, 2, 3,4,5)
+        ChildHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options1)
         ChildHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // result.text = "Please Select an Option"
@@ -63,23 +98,33 @@ class SearchHotels : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ChildNo = options.get(position)
-
+                ChildNo = options1.get(position)
+                checkPicker()
             }
+
         }
-        InfantHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options)
-        InfantHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // result.text = "Please Select an Option"
-                InfantNo = 0
 
-            }
+        ch1Picker.setOnValueChangedListener { picker, oldVal, newVal ->
+            chAge1 = newVal
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                InfantNo = options.get(position)
-
-            }
         }
+        ch2Picker.setOnValueChangedListener { picker, oldVal, newVal ->
+            chAge2 = newVal
+
+
+        }
+        ch3Picker.setOnValueChangedListener { picker, oldVal, newVal ->
+            chAge3 = newVal
+
+        }
+        ch4Picker.setOnValueChangedListener { picker, oldVal, newVal ->
+            chAge4 = newVal
+
+        }
+        ch5Picker.setOnValueChangedListener { picker, oldVal, newVal ->
+            chAge5 = newVal
+        }
+
 
 
         val suggest: Array<AutoCom>
@@ -125,8 +170,110 @@ class SearchHotels : AppCompatActivity() {
 
             }
         }
-    }
 
+
+
+    }
+ fun checkPicker(){
+     if(ChildNo>0){
+         PickersCh.visibility=View.VISIBLE
+         when(ChildNo){
+             1->{ chAge1=2
+                 ch1Picker.visibility=View.VISIBLE
+                 ch1T.visibility=View.VISIBLE
+
+                 ch2Picker.visibility=View.INVISIBLE
+                 ch2T.visibility=View.INVISIBLE
+
+                 ch3Picker.visibility=View.INVISIBLE
+                 ch3T.visibility=View.INVISIBLE
+
+                 ch4Picker.visibility=View.INVISIBLE
+                 ch4T.visibility=View.INVISIBLE
+
+                 ch5Picker.visibility=View.INVISIBLE
+                 ch5T.visibility=View.INVISIBLE
+             }
+             2->{chAge2=2
+                 chAge1=2
+                 ch1Picker.visibility=View.VISIBLE
+                 ch1T.visibility=View.VISIBLE
+
+                 ch2Picker.visibility=View.VISIBLE
+                 ch2T.visibility=View.VISIBLE
+
+                 ch3Picker.visibility=View.INVISIBLE
+                 ch3T.visibility=View.INVISIBLE
+
+                 ch4Picker.visibility=View.INVISIBLE
+                 ch4T.visibility=View.INVISIBLE
+
+                 ch5Picker.visibility=View.INVISIBLE
+                 ch5T.visibility=View.INVISIBLE
+             }
+             3->{ chAge2=2
+                 chAge1=2
+                 chAge3=2
+                 ch1Picker.visibility=View.VISIBLE
+                 ch1T.visibility=View.VISIBLE
+
+                 ch2Picker.visibility=View.VISIBLE
+                 ch2T.visibility=View.VISIBLE
+
+                 ch3Picker.visibility=View.VISIBLE
+                 ch3T.visibility=View.VISIBLE
+
+                 ch4Picker.visibility=View.INVISIBLE
+                 ch4T.visibility=View.INVISIBLE
+
+                 ch5Picker.visibility=View.INVISIBLE
+                 ch5T.visibility=View.INVISIBLE
+             }
+             4->{  chAge2=2
+                 chAge1=2
+                 chAge3=2
+                 chAge4=2
+                 ch1Picker.visibility=View.VISIBLE
+                 ch1T.visibility=View.VISIBLE
+
+                 ch2Picker.visibility=View.VISIBLE
+                 ch2T.visibility=View.VISIBLE
+
+                 ch3Picker.visibility=View.VISIBLE
+                 ch3T.visibility=View.VISIBLE
+
+                 ch4Picker.visibility=View.VISIBLE
+                 ch4T.visibility=View.VISIBLE
+
+                 ch5Picker.visibility=View.INVISIBLE
+                 ch5T.visibility=View.INVISIBLE
+             }
+             5->{  chAge2=2
+                 chAge1=2
+                 chAge3=2
+                 chAge4=2
+                 chAge5=2
+                 ch1Picker.visibility=View.VISIBLE
+                 ch1T.visibility=View.VISIBLE
+
+                 ch2Picker.visibility=View.VISIBLE
+                 ch2T.visibility=View.VISIBLE
+
+                 ch3Picker.visibility=View.VISIBLE
+                 ch3T.visibility=View.VISIBLE
+
+                 ch4Picker.visibility=View.VISIBLE
+                 ch4T.visibility=View.VISIBLE
+
+                 ch5Picker.visibility=View.VISIBLE
+                 ch5T.visibility=View.VISIBLE
+             }
+         }
+
+     }else{
+         PickersCh.visibility=View.INVISIBLE
+     }
+ }
         @SuppressLint("SetTextI18n")
         fun chIn(view: View) {
             val c = Calendar.getInstance()
@@ -134,6 +281,7 @@ class SearchHotels : AppCompatActivity() {
             val month = c.get(Calendar.MONTH)
             val year = c.get(Calendar.YEAR).toInt()
 var month1=""
+            var day1=""
             var dpd = DatePickerDialog(
                 this,
                 android.R.style.Theme_Material_Light_Dialog,
@@ -143,9 +291,15 @@ var month1=""
                     }else{
                         month1=(month+1).toString()
                     }
-                    checkin.setText("$month1 /$dayOfMonth/$year")
 
-                    checkIn = "$month1/$dayOfMonth/$year"
+                    if(dayOfMonth.toString().length<2){
+                        day1=("0"+(dayOfMonth))
+                    }else{
+                        day1=(dayOfMonth).toString()
+                    }
+                    checkin.setText("$month1/$day1/$year")
+
+                    checkIn =checkin.text.toString()
                 },
                 year,
                 month,
@@ -164,6 +318,7 @@ var month1=""
             val month = c.get(Calendar.MONTH)
             val year = c.get(Calendar.YEAR).toInt()
         var month1=""
+        var day1=""
             val dpd = DatePickerDialog(
                 this,
                 android.R.style.Theme_Material_Light_Dialog,
@@ -174,8 +329,15 @@ var month1=""
                         month1=(month+1).toString()
                     }
 
-                    checkout.setText("$month1/$dayOfMonth/$year")
-                    checkOut = "$month1/$dayOfMonth/$year"
+                    if(dayOfMonth.toString().length<2){
+                        day1=("0"+(dayOfMonth))
+                    }else{
+                        day1=(dayOfMonth).toString()
+                    }
+
+
+                    checkout.setText("$month1/$day1/$year")
+                    checkOut = checkout.text.toString()
                 },
                 year,
                 month,
@@ -192,6 +354,11 @@ var month1=""
         return networkInfo != null && networkInfo.isConnected
     }
     fun goToHotels(view:View){
+        chAge[0]=chAge1
+        chAge[1]=chAge2
+        chAge[2]=chAge3
+        chAge[3]=chAge4
+        chAge[4]=chAge5
         if (verifyAvailableNetwork(this@SearchHotels)) {
         val intent=Intent(this@SearchHotels,ShowHotels::class.java)
         intent.putExtra("checkIn",checkIn)
@@ -199,8 +366,12 @@ var month1=""
         intent.putExtra("CityHotel",CityHot)
         intent.putExtra("Adult",AdultNo)
         intent.putExtra("Child",ChildNo)
-        intent.putExtra("Infant",InfantNo)
-
+            println(chAge)
+            intent.putExtra("chAge1",chAge[0])
+            intent.putExtra("chAge2",chAge[1])
+            intent.putExtra("chAge3",chAge[2])
+            intent.putExtra("chAge4",chAge[3])
+            intent.putExtra("chAge5",chAge[4])
 
 
         startActivity(intent)
@@ -208,6 +379,10 @@ var month1=""
             Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
 
         }
+    }
+    fun backMain(view: View){
+        val intent=Intent(this@SearchHotels,searchActivity::class.java)
+        startActivity(intent)
     }
 
 

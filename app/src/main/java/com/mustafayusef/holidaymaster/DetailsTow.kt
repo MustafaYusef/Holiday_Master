@@ -34,9 +34,10 @@ class DetailsTow : AppCompatActivity() {
         )
 
         detailsTowListRet.layoutManager= LinearLayoutManager(this)
-        detailsTowListRet.adapter= OneDetailsAdapter(this@DetailsTow, holiday.arrCityName!!,
-            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
-            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!, holiday.flightModel!!
+        detailsTowListRet.adapter= OneDetailsAdapter(this@DetailsTow, holiday.ReturnArrCityName!!,
+            holiday.ReturnDepCityName!!, holiday.ReturnAepDateAndTime!!, holiday.ReturnArrDateAndTime!!
+            , holiday.ReturnairlineLogo!!, holiday.ReturnTotalDuration!!, holiday.ReturnLayOverCity!!
+            , holiday.ReturnAirlineName!!, holiday.ReturnFlightModel!!
         )
 
 

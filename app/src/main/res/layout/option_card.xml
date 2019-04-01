@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:padding="5dp" android:background="@drawable/cardback"
+              android:layout_marginLeft="20dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp"
+              android:layout_marginBottom="5dp">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="369dp"
+            android:layout_height="74dp" android:layout_margin="5dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="37dp"
+                android:layout_height="74dp" android:background="@drawable/btnb" android:gravity="center"
+                android:weightSum="2">
+            <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="match_parent" app:srcCompat="@drawable/name" android:id="@+id/imageView44"
+                    android:layout_weight="1"/>
+            <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="wrap_content" app:srcCompat="@drawable/dollar_symbol"
+                    android:id="@+id/imageView74" android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="175dp"
+                android:layout_height="73dp" android:layout_marginLeft="10dp" android:weightSum="2">
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/nameOption" android:layout_weight="1"
+                    android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/priceOption" android:layout_weight="1"
+                    android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="143dp"
+                android:layout_height="73dp" android:gravity="center|left">
+            <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/switch1"
+                    android:textColor="@color/colorPrimary"
+            />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

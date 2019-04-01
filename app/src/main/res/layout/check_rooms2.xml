@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginEnd="8dp"
+
+            android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
+            android:weightSum="3"
+    >
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="79dp"
+                android:layout_height="53dp" android:layout_weight="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="54dp"
+                    android:layout_height="match_parent">
+                <ImageButton
+                        android:layout_marginTop="5dp"
+                        android:layout_width="51dp"
+                        android:layout_height="33dp"
+                        android:id="@+id/jjjjj" android:background="@drawable/backsearch"
+                        style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelD"
+                        android:scaleType="fitCenter"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="64dp" android:layout_weight="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:weightSum="2">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rooms"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:paddingRight="60dp"
+                        android:textColor="#fff"
+
+                        android:id="@+id/textView14" android:fontFamily="sans-serif" android:paddingTop="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="145dp"
+                  android:layout_height="42dp" android:id="@+id/noResultHot"
+
+                  android:layout_marginTop="10dp" android:paddingLeft="5dp" android:paddingTop="2dp"
+                  android:background="@drawable/btnb" android:layout_marginLeft="10dp" android:gravity="center"
+                  android:onClick="ShowOptions1">
+        <ImageView
+                android:layout_width="39dp"
+                android:layout_height="24dp" android:id="@+id/imageView5"
+                android:src="@drawable/menu1"/>
+        <TextView
+                android:text="Options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView15" android:layout_weight="1"
+                android:textColor="#fff" android:textSize="18sp" android:paddingTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="249dp"
+
+            android:id="@+id/linearLayout2" android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:background="#fff">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingBottom="0dp" android:layout_marginTop="10dp"
+                android:background="#d9d9d9" android:splitMotionEvents="false">
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RoomsList6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:scrollbars="vertical"
+            />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/linearLay9out2"
+            android:background="#fff" android:padding="10dp" android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="0dp" android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp" android:layout_alignParentTop="true">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginEnd="0dp"
+
+                android:background="#d3d3d3" android:id="@+id/linea8rLayout"
+                android:weightSum="3"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:layout_weight="1"
+                    android:layout_alignStart="@+id/linearLayout" android:background="@drawable/btnb">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:weightSum="2">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Options"
+                            android:textAlignment="center"
+                            android:textSize="24sp"
+                            android:textColor="#fff"
+
+                            android:id="@+id/text0View14" android:fontFamily="sans-serif"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/OptionList1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:scrollbars="vertical"
+                android:paddingBottom="20dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:gravity="center" android:weightSum="3"
+                android:layout_marginTop="20dp">
+            <Button
+                    android:text="Applay"
+                    android:layout_width="185dp"
+                    android:layout_height="40dp" android:id="@+id/ApplayOp" android:layout_weight="2"
+                    android:textColor="#fff" android:background="@drawable/btnun" android:layout_marginRight="10dp"/>
+            <Button
+                    android:text="Cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" android:id="@+id/CancelOp" android:layout_weight="1"
+                    android:textColor="#fff" android:background="@drawable/btnb" android:onClick="camcelOp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

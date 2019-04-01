@@ -4,11 +4,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f2f4f3"
-        android:paddingTop="5dp"
+        android:background="#E6E6E6"
+        android:paddingTop="10dp"
         android:paddingRight="5dp"
 
-        android:layout_marginTop="10dp">
+>
 
     <!--<LinearLayout-->
     <!--android:layout_width="406dp"-->
@@ -27,8 +27,8 @@
             android:background="@drawable/cardback"
             android:padding="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp" android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" android:layout_gravity="center" android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center" android:gravity="center"
             android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
             android:layout_alignParentTop="true" android:id="@+id/TowContainer">
 
@@ -253,7 +253,7 @@
                     android:text="TextView"
                     android:layout_width="20dp"
                     android:layout_height="match_parent" android:id="@+id/priceTow" android:layout_weight="2"
-                    android:gravity="center|left" android:layout_gravity="left" android:paddingLeft="10dp"
+                    android:gravity="center|left" android:layout_gravity="left" android:paddingLeft="20dp"
                     android:textColor="#6B4AA3" android:textStyle="bold"/>
             <Button
                     android:layout_width="48dp"

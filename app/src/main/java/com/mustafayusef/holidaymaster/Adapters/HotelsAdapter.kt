@@ -2,20 +2,17 @@ package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.mustafayusef.holidaymaster.DetailsOne
+
 import com.mustafayusef.holidaymaster.Hotels.DetailsHotel
 import com.mustafayusef.holidaymaster.Models.hotel
-import com.mustafayusef.holidaymaster.Models.modelOne
+
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.hotel_card.view.*
-import kotlinx.android.synthetic.main.onewaycard.view.*
-
 
 
 
@@ -75,8 +72,9 @@ class HotelsAdapter(val context: Context, val HotelsFeed:List<hotel>?) : Recycle
 
         holder.itemView.DetailsHotel.setOnClickListener{
             val intent = Intent(context, DetailsHotel::class.java)
+//            val b=Bundle.p
             intent.putExtra("Hotels",Hotels)
-            context.startActivity(intent)
+         context.startActivity(intent)
         }
 
     }

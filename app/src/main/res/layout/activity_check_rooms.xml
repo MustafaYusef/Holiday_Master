@@ -5,11 +5,11 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Hotels.ShowHotels" android:background="@color/cardview_light_background">
+        tools:context=".Hotels.CheckRooms">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="0dp"
-            android:layout_height="124dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="64dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
@@ -18,47 +18,38 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="79dp"
-                android:layout_height="match_parent" android:layout_weight="1">
+                android:layout_height="53dp" android:layout_weight="1">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="54dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 <ImageButton
-                        android:layout_marginTop="10dp"
-                        android:layout_width="43dp"
-                        android:layout_height="26dp" app:srcCompat="@drawable/left_arrow23"
-                        android:id="@+id/jjjjj" android:background="#6F499C"
-                        style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelSearch"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="51dp"
+                        android:layout_height="33dp" app:srcCompat="@drawable/left_arrow23"
+                        android:id="@+id/jjjjj" android:background="@drawable/backsearch"
+                        style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelD"
                         android:scaleType="fitCenter"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:layout_weight="1">
+                android:layout_height="64dp" android:layout_weight="1">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="117dp" android:weightSum="2">
+                    android:layout_height="match_parent" android:weightSum="2">
                 <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="75dp"
-                        android:text="Hotels"
+                        android:layout_height="wrap_content"
+                        android:text="Rooms"
                         android:textAlignment="center"
                         android:textSize="20dp"
                         android:paddingRight="60dp"
                         android:textColor="#fff"
 
-                        android:id="@+id/textView14" android:fontFamily="sans-serif" android:paddingTop="30dp"/>
-                <TextView
-                        android:layout_width="357dp"
-                        android:layout_height="37dp"
-                        android:text="Hotels"
-                        android:textAlignment="textStart"
-                        android:textColor="#fff"
-
-                        android:paddingTop="5dp" android:gravity="bottom"
-                        android:id="@+id/CityDateHot"/>
+                        android:id="@+id/textView14" android:fontFamily="sans-serif" android:paddingTop="20dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -73,12 +64,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="10dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             android:background="#fff">
-        <TextView
-                android:layout_width="112dp"
-                android:layout_height="wrap_content" android:id="@+id/noResultHot"
-                android:textColor="@color/browser_actions_text_color" android:textSize="18sp"
-                android:layout_marginTop="10dp" android:paddingLeft="5dp" android:paddingTop="5dp"
-                android:background="#fff"/>
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="142dp"
+                      android:layout_height="38dp" android:id="@+id/noResultHot"
+
+                      android:layout_marginTop="10dp" android:paddingLeft="5dp" android:paddingTop="2dp"
+                      android:background="@drawable/btnb" android:layout_marginLeft="10dp" android:gravity="center"
+                      android:onClick="ShowOptions">
+            <ImageView
+                    android:layout_width="39dp"
+                    android:layout_height="24dp" app:srcCompat="@drawable/menu1" android:id="@+id/imageView5"
+            />
+            <TextView
+                    android:text="Options"
+                    android:layout_width="77dp"
+                    android:layout_height="38dp" android:id="@+id/textView15" android:layout_weight="1"
+                    android:textColor="#fff" android:textSize="18sp" android:paddingTop="5dp"/>
+        </LinearLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,10 +90,10 @@
                 android:paddingBottom="0dp" android:layout_marginTop="10dp"
                 android:background="#d9d9d9" android:splitMotionEvents="false">
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/Hotels_list"
+                    android:id="@+id/RoomsList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#d9d9d9"
+                    android:background="#fff"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" android:scrollbars="vertical"

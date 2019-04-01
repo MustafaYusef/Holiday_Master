@@ -11,14 +11,24 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Hotels.DetailsHotel">
+        <activity android:name=".Hotels.Rooms">
+        </activity>
+        <activity android:name=".Hotels.Options">
+        </activity>
+        <activity android:name=".Hotels.mapActivity">
+        </activity>
+        <activity android:name=".Hotels.CheckRooms">
+        </activity>
+        <activity
+                android:name=".Hotels.DetailsHotel"
+                android:theme="@style/HotelDTheme">
         </activity>
         <activity android:name=".Hotels.ShowHotels">
         </activity>
-        <activity android:name=".Hotels.SearchHotels"
-                  android:screenOrientation = "sensor"
-                  android:configChanges="orientation|keyboard|keyboardHidden"/>
-
+        <activity
+                android:name=".Hotels.SearchHotels"
+                android:configChanges="orientation|keyboard|keyboardHidden"
+                android:screenOrientation="sensor"/>
         <activity android:name=".Lottie">
         </activity>
 
@@ -41,7 +51,8 @@
         </activity>
         <activity android:name=".DetailsTow">
         </activity>
-        <activity android:name=".DetailsOne">
+        <activity android:name=".DetailsOne"
+                >
         </activity>
         <activity android:name=".showHoliday">
         </activity>

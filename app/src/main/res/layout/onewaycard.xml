@@ -4,23 +4,23 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:paddingTop="5dp"
+        android:background="#E6E6E6"
+        android:paddingTop="10dp"
         android:paddingRight="0dp"
 
-        android:layout_marginTop="10dp"
-            >
+>
 
     <LinearLayout
-            android:elevation="16dp"
+
             android:layout_width="match_parent"
-            android:layout_height="227dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/cardback"
-            android:padding="15dp"
-            android:layout_alignParentEnd="true" android:layout_marginEnd="0dp" android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp" android:layout_marginTop="0dp" android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp" android:id="@+id/OneContainer">
+            android:padding="10dp"
+            android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp" android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp" android:id="@+id/OneContainer" android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
 
         <LinearLayout
                 android:id="@+id/dd"

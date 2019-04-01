@@ -32,6 +32,7 @@ class showHoliday : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_holiday)
+
           flag=intent.getBooleanExtra("flage",true)
          adult=intent.getIntExtra("adult",0)
          child=intent.getIntExtra("child",0)
@@ -60,10 +61,8 @@ class showHoliday : AppCompatActivity() {
 
      fromcity.text=from
         toShow.text=to
-        classShow.text=type
-        AdultShow.text=adult.toString()+"Adult"
-        childShow.text=child.toString()+"child"
-        dateShow.text=departure
+        classShow.text="Adult:"+adult.toString()+" Children:"+child.toString()+" class:"+type+" Dep:"+departure
+
     }
     fun backSearch(view: View){
         val intent = Intent(this,searchActivity::class.java)
@@ -87,6 +86,7 @@ class showHoliday : AppCompatActivity() {
                     val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
 
                     runOnUiThread {
+
                         noResult?.text=holidayFeed?.size.toString()+" Result"
                         Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
 

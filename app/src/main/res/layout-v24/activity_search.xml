@@ -227,8 +227,8 @@
                               android:layout_marginRight="5dp" android:background="@drawable/btnb"
                               android:paddingLeft="5dp">
                     <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="35dp"
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.5"
                             android:layout_gravity="center"
                             android:gravity="center"
@@ -255,14 +255,15 @@
                               android:orientation="horizontal"
                               android:layout_weight="1"
                               android:layout_marginLeft="5dp" android:background="@drawable/btnb"
-                              android:paddingLeft="5dp">
+                              android:paddingLeft="5dp" android:id="@+id/retL">
                     <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="34dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
 
-                            android:src="@drawable/ic_calendar" android:id="@+id/imageView3"/>
+                            android:src="@drawable/ic_calendar" android:id="@+id/imageView3"
+                            android:layout_weight="0.5"/>
                     <Button
                             android:layout_weight="3"
                             android:layout_width="wrap_content"
@@ -330,7 +331,7 @@
             </LinearLayout>
 
 
-                    </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout android:orientation="horizontal" android:weightSum="2" android:layout_width="wrap_content"
                       android:layout_height="79dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
@@ -343,7 +344,7 @@
                 <NumberPicker
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="69dp"
                         android:scrollbarStyle="outsideOverlay"
                         android:id="@+id/AdultPicker"
                         android:solidColor="@color/cardview_light_background"
@@ -353,7 +354,7 @@
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/childPicker"
-                              android:layout_height="match_parent"
+                              android:layout_height="69dp"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
@@ -365,7 +366,7 @@
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/InfantPicker"
-                              android:layout_height="match_parent"
+                              android:layout_height="69dp"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
@@ -421,17 +422,17 @@
 
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="183dp"
+                    android:layout_width="186dp"
                     android:layout_height="match_parent" android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp">
                 <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="69dp" android:id="@+id/spinner"
+                        android:layout_width="154dp"
+                        android:layout_height="60dp" android:id="@+id/spinner"
                         android:animateLayoutChanges="true"
                         android:background="@drawable/spinner"
                         android:popupBackground="@drawable/spinner" android:isScrollContainer="true"
                         android:layout_marginLeft="5dp" android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp" android:layout_gravity="center"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -440,23 +441,23 @@
 
 
 
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="93dp" android:gravity="right">
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="93dp" android:gravity="right">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" android:gravity="bottom|right">
-                    <Button
-                            android:text="Search Flights "
-                            android:layout_width="351dp"
-                            android:layout_height="69dp" android:id="@+id/button5" android:layout_weight="1"
-                            android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
-                            android:onClick="showHolidys" android:textColor="#fff"/>
-                </LinearLayout>
-
+                    android:layout_width="272dp"
+                    android:layout_height="match_parent" android:gravity="bottom|right">
+                <Button
+                        android:text="Search Flights "
+                        android:layout_width="320dp"
+                        android:layout_height="69dp" android:id="@+id/button5" android:layout_weight="1"
+                        android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
+                        android:onClick="showHolidys" android:textColor="#fff"/>
             </LinearLayout>
+
+        </LinearLayout>
 
 
 

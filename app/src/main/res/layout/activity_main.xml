@@ -44,7 +44,7 @@
     </FrameLayout>
     <ImageView
             android:layout_width="411dp"
-            android:layout_height="wrap_content"
+            android:layout_height="196dp"
             android:layout_marginTop="60dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/logoplain"

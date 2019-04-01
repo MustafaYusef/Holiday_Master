@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -26,6 +27,7 @@ import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_search_hotels.*
 import okhttp3.*
 
 
@@ -67,7 +69,7 @@ class searchActivity : AppCompatActivity() {
 
         button17.isActivated = true
         flage = true
-        retun.visibility = View.INVISIBLE
+        retL.visibility = View.INVISIBLE
         option = findViewById(R.id.spinner) as Spinner
 
         val options = arrayOf("Economy", "First", "Class")
@@ -108,16 +110,29 @@ class searchActivity : AppCompatActivity() {
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, names)
 
         fromCity.setAdapter(adapter)
-        fromCity.setOnFocusChangeListener({ view, b -> if (b) fromCity.showDropDown() })
+        fromCity.onFocusChangeListener = View.OnFocusChangeListener{
+                view, b ->
+            if(b){
+                Handler().postDelayed(Runnable {  fromCity.showDropDown() }, 100)
+                // Display the suggestion dropdown on focus
+
+            }
+        }
 
         fromCity.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             fromSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
             // Display the clicked item using toast
 //            Toast.makeText(applicationContext,"Selected : $selectedItem",Toast.LENGTH_SHORT).show()
         }
-
         to.setAdapter(adapter)
-        to.setOnFocusChangeListener({ view, b -> if (b) to.showDropDown() })
+        to.onFocusChangeListener = View.OnFocusChangeListener{
+                view, b ->
+            if(b){
+                Handler().postDelayed(Runnable {  to.showDropDown() }, 100)
+                // Display the suggestion dropdown on focus
+
+            }
+        }
         toSelect = to.text.toString()
         to.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             toSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
@@ -250,7 +265,7 @@ fun goToHotel(view: View){
         button17.isActivated = true
         button10.isActivated = false
         flage = true
-        retun.visibility = View.INVISIBLE
+        retL.visibility = View.INVISIBLE
 
     }
 
@@ -259,7 +274,7 @@ fun goToHotel(view: View){
         button17.isActivated = false
 
         flage = false
-        retun.visibility = View.VISIBLE
+        retL.visibility = View.VISIBLE
 
     }
 
