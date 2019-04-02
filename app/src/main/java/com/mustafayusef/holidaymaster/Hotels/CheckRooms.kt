@@ -18,14 +18,27 @@ import kotlinx.android.synthetic.main.option_card.*
 
 class CheckRooms : AppCompatActivity() {
   lateinit var hotel:hotel
+     var hotel1:hotel?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_rooms)
-
-       hotel=intent.getSerializableExtra("hotel") as hotel
-        println(hotel)
         RoomsList.layoutManager= LinearLayoutManager(this)
-        RoomsList?.adapter= RoomsAdapter(this@CheckRooms,hotel)
+
+
+
+
+        if(intent.getSerializableExtra("hotel1") !=null) {
+            hotel = intent.getSerializableExtra("hotel1") as hotel
+            RoomsList?.adapter = RoomsAdapter(this@CheckRooms, hotel)
+
+        }else{
+            hotel = intent.getSerializableExtra("hotelOld") as hotel
+            RoomsList?.adapter = RoomsAdapter(this@CheckRooms, hotel)
+        }
+
+       // hotel=intent.getSerializableExtra("hotel1") as hotel
+       // println(hotel)
+
 
 //        RoomsList6.layoutManager= LinearLayoutManager(this)
 //        RoomsList6?.adapter= RoomsAdapter(this@CheckRooms,hotel)
@@ -34,14 +47,24 @@ class CheckRooms : AppCompatActivity() {
 //            linearLay9out2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.top_bottum))
 //
 //        }
+//          if(intent.getSerializableExtra("hotelOld") !=null){
+//              hotel1 = intent.getSerializableExtra("hotelOld") as hotel
+//              RoomsList?.adapter= RoomsAdapter(this@CheckRooms,hotel1)
+//
+//        }
 
     }
     fun backHotelD(view:View){
         super.onBackPressed()
     }
     fun ShowOptions(view:View){
+
         val intent= Intent(this@CheckRooms,Options::class.java)
+
+
+
         intent.putExtra("hotel",hotel)
+
         startActivity(intent)
     }
 

@@ -65,9 +65,9 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp" android:gravity="center">
                 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                              android:layout_height="match_parent" android:layout_marginRight="20dp">
+                              android:layout_height="match_parent" android:layout_marginRight="30dp">
                     <ImageView
-                            android:layout_width="42dp"
+                            android:layout_width="35dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_plane"
                     />
@@ -82,43 +82,43 @@
                 </LinearLayout>
 
                 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                              android:layout_height="match_parent" android:layout_marginRight="20dp">
+                              android:layout_height="match_parent" android:layout_marginRight="30dp">
                     <ImageView
-                            android:layout_width="34dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_home"
                             android:layout_marginLeft="30dp"
 
-                            android:layout_marginStart="0dp"/>
+                            android:layout_marginStart="0dp" android:onClick="goToHotel"/>
                     <TextView
-                            android:layout_width="51dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/hotel"
                             android:textSize="16sp"
                             android:layout_marginLeft="0dp"
                             android:textColor="#ffffff"
                             android:layout_marginStart="2dp" android:textAlignment="center"
-                            android:onClick="goToHotel"/>
+                            android:onClick="goToHotel" android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
                               android:orientation="horizontal">
                     <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="34dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/visa1"
                             android:layout_marginLeft="30dp"
 
                             android:layout_marginStart="0dp" android:layout_marginBottom="4dp"/>
                     <TextView
-                            android:layout_width="47dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Visa"
                             android:textSize="16sp"
                             android:layout_marginLeft="0dp"
                             android:textColor="#ffffff"
                             android:layout_marginStart="2dp" android:textAlignment="center"
-                            android:onClick="goToHotel"/>
+                    />
                 </LinearLayout>
 
 
@@ -305,14 +305,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="38dp" android:id="@+id/textView6"
                             android:layout_weight="1" android:textAlignment="center"
-                            android:textColor="#000" android:gravity="center"/>
+                            android:textColor="#000" android:gravity="center" android:layout_marginLeft="5dp"/>
 
                     <TextView
                             android:text="infant"
                             android:layout_width="wrap_content"
                             android:layout_height="38dp" android:id="@+id/textView7"
                             android:layout_weight="1" android:textAlignment="center"
-                            android:textColor="#000" android:gravity="center"/>
+                            android:textColor="#000" android:gravity="center" android:layout_marginLeft="5dp"/>
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent"
@@ -333,46 +333,46 @@
 
         </LinearLayout>
 
-        <LinearLayout android:orientation="horizontal" android:weightSum="2" android:layout_width="wrap_content"
+        <LinearLayout android:orientation="horizontal" android:weightSum="2" android:layout_width="match_parent"
                       android:layout_height="79dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:weightSum="3">
                 <NumberPicker
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="69dp"
+                        android:layout_height="match_parent"
                         android:scrollbarStyle="outsideOverlay"
                         android:id="@+id/AdultPicker"
                         android:solidColor="@color/cardview_light_background"
                         android:isScrollContainer="false"
-                        android:background="#6F499C"></NumberPicker>
+                        android:background="#6F499C" android:layout_marginRight="5dp"></NumberPicker>
 
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/childPicker"
-                              android:layout_height="69dp"
+                              android:layout_height="match_parent"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
                               android:solidColor="@color/cardview_light_background"
                               android:textDirection="firstStrong"
                               android:background="#6F499C"
-                ></NumberPicker>
+                              android:layout_marginRight="5dp"></NumberPicker>
 
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/InfantPicker"
-                              android:layout_height="69dp"
+                              android:layout_height="match_parent"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
                               android:solidColor="@color/cardview_light_background"
                               android:textDirection="firstStrong"
-                              android:background="#6F499C"></NumberPicker>
+                              android:background="#6F499C" android:layout_marginRight="5dp"></NumberPicker>
 
 
                 <!--&lt;!&ndash;<NumberPicker android:layout_width="match_parent"&ndash;&gt;-->
@@ -422,17 +422,17 @@
 
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="186dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
+                    android:layout_marginRight="5dp" android:layout_weight="1">
                 <Spinner
-                        android:layout_width="154dp"
-                        android:layout_height="60dp" android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp" android:id="@+id/spinner"
                         android:animateLayoutChanges="true"
                         android:background="@drawable/spinner"
                         android:popupBackground="@drawable/spinner" android:isScrollContainer="true"
-                        android:layout_marginLeft="5dp" android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp" android:layout_gravity="center"/>
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="left" android:layout_weight="1" android:layout_marginBottom="5dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -452,7 +452,7 @@
                 <Button
                         android:text="Search Flights "
                         android:layout_width="320dp"
-                        android:layout_height="69dp" android:id="@+id/button5" android:layout_weight="1"
+                        android:layout_height="64dp" android:id="@+id/button5" android:layout_weight="1"
                         android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
                         android:onClick="showHolidys" android:textColor="#fff"/>
             </LinearLayout>

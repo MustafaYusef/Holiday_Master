@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mustafayusef.holidaymaster.Hotels.Options
 import com.mustafayusef.holidaymaster.Models.Option
 import com.mustafayusef.holidaymaster.Models.Room
 import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.activity_check_rooms.*
+import kotlinx.android.synthetic.main.activity_options.view.*
 import kotlinx.android.synthetic.main.option_card.view.*
 import kotlinx.android.synthetic.main.rooms_card.view.*
 
@@ -44,19 +47,48 @@ class OptionsAdapter(val context: Context, val OptionFeed:hotel?) : RecyclerView
 
         //Glide.with(context).load(holidays?.logoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAir)
 //
-        if(holder.itemView.switch1.isChecked){
-         for(i in 0..OptionFeed?.Rooms!!.count()){
-            OptionFeed.Rooms[i].cost=(options?.cost!! * OptionFeed.Nights!!.toInt())+ OptionFeed.Rooms[i].cost!!.toInt()
-         println(OptionFeed.Rooms[i].cost)
-         }
+        var OptionFeedUp=OptionFeed
+      holder.itemView.switch1.setOnClickListener {
+          if(holder.itemView.switch1.isChecked){
+              for(i in 0..(OptionFeed?.Rooms!!.count()-1)){
+                  OptionFeedUp!!.Rooms!![i].cost=(options?.cost!! * OptionFeed.Nights!!.toInt())+ OptionFeed.Rooms[i].cost!!.toInt()
+                 // println(OptionFeed.Rooms[i].cost)
 
-        }
+              }
+             // RoomsList?.adapter= RoomsAdapter(this@Options,hotel)
+
+          }else{
+              for(i in 0..(OptionFeed?.Rooms!!.count()-1)){
+                  OptionFeedUp!!.Rooms!![i].cost=OptionFeed.Rooms[i].cost
+                 // println(OptionFeed.Rooms[i].cost)
+
+              }
+          }
+          holder?.OptionFeed=OptionFeedUp
+
+         // holder.view=OptionFeed
+      }
+
+
 
     }
+//    fun upCost(holder: CustomViewHolder,pos:Int){
+//
+//    }
 
 
-    class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class CustomViewHolder(val view: View,var OptionFeed:hotel?=null) : RecyclerView.ViewHolder(view) {
         init {
+            view.switch1 .setOnClickListener {
+//                if(view.switch1.isChecked){
+                    val intent=Intent(view.context,Options::class.java)
+                    intent.putExtra("UpdateRoom",OptionFeed)
+
+                    //view.context.startActivity(intent)
+//                }
+
+            }
+
 
         }
 

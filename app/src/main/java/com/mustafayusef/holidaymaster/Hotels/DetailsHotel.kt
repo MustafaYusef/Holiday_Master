@@ -50,7 +50,8 @@ class DetailsHotel : AppCompatActivity() {
     }
     fun CheckRoom(view: View){
         val intent=Intent(this@DetailsHotel,CheckRooms::class.java)
-        intent.putExtra("hotel",hotel)
+        intent.putExtra("hotelOld",hotel)
+        intent.putExtra("oldHot",hotel)
         startActivity(intent)
     }
 }

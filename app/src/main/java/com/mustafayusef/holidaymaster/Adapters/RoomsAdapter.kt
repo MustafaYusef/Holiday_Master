@@ -16,7 +16,7 @@ import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.onewaycard.view.*
 import kotlinx.android.synthetic.main.rooms_card.view.*
 
-class RoomsAdapter(val context: Context, val RoomFeed:hotel) : RecyclerView.Adapter<RoomsAdapter.CustomViewHolder>(){
+class RoomsAdapter(val context: Context, val RoomFeed:hotel?) : RecyclerView.Adapter<RoomsAdapter.CustomViewHolder>(){
 //
 
 
@@ -38,7 +38,7 @@ class RoomsAdapter(val context: Context, val RoomFeed:hotel) : RecyclerView.Adap
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
         //val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
-        val rooms=RoomFeed.Rooms?.get(position)
+        val rooms=RoomFeed?.Rooms?.get(position)
 
         holder.view?.nameRoom.text=rooms?.name
         holder.view?.priceRoom.text=rooms?.cost.toString()+"$"
