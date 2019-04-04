@@ -22,6 +22,7 @@ import androidx.core.os.HandlerCompat.postDelayed
 
 import android.os.Handler
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.dashboard
 import com.mustafayusef.holidaymaster.searchActivity
 
 
@@ -44,6 +45,7 @@ class SearchHotels : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_hotels)
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         //  ratingBar.rating= 2F
         PickersCh.visibility=View.INVISIBLE
 
@@ -381,7 +383,7 @@ var month1=""
         }
     }
     fun backMain(view: View){
-        val intent=Intent(this@SearchHotels,searchActivity::class.java)
+        val intent=Intent(this@SearchHotels,dashboard::class.java)
         startActivity(intent)
     }
 

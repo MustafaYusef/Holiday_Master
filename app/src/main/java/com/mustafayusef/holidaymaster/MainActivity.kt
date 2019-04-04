@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
             Handler().postDelayed({
 
-                val intent=Intent(this@MainActivity,searchActivity::class.java)
+                val intent=Intent(this@MainActivity,dashboard::class.java)
                 startActivity(intent)
                 finish()
             },10)

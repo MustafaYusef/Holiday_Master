@@ -13,6 +13,7 @@ import com.chibatching.kotpref.KotprefModel
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.mustafayusef.holidaymaster.Auth.auth
+import com.mustafayusef.holidaymaster.Hotels.Rooms
 import com.mustafayusef.holidaymaster.Models.profileAuth
 
 
@@ -27,11 +28,14 @@ import java.lang.Exception
 class LoginMember : AppCompatActivity() {
     object cacheObj : KotprefModel() {
         var token by stringPref("")
+        var ListCost= mutableListOf<Long>(0)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_member)
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         Kotpref.init(this)
     }
     fun verifyAvailableNetwork(activity: AppCompatActivity): Boolean {

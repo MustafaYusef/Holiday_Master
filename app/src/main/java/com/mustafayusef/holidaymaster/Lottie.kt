@@ -46,7 +46,7 @@ class Lottie : AppCompatActivity() {
                                 val gson= GsonBuilder().create()
                                 val AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
                                 if(AuthInfo.sesson!=null){
-                                    val intent = Intent(this@Lottie,searchActivity::class.java)
+                                    val intent = Intent(this@Lottie,dashboard::class.java)
                                     startActivity(intent)
                                 }else{
                                     val intent = Intent(this@Lottie,MainActivity::class.java)

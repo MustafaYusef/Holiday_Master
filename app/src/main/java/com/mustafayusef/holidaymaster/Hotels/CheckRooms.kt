@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Adapters.RoomsAdapter
+import com.mustafayusef.holidaymaster.LoginMember.cacheObj.ListCost
 import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.activity_check_rooms.*
@@ -18,7 +19,8 @@ import kotlinx.android.synthetic.main.option_card.*
 
 class CheckRooms : AppCompatActivity() {
   lateinit var hotel:hotel
-     var hotel1:hotel?=null
+    // var hotel1:hotel?=null
+   // var ListCost= mutableListOf<Long>(0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_rooms)
@@ -33,7 +35,12 @@ class CheckRooms : AppCompatActivity() {
 
         }else{
             hotel = intent.getSerializableExtra("hotelOld") as hotel
+            for( i in 0 until hotel.Rooms!!.count()){
+            ListCost[i]= hotel.Rooms!![i].cost!!
+                println(ListCost)
+            }
             RoomsList?.adapter = RoomsAdapter(this@CheckRooms, hotel)
+
         }
 
        // hotel=intent.getSerializableExtra("hotel1") as hotel
@@ -61,7 +68,9 @@ class CheckRooms : AppCompatActivity() {
 
         val intent= Intent(this@CheckRooms,Options::class.java)
 
-
+           for( i in 0 until hotel.Rooms!!.count()){
+            hotel.Rooms!![i].cost=ListCost[i]
+        }
 
         intent.putExtra("hotel",hotel)
 

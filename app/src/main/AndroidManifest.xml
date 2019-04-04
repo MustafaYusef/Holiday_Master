@@ -11,6 +11,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Visa.searchVisa">
+        </activity>
+        <activity android:name=".dashboard">
+        </activity>
         <activity android:name=".Hotels.Rooms">
         </activity>
         <activity android:name=".Hotels.Options">
@@ -51,8 +55,7 @@
         </activity>
         <activity android:name=".DetailsTow">
         </activity>
-        <activity android:name=".DetailsOne"
-                >
+        <activity android:name=".DetailsOne">
         </activity>
         <activity android:name=".showHoliday">
         </activity>

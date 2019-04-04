@@ -97,10 +97,12 @@ class ShowHotels : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
                     val body=response.body()?.string()
                     println(body)
-                    val gson= GsonBuilder().create()
-                    val HotelsFeed:List<hotel>? = gson.fromJson(body, Array<hotel>::class.java).toList()
 
-                   println(HotelsFeed)
+                    val gson= GsonBuilder().create()
+
+                    val HotelsFeed:List<hotel> = gson.fromJson(body, Array<hotel>::class.java).toList()
+
+                  // println(HotelsFeed)
 
                     runOnUiThread {
                         noResultHot?.text=HotelsFeed?.size.toString()+" Result"
@@ -111,7 +113,8 @@ class ShowHotels : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call, e: IOException) {
-                    val intent=Intent(this@ShowHotels, SearchHotels::class.java)
+                    val intent=Intent(this@ShowHotels, ShowHotels::class.java)
+                    noResultHot.text="there is no result"
                     startActivity(intent)
                     //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
                 }
@@ -119,6 +122,7 @@ class ShowHotels : AppCompatActivity() {
 
             })
         }catch (e:Exception){
+
             Toast.makeText(applicationContext, "something Wrong", Toast.LENGTH_SHORT).show()
 
         }
