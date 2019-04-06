@@ -28,14 +28,14 @@ class Profile : AppCompatActivity() {
 
     }
     fun backsearch(view:View){
-        val intent= Intent(this@Profile,searchActivity::class.java)
+        val intent= Intent(this@Profile,dashboard::class.java)
         startActivity(intent)
     }
     fun Logout(view: View){
         LoginMember.cacheObj.bulk {
             token=""
         }
-        val intent= Intent(this@Profile,searchActivity::class.java)
+        val intent= Intent(this@Profile,MainActivity::class.java)
         startActivity(intent)
     }
 }

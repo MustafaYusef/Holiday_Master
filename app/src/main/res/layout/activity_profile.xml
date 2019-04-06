@@ -18,26 +18,26 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="422dp"
-                android:layout_height="514dp" android:background="@drawable/backsearch">
+                android:layout_height="531dp" android:background="@drawable/backsearch">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="567dp">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="75dp"
+                        android:layout_width="40dp"
                         android:layout_height="50dp">
                     <ImageButton
-                            android:layout_width="56dp"
-                            android:layout_height="36dp" app:srcCompat="@drawable/left_arrow23"
+                            android:layout_width="match_parent"
+                            android:layout_height="23dp" app:srcCompat="@drawable/left_arrow23"
                             android:id="@+id/btnBack2" android:background="#6F499C"
                             style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backsearch"
-                            android:layout_weight="1" android:scaleType="centerInside" android:layout_marginTop="5dp"/>
+                            android:layout_weight="1" android:scaleType="centerInside" android:layout_marginTop="10dp"/>
                 </LinearLayout>
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="157dp" app:srcCompat="@drawable/user5"
-                        android:id="@+id/imageView" android:layout_marginBottom="20dp"/>
+                        android:id="@+id/imageView" android:layout_marginBottom="20dp" android:layout_gravity="center"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -171,14 +171,14 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:gravity="right|top">
+                android:layout_height="match_parent" android:gravity="right|top" android:layout_marginTop="-25dp">
 
             <Button
                     android:layout_marginBottom="20dp"
                     android:text="Logout"
                     android:layout_width="175dp"
                     android:layout_height="65dp" android:id="@+id/button11" android:background="@drawable/btn"
-                    android:layout_marginTop="5dp" android:textSize="24sp"
+                    android:textSize="24sp"
                     android:onClick="Logout" android:textColor="#fff"/>
         </LinearLayout>
     </LinearLayout>

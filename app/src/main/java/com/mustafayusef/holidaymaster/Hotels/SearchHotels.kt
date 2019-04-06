@@ -138,17 +138,19 @@ class SearchHotels : AppCompatActivity() {
         suggest = gson.fromJson(objectArrayString, Array<AutoCom>::class.java)
         // println("suggestion\n"+suggest)
 
-        var names = mutableListOf("")
+        var showNames = mutableListOf("")
         var short = mutableListOf("")
+        var names=mutableListOf("")
 
 
         for (i in suggest) {
-            names.add(i.city)
+            showNames.add(i.city+","+i.country)
             short.add(i.iata)
+            names.add(i.city)
 
         }
 
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, names)
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, showNames)
 
         CityHotel.setAdapter(adapter)
 //        CityHotel.setOnFocusChangeListener({ view, b -> if (b) CityHotel.showDropDown() })
@@ -157,7 +159,7 @@ class SearchHotels : AppCompatActivity() {
 
 
         CityHotel.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            CityHot= names [names.indexOf(parent.getItemAtPosition(position).toString())]
+            CityHot= names [showNames.indexOf(parent.getItemAtPosition(position).toString())]
 
             // Display the clicked item using toast
 //            Toast.makeText(applicationContext,"Selected : $selectedItem",Toast.LENGTH_SHORT).show()
@@ -361,26 +363,32 @@ var month1=""
         chAge[2]=chAge3
         chAge[3]=chAge4
         chAge[4]=chAge5
-        if (verifyAvailableNetwork(this@SearchHotels)) {
-        val intent=Intent(this@SearchHotels,ShowHotels::class.java)
-        intent.putExtra("checkIn",checkIn)
-        intent.putExtra("checkOut",checkOut)
-        intent.putExtra("CityHotel",CityHot)
-        intent.putExtra("Adult",AdultNo)
-        intent.putExtra("Child",ChildNo)
-            println(chAge)
-            intent.putExtra("chAge1",chAge[0])
-            intent.putExtra("chAge2",chAge[1])
-            intent.putExtra("chAge3",chAge[2])
-            intent.putExtra("chAge4",chAge[3])
-            intent.putExtra("chAge5",chAge[4])
+        if(AdultNo!=0&&checkIn!="" && checkOut!="" &&CityHot!=""){
+            if (verifyAvailableNetwork(this@SearchHotels)) {
+                val intent=Intent(this@SearchHotels,ShowHotels::class.java)
+                intent.putExtra("checkIn",checkIn)
+                intent.putExtra("checkOut",checkOut)
+                intent.putExtra("CityHotel",CityHot)
+                intent.putExtra("Adult",AdultNo)
+                intent.putExtra("Child",ChildNo)
+                println(chAge)
+                intent.putExtra("chAge1",chAge[0])
+                intent.putExtra("chAge2",chAge[1])
+                intent.putExtra("chAge3",chAge[2])
+                intent.putExtra("chAge4",chAge[3])
+                intent.putExtra("chAge5",chAge[4])
 
 
-        startActivity(intent)
-        } else {
-            Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            } else {
+                Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+
+            }
+        }else{
+            Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
 
         }
+
     }
     fun backMain(view: View){
         val intent=Intent(this@SearchHotels,dashboard::class.java)

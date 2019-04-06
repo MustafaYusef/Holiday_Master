@@ -62,7 +62,9 @@ class dashboard : AppCompatActivity() {
 
                 override fun onResponse(call: Call, response: Response) {
                     val body = response.body()?.string()
+                   if(body!!.length>20){
 
+                   }
                     //  println(body)
                     val gson = GsonBuilder().create()
                     val AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
@@ -73,11 +75,16 @@ class dashboard : AppCompatActivity() {
 
                             intent.putExtra("name", AuthInfo.sesson.name)
                             intent.putExtra("email", AuthInfo.sesson.email)
-                            intent.putExtra("money", AuthInfo.sesson.phone)
-                            intent.putExtra("phone", AuthInfo.sesson.money.toString())
+                            intent.putExtra("money", AuthInfo.sesson.money.toString())
+                            intent.putExtra("phone", AuthInfo.sesson.phone)
 
                             startActivity(intent)
                         }else{
+                            runOnUiThread {
+                                Toast.makeText(applicationContext,"there is no account for you", Toast.LENGTH_SHORT).show()
+
+                            }
+
                             val intent = Intent(this@dashboard, LoginMember::class.java)
 
 

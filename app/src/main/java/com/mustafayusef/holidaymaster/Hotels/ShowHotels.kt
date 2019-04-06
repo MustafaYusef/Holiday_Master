@@ -97,19 +97,25 @@ class ShowHotels : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
                     val body=response.body()?.string()
                     println(body)
+                    if(body!!.length>50){
+                        val gson= GsonBuilder().create()
 
-                    val gson= GsonBuilder().create()
+                        val HotelsFeed:List<hotel> = gson.fromJson(body, Array<hotel>::class.java).toList()
 
-                    val HotelsFeed:List<hotel> = gson.fromJson(body, Array<hotel>::class.java).toList()
+                        // println(HotelsFeed)
 
-                  // println(HotelsFeed)
+                        runOnUiThread {
+                            noResultHot?.text=HotelsFeed?.size.toString()+" Result"
 
-                    runOnUiThread {
-                        noResultHot?.text=HotelsFeed?.size.toString()+" Result"
+                            Hotels_list?.adapter= HotelsAdapter(this@ShowHotels,HotelsFeed)
 
-                        Hotels_list?.adapter= HotelsAdapter(this@ShowHotels,HotelsFeed)
-
+                        }
+                    }else{
+                        runOnUiThread {
+                            noResultHot?.text="Ther is No result Found"
+                        }
                     }
+
                 }
 
                 override fun onFailure(call: Call, e: IOException) {

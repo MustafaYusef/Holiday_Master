@@ -6,16 +6,25 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Adapters.RoomsAdapter
 import com.mustafayusef.holidaymaster.LoginMember.cacheObj.ListCost
 import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.activity_check_rooms.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_show_holiday.*
-import kotlinx.android.synthetic.main.check_rooms2.*
-import kotlinx.android.synthetic.main.option_card.*
+
+
+import android.widget.ArrayAdapter
+import android.view.Gravity
+
+import android.widget.LinearLayout
+
+import android.app.Dialog
+import android.graphics.Point
+import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.*
+import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.view.*
+
 
 class CheckRooms : AppCompatActivity() {
   lateinit var hotel:hotel
@@ -23,7 +32,7 @@ class CheckRooms : AppCompatActivity() {
    // var ListCost= mutableListOf<Long>(0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_check_rooms)
+        setContentView(com.mustafayusef.holidaymaster.R.layout.activity_check_rooms)
         RoomsList.layoutManager= LinearLayoutManager(this)
 
 
@@ -62,9 +71,11 @@ class CheckRooms : AppCompatActivity() {
 
     }
     fun backHotelD(view:View){
-        super.onBackPressed()
+        val intent=Intent(this@CheckRooms,DetailsHotel::class.java)
+        startActivity(intent)
     }
     fun ShowOptions(view:View){
+
 
         val intent= Intent(this@CheckRooms,Options::class.java)
 
@@ -76,6 +87,44 @@ class CheckRooms : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+
+//    fun openBottomSheet() {
+//
+//        val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_emp_cov , null)
+////        val spin1 = view.findViewById(R.id.spin1) as Spinner
+////        val spin2 = view.findViewById(R.id.spin2) as Spinner
+////        val catList = view.findViewById(R.id.listItems) as ListView
+////        val btnDone = view.findViewById(R.id.btnDone) as Button
+//        val display = windowManager.defaultDisplay
+//        val size = Point()
+//        display.getSize(size)
+//        val width = size.x
+//        val height = size.y
+//
+//
+//        view.minimumHeight=height/2
+//        val mBottomSheetDialog = Dialog(
+//            this@CheckRooms,
+//            com.mustafayusef.holidaymaster.R.style.MaterialDialogSheet
+//        )
+//        mBottomSheetDialog.setContentView(view)
+//        mBottomSheetDialog.setCancelable(true)
+//        mBottomSheetDialog.getWindow().setLayout(
+//            LinearLayout.LayoutParams.MATCH_PARENT,
+//            LinearLayout.LayoutParams.WRAP_CONTENT
+//        )
+//        mBottomSheetDialog.getWindow().setGravity(Gravity.BOTTOM)
+//        mBottomSheetDialog.show()
+//
+////        spin1.setAdapter(ArrayAdapter<String>(this@RepActivity, android.R.layout.simple_dropdown_item_1line, items))
+////        spin2.setAdapter(ArrayAdapter<String>(this@RepActivity, android.R.layout.simple_dropdown_item_1line, items))
+////
+////        catList.setAdapter(categoryListAdapter)
+//
+//        view.btnDone.setOnClickListener{ mBottomSheetDialog.dismiss() }
+//
+//    }
 
 
 }

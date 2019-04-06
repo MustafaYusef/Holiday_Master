@@ -184,59 +184,107 @@
                 <LinearLayout android:layout_width="match_parent" android:layout_height="83dp"
                               android:orientation="horizontal" android:gravity="center">
                     <NumberPicker
+                            android:id="@+id/ch1Picker"
                             android:layout_weight="1"
+
+
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scrollbarStyle="outsideOverlay"
-                            android:id="@+id/ch1Picker"
-                            android:solidColor="@color/cardview_light_background"
-                            android:background="#6F499C" android:layout_marginRight="5dp"
-                            android:isScrollContainer="false"></NumberPicker>
 
-                    <NumberPicker android:layout_weight="1"
-                                  android:layout_width="match_parent"
+                            android:theme="@style/AppTheme.Picker"
+                            android:solidColor="#6F499C"
+                            android:isScrollContainer="false"
+                            android:background="#6F499C"
+                            android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="3dp"
+
+
+
+
+                           android:layout_marginRight="5dp"
+                           ></NumberPicker>
+
+                    <NumberPicker
                                   android:id="@+id/ch2Picker"
+                                  android:layout_weight="1"
+
+
+                                  android:layout_width="match_parent"
                                   android:layout_height="match_parent"
                                   android:scrollbarStyle="outsideOverlay"
-                                  android:focusable="auto"
-                                  android:filterTouchesWhenObscured="true"
-                                  android:solidColor="@color/cardview_light_background"
-                                  android:textDirection="firstStrong"
+
+                                  android:theme="@style/AppTheme.Picker"
+                                  android:solidColor="#6F499C"
+                                  android:isScrollContainer="false"
                                   android:background="#6F499C"
+                                  android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                                  android:layout_marginLeft="3dp"
+
+
+
+
                                   android:layout_marginRight="5dp"></NumberPicker>
 
-                    <NumberPicker android:layout_weight="1"
-                                  android:layout_width="match_parent"
+                    <NumberPicker
                                   android:id="@+id/ch3Picker"
-                                  android:layout_height="match_parent"
-                                  android:scrollbarStyle="outsideOverlay"
-                                  android:focusable="auto"
-                                  android:filterTouchesWhenObscured="true"
-                                  android:solidColor="@color/cardview_light_background"
-                                  android:textDirection="firstStrong"
-                                  android:background="#6F499C" android:layout_marginRight="5dp"></NumberPicker>
-                    <NumberPicker android:layout_weight="1"
+                                  android:layout_weight="1"
+
+
                                   android:layout_width="match_parent"
-                                  android:id="@+id/ch4Picker"
                                   android:layout_height="match_parent"
                                   android:scrollbarStyle="outsideOverlay"
-                                  android:focusable="auto"
-                                  android:filterTouchesWhenObscured="true"
-                                  android:solidColor="@color/cardview_light_background"
-                                  android:textDirection="firstStrong"
+
+                                  android:theme="@style/AppTheme.Picker"
+                                  android:solidColor="#6F499C"
+                                  android:isScrollContainer="false"
                                   android:background="#6F499C"
+                                  android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                                  android:layout_marginLeft="3dp"
+
+
+
+
+                                  android:layout_marginRight="5dp"></NumberPicker>
+                    <NumberPicker
+                                  android:id="@+id/ch4Picker"
+                                  android:layout_weight="1"
+
+
+                                  android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:scrollbarStyle="outsideOverlay"
+
+                                  android:theme="@style/AppTheme.Picker"
+                                  android:solidColor="#6F499C"
+                                  android:isScrollContainer="false"
+                                  android:background="#6F499C"
+                                  android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                                  android:layout_marginLeft="3dp"
+
+
+
+
                                   android:layout_marginRight="5dp"></NumberPicker>
 
-                    <NumberPicker android:layout_weight="1"
-                                  android:layout_width="match_parent"
+                    <NumberPicker
                                   android:id="@+id/ch5Picker"
+                                  android:layout_weight="1"
+                                  android:layout_width="match_parent"
                                   android:layout_height="match_parent"
                                   android:scrollbarStyle="outsideOverlay"
-                                  android:focusable="auto"
-                                  android:filterTouchesWhenObscured="true"
-                                  android:solidColor="@color/cardview_light_background"
-                                  android:textDirection="firstStrong"
-                                  android:background="#6F499C" android:layout_marginRight="5dp"></NumberPicker>
+
+                                  android:theme="@style/AppTheme.Picker"
+                                  android:solidColor="#6F499C"
+                                  android:isScrollContainer="false"
+                                  android:background="#6F499C"
+                                  android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                                  android:layout_marginLeft="3dp"
+
+
+
+
+                                  android:layout_marginRight="5dp"></NumberPicker>
                 </LinearLayout>
 
 

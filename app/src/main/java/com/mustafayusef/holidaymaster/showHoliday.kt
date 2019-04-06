@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonArray
 
 
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
@@ -79,18 +80,26 @@ class showHoliday : AppCompatActivity() {
             client.newCall(request).enqueue(object :Callback {
 
                 override fun onResponse(call: Call, response: Response) {
+
                     val body=response.body()?.string()
+                     if(body!!.length>50){
+                         //println(body)
+                         val gson= GsonBuilder().create()
+                         val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
 
-                    //println(body)
-                    val gson= GsonBuilder().create()
-                    val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
+                         runOnUiThread {
 
-                    runOnUiThread {
+                             noResult?.text=holidayFeed?.size.toString()+" Result"
+                             Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
 
-                        noResult?.text=holidayFeed?.size.toString()+" Result"
-                        Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
+                         }
+                     }else{
+                         runOnUiThread {
+                             noResult?.text=" There is no result Found"
 
-                    }
+                         }
+                     }
+
 
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -119,7 +128,9 @@ class showHoliday : AppCompatActivity() {
             client.newCall(request).enqueue(object :Callback {
 
                 override fun onResponse(call: Call, response: Response) {
+
                     val body=response.body()?.string()
+                    if(body!!.length>50){
                     println(body)
                     val gson= GsonBuilder().create()
                     val holidayFeedTow:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
@@ -133,6 +144,12 @@ class showHoliday : AppCompatActivity() {
 
                     }
                 }
+                else{
+                        runOnUiThread {
+                            noResult?.text=" There is no result Found"
+
+                        }
+                    }}
 
                 override fun onFailure(call: Call, e: IOException) {
                     val intent=Intent(this@showHoliday,searchActivity::class.java)

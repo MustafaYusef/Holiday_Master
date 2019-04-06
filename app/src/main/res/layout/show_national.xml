@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/back_dilog"
+              android:gravity="center" android:padding="10dp">
+
+    <NumberPicker
+            android:layout_width="match_parent"
+            android:id="@+id/NationalPicker"
+            android:layout_height="160dp"
+            android:theme="@style/AppTheme.Picker"
+            android:focusable="auto"
+            android:filterTouchesWhenObscured="false"
+            android:solidColor="#6F499C"
+
+            android:background="#6F499C"></NumberPicker>
+
+
+    <Button android:layout_width="283dp" android:layout_height="wrap_content"
+            android:text="Select"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btnun" android:id="@+id/selectN"/>
+</LinearLayout>

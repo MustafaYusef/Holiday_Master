@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
+import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -28,7 +29,15 @@ import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_search_hotels.*
+import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.*
+import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.view.*
 import okhttp3.*
+import android.R.attr.y
+import android.R.attr.x
+import android.graphics.Point
+import android.view.Display
+
+
 
 
 class searchActivity : AppCompatActivity() {
@@ -41,7 +50,7 @@ class searchActivity : AppCompatActivity() {
     var adult = 0
     var child = 0
     var infant = 0
-    var type = ""
+    var type = "Economy"
     var departure = ""
     var Return = ""
     var fromSelect = ""
@@ -54,6 +63,13 @@ class searchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+
+
+
+
+
+
+
         AdultPicker.minValue = 0
         AdultPicker.maxValue = 10
         AdultPicker.wrapSelectorWheel = true
@@ -70,23 +86,36 @@ class searchActivity : AppCompatActivity() {
         button17.isActivated = true
         flage = true
         retL.visibility = View.INVISIBLE
-        option = findViewById(R.id.spinner) as Spinner
 
-        val options = arrayOf("Economy", "First", "Class")
 
-        option.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options)
-        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // result.text = "Please Select an Option"
-                type = "Economy"
 
-            }
+        val options = arrayOf("Economy","First")
+        TypePicker.minValue=0
+        TypePicker.maxValue=options.size-1
+        TypePicker.displayedValues=options
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                type = options.get(position)
+        TypePicker.setOnValueChangedListener { picker, oldVal, newVal ->
 
-            }
+            //Display the newly selected number to text view
+           type =options[newVal]
         }
+
+
+
+
+//        option.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options)
+//        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                // result.text = "Please Select an Option"
+//                type = "Economy"
+//
+//            }
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                type = options.get(position)
+//
+//            }
+//        }
 
         val suggest: Array<AutoCom>
         var json: String = ""
@@ -102,7 +131,7 @@ class searchActivity : AppCompatActivity() {
 
 
         for (i in suggest) {
-            names.add(i.city)
+            names.add(i.city+","+i.country)
             short.add(i.iata)
 
         }
@@ -222,24 +251,58 @@ class searchActivity : AppCompatActivity() {
     }
 
     fun showHolidys(view: View) {
-        if (verifyAvailableNetwork(this@searchActivity)) {
-            val intent = Intent(this@searchActivity, showHoliday::class.java)
+        if(flage){
+            if(adult!=0&&departure!="" && fromSelect!="" &&toSelect!=""){
+                if (verifyAvailableNetwork(this@searchActivity)) {
+                    val intent = Intent(this@searchActivity, showHoliday::class.java)
 
-            intent.putExtra("flage", flage)
-            intent.putExtra("adult", adult)
-            intent.putExtra("child", child)
-            intent.putExtra("infant", infant)
-            intent.putExtra("departure", departure)
-            intent.putExtra("Return", Return)
-            intent.putExtra("Type", type)
-            intent.putExtra("fromSelect", fromSelect)
-            intent.putExtra("toSelect", toSelect)
+                    intent.putExtra("flage", flage)
+                    intent.putExtra("adult", adult)
+                    intent.putExtra("child", child)
+                    intent.putExtra("infant", infant)
+                    intent.putExtra("departure", departure)
+                    intent.putExtra("Return", Return)
+                    intent.putExtra("Type", type)
+                    intent.putExtra("fromSelect", fromSelect)
+                    intent.putExtra("toSelect", toSelect)
 
-            startActivity(intent)
-        } else {
-            Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
 
+                }
+            }else{
+                Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
+
+            }
+        }else{
+            if(adult!=0&&departure!="" &&Return!="" && fromSelect!="" &&toSelect!=""){
+                if (verifyAvailableNetwork(this@searchActivity)) {
+                    val intent = Intent(this@searchActivity, showHoliday::class.java)
+
+                    intent.putExtra("flage", flage)
+                    intent.putExtra("adult", adult)
+                    intent.putExtra("child", child)
+                    intent.putExtra("infant", infant)
+                    intent.putExtra("departure", departure)
+                    intent.putExtra("Return", Return)
+                    intent.putExtra("Type", type)
+                    intent.putExtra("fromSelect", fromSelect)
+                    intent.putExtra("toSelect", toSelect)
+
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+
+                }
+            }else{
+                Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
+
+            }
         }
+
+
+
 
 
     }
@@ -247,21 +310,17 @@ class searchActivity : AppCompatActivity() {
 
     }
 //
-//    fun shoowDilog(view: View) {
-//        val builder = AlertDialog.Builder(this@searchActivity)
-//        val dview: View = layoutInflater.inflate(R.layout.dilogpass, null)
-//
-//        builder.setView(dview)
-//        val dilog: AlertDialog = builder.create()
-//        dilog.show()
-//
-//    }
+
 fun goToHotel(view: View){
     val intent=Intent(this@searchActivity,SearchHotels::class.java)
     startActivity(intent)
 }
 
     fun Oneway(view: View) {
+
+
+
+
         button17.isActivated = true
         button10.isActivated = false
         flage = true
@@ -288,6 +347,7 @@ fun goToHotel(view: View){
     fun profile(view: View) {
 
         //Holiday_list.layoutManager= LinearLayoutManager(this)
+
         if (verifyAvailableNetwork(this@searchActivity)) {
             val request = Request.Builder().url("https://favorite-holiday.herokuapp.com/api/user/checklogin/")
                 .addHeader("token", LoginMember.cacheObj.token)

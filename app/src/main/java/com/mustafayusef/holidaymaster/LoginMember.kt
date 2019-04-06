@@ -45,59 +45,73 @@ class LoginMember : AppCompatActivity() {
     }
 
     fun Login(view:View){
-        if ( verifyAvailableNetwork(this@LoginMember)) {
-        val client=OkHttpClient()
-        val json=JSONObject()
-        json.put("email",UserName.text)
-        json.put("password",Password.text)
-        val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString())
-        val request = Request.Builder()
-            .url("https://favorite-holiday.herokuapp.com/api/user/login/")
-            .post(body)
-            .build()
-      try {
-          client.newCall(request).enqueue(object :Callback {
+        if(UserName.text.toString()!=""&&Password.text.toString()!=""){
+            if ( verifyAvailableNetwork(this@LoginMember)) {
+                val client=OkHttpClient()
+                val json=JSONObject()
+                json.put("email",UserName.text)
+                json.put("password",Password.text)
+                val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString())
+                val request = Request.Builder()
+                    .url("https://favorite-holiday.herokuapp.com/api/user/login/")
+                    .post(body)
+                    .build()
+                try {
+                    client.newCall(request).enqueue(object :Callback {
 
-              override fun onResponse(call: Call, response: Response) {
-                  val body = response.body()?.string()
-                  //println(body)
-                  val gson = GsonBuilder().create()
+                        override fun onResponse(call: Call, response: Response) {
+                            val body = response.body()?.string()
+                            //println(body)
+                            if(body!!.length>20){
+                                val gson = GsonBuilder().create()
 
-                  val  AuthInfo: auth = gson.fromJson(body,auth ::class.java)
-                  println(AuthInfo.token)
-                  cacheObj.token = AuthInfo.token
+                                val  AuthInfo: auth = gson.fromJson(body,auth ::class.java)
+                                println(AuthInfo.token)
+                                cacheObj.token = AuthInfo.token
 
-                  if(AuthInfo.token!=""){
-                      val intent = Intent(this@LoginMember,searchActivity::class.java)
-                      startActivity(intent)
-                  }
+                                if(AuthInfo.token!=""){
+                                    val intent = Intent(this@LoginMember,dashboard::class.java)
+                                    startActivity(intent)
+                                }
+                            }else{
+                                runOnUiThread {
+                                    Toast.makeText(applicationContext,"there is no account for you", Toast.LENGTH_SHORT).show()
+
+                                }
+
+                            }
+
 //               runOnUiThread(
 //
 //
 //               )
 
-              }
+                        }
 
-              override fun onFailure(call: Call, e: IOException) {
-                val intent = Intent(this@LoginMember,MainActivity::class.java)
-                startActivity(intent)
-                  Toast.makeText(applicationContext,"You have no account", Toast.LENGTH_SHORT).show()
-              }
+                        override fun onFailure(call: Call, e: IOException) {
 
-          })
-      }catch (e:Exception){
-          Toast.makeText(applicationContext,"You have no account", Toast.LENGTH_SHORT).show()
-      }
+                            Toast.makeText(applicationContext,"You have no account", Toast.LENGTH_SHORT).show()
+                        }
 
+                    })
+                }catch (e:Exception){
+                    Toast.makeText(applicationContext,"You have no account", Toast.LENGTH_SHORT).show()
+                }
 
 
 
 
 
+
+            }else{
+                Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+
+            }
         }else{
-            Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "You should fill all field", Toast.LENGTH_SHORT).show()
 
         }
+
     }
 }
 
