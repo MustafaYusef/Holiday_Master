@@ -10,6 +10,7 @@ import com.mustafayusef.holidaymaster.Hotels.DetailsHotel
 import com.mustafayusef.holidaymaster.Models.country
 import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.Visa.Visa_Form1
 import kotlinx.android.synthetic.main.hotel_card.view.*
 import kotlinx.android.synthetic.main.visa_card.view.*
 
@@ -52,12 +53,12 @@ class NationalAdapter(val context: Context, val countryFeed:List<country>?) : Re
 
         // Glide.with(context).load(Hotels?.img).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.HotelImage)
 
-//        holder.itemView.SelectVisa.setOnClickListener{
-//            val intent = Intent(context, DetailsHotel::class.java)
-////            val b=Bundle.p
+        holder.itemView.SelectVisa.setOnClickListener{
+            val intent = Intent(context, Visa_Form1::class.java)
+
 //            intent.putExtra("Hotels",Hotels)
-//            context.startActivity(intent)
-//        }
+            context.startActivity(intent)
+        }
 
     }
 

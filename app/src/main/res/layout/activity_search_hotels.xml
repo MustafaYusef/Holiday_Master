@@ -190,20 +190,17 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scrollbarStyle="outsideOverlay"
 
                             android:theme="@style/AppTheme.Picker"
-                            android:solidColor="#6F499C"
                             android:isScrollContainer="false"
                             android:background="#6F499C"
+
                             android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
                             android:layout_marginLeft="3dp"
 
 
-
-
-                           android:layout_marginRight="5dp"
-                           ></NumberPicker>
+                            android:layout_marginRight="5dp"
+                            android:solidColor="#6F499C"></NumberPicker>
 
                     <NumberPicker
                                   android:id="@+id/ch2Picker"

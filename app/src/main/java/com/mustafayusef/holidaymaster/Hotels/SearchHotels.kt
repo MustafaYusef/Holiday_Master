@@ -182,7 +182,8 @@ class SearchHotels : AppCompatActivity() {
      if(ChildNo>0){
          PickersCh.visibility=View.VISIBLE
          when(ChildNo){
-             1->{ chAge1=2
+             1->{
+//                 chAge1=2
                  ch1Picker.visibility=View.VISIBLE
                  ch1T.visibility=View.VISIBLE
 
@@ -198,8 +199,9 @@ class SearchHotels : AppCompatActivity() {
                  ch5Picker.visibility=View.INVISIBLE
                  ch5T.visibility=View.INVISIBLE
              }
-             2->{chAge2=2
-                 chAge1=2
+             2->{
+//                 chAge2=2
+//                 chAge1=2
                  ch1Picker.visibility=View.VISIBLE
                  ch1T.visibility=View.VISIBLE
 
@@ -215,9 +217,10 @@ class SearchHotels : AppCompatActivity() {
                  ch5Picker.visibility=View.INVISIBLE
                  ch5T.visibility=View.INVISIBLE
              }
-             3->{ chAge2=2
-                 chAge1=2
-                 chAge3=2
+             3->{
+//                 chAge2=2
+//                 chAge1=2
+//                 chAge3=2
                  ch1Picker.visibility=View.VISIBLE
                  ch1T.visibility=View.VISIBLE
 
@@ -233,10 +236,11 @@ class SearchHotels : AppCompatActivity() {
                  ch5Picker.visibility=View.INVISIBLE
                  ch5T.visibility=View.INVISIBLE
              }
-             4->{  chAge2=2
-                 chAge1=2
-                 chAge3=2
-                 chAge4=2
+             4->{
+//                 chAge2=2
+//                 chAge1=2
+//                 chAge3=2
+//                 chAge4=2
                  ch1Picker.visibility=View.VISIBLE
                  ch1T.visibility=View.VISIBLE
 
@@ -252,11 +256,12 @@ class SearchHotels : AppCompatActivity() {
                  ch5Picker.visibility=View.INVISIBLE
                  ch5T.visibility=View.INVISIBLE
              }
-             5->{  chAge2=2
-                 chAge1=2
-                 chAge3=2
-                 chAge4=2
-                 chAge5=2
+             5->{
+//                 chAge2=2
+//                 chAge1=2
+//                 chAge3=2
+//                 chAge4=2
+//                 chAge5=2
                  ch1Picker.visibility=View.VISIBLE
                  ch1T.visibility=View.VISIBLE
 

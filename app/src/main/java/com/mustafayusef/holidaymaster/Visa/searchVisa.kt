@@ -18,7 +18,7 @@ import com.mustafayusef.holidaymaster.Adapters.HotelsAdapter
 import com.mustafayusef.holidaymaster.Adapters.NationalAdapter
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Models.country
-import com.mustafayusef.holidaymaster.Models.modelOne
+
 import com.mustafayusef.holidaymaster.dashboard
 import com.mustafayusef.holidaymaster.searchActivity
 import kotlinx.android.synthetic.main.activity_search_visa.*
@@ -39,10 +39,6 @@ class searchVisa : AppCompatActivity() {
         overridePendingTransition(com.mustafayusef.holidaymaster.R.anim.fade_in, com.mustafayusef.holidaymaster.R.anim.fade_out)
 
         run()
-
-
-
-
 
     }
 
@@ -115,11 +111,13 @@ class searchVisa : AppCompatActivity() {
             dview.NationalPicker.maxValue = national.size-1
             dview.NationalPicker.wrapSelectorWheel = true
             dview.NationalPicker.displayedValues = national.toTypedArray()
+            country=national[0]
             dview.NationalPicker.setOnValueChangedListener { picker, oldVal, newVal ->
                 //
                 //Display the newly selected number to text view
                 country = national[newVal]
-            println(country +"   cooodkl,dl")}
+           // println(country +"   cooodkl,dl")
+                }
 //            }
 //                 dilog.NationalPicker.minValue = 0
 //            dilog.NationalPicker .maxValue = 2
@@ -162,7 +160,7 @@ class searchVisa : AppCompatActivity() {
                         val gson= GsonBuilder().create()
                         var countryFeed:List<country>?= gson.fromJson(body, Array<country>::class.java).toList()
                         println("Hello      "+countryFeed)
-                        national.add(" ")
+
             for(i in 0 until countryFeed!!.size){
                 national.add( countryFeed!![i].Nationality!!)
             }

@@ -22,6 +22,7 @@ import android.widget.LinearLayout
 
 import android.app.Dialog
 import android.graphics.Point
+import com.mustafayusef.holidaymaster.Adapters.OptionsAdapter
 import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.*
 import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.view.*
 
@@ -51,6 +52,13 @@ class CheckRooms : AppCompatActivity() {
             RoomsList?.adapter = RoomsAdapter(this@CheckRooms, hotel)
 
         }
+//        if(intent.getSerializableExtra("UpdateRoom")!=null){
+//            hotel=intent?.getSerializableExtra("UpdateRoom") as hotel
+//            RoomsList?.adapter = RoomsAdapter(this@CheckRooms, hotel)
+//        }else{
+//            hotel=hotel
+//
+//        }
 
        // hotel=intent.getSerializableExtra("hotel1") as hotel
        // println(hotel)
@@ -71,21 +79,62 @@ class CheckRooms : AppCompatActivity() {
 
     }
     fun backHotelD(view:View){
-        val intent=Intent(this@CheckRooms,DetailsHotel::class.java)
-        startActivity(intent)
+        super.onBackPressed()
     }
     fun ShowOptions(view:View){
 
 
-        val intent= Intent(this@CheckRooms,Options::class.java)
-
+//        val intent= Intent(this@CheckRooms,Options::class.java)
+//
            for( i in 0 until hotel.Rooms!!.count()){
             hotel.Rooms!![i].cost=ListCost[i]
         }
+//
+//        intent.putExtra("hotel",hotel)
+//
+//        startActivity(intent)
 
-        intent.putExtra("hotel",hotel)
 
-        startActivity(intent)
+                val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_emp_cov , null)
+//        val spin1 = view.findViewById(R.id.spin1) as Spinner
+//        val spin2 = view.findViewById(R.id.spin2) as Spinner
+//        val catList = view.findViewById(R.id.listItems) as ListView
+//        val btnDone = view.findViewById(R.id.btnDone) as Button
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = size.x
+        val height = size.y
+
+
+        view.minimumHeight=600
+        val mBottomSheetDialog = Dialog(
+            this@CheckRooms,
+            com.mustafayusef.holidaymaster.R.style.MaterialDialogSheet
+        )
+        mBottomSheetDialog.setContentView(view)
+        mBottomSheetDialog.setCancelable(true)
+        mBottomSheetDialog.window.setLayout(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        mBottomSheetDialog.window.setGravity(Gravity.BOTTOM)
+        view.OptionList.layoutManager= LinearLayoutManager(this)
+        view.OptionList.adapter = OptionsAdapter(this@CheckRooms, hotel)
+        mBottomSheetDialog.show()
+
+//        spin1.setAdapter(ArrayAdapter<String>(this@RepActivity, android.R.layout.simple_dropdown_item_1line, items))
+//        spin2.setAdapter(ArrayAdapter<String>(this@RepActivity, android.R.layout.simple_dropdown_item_1line, items))
+//
+//        catList.setAdapter(categoryListAdapter)
+
+        view.ApplayOp.setOnClickListener{ mBottomSheetDialog.dismiss()
+            RoomsList.adapter!!.notifyDataSetChanged()
+        }
+        view.CancelOp.setOnClickListener {
+            mBottomSheetDialog.dismiss()
+        }
+
     }
 
 

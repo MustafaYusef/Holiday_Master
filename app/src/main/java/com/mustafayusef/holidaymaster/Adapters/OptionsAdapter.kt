@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mustafayusef.holidaymaster.Hotels.CheckRooms
 import com.mustafayusef.holidaymaster.Hotels.Options
 import com.mustafayusef.holidaymaster.Models.Option
 import com.mustafayusef.holidaymaster.Models.Room
@@ -81,7 +82,7 @@ class OptionsAdapter(val context: Context, val OptionFeed:hotel?) : RecyclerView
         init {
             view.switch1 .setOnClickListener {
 //                if(view.switch1.isChecked){
-                    val intent=Intent(view.context,Options::class.java)
+                    val intent=Intent(view.context,CheckRooms::class.java)
                     intent.putExtra("UpdateRoom",OptionFeed)
 
                     //view.context.startActivity(intent)

@@ -63,7 +63,7 @@ class searchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
-
+//        hideKeyboard()
 
 
 
@@ -146,6 +146,9 @@ class searchActivity : AppCompatActivity() {
                 // Display the suggestion dropdown on focus
 
             }
+
+//            hideKeyboard()
+
         }
 
         fromCity.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -161,6 +164,7 @@ class searchActivity : AppCompatActivity() {
                 // Display the suggestion dropdown on focus
 
             }
+//            hideKeyboard()
         }
         toSelect = to.text.toString()
         to.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -338,7 +342,7 @@ fun goToHotel(view: View){
     }
 
     fun backSearch(view: View) {
-        val intent = Intent(this@searchActivity, MainActivity::class.java)
+        val intent = Intent(this@searchActivity, dashboard::class.java)
 
 
         startActivity(intent)
@@ -397,6 +401,18 @@ fun goToHotel(view: View){
 
         }
 
+    }
+//    fun Fragment.hideKeyboard() {
+//        view?.let { activity?.hideKeyboard(it) }
+//    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(if (currentFocus == null) View(this) else currentFocus)
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
 
