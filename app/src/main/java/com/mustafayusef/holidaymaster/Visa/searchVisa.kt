@@ -5,25 +5,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 
-import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.show_national.*
-import android.R
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
-import com.mustafayusef.holidaymaster.Adapters.HotelsAdapter
 import com.mustafayusef.holidaymaster.Adapters.NationalAdapter
-import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Models.country
 
 import com.mustafayusef.holidaymaster.dashboard
-import com.mustafayusef.holidaymaster.searchActivity
 import kotlinx.android.synthetic.main.activity_search_visa.*
-import kotlinx.android.synthetic.main.activity_show_holiday.*
-import kotlinx.android.synthetic.main.activity_show_hotels.*
 import kotlinx.android.synthetic.main.show_national.view.*
 import okhttp3.*
 import java.io.IOException
@@ -36,14 +28,18 @@ class searchVisa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.mustafayusef.holidaymaster.R.layout.activity_search_visa)
-        overridePendingTransition(com.mustafayusef.holidaymaster.R.anim.fade_in, com.mustafayusef.holidaymaster.R.anim.fade_out)
+        animation_view3.playAnimation()
+        animation_view3.speed=4F
 
+        showN.visibility=View.INVISIBLE
         run()
-
+//        showN.visibility=View.VISIBLE
     }
 
   fun  showVisa(country:String){
-      println("this is method n hhb"+country)
+      animation_view3.playAnimation()
+      animation_view3.speed=4F
+//      println("this is method n hhb"+country)
       Visa_list.layoutManager= LinearLayoutManager(this)
 
       val body = FormBody.Builder()
@@ -69,12 +65,15 @@ class searchVisa : AppCompatActivity() {
                       runOnUiThread {
                         available?.text= countFeed!!.size.toString()+" Visa Available for your country"
                           Visa_list?.adapter= NationalAdapter(this@searchVisa,countFeed)
-
-
+                          animation_view3.translationZ=0F
+                          animation_view3.pauseAnimation()
 
                       }
                   }else{
-
+                      available?.setTextColor(-0x01ffff)
+                      available?.text="There is no Result Found"
+                      animation_view3.translationZ=0F
+                      animation_view3.pauseAnimation()
                   }
 
 
@@ -166,9 +165,10 @@ class searchVisa : AppCompatActivity() {
             }
                         println(national)
                         runOnUiThread {
-
+                            showN.visibility=View.VISIBLE
                             //   noResult?.text=countryFeed?.size.toString()+" Result"
-
+                            animation_view3.translationZ=0F
+                            animation_view3.pauseAnimation()
 
                         }
                     }else{
@@ -187,6 +187,9 @@ class searchVisa : AppCompatActivity() {
             Toast.makeText(applicationContext, "something Wrong", Toast.LENGTH_SHORT).show()
 
         }
+        animation_view3.translationZ=0F
+        animation_view3.pauseAnimation()
+        showN.isClickable=true
     }
 
 

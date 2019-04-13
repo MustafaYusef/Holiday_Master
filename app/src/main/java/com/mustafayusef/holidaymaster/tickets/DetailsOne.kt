@@ -1,17 +1,14 @@
-package com.mustafayusef.holidaymaster
+package com.mustafayusef.holidaymaster.tickets
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Adapters.OneDetailsAdapter
-import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 
 import com.mustafayusef.holidaymaster.Models.modelOne
+import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.activity_details_one.*
-import kotlinx.android.synthetic.main.activity_show_holiday.*
 
 
 class DetailsOne : AppCompatActivity() {

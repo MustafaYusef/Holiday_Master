@@ -1,166 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:paddingTop="10dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
+        android:orientation="vertical"
+        android:background="@drawable/cardback"
 
-        android:outlineAmbientShadowColor="#d4d4d4" android:gravity="" android:layout_marginTop="5dp">
+        android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:weightSum="2" android:gravity="" android:layout_margin="10dp" android:elevation="5dp"
+        android:padding="2dp" android:id="@+id/OneContainerHotel">
 
     <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/cardback"
+            android:layout_height="47dp" android:layout_marginTop="5dp" android:background="@drawable/btnb"
+            android:gravity="center" android:layout_gravity="center"
+            android:layout_marginBottom="0dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+        <ImageButton
 
-            android:layout_alignParentEnd="true" android:layout_marginEnd="0dp" android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp" android:layout_marginTop="0dp" android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp" android:weightSum="2" android:gravity="">
+                android:src="@drawable/resort"
+                android:layout_width="59dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="36dp" android:id="@+id/FromTo"
+                android:textColor="#fff" android:textSize="18sp"
+                android:paddingLeft="10dp" android:background="@drawable/btnb" android:scaleType="fitCenter"/>
+        <TextView
 
+                android:layout_marginLeft="10dp"
+                android:text="Name"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="64dp" android:id="@+id/HotelName" android:layout_weight="1"
+                android:textSize="18sp" android:textColor="#fff"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" android:layout_weight="6" android:gravity=""
+            android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="47dp" android:layout_marginTop="5dp" android:background="@drawable/btnb"
-                android:gravity="center" android:layout_gravity="center"
-                android:layout_marginBottom="0dp">
-            <ImageButton
-
-                    android:src="@drawable/resort"
-                    android:layout_width="59dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_height="36dp" android:id="@+id/FromTo"
-                    android:textColor="#fff" android:textSize="18sp"
-                    android:paddingLeft="10dp" android:background="@drawable/btnb" android:scaleType="fitCenter"/>
-            <TextView
-
-                    android:layout_marginLeft="10dp"
-                    android:text="Name"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp" android:id="@+id/HotelName" android:layout_weight="1"
-                    android:textSize="18sp" android:textColor="#fff"/>
-        </LinearLayout>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="218dp"
-                android:orientation="vertical" android:layout_weight="6" android:gravity=""
-                android:layout_marginTop="10dp">
+                android:layout_height="213dp">
             <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_width="117dp"
                     android:layout_height="213dp">
                 <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="117dp"
-                        android:layout_height="213dp">
-                    <LinearLayout
-                            android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="155dp" android:gravity="left"
+                        android:layout_gravity="left">
+                    <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="155dp" android:gravity="left"
-                            android:layout_gravity="left">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="145dp" android:id="@+id/HotelImage"
-                                android:src="@drawable/hotel_placeholder" android:scaleType="centerCrop"/>
-                    </LinearLayout>
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        <RatingBar
-                                android:layout_width="301dp"
-                                android:layout_height="wrap_content"
-                                android:progressTint="#F3C90F"
-
-                                android:scaleX="0.5"
-                                android:scaleY="0.5"
-                                android:transformPivotX="0dp"
-                                android:transformPivotY="0dp"
-
-                                android:max="5"
-                                android:numStars="5"
-                                android:stepSize="1"
-                                android:rating="5"
-                                android:id="@+id/ratingBar"
-
-                                android:layout_marginEnd="0dp" android:layout_marginBottom="0dp"
-                                android:isIndicator="false"
-                        />
-                    </LinearLayout>
+                            android:layout_height="145dp" android:id="@+id/HotelImage"
+                            android:src="@drawable/hotel_placeholder" android:scaleType="centerCrop"/>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="237dp" android:weightSum="5" android:gravity="left"
-                >
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <RatingBar
+                            android:layout_width="301dp"
+                            android:layout_height="wrap_content"
+                            android:progressTint="#F3C90F"
 
+                            android:scaleX="0.5"
+                            android:scaleY="0.5"
+                            android:transformPivotX="0dp"
+                            android:transformPivotY="0dp"
+
+                            android:max="5"
+                            android:numStars="5"
+                            android:stepSize="1"
+                            android:rating="5"
+                            android:id="@+id/ratingBar"
+
+                            android:layout_marginEnd="0dp" android:layout_marginBottom="0dp"
+                            android:isIndicator="false"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="237dp" android:weightSum="5" android:gravity="left"
+            >
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="103dp" android:weightSum="5" android:layout_weight="1.6">
+                    <TextView
+                            android:text='If you land at ataturk airport, this hotel is good but if you land at sabiha gokcen this hotel is too far.The rooms are clean, spacious and air conditioned but avoid rooms overlooking the road. Breakfast is ok. Well served by public transport"'
+                            android:layout_width="match_parent"
+                            android:layout_height="134dp" android:id="@+id/BodyHotel"
+                            android:layout_weight="1" android:textColor="#000"
+                            android:textSize="14sp" android:paddingLeft="3dp"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000" android:layout_margin="4dp" android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"/>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp" android:layout_weight="1.6" android:gravity="bottom">
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="103dp" android:weightSum="5" android:layout_weight="1.6">
-                        <TextView
-                                android:text='If you land at ataturk airport, this hotel is good but if you land at sabiha gokcen this hotel is too far.The rooms are clean, spacious and air conditioned but avoid rooms overlooking the road. Breakfast is ok. Well served by public transport"'
-                                android:layout_width="match_parent"
-                                android:layout_height="134dp" android:id="@+id/BodyHotel"
-                                android:layout_weight="1" android:textColor="#000"
-                                android:textSize="14sp" android:paddingLeft="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000" android:layout_margin="4dp" android:layout_marginLeft="7dp"
-                            android:layout_marginRight="7dp"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="49dp" android:layout_weight="1.6" android:gravity="bottom">
-                        <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-                            <LinearLayout android:layout_width="match_parent"
-                                          android:layout_height="wrap_content"
-                                          android:orientation="vertical">
-                                <TextView
-                                        android:text="TextView"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="32dp" android:id="@+id/Location"
-                                        android:paddingLeft="3dp" android:textColor="#6F499C" android:textSize="16sp"
-                                        android:textAlignment="gravity" android:paddingTop="3dp"/>
-                            </LinearLayout>
-                            <LinearLayout android:layout_width="match_parent"
-                                          android:layout_height="wrap_content"
-                                          android:orientation="horizontal">
-                                <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="43dp"
-                                        android:id="@+id/BreakImg" android:layout_gravity="left"/>
-                                <Button
-                                        android:text="Select"
-                                        android:onClick="showHotel"
-                                        android:layout_width="122dp"
-                                        android:layout_height="40dp" android:id="@+id/DetailsHotel"
-                                        android:layout_weight="1" android:textColor="#fff" android:textSize="18sp"
-                                        android:background="@drawable/btnun" android:layout_marginLeft="30dp"
-                                        android:layout_marginRight="20dp"/>
-                            </LinearLayout>
-
-
+                            android:layout_height="match_parent">
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="vertical">
+                            <TextView
+                                    android:text="TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp" android:id="@+id/Location"
+                                    android:paddingLeft="3dp" android:textColor="#6F499C" android:textSize="16sp"
+                                    android:textAlignment="gravity" android:paddingTop="3dp"/>
                         </LinearLayout>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+                            <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="43dp"
+                                    android:id="@+id/BreakImg" android:layout_gravity="left"/>
+                            <Button
+                                    android:text="Select"
+                                    android:onClick="showHotel"
+                                    android:layout_width="120dp"
+                                    android:layout_height="33dp" android:id="@+id/DetailsHotel"
+                                    android:textColor="#fff" android:textSize="18sp"
+                                    android:background="@drawable/btnun" android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp" android:gravity="center"/>
+                        </LinearLayout>
+
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
+
+
 
 

@@ -1,8 +1,6 @@
-package com.mustafayusef.holidaymaster
+package com.mustafayusef.holidaymaster.tickets
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
@@ -10,7 +8,6 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
-import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -24,20 +21,11 @@ import java.io.IOException
 import java.util.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.mustafayusef.holidaymaster.*
 import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
-import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.activity_search_hotels.*
-import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.*
-import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.view.*
 import okhttp3.*
-import android.R.attr.y
-import android.R.attr.x
-import android.graphics.Point
-import android.view.Display
-
-
 
 
 class searchActivity : AppCompatActivity() {
@@ -46,11 +34,11 @@ class searchActivity : AppCompatActivity() {
     lateinit var option: Spinner
     lateinit var result: TextView
     lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
-    var flage = false
-    var adult = 0
+    var flage = true
+    var adult = 1
     var child = 0
     var infant = 0
-    var type = "Economy"
+    var type = ""
     var departure = ""
     var Return = ""
     var fromSelect = ""
@@ -62,7 +50,7 @@ class searchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+       // overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
 //        hideKeyboard()
 
 
@@ -70,7 +58,7 @@ class searchActivity : AppCompatActivity() {
 
 
 
-        AdultPicker.minValue = 0
+        AdultPicker.minValue = 1
         AdultPicker.maxValue = 10
         AdultPicker.wrapSelectorWheel = true
         childPicker.minValue = 0
@@ -89,11 +77,11 @@ class searchActivity : AppCompatActivity() {
 
 
 
-        val options = arrayOf("Economy","First")
+        val options = arrayOf("Economy","First","Business")
         TypePicker.minValue=0
         TypePicker.maxValue=options.size-1
         TypePicker.displayedValues=options
-
+        type=options[0]
         TypePicker.setOnValueChangedListener { picker, oldVal, newVal ->
 
             //Display the newly selected number to text view
@@ -139,37 +127,48 @@ class searchActivity : AppCompatActivity() {
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, names)
 
         fromCity.setAdapter(adapter)
+
+
         fromCity.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->
             if(b){
-                Handler().postDelayed(Runnable {  fromCity.showDropDown() }, 100)
+                Handler().postDelayed(Runnable {
+                    //fromCity.showDropDown()
+                    closeKeyboard()}, 100)
                 // Display the suggestion dropdown on focus
 
             }
 
+
 //            hideKeyboard()
 
         }
+
+
 
         fromCity.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             fromSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
             // Display the clicked item using toast
 //            Toast.makeText(applicationContext,"Selected : $selectedItem",Toast.LENGTH_SHORT).show()
+            closeKeyboard()
         }
         to.setAdapter(adapter)
         to.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->
             if(b){
-                Handler().postDelayed(Runnable {  to.showDropDown() }, 100)
+                Handler().postDelayed(Runnable {
+                    //to.showDropDown()
+                    }, 100)
                 // Display the suggestion dropdown on focus
 
             }
+
 //            hideKeyboard()
         }
         toSelect = to.text.toString()
         to.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             toSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
-
+            closeKeyboard()
         }
 
 
@@ -222,6 +221,13 @@ class searchActivity : AppCompatActivity() {
         dpd.show()
     }
 
+     fun closeKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 
     @SuppressLint("SetTextI18n")
     fun dateRet(view: View) {
@@ -402,18 +408,9 @@ fun goToHotel(view: View){
         }
 
     }
-//    fun Fragment.hideKeyboard() {
-//        view?.let { activity?.hideKeyboard(it) }
-//    }
 
-    fun Activity.hideKeyboard() {
-        hideKeyboard(if (currentFocus == null) View(this) else currentFocus)
-    }
 
-    fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
+
 }
 
 

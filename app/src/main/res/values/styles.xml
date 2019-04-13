@@ -40,4 +40,9 @@
         <item name="android:windowExitAnimation">@anim/popup_hide</item>
     </style>
 
+
+    <style name="Theme_Material_Light_Dialog" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
 </resources>

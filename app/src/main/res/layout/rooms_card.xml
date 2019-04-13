@@ -48,7 +48,7 @@ android:elevation="10dp">
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="113dp"
+                android:layout_width="114dp"
                 android:layout_height="match_parent" android:gravity="bottom|right">
             <Button
                     android:text="Book"

@@ -2,7 +2,6 @@ package com.mustafayusef.holidaymaster
 
 import android.os.Bundle
 import android.view.View
-import android.R.string
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -11,14 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.KotprefModel
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
 import com.mustafayusef.holidaymaster.Auth.auth
-import com.mustafayusef.holidaymaster.Hotels.Rooms
-import com.mustafayusef.holidaymaster.Models.profileAuth
 
 
 import kotlinx.android.synthetic.main.activity_login_member.*
-import kotlinx.android.synthetic.main.activity_show_holiday.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException

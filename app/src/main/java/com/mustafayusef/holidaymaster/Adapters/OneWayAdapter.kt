@@ -10,7 +10,7 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.mustafayusef.holidaymaster.DetailsOne
+import com.mustafayusef.holidaymaster.tickets.DetailsOne
 
 import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
@@ -40,8 +40,10 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
         }
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-//            holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
-//            holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
+            holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.zoom_in))
+            //holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_in_list))
+
+            // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
 
             val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
                       val holidays=holidaysSort?.get(position)

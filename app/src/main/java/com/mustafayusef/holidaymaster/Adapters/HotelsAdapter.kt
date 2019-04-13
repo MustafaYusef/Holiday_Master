@@ -2,10 +2,10 @@ package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 
 import com.mustafayusef.holidaymaster.Hotels.DetailsHotel
@@ -13,10 +13,6 @@ import com.mustafayusef.holidaymaster.Models.hotel
 
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.hotel_card.view.*
-
-
-
-
 
 
 class HotelsAdapter(val context: Context, val HotelsFeed:List<hotel>?) : RecyclerView.Adapter<HotelsAdapter.CustomViewHolder>(){
@@ -39,6 +35,8 @@ class HotelsAdapter(val context: Context, val HotelsFeed:List<hotel>?) : Recycle
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        holder.view. OneContainerHotel.startAnimation(AnimationUtils.loadAnimation(context,R.anim.zoom_in))
+
 //            holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
 //            holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
 

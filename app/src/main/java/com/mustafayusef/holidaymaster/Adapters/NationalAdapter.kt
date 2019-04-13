@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mustafayusef.holidaymaster.Hotels.DetailsHotel
 import com.mustafayusef.holidaymaster.Models.country
-import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.Visa.Visa_Form1
-import kotlinx.android.synthetic.main.hotel_card.view.*
 import kotlinx.android.synthetic.main.visa_card.view.*
 
 class NationalAdapter(val context: Context, val countryFeed:List<country>?) : RecyclerView.Adapter<NationalAdapter.CustomViewHolder>(){

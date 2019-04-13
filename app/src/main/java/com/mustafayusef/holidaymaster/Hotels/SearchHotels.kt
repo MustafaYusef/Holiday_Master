@@ -10,21 +10,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
-import com.google.gson.Gson
-import com.mustafayusef.holidaymaster.Models.AutoCom
 
-import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search_hotels.*
 import java.util.*
-import androidx.core.os.HandlerCompat.postDelayed
 
 import android.os.Handler
+import android.view.inputmethod.InputMethodManager
+import com.google.gson.GsonBuilder
+import com.mustafayusef.holidaymaster.Models.namesContry
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.dashboard
-import com.mustafayusef.holidaymaster.searchActivity
-
+import okhttp3.*
+import java.io.IOException
 
 
 @Suppress("NAME_SHADOWING")
@@ -42,21 +40,23 @@ class SearchHotels : AppCompatActivity() {
     var chAge3=0
     var chAge4=0
     var chAge5=0
+
+    var country= mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_hotels)
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+//        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         //  ratingBar.rating= 2F
         PickersCh.visibility=View.INVISIBLE
 
-        val options = arrayOf(0,1, 2, 3,4,5,6,7,8,9,10)
+        val options = arrayOf(1, 2, 3,4,5,6,7)
 
         // val AdultHot = findViewById(R.id.spinner) as Spinner
         AdultHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options)
         AdultHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // result.text = "Please Select an Option"
-                AdultNo = 0
+                AdultNo = options.get(0)
 
             }
 
@@ -128,39 +128,38 @@ class SearchHotels : AppCompatActivity() {
         }
 
 
+          //var suggest:List<namesContry>?=null
+        CityHotel.isActivated=false
+        RunCountry()
 
-        val suggest: Array<AutoCom>
-        var json: String = ""
-        val objectArrayString: String = context.resources.openRawResource(R.raw.airports)
-            .bufferedReader().use { it.readText() }
+//        val suggest: Array<AutoCom>
+//        var json: String = ""
+//        val objectArrayString: String = context.resources.openRawResource(R.raw.airports)
+//            .bufferedReader().use { it.readText() }
+//
+//        val gson = Gson()
+//        suggest = gson.fromJson(objectArrayString, Array<AutoCom>::class.java)
+//        // println("suggestion\n"+suggest)
+//
+//        var showNames = mutableListOf("")
+//        var short = mutableListOf("")
+//        var names=mutableListOf("")
+//
+//
+//        for (i in suggest) {
+//            showNames.add(i.city+","+i.country)
+//            short.add(i.iata)
+//            names.add(i.city)
+//
+//        }
 
-        val gson = Gson()
-        suggest = gson.fromJson(objectArrayString, Array<AutoCom>::class.java)
-        // println("suggestion\n"+suggest)
-
-        var showNames = mutableListOf("")
-        var short = mutableListOf("")
-        var names=mutableListOf("")
-
-
-        for (i in suggest) {
-            showNames.add(i.city+","+i.country)
-            short.add(i.iata)
-            names.add(i.city)
-
-        }
-
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, showNames)
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, country)
 
         CityHotel.setAdapter(adapter)
-//        CityHotel.setOnFocusChangeListener({ view, b -> if (b) CityHotel.showDropDown() })
-
-
-
 
         CityHotel.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            CityHot= names [showNames.indexOf(parent.getItemAtPosition(position).toString())]
-
+            CityHot= country!![position]
+            closeKeyboard()
             // Display the clicked item using toast
 //            Toast.makeText(applicationContext,"Selected : $selectedItem",Toast.LENGTH_SHORT).show()
         }
@@ -169,7 +168,10 @@ class SearchHotels : AppCompatActivity() {
         CityHotel.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->
             if(b){
-                Handler().postDelayed(Runnable {  CityHotel.showDropDown() }, 100)
+                Handler().postDelayed(Runnable {
+                    //CityHotel.showDropDown()
+                    closeKeyboard()
+                }, 100)
                 // Display the suggestion dropdown on focus
 
             }
@@ -177,6 +179,13 @@ class SearchHotels : AppCompatActivity() {
 
 
 
+    }
+    fun closeKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
  fun checkPicker(){
      if(ChildNo>0){
@@ -398,6 +407,52 @@ var month1=""
     fun backMain(view: View){
         val intent=Intent(this@SearchHotels,dashboard::class.java)
         startActivity(intent)
+    }
+
+    fun RunCountry(){
+        //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
+
+
+
+        val client= OkHttpClient()
+
+
+
+
+        val request = Request.Builder()
+            .url("https://favorite-holiday.herokuapp.com/api/holet/cities")
+
+            .build()
+
+
+            client.newCall(request).enqueue(object : Callback {
+
+                override fun onResponse(call: Call, response: Response){
+                    val body=response.body()?.string()
+                    println(body)
+
+                        val gson= GsonBuilder().create()
+
+                    var Country:List<namesContry> = gson.fromJson(body, Array<namesContry>::class.java).toList()
+                    for(i in 0 until Country!!.size){
+                        country.add( Country!![i].name!!)
+                    }
+
+
+
+
+
+
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+
+                    //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+      CityHotel.isActivated=true
     }
 
 

@@ -18,11 +18,11 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="29dp"
                 android:layout_marginBottom="2dp">
             <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="51dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="46dp"
                     android:layout_height="25dp" app:srcCompat="@drawable/left_arrow"
                     android:id="@+id/jjjjj" android:background="#02D3D3D3"
                     style="@android:style/Widget.DeviceDefault.Light.ImageButton"
@@ -121,13 +121,13 @@
                             android:layout_weight="1" android:paddingLeft="10dp"/>
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent"
-                              android:orientation="vertical" android:layout_height="58dp"
-                              android:gravity="right" android:layout_marginBottom="10dp"
+                              android:orientation="vertical" android:layout_height="121dp"
+                              android:gravity="bottom|right" android:layout_marginBottom="10dp"
                               android:layout_marginTop="10dp">
                     <Button android:layout_width="259dp"
                             android:text="Check out rooms"
                             android:textColor="#fff"
-                            android:background="@drawable/btn" android:layout_height="match_parent"
+                            android:background="@drawable/btn" android:layout_height="59dp"
                             android:onClick="CheckRoom" android:textSize="18sp"/>
                 </LinearLayout>
 

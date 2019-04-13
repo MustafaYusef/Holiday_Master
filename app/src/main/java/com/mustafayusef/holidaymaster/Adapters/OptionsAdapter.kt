@@ -7,15 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Hotels.CheckRooms
-import com.mustafayusef.holidaymaster.Hotels.Options
-import com.mustafayusef.holidaymaster.Models.Option
-import com.mustafayusef.holidaymaster.Models.Room
 import com.mustafayusef.holidaymaster.Models.hotel
 import com.mustafayusef.holidaymaster.R
-import kotlinx.android.synthetic.main.activity_check_rooms.*
-import kotlinx.android.synthetic.main.activity_options.view.*
 import kotlinx.android.synthetic.main.option_card.view.*
-import kotlinx.android.synthetic.main.rooms_card.view.*
 
 class OptionsAdapter(val context: Context, val OptionFeed:hotel?) : RecyclerView.Adapter<OptionsAdapter.CustomViewHolder>() {
 //

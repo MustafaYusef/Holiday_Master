@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         member.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.left_to_right))
         userBrows.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.right_to_left))
-
+        //userBrows.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.shake))
 //        member.animate()
 //            .translationXBy(-700f)
 //            .duration = 2000
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     fun goToLogin (view: View) {
         member.animate()
             .translationXBy(-750f)
-            .duration = 2000
+            .duration = 1200
         Handler().postDelayed({
 
             Handler().postDelayed({
@@ -60,12 +60,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             },10)
-        },1500)
+        },1000)
     }
     fun goToSearch (view:View){
         userBrows.animate()
             .translationXBy(750f)
-            .duration = 2000
+            .duration = 1200
         Handler().postDelayed({
 
             Handler().postDelayed({
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             },10)
-        },1500)
+        },1000)
 
     }
 

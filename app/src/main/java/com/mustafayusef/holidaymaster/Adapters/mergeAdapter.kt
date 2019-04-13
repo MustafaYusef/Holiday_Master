@@ -13,11 +13,11 @@ import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.details_card.view.*
 
 
-class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
+class mergeAdapter(val context: Context,var count: Int, val arrCityName:List<String>,
                         val depCityName:List<String>,val depDateAndTime:List<String>,
                         val arrDateAndTime:List<String>,val airlineLogo:List<String>
                         ,val totalDuration:String,val layOverCity:List<String>,val airlineName:List<String>
-,val flightModel:List<String>) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
+                        ,val flightModel:List<String>) : RecyclerView.Adapter<mergeAdapter.CustomViewHolder>() {
 
 
 
@@ -31,7 +31,8 @@ class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
 
     override fun getItemCount(): Int {
 
-               return arrCityName.size
+            return arrCityName.size
+
 
 
 
@@ -39,30 +40,31 @@ class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
-        val arrCityName = arrCityName.get(position)
-        val depCityName = depCityName.get(position)
-        val depDateAndTime = depDateAndTime.get(position)
-        val airlineLogo = airlineLogo.get(position)
-        val arrDateAndTime = arrDateAndTime.get(position)
+    val arrCityName = arrCityName.get(position)
+    val depCityName = depCityName.get(position)
+    val depDateAndTime = depDateAndTime.get(position)
+    val airlineLogo = airlineLogo.get(position)
+    val arrDateAndTime = arrDateAndTime.get(position)
 
-        val layOverCity=layOverCity.get(position)
-        val airlineName=airlineName.get(position)
-        val flightModel=flightModel.get(position)
-        "2019-03-13T19:35:00"
+    val layOverCity=layOverCity.get(position)
+    val airlineName=airlineName.get(position)
+    val flightModel=flightModel.get(position)
+    "2019-03-13T19:35:00"
 
 
-        holder.view?.FromTo.text="From "+depCityName+" to "+arrCityName
-        holder.view?.depTimeDO .text = depDateAndTime.subSequence(11, depDateAndTime.length-3)
-        holder.view?.arrTimeDO .text = arrDateAndTime.subSequence(11, arrDateAndTime.length-3)
-        holder.view?.durationDO.text=totalDuration
-        holder.view?.AirNameDepDO.text=depCityName
-        holder.view?.LayOver.text="Layover:"+layOverCity
-        holder.view?.FlightModel.text=flightModel
-        holder.view?.AirLineName .text=airlineName
-        holder.view?.airNameArrDO .text=arrCityName
+    holder.view?.FromTo.text="From "+depCityName+" to "+arrCityName
+    holder.view?.depTimeDO .text = depDateAndTime.subSequence(11, depDateAndTime.length-3)
+    holder.view?.arrTimeDO .text = arrDateAndTime.subSequence(11, arrDateAndTime.length-3)
+    holder.view?.durationDO.text=totalDuration
+    holder.view?.AirNameDepDO.text=depCityName
+    holder.view?.LayOver.text="Layover:"+layOverCity
+    holder.view?.FlightModel.text=flightModel
+    holder.view?.AirLineName .text=airlineName
+    holder.view?.airNameArrDO .text=arrCityName
 
-        Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
-            .into(holder.view.LogoAirDO)
+    Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
+        .into(holder.view.LogoAirDO)
+
 
 
 

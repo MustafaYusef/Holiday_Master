@@ -11,8 +11,8 @@ import android.widget.Toast
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.profileAuth
+import com.mustafayusef.holidaymaster.tickets.searchActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
 
@@ -43,7 +43,7 @@ class dashboard : AppCompatActivity() {
     }
     fun  searchFlight(view: View){
         flight.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.fade_in))
-          val intent= Intent(this@dashboard,searchActivity::class.java)
+          val intent= Intent(this@dashboard, searchActivity::class.java)
         startActivity(intent)
     }
     fun verifyAvailableNetwork(activity: AppCompatActivity): Boolean {

@@ -1,19 +1,12 @@
 package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.mustafayusef.holidaymaster.DetailsOne
-import com.mustafayusef.holidaymaster.Models.Room
 import com.mustafayusef.holidaymaster.Models.hotel
-import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
-import kotlinx.android.synthetic.main.onewaycard.view.*
 import kotlinx.android.synthetic.main.rooms_card.view.*
 
 class RoomsAdapter(val context: Context, val RoomFeed:hotel?) : RecyclerView.Adapter<RoomsAdapter.CustomViewHolder>(){

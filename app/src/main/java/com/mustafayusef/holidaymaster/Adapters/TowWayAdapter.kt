@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-import com.mustafayusef.holidaymaster.DetailsTow
+import com.mustafayusef.holidaymaster.tickets.DetailsTow
 import com.mustafayusef.holidaymaster.Models.modelTow
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.cardtowway.view.*
@@ -35,7 +35,7 @@ class TowWayAdapter(val context:Context,  val holidayTowWay:List<modelTow>?): Re
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
        // val holidaysSort=holidayTowWay?.sortedWith(compareBy({ it.price }))
-//        holder.view. TowContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.list_animation))
+        holder.view. TowContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.zoom_in))
 
         val holidays=holidayTowWay?.get(position)
 

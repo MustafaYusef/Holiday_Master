@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".DetailsTow">
+        tools:context=".tickets.DetailsTow">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:orientation="vertical">
         <LinearLayout
@@ -46,14 +46,19 @@
                         android:layout_height="match_parent" android:id="@+id/detailsTowList"
                         android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
                 </androidx.recyclerview.widget.RecyclerView>
-                <TextView android:layout_width="match_parent" android:layout_height="44dp"
-                          android:text="Return" android:textAlignment="center" android:textSize="24sp"
-                          android:textColor="#fff"
-                          android:background="#FF7500" android:gravity="center"/>
-                <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/detailsTowListRet">
-                </androidx.recyclerview.widget.RecyclerView>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+                              android:layout_height="wrap_content">
+                    <TextView android:layout_width="match_parent" android:layout_height="44dp"
+                              android:text="Return" android:textAlignment="center" android:textSize="24sp"
+                              android:textColor="#fff"
+                              android:background="#FF7500" android:gravity="center"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginTop="7dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:id="@+id/detailsTowListRet">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+
             </LinearLayout>
 
 

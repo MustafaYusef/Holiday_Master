@@ -1,21 +1,15 @@
 package com.mustafayusef.holidaymaster.Hotels
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Adapters.RoomsAdapter
 import com.mustafayusef.holidaymaster.LoginMember.cacheObj.ListCost
 import com.mustafayusef.holidaymaster.Models.hotel
-import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.activity_check_rooms.*
 
 
-import android.widget.ArrayAdapter
 import android.view.Gravity
 
 import android.widget.LinearLayout
@@ -23,8 +17,7 @@ import android.widget.LinearLayout
 import android.app.Dialog
 import android.graphics.Point
 import com.mustafayusef.holidaymaster.Adapters.OptionsAdapter
-import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.*
-import kotlinx.android.synthetic.main.bottom_sheet_emp_cov.view.*
+import kotlinx.android.synthetic.main.activity_options.view.*
 
 
 class CheckRooms : AppCompatActivity() {

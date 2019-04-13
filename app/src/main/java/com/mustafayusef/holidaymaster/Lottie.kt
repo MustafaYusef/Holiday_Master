@@ -41,21 +41,23 @@ class Lottie : AppCompatActivity() {
 
                             override fun onResponse(call: Call, response: Response) {
                                 val body=response.body()?.string()
+                                if(body!!.length>40){
+                                    val gson= GsonBuilder().create()
+                                    val AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
 
-                                println(body)
-                                val gson= GsonBuilder().create()
-                                val AuthInfo: profileAuth = gson.fromJson(body, profileAuth::class.java)
-                                if(AuthInfo.sesson!=null){
-                                    val intent = Intent(this@Lottie,dashboard::class.java)
-                                    startActivity(intent)
-                                }else{
-                                    val intent = Intent(this@Lottie,MainActivity::class.java)
-                                    startActivity(intent)
+                                        val intent = Intent(this@Lottie,dashboard::class.java)
+                                        startActivity(intent)
+                                    }else{
+                                        val intent = Intent(this@Lottie,MainActivity::class.java)
+                                        startActivity(intent)
 
 
+                                    }
                                 }
+
+
                                 //println(AuthInfo?.sesson)
-                            }
+
                             override fun onFailure(call: Call, e: IOException) {
                                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
                             }

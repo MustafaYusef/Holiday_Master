@@ -57,15 +57,15 @@
         </activity>
         <activity android:name=".Profile">
         </activity>
-        <activity android:name=".DetailsTow">
+        <activity android:name=".tickets.DetailsTow">
         </activity>
-        <activity android:name=".DetailsOne">
+        <activity android:name=".tickets.DetailsOne">
         </activity>
-        <activity android:name=".showHoliday">
+        <activity android:name=".tickets.showHoliday">
         </activity>
         <activity android:name=".dailogPass">
         </activity>
-        <activity android:name=".searchActivity">
+        <activity android:name=".tickets.searchActivity">
         </activity>
         <activity
                 android:name=".LoginMember"

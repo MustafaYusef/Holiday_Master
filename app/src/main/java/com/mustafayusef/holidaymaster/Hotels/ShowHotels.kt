@@ -8,20 +8,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Adapters.HotelsAdapter
-import com.mustafayusef.holidaymaster.Adapters.TowWayAdapter
 import com.mustafayusef.holidaymaster.Models.hotel
-import com.mustafayusef.holidaymaster.Models.modelTow
-import com.mustafayusef.holidaymaster.R
-import com.mustafayusef.holidaymaster.searchActivity
-import kotlinx.android.synthetic.main.activity_login_member.*
-import kotlinx.android.synthetic.main.activity_show_holiday.*
 import kotlinx.android.synthetic.main.activity_show_hotels.*
 import okhttp3.*
-import org.json.JSONObject
 import java.io.IOException
 import okhttp3.FormBody
-import okhttp3.RequestBody
-
 
 
 class ShowHotels : AppCompatActivity() {
@@ -39,7 +30,8 @@ class ShowHotels : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.mustafayusef.holidaymaster.R.layout.activity_show_hotels)
-
+        animation_view2.playAnimation()
+        animation_view2.speed= 3F
         checkIn=intent.getStringExtra("checkIn")
         checkOut= intent.getStringExtra("checkOut")
         CityHot=intent.getStringExtra("CityHotel").toLowerCase()
@@ -105,14 +97,19 @@ class ShowHotels : AppCompatActivity() {
                         // println(HotelsFeed)
 
                         runOnUiThread {
-                            noResultHot?.text=HotelsFeed?.size.toString()+" Result"
+
+                            noResultHot?.text=HotelsFeed?.size.toString()+" Result Found"
 
                             Hotels_list?.adapter= HotelsAdapter(this@ShowHotels,HotelsFeed)
-
+                            animation_view2.translationZ= 0F
+                            animation_view2.pauseAnimation()
                         }
                     }else{
                         runOnUiThread {
+                            noResultHot?.setTextColor(-0x01ffff)
                             noResultHot?.text="Ther is No result Found"
+                            animation_view2.translationZ= 0F
+                            animation_view2.pauseAnimation()
                         }
                     }
 
