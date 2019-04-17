@@ -3,14 +3,17 @@ package com.mustafayusef.holidaymaster
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.profileAuth
+import com.mustafayusef.holidaymaster.Tours.Tours_main
 import com.mustafayusef.holidaymaster.tickets.searchActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import okhttp3.*
@@ -18,6 +21,7 @@ import java.io.IOException
 
 class dashboard : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.ECLAIR)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -28,6 +32,8 @@ class dashboard : AppCompatActivity() {
 
         visa.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.left_to_right))
         prof.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.right_to_left))
+        Tours.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.left_to_right))
+        groups.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.right_to_left))
     }
     fun  searchHotel(view: View){
         hotel.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.fade_in))
@@ -46,6 +52,16 @@ class dashboard : AppCompatActivity() {
           val intent= Intent(this@dashboard, searchActivity::class.java)
         startActivity(intent)
     }
+    fun  goToTours(view: View){
+        Tours.startAnimation(AnimationUtils.loadAnimation(this@dashboard,R.anim.fade_in))
+        val intent= Intent(this@dashboard, Tours_main::class.java)
+        startActivity(intent)
+    }
+    fun goToGroups(view:View){
+
+    }
+
+
     fun verifyAvailableNetwork(activity: AppCompatActivity): Boolean {
         val connectivityManager = activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
@@ -106,7 +122,7 @@ class dashboard : AppCompatActivity() {
 
         } else {
             Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
-
+           // finish()
         }
 //        val intent= Intent(this@dashboard,Profile::class.java)
 //        startActivity(intent)

@@ -88,7 +88,7 @@ class CheckRooms : AppCompatActivity() {
 //        startActivity(intent)
 
 
-                val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_emp_cov , null)
+                val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_options , null)
 //        val spin1 = view.findViewById(R.id.spin1) as Spinner
 //        val spin2 = view.findViewById(R.id.spin2) as Spinner
 //        val catList = view.findViewById(R.id.listItems) as ListView
@@ -133,7 +133,7 @@ class CheckRooms : AppCompatActivity() {
 
 //    fun openBottomSheet() {
 //
-//        val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_emp_cov , null)
+//        val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_options , null)
 ////        val spin1 = view.findViewById(R.id.spin1) as Spinner
 ////        val spin2 = view.findViewById(R.id.spin2) as Spinner
 ////        val catList = view.findViewById(R.id.listItems) as ListView

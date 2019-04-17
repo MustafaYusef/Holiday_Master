@@ -2,9 +2,13 @@ package com.mustafayusef.holidaymaster.tickets
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mustafayusef.holidaymaster.Adapters.MainAdapter
 import com.mustafayusef.holidaymaster.Adapters.OneDetailsAdapter
 import com.mustafayusef.holidaymaster.Models.modelTow
 
@@ -14,36 +18,44 @@ import com.mustafayusef.holidaymaster.Adapters.mergeAdapter
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.R.layout.*
 import kotlinx.android.synthetic.main.header_ticket.view.*
+import kotlinx.android.synthetic.main.nested.*
 
 
 class DetailsTow : AppCompatActivity() {
     lateinit var holiday: modelTow
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_details_tow)
+        setContentView(nested)
 
         var i:Int=0
         this.holiday = intent.getSerializableExtra("holidaysTow") as modelTow
 
 
+       locationDatesList .layoutManager = LinearLayoutManager(this)
+       val headers= mutableListOf<String>("Departure","Return")
+        // Access RecyclerView Adapter and load the data
+        val adapter = MainAdapter(this@DetailsTow,holiday,headers)
+        locationDatesList.adapter = adapter
+
+        val date = this.findViewById<Button>(R.id.purTow)
+        date.text="Purchase for "+holiday.price+" $"
+
+//        detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
+////        detailsTowList.addItemDecoration(detailsTowList.)
+//        detailsTowList.adapter= mergeAdapter(this@DetailsTow,0, holiday.arrCityName!!,
+//            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
+//            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!
+//            , holiday.flightModel!!)
+//
+//        detailsTowListRet.layoutManager= LinearLayoutManager(this)
+//        detailsTowListRet.adapter= mergeAdapter(this@DetailsTow, holiday.arrCityName!!.size,
+//            holiday.ReturnArrCityName!!,
+//            holiday.ReturnDepCityName!!, holiday.ReturnAepDateAndTime!!, holiday.ReturnArrDateAndTime!!
+//            , holiday.ReturnairlineLogo!!, holiday.ReturnTotalDuration!!, holiday.ReturnLayOverCity!!
+//            , holiday.ReturnAirlineName!!, holiday.ReturnFlightModel!!
+//        )
 
 
-        detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
-//        detailsTowList.addItemDecoration(detailsTowList.)
-        detailsTowList.adapter= mergeAdapter(this@DetailsTow,0, holiday.arrCityName!!,
-            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
-            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!
-            , holiday.flightModel!!)
-
-        detailsTowListRet.layoutManager= LinearLayoutManager(this)
-        detailsTowListRet.adapter= mergeAdapter(this@DetailsTow, holiday.arrCityName!!.size,
-            holiday.ReturnArrCityName!!,
-            holiday.ReturnDepCityName!!, holiday.ReturnAepDateAndTime!!, holiday.ReturnArrDateAndTime!!
-            , holiday.ReturnairlineLogo!!, holiday.ReturnTotalDuration!!, holiday.ReturnLayOverCity!!
-            , holiday.ReturnAirlineName!!, holiday.ReturnFlightModel!!
-        )
-
-        purTow.text="Purchase for "+holiday.price+" $"
 //                detailsTowList.layoutManager= LinearLayoutManager(this)
 ////        detailsTowList.addItemDecoration(detailsTowList.)
 //        val arrCityName = ArrayList<String>()

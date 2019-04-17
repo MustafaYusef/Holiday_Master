@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.lottie.LottieAnimationView
 import com.google.gson.GsonBuilder
 
 
@@ -22,9 +24,9 @@ import java.io.IOException
 
 class showHoliday : AppCompatActivity() {
     var flag:Boolean=true
-    var adult=0
-    var child=0
-    var ifant=0
+    var adult:Int=0
+    var child:Int=0
+    var ifant:Int=0
     var departure=""
     var Return=""
     var type=""
@@ -32,12 +34,12 @@ class showHoliday : AppCompatActivity() {
     var to=""
 
 
-    @SuppressLint("SetTextI18n")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_holiday)
         animation_view.playAnimation()
-        animation_view.speed= 3F
+        animation_view.speed= 2F
 
       println("ddddddddddddddddddddddddddddddddd after animation")
 
@@ -69,7 +71,7 @@ class showHoliday : AppCompatActivity() {
         println("ddddddddddddddddddddddddddddddddd after change economy ")
 
 
-        Holiday_list.layoutManager= LinearLayoutManager(this)
+
         if(flag){
             // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
             println("ddddddddddddddddddddddddddddddddd after check flage one ")
@@ -94,7 +96,15 @@ class showHoliday : AppCompatActivity() {
 
     fun runRequestOne(){
         println("ddddddddddddddddddddddddddddddddd Request one ")
+        println(from)
+        println(to)
+        println(departure)
+        println(adult)
+        println(type)
+        println(child)
+        println(ifant)
        val url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child&Infant=$ifant"
+      println(url)
         val request=Request.Builder().url(url).build()
          val client=OkHttpClient()
 
@@ -113,7 +123,9 @@ class showHoliday : AppCompatActivity() {
                          runOnUiThread {
 
                              noResult?.text=holidayFeed?.size.toString()+" Result Found"
+                             Holiday_list.layoutManager= LinearLayoutManager(this@showHoliday)
                              Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
+                             animation_view.enableMergePathsForKitKatAndAbove(true)
                              animation_view.translationZ= 0F
                              animation_view.pauseAnimation()
                          }
@@ -121,6 +133,7 @@ class showHoliday : AppCompatActivity() {
                          runOnUiThread {
                              noResult?.setTextColor(-0x01ffff)
                              noResult?.text=" There is no result Found"
+                             animation_view.enableMergePathsForKitKatAndAbove(true)
                              animation_view.translationZ= 0F
                              animation_view.pauseAnimation()
                          }
@@ -129,9 +142,12 @@ class showHoliday : AppCompatActivity() {
 
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    val intent=Intent(this@showHoliday, searchActivity::class.java)
-                    startActivity(intent)
-//                   Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+//                    val intent=Intent(this@showHoliday, searchActivity::class.java)
+//                    startActivity(intent)
+                    runOnUiThread {
+                        Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                        runRequestOne()
+                    }
                 }
 
 
@@ -144,8 +160,17 @@ class showHoliday : AppCompatActivity() {
     fun runRequestTow(){
        //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
         println("ddddddddddddddddddddddddddddddddd Request towwwww ")
+        println(from)
+        println(to)
+        println(departure)
+        println(Return)
+        println(adult)
+        println(type)
+        println(child)
+        println(ifant)
 
        val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return&Infant=$ifant"
+        println(url)
         val request=Request.Builder().url(url).build()
         val client=OkHttpClient()
             client.newCall(request).enqueue(object :Callback {
@@ -163,8 +188,9 @@ class showHoliday : AppCompatActivity() {
 
                     runOnUiThread {
                         noResult?.text=holidayFeedTow?.size.toString()+" Result Found"
-
+                        Holiday_list.layoutManager= LinearLayoutManager(this@showHoliday)
                         Holiday_list?.adapter= TowWayAdapter(this@showHoliday,holidayFeedTow)
+                    animation_view.enableMergePathsForKitKatAndAbove(true)
                         animation_view.translationZ= 0F
                         animation_view.pauseAnimation()
                     }
@@ -174,15 +200,21 @@ class showHoliday : AppCompatActivity() {
                             noResult?.setTextColor(-0x01ffff)
 
                             noResult?.text=" There is no result Found"
+                            animation_view.enableMergePathsForKitKatAndAbove(true)
+
                             animation_view.translationZ= 0F
                             animation_view.pauseAnimation()
                         }
                     }}
 
                 override fun onFailure(call: Call, e: IOException) {
-                    val intent=Intent(this@showHoliday, searchActivity::class.java)
-                    startActivity(intent)
-                    //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+//                    val intent=Intent(this@showHoliday, searchActivity::class.java)
+//                    startActivity(intent)
+                    runOnUiThread {
+                        Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                        runRequestTow()
+                    }
+
                 }
 
 
@@ -192,3 +224,5 @@ class showHoliday : AppCompatActivity() {
     }
 
 }
+
+

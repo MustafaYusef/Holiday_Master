@@ -26,6 +26,9 @@ import com.mustafayusef.holidaymaster.Hotels.SearchHotels
 import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import okhttp3.*
+import android.text.InputType
+
+
 
 
 class searchActivity : AppCompatActivity() {
@@ -59,13 +62,13 @@ class searchActivity : AppCompatActivity() {
 
 
         AdultPicker.minValue = 1
-        AdultPicker.maxValue = 10
+        AdultPicker.maxValue = 7
         AdultPicker.wrapSelectorWheel = true
         childPicker.minValue = 0
-        childPicker.maxValue = 10
+        childPicker.maxValue = 5
         childPicker.wrapSelectorWheel = true
         InfantPicker.minValue = 0
-        InfantPicker.maxValue = 10
+        InfantPicker.maxValue = 5
         InfantPicker.wrapSelectorWheel = true
 
 
@@ -73,6 +76,7 @@ class searchActivity : AppCompatActivity() {
 
         button17.isActivated = true
         flage = true
+
         retL.visibility = View.INVISIBLE
 
 
@@ -126,6 +130,8 @@ class searchActivity : AppCompatActivity() {
 
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, names)
 
+
+        fromCity.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         fromCity.setAdapter(adapter)
 
 
@@ -153,6 +159,7 @@ class searchActivity : AppCompatActivity() {
             closeKeyboard()
         }
         to.setAdapter(adapter)
+        to.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         to.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->
             if(b){
@@ -209,7 +216,7 @@ class searchActivity : AppCompatActivity() {
             android.R.style.Theme_Material_Light_Dialog,
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
-                dep.setText("$year-${month+1}-$dayOfMonth")
+                dep.text = "$year-${month+1}-$dayOfMonth"
                 departure = "$year-${month+1}-$dayOfMonth"
             },
             year,
@@ -241,7 +248,7 @@ class searchActivity : AppCompatActivity() {
             android.R.style.Theme_Material_Light_Dialog,
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
-                retun.setText("$year-${month+1}-$dayOfMonth")
+                retun.text = "$year-${month+1}-$dayOfMonth"
                 Return = "$year-${month+1}-$dayOfMonth"
             },
             year,

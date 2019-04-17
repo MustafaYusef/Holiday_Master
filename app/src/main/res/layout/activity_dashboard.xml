@@ -12,17 +12,17 @@
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content" android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="251dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="204dp"
                           android:background="@drawable/dash_scroll" android:orientation="horizontal"
                           android:layout_marginBottom="20dp" android:gravity="top">
-                <ImageView android:layout_width="match_parent" android:layout_height="164dp"
+                <ImageView android:layout_width="match_parent" android:layout_height="123dp"
                            android:src="@drawable/logoplain" android:scaleType="fitCenter"
                            android:layout_marginTop="10dp"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:weightSum="2" android:layout_marginRight="10dp"
+                    android:layout_height="150dp" android:weightSum="2" android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:elevation="10dp" android:layout_marginTop="-70dp">
                 <LinearLayout
@@ -33,7 +33,7 @@
                         android:onClick="searchFlight" android:id="@+id/flight">
                     <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="120dp" app:srcCompat="@drawable/travel"
+                            android:layout_height="100dp" app:srcCompat="@drawable/travel"
                             android:id="@+id/imageView9"/>
                     <TextView
                             android:text="Find your Flight"
@@ -56,7 +56,7 @@
                             android:id="@+id/hotel">
                         <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="120dp" app:srcCompat="@drawable/hotel11"
+                                android:layout_height="100dp" app:srcCompat="@drawable/hotel11"
                                 android:id="@+id/imageView91"/>
                         <TextView
                                 android:text="Find Hotels"
@@ -72,7 +72,7 @@
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:weightSum="2" android:layout_marginLeft="10dp"
+                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp" android:layout_marginTop="10dp">
                 <LinearLayout
                         android:orientation="vertical"
@@ -88,7 +88,7 @@
                             android:id="@+id/visa">
                         <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="120dp" app:srcCompat="@drawable/passport"
+                                android:layout_height="100dp" app:srcCompat="@drawable/passport"
                                 android:id="@+id/immam"/>
                         <TextView
                                 android:text="Find your Visa"
@@ -111,7 +111,7 @@
                             android:id="@+id/prof">
                         <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="120dp" app:srcCompat="@drawable/man"
+                                android:layout_height="100dp" app:srcCompat="@drawable/man"
                                 android:id="@+id/imageView19"/>
                         <TextView
                                 android:text="Show your profile"
@@ -121,6 +121,65 @@
                                 android:gravity="center" android:textSize="16dp"/>
                     </LinearLayout>
                 </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" android:layout_marginTop="10dp" android:gravity="center"
+                    android:layout_marginBottom="10dp">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:elevation="10dp" android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
+                            android:background="@drawable/cardback" android:onClick="goToTours"
+                            android:id="@+id/Tours" android:gravity="center">
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp" app:srcCompat="@drawable/destination"
+                                android:id="@+id/imaaa"/>
+                        <TextView
+                                android:text="Find Tour"
+                                android:layout_width="match_parent"
+                                android:layout_height="31dp" android:id="@+id/tex1tVieaw116"
+                                android:textAlignment="center" android:textColor="@color/colorPrimary"
+                                android:gravity="center" android:textSize="16dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:elevation="10dp" android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
+                            android:background="@drawable/cardback" android:onClick="goToGroups"
+                            android:id="@+id/groups" android:gravity="center">
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp" app:srcCompat="@drawable/destination"
+                                android:id="@+id/im1aaa"/>
+                        <TextView
+                                android:text="Find Tour"
+                                android:layout_width="match_parent"
+                                android:layout_height="31dp" android:id="@+id/tex1t9Vieaw116"
+                                android:textAlignment="center" android:textColor="@color/colorPrimary"
+                                android:gravity="center" android:textSize="16dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
 

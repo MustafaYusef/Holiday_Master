@@ -17,23 +17,6 @@
             app:layout_constraintHorizontal_bias="1.0">
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="79dp"
-                android:layout_height="53dp" android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="54dp"
-                    android:layout_height="match_parent">
-                <ImageButton
-                        android:layout_marginTop="5dp"
-                        android:layout_width="51dp"
-                        android:layout_height="33dp" app:srcCompat="@drawable/left_arrow23"
-                        android:id="@+id/jjjjj" android:background="@drawable/backsearch"
-                        style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelD"
-                        android:scaleType="fitCenter"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="64dp" android:layout_weight="1">
             <LinearLayout
@@ -42,14 +25,13 @@
                     android:layout_height="match_parent" android:weightSum="2">
                 <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Rooms"
                         android:textAlignment="center"
                         android:textSize="20dp"
-                        android:paddingRight="60dp"
                         android:textColor="#fff"
 
-                        android:id="@+id/textView14" android:fontFamily="sans-serif" android:paddingTop="20dp"/>
+                        android:id="@+id/textView14" android:fontFamily="sans-serif" android:gravity="center"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -11,6 +11,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Tours.Select_Tour">
+        </activity>
+        <activity android:name=".Tours.DetailsTour"
+                  android:theme="@style/HotelDTheme">
+        </activity>
+        <activity android:name=".Tours.Tours_main">
+        </activity>
         <activity android:name=".Visa.Visa_Form2">
         </activity>
         <activity android:name=".Visa.Visa_Form1">

@@ -15,7 +15,7 @@
             android:focusable="auto"
             android:filterTouchesWhenObscured="false"
             android:solidColor="#6F499C"
-
+            android:descendantFocusability="blocksDescendants"
             android:background="#6F499C"></NumberPicker>
 
 
