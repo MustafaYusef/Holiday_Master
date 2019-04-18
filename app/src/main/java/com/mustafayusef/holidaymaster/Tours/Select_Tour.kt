@@ -27,6 +27,7 @@ class Select_Tour : AppCompatActivity() {
     var tour: Tours? = null
     var date=""
     var index=0
+    var seat:Double=0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select__tour)
@@ -34,6 +35,7 @@ class Select_Tour : AppCompatActivity() {
         //priceButton.visibility=View.INVISIBLE
         wrap.visibility=View.INVISIBLE
 
+        seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toDouble()
 
         priceAdult.text= tour!!.price!!.toString()+" $"
         priceChild.text= tour!!.priceCh!!.toString()+" $"
@@ -42,10 +44,10 @@ class Select_Tour : AppCompatActivity() {
 
         subAd.setOnClickListener {
             var adnum=adNo.text.toString().toInt()
-            var seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toInt()
+
             if(adNo.text.toString().toInt()>1){
                 adnum--
-                seat--
+                seat++
                 seatsNo.text="Available Seats:"+seat
                 adNo.text=adnum.toString()
                 priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
@@ -56,14 +58,14 @@ class Select_Tour : AppCompatActivity() {
         }
         plusAd.setOnClickListener {
             var adnum=adNo.text.toString().toInt()
-            var seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toInt()
+
 
             if(adNo.text.toString().toInt()<10){
                 adnum++
-                seat++
+                seat--
                 seatsNo.text="Available Seats:"+seat
                 adNo.text=adnum.toString()
-                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
+                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() +tour!!.price!!.toInt()).toString()+" $")
 
             }
 
@@ -73,14 +75,14 @@ class Select_Tour : AppCompatActivity() {
 
         plusCh.setOnClickListener {
             var adnum=chNo.text.toString().toInt()
-            var seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toDouble()
+
 
             if(chNo.text.toString().toInt()<10){
             adnum++
-                seat+=0.5
+                seat-=0.5
             seatsNo.text="Available Seats:"+seat
             chNo.text=adnum.toString()
-                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
+                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() +tour!!.priceCh!!.toInt()).toString()+" $")
 
         }
 
@@ -90,13 +92,13 @@ class Select_Tour : AppCompatActivity() {
 
         subch.setOnClickListener {
             var adnum=chNo.text.toString().toInt()
-            var seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toDouble()
-            if(chNo.text.toString().toInt()>1){
+
+            if(chNo.text.toString().toInt()>0){
                 adnum--
-                seat-=0.5
+                seat+=0.5
                 seatsNo.text="Available Seats:"+seat
                 chNo.text=adnum.toString()
-                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
+                priceButton.text= ((priceButton.text.toString().subSequence(0,priceButton.text.toString().length-2).toString().toInt() -tour!!.priceCh!!.toInt()).toString()+" $")
 
             }
 
