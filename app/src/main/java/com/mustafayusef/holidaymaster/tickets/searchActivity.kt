@@ -27,8 +27,7 @@ import com.mustafayusef.holidaymaster.Models.AutoCom
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import okhttp3.*
 import android.text.InputType
-
-
+import android.view.animation.AnimationUtils
 
 
 class searchActivity : AppCompatActivity() {
@@ -77,7 +76,7 @@ class searchActivity : AppCompatActivity() {
         button17.isActivated = true
         flage = true
 
-        retL.visibility = View.INVISIBLE
+        contRet.visibility = View.INVISIBLE
 
 
 
@@ -216,7 +215,7 @@ class searchActivity : AppCompatActivity() {
             android.R.style.Theme_Material_Light_Dialog,
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
-                dep.text = "$year-${month+1}-$dayOfMonth"
+                depText.text= "$year-${month+1}-$dayOfMonth"
                 departure = "$year-${month+1}-$dayOfMonth"
             },
             year,
@@ -248,7 +247,7 @@ class searchActivity : AppCompatActivity() {
             android.R.style.Theme_Material_Light_Dialog,
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
-                retun.text = "$year-${month+1}-$dayOfMonth"
+                retunText.text = "$year-${month+1}-$dayOfMonth"
                 Return = "$year-${month+1}-$dayOfMonth"
             },
             year,
@@ -269,31 +268,60 @@ class searchActivity : AppCompatActivity() {
 
     fun showHolidys(view: View) {
         if(flage){
-            if(adult!=0&&departure!="" && fromSelect!="" &&toSelect!=""){
-                if (verifyAvailableNetwork(this@searchActivity)) {
-                    val intent = Intent(this@searchActivity, showHoliday::class.java)
 
-                    intent.putExtra("flage", flage)
-                    intent.putExtra("adult", adult)
-                    intent.putExtra("child", child)
-                    intent.putExtra("infant", infant)
-                    intent.putExtra("departure", departure)
-                    intent.putExtra("Return", Return)
-                    intent.putExtra("Type", type)
-                    intent.putExtra("fromSelect", fromSelect)
-                    intent.putExtra("toSelect", toSelect)
+                if(fromSelect!=""){
+                    if(toSelect!=""){
+                        if(departure!=""){
+                        if (verifyAvailableNetwork(this@searchActivity)) {
+                            val intent = Intent(this@searchActivity, showHoliday::class.java)
 
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+                            intent.putExtra("flage", flage)
+                            intent.putExtra("adult", adult)
+                            intent.putExtra("child", child)
+                            intent.putExtra("infant", infant)
+                            intent.putExtra("departure", departure)
+                            intent.putExtra("Return", Return)
+                            intent.putExtra("Type", type)
+                            intent.putExtra("fromSelect", fromSelect)
+                            intent.putExtra("toSelect", toSelect)
+
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+
+                        }
+                        }else{
+
+                            Toast.makeText(applicationContext, "should set a departure date", Toast.LENGTH_SHORT).show()
+                            contDep.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+
+                        }
+                    }else{
+                        to.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+                        to.text.clear()
+                        to.hint="select from List"
+                        to.setHintTextColor(-0x01ffff)
+                        to.highlightColor=-0x01ffff
+                        Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }else{
+                    fromCity.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+                    fromCity.text.clear()
+                    fromCity.hint="select from List"
+                    fromCity.setHintTextColor(-0x01ffff)
+                    fromCity.highlightColor=-0x01ffff
+                    Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
 
                 }
-            }else{
-                Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
 
-            }
+
         }else{
-            if(adult!=0&&departure!="" &&Return!="" && fromSelect!="" &&toSelect!=""){
+            if(fromSelect!=""){
+                if(toSelect!=""){
+                    if(departure!=""){
+            if(Return!=""){
                 if (verifyAvailableNetwork(this@searchActivity)) {
                     val intent = Intent(this@searchActivity, showHoliday::class.java)
 
@@ -313,9 +341,35 @@ class searchActivity : AppCompatActivity() {
 
                 }
             }else{
-                Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "should set a Return date", Toast.LENGTH_SHORT).show()
+                contRet.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+            }
+
+            }else{
+
+                Toast.makeText(applicationContext, "should set a departure date", Toast.LENGTH_SHORT).show()
+                contDep.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
 
             }
+                    }else{
+                        to.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+                        to.text.clear()
+                        to.hint="select from List"
+                        to.setHintTextColor(-0x01ffff)
+                        to.highlightColor=-0x01ffff
+                        Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }else{
+                    fromCity.startAnimation(AnimationUtils.loadAnimation(this@searchActivity,R.anim.shake))
+                    fromCity.text.clear()
+                    fromCity.hint="select from List"
+                    fromCity.setHintTextColor(-0x01ffff)
+                    fromCity.highlightColor=-0x01ffff
+                    Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
+
+                }
         }
 
 
@@ -341,7 +395,7 @@ fun goToHotel(view: View){
         button17.isActivated = true
         button10.isActivated = false
         flage = true
-        retL.visibility = View.INVISIBLE
+        contRet.visibility = View.INVISIBLE
 
     }
 
@@ -350,7 +404,7 @@ fun goToHotel(view: View){
         button17.isActivated = false
 
         flage = false
-        retL.visibility = View.VISIBLE
+        contRet.visibility = View.VISIBLE
 
     }
 

@@ -145,7 +145,7 @@ class showHoliday : AppCompatActivity() {
 //                    val intent=Intent(this@showHoliday, searchActivity::class.java)
 //                    startActivity(intent)
                     runOnUiThread {
-                        Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
                         runRequestOne()
                     }
                 }
@@ -200,7 +200,7 @@ class showHoliday : AppCompatActivity() {
                             noResult?.setTextColor(-0x01ffff)
 
                             noResult?.text=" There is no result Found"
-                            animation_view.enableMergePathsForKitKatAndAbove(true)
+                            //animation_view.enableMergePathsForKitKatAndAbove(true)
 
                             animation_view.translationZ= 0F
                             animation_view.pauseAnimation()
@@ -211,7 +211,7 @@ class showHoliday : AppCompatActivity() {
 //                    val intent=Intent(this@showHoliday, searchActivity::class.java)
 //                    startActivity(intent)
                     runOnUiThread {
-                        Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
                         runRequestTow()
                     }
 

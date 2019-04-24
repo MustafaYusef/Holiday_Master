@@ -36,7 +36,7 @@ class Lottie : AppCompatActivity() {
                         .build()
 
                     val client= OkHttpClient()
-                    try {
+
                         client.newCall(request).enqueue(object : Callback {
 
                             override fun onResponse(call: Call, response: Response) {
@@ -47,9 +47,11 @@ class Lottie : AppCompatActivity() {
 
                                         val intent = Intent(this@Lottie,dashboard::class.java)
                                         startActivity(intent)
+                                    finish()
                                     }else{
                                         val intent = Intent(this@Lottie,MainActivity::class.java)
                                         startActivity(intent)
+                                    finish()
 
 
                                     }
@@ -59,15 +61,15 @@ class Lottie : AppCompatActivity() {
                                 //println(AuthInfo?.sesson)
 
                             override fun onFailure(call: Call, e: IOException) {
-                                Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+                                runOnUiThread {
+                                    Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+
+                                }
                             }
 
 
                         })
-                    }catch (e:Exception){
-                        Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
 
-                    }
 
 
 

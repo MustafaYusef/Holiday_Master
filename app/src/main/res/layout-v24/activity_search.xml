@@ -193,7 +193,7 @@
                         android:popupBackground="#CCFFFFFF"
                         android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:textColorLink="#000" android:layout_marginRight="2dp"
-                        android:inputType="textNoSuggestions|text"/>
+                        android:inputType="textNoSuggestions|text" android:textColorHighlight="@color/colorPrimary"/>
 
                 <AutoCompleteTextView
                         android:layout_width="match_parent"
@@ -215,7 +215,7 @@
             </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:weightSum="2"
@@ -228,8 +228,12 @@
                               android:layout_height="match_parent"
                               android:orientation="horizontal"
                               android:layout_weight="1"
-                              android:layout_marginRight="5dp" android:background="@drawable/btnsearch"
-                              android:paddingLeft="5dp">
+
+                              android:id="@+id/contDep"
+                              android:layout_marginRight="5dp" android:background="@drawable/btnb"
+                              android:paddingLeft="5dp"
+                              android:onClick="funDate"
+                >
                     <ImageView
                             android:layout_width="1dp"
                             android:layout_height="wrap_content"
@@ -238,28 +242,37 @@
                             android:gravity="center"
 
                             android:src="@drawable/ic_calendar"/>
-                    <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:hint="departure"
-                            android:id="@+id/dep"
-                            android:background="@drawable/btnb"
-                            android:layout_weight="1"
+                    <TextView
+
+
+                          android:id="@+id/depText"
+                            android:layout_margin="7dp"
+                            android:background="#6B4AA3"
 
                             android:onClick="funDate"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+
+
                             android:textColor="#fff"
-                            android:textAlignment="textStart" android:selectAllOnFocus="false"
-                            android:text="Departure" android:textStyle="normal"
-                            android:textColorLink="#6F499C" android:paddingLeft="5dp"/>
+
+
+                            android:textSize="16dp"
+                            android:text="Departure Date" android:textStyle="normal"
+                            android:paddingLeft="0dp"/>
                 </LinearLayout>
 
 
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:orientation="horizontal"
+                              android:id="@+id/contRet"
                               android:layout_weight="1"
-                              android:layout_marginLeft="5dp" android:background="@drawable/btnsearch"
-                              android:paddingLeft="5dp" android:id="@+id/retL">
+                              android:onClick="dateRet"
+                              android:layout_marginLeft="5dp" android:background="@drawable/btnb"
+                              android:paddingLeft="5dp" >
                     <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -268,18 +281,19 @@
 
                             android:src="@drawable/ic_calendar" android:id="@+id/imageView3"
                             android:layout_weight="0.5"/>
-                    <Button
+                    <TextView
                             android:layout_weight="3"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="return"
-                            android:onClick="dateRet"
-                            android:background="@drawable/btnb"
+                            android:layout_height="match_parent"
+                           android:gravity="center_vertical"
+                           android:layout_margin="7dp"
+                            android:background="#6B4AA3"
                             android:textColor="#fff"
-                            android:id="@+id/retun"
-
-                            android:text="Return" android:textStyle="normal" android:textAlignment="textStart"
-                            android:paddingLeft="5dp"/>
+                            android:id="@+id/retunText"
+                            android:onClick="dateRet"
+                            android:textSize="16dp"
+                            android:text="Return Date" android:textStyle="normal"
+                            android:paddingLeft="0dp"/>
                 </LinearLayout>
 
 
@@ -355,9 +369,9 @@
                         android:scrollbarStyle="outsideOverlay"
                         android:id="@+id/AdultPicker"
                         android:theme="@style/AppTheme.Picker"
-                        android:solidColor="#6F499C"
+                        android:solidColor="#6B4AA3"
                         android:isScrollContainer="false"
-                        android:background="#6F499C"
+                        android:background="#6B4AA3"
                         android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
                         android:layout_marginLeft="5dp"></NumberPicker>
 
@@ -371,9 +385,9 @@
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
-                              android:solidColor="#6F499C"
+                              android:solidColor="#6B4AA3"
                               android:textDirection="firstStrong"
-                              android:background="#6F499C"
+                              android:background="#6B4AA3"
                               android:layout_marginBottom="5dp" android:layout_marginTop="5dp"></NumberPicker>
 
                 <NumberPicker android:layout_weight="1"
@@ -386,9 +400,9 @@
                               android:focusable="auto"
                               android:theme="@style/AppTheme.Picker"
                               android:filterTouchesWhenObscured="true"
-                              android:solidColor="#6F499C"
+                              android:solidColor="#6B4AA3"
                               android:textDirection="firstStrong"
-                              android:background="#6F499C" android:layout_marginRight="5dp"
+                              android:background="#6B4AA3" android:layout_marginRight="5dp"
                               android:layout_marginBottom="5dp" android:layout_marginTop="5dp"></NumberPicker>
 
 
@@ -453,9 +467,9 @@
                         android:focusable="auto"
                         android:theme="@style/AppTheme.Picker"
                         android:filterTouchesWhenObscured="true"
-                        android:solidColor="#6F499C"
+                        android:solidColor="#6B4AA3"
                         android:textDirection="firstStrong"
-                        android:background="#6F499C" android:layout_marginRight="5dp"
+                        android:background="#6B4AA3" android:layout_marginRight="5dp"
                         android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
                         android:layout_marginLeft="5dp" android:clickable="false" android:longClickable="false"
                         android:overScrollMode="ifContentScrolls"/>
@@ -470,7 +484,7 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="172dp" android:gravity="center|right" android:weightSum="2">
+                android:layout_height="225dp" android:gravity="center|right" android:weightSum="2">
             <Button
                     android:text="Search Flights "
                     android:layout_width="299dp"
