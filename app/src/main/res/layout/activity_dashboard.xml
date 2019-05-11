@@ -169,10 +169,10 @@
                             android:id="@+id/groups" android:gravity="center">
                         <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/destination"
+                                android:layout_height="100dp" app:srcCompat="@drawable/connecting"
                                 android:id="@+id/im1aaa"/>
                         <TextView
-                                android:text="Find Tour"
+                                android:text="Find Group"
                                 android:layout_width="match_parent"
                                 android:layout_height="31dp" android:id="@+id/tex1t9Vieaw116"
                                 android:textAlignment="center" android:textColor="@color/colorPrimary"

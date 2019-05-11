@@ -13,7 +13,7 @@
                   android:orientation="vertical" android:background="@drawable/backsearch">
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="153dp" app:srcCompat="@drawable/user3"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/user3"
                 android:id="@+id/imageView2"
 
                 app:layout_constraintBottom_toTopOf="@+id/UserName" android:layout_gravity="top"

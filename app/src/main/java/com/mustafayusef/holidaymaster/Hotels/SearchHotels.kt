@@ -16,13 +16,16 @@ import kotlinx.android.synthetic.main.activity_search_hotels.*
 import java.util.*
 
 import android.os.Handler
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Models.namesContry
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.dashboard
+import kotlinx.android.synthetic.main.activity_search.*
 import okhttp3.*
 import java.io.IOException
+import kotlin.to
 
 
 @Suppress("NAME_SHADOWING")
@@ -302,7 +305,7 @@ var month1=""
             var day1=""
             var dpd = DatePickerDialog(
                 this,
-                android.R.style.Theme_Material_Light_Dialog,
+
                 DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
                     if(month.toString().length<2){
                         month1=("0"+(month+1))
@@ -339,7 +342,7 @@ var month1=""
         var day1=""
             val dpd = DatePickerDialog(
                 this,
-                android.R.style.Theme_Material_Light_Dialog,
+
                 DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
                     if(month.toString().length<2){
                         month1=("0"+(month+1))
@@ -377,30 +380,41 @@ var month1=""
         chAge[2]=chAge3
         chAge[3]=chAge4
         chAge[4]=chAge5
-        if(AdultNo!=0&&checkIn!="" && checkOut!="" &&CityHot!=""){
-            if (verifyAvailableNetwork(this@SearchHotels)) {
-                val intent=Intent(this@SearchHotels,ShowHotels::class.java)
-                intent.putExtra("checkIn",checkIn)
-                intent.putExtra("checkOut",checkOut)
-                intent.putExtra("CityHotel",CityHot)
-                intent.putExtra("Adult",AdultNo)
-                intent.putExtra("Child",ChildNo)
-                println(chAge)
-                intent.putExtra("chAge1",chAge[0])
-                intent.putExtra("chAge2",chAge[1])
-                intent.putExtra("chAge3",chAge[2])
-                intent.putExtra("chAge4",chAge[3])
-                intent.putExtra("chAge5",chAge[4])
+
+            if(CityHot!=""){
+                if(checkIn!="" && checkOut!="" ){
+                if (verifyAvailableNetwork(this@SearchHotels)) {
+                    val intent=Intent(this@SearchHotels,ShowHotels::class.java)
+                    intent.putExtra("checkIn",checkIn)
+                    intent.putExtra("checkOut",checkOut)
+                    intent.putExtra("CityHotel",CityHot)
+                    intent.putExtra("Adult",AdultNo)
+                    intent.putExtra("Child",ChildNo)
+                    println(chAge)
+                    intent.putExtra("chAge1",chAge[0])
+                    intent.putExtra("chAge2",chAge[1])
+                    intent.putExtra("chAge3",chAge[2])
+                    intent.putExtra("chAge4",chAge[3])
+                    intent.putExtra("chAge5",chAge[4])
 
 
-                startActivity(intent)
-            } else {
-                Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
 
-            }
+                }
+            }else{
+                    Toast.makeText(applicationContext, "should fill checkin and checkout date", Toast.LENGTH_SHORT).show()
+
+                }
+
         }else{
-            Toast.makeText(applicationContext, "should fill all requierd field", Toast.LENGTH_SHORT).show()
-
+                CityHotel.startAnimation(AnimationUtils.loadAnimation(this@SearchHotels,R.anim.shake))
+                CityHotel.text.clear()
+                CityHotel.hint="Select from List"
+                CityHotel.setHintTextColor(-0x01ffff)
+                CityHotel.highlightColor=-0x01ffff
+                Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
         }
 
     }

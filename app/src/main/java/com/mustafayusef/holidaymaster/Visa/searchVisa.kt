@@ -28,8 +28,8 @@ class searchVisa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.mustafayusef.holidaymaster.R.layout.activity_search_visa)
-        animation_view3.playAnimation()
-        animation_view3.speed=4F
+       // animation_view3.translationZ=1F
+
 
         showN.visibility=View.INVISIBLE
         run()
@@ -37,8 +37,9 @@ class searchVisa : AppCompatActivity() {
     }
 
   fun  showVisa(country:String){
+      animation_view3.translationZ=1F
       animation_view3.playAnimation()
-      animation_view3.speed=4F
+     // animation_view3.speed=4F
 //      println("this is method n hhb"+country)
       Visa_list.layoutManager= LinearLayoutManager(this)
 
@@ -145,7 +146,8 @@ class searchVisa : AppCompatActivity() {
         }
 
     fun run(){
-
+        animation_view3.playAnimation()
+        animation_view3.speed=2F
         val request= Request.Builder().url("https://favorite-holiday.herokuapp.com/api/visa/").build()
         val client= OkHttpClient()
         try {
@@ -154,7 +156,7 @@ class searchVisa : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
 
                     val body=response.body()?.string()
-                    if(body!!.length>50){
+                    if(body!!.length>30){
                         //println(body)
                         val gson= GsonBuilder().create()
                         var countryFeed:List<country>?= gson.fromJson(body, Array<country>::class.java).toList()

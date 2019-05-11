@@ -223,7 +223,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
 
-            >
+                    android:layout_weight="1">
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:orientation="horizontal"
@@ -245,7 +245,7 @@
                     <TextView
 
 
-                          android:id="@+id/depText"
+                            android:id="@+id/depText"
                             android:layout_margin="7dp"
                             android:background="#6B4AA3"
 
@@ -272,21 +272,22 @@
                               android:layout_weight="1"
                               android:onClick="dateRet"
                               android:layout_marginLeft="5dp" android:background="@drawable/btnb"
-                              android:paddingLeft="5dp" >
+                              android:paddingLeft="5dp">
                     <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="1dp"
                             android:layout_height="wrap_content"
+
                             android:layout_gravity="center"
                             android:gravity="center"
 
                             android:src="@drawable/ic_calendar" android:id="@+id/imageView3"
                             android:layout_weight="0.5"/>
                     <TextView
-                            android:layout_weight="3"
+                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                           android:gravity="center_vertical"
-                           android:layout_margin="7dp"
+                            android:gravity="center_vertical"
+                            android:layout_margin="7dp"
                             android:background="#6B4AA3"
                             android:textColor="#fff"
                             android:id="@+id/retunText"
@@ -484,11 +485,11 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="225dp" android:gravity="center|right" android:weightSum="2">
+                android:layout_height="187dp" android:gravity="center|right" android:weightSum="2">
             <Button
                     android:text="Search Flights "
                     android:layout_width="299dp"
-                    android:layout_height="64dp" android:id="@+id/button5"
+                    android:layout_height="60dp" android:id="@+id/button5"
                     android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
                     android:onClick="showHolidys" android:textColor="#fff"
                     android:layout_marginBottom="20dp" android:layout_weight="1"/>

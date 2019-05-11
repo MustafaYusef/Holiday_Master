@@ -78,7 +78,9 @@ class Lottie : AppCompatActivity() {
             },4000)
         }else{
             Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
-
+            val intent = Intent(this@Lottie,MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
 

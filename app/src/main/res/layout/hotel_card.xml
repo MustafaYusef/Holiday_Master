@@ -10,13 +10,13 @@
 
         android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:weightSum="2" android:gravity="" android:layout_margin="10dp" android:elevation="5dp"
+        android:weightSum="2" android:gravity="center" android:layout_margin="10dp" android:elevation="5dp"
         android:padding="2dp" android:id="@+id/OneContainerHotel">
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="47dp" android:layout_marginTop="5dp" android:background="@drawable/btnb"
+            android:layout_height="40dp" android:layout_marginTop="5dp" android:background="@drawable/btnb"
             android:gravity="center" android:layout_gravity="center"
             android:layout_marginBottom="0dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
         <ImageButton
@@ -39,13 +39,13 @@
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="218dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical" android:layout_weight="6" android:gravity=""
-            android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+            android:layout_marginTop="10dp" android:layout_marginLeft="2dp" android:layout_marginRight="5dp">
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="213dp">
+                android:layout_height="213dp" android:gravity="center">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="117dp"
@@ -62,45 +62,47 @@
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:gravity="center">
                     <RatingBar
-                            android:layout_width="301dp"
+                            android:layout_width="106dp"
                             android:layout_height="wrap_content"
                             android:progressTint="#F3C90F"
 
-                            android:scaleX="0.5"
-                            android:scaleY="0.5"
+                            android:scaleX="1.4"
+                            android:scaleY="1.4"
                             android:transformPivotX="0dp"
                             android:transformPivotY="0dp"
 
                             android:max="5"
                             android:numStars="5"
-                            android:stepSize="1"
-                            android:rating="5"
+                            android:stepSize="0.5"
+                            android:rating="0"
                             android:id="@+id/ratingBar"
 
                             android:layout_marginEnd="0dp" android:layout_marginBottom="0dp"
-                            android:isIndicator="false"
-                    />
+                            android:isIndicator="true" android:clickable="false"
+                            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                            android:maxHeight="25dp"
+                            android:paddingTop="10dp" android:paddingBottom="20dp" android:layout_marginRight="7dp"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="237dp" android:weightSum="5" android:gravity="left"
+                    android:layout_height="213dp" android:weightSum="5" android:gravity="center"
             >
 
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="103dp" android:weightSum="5" android:layout_weight="1.6">
+                        android:layout_height="103dp" android:weightSum="5" android:layout_weight="1">
                     <TextView
                             android:text='If you land at ataturk airport, this hotel is good but if you land at sabiha gokcen this hotel is too far.The rooms are clean, spacious and air conditioned but avoid rooms overlooking the road. Breakfast is ok. Well served by public transport"'
                             android:layout_width="match_parent"
                             android:layout_height="134dp" android:id="@+id/BodyHotel"
                             android:layout_weight="1" android:textColor="#000"
-                            android:textSize="14sp" android:paddingLeft="3dp"/>
+                            android:textSize="14sp" android:paddingLeft="3dp" android:textAlignment="textStart"/>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="horizontal"
@@ -111,11 +113,11 @@
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="49dp" android:layout_weight="1.6" android:gravity="bottom">
+                        android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent" android:layout_weight="1">
                         <LinearLayout android:layout_width="match_parent"
                                       android:layout_height="wrap_content"
                                       android:orientation="vertical">
@@ -128,19 +130,25 @@
                         </LinearLayout>
                         <LinearLayout android:layout_width="match_parent"
                                       android:layout_height="wrap_content"
-                                      android:orientation="horizontal">
+                                      android:orientation="horizontal"
+                                      android:gravity="right" android:layout_weight="1">
                             <ImageView
                                     android:layout_width="64dp"
-                                    android:layout_height="43dp"
-                                    android:id="@+id/BreakImg" android:layout_gravity="left"/>
+                                    android:layout_height="40dp"
+                                    android:id="@+id/BreakImg"
+                                    android:layout_gravity="center|left" android:layout_weight="1"/>
+                            <Space
+                                    android:layout_width="70dp"
+                                    android:layout_height="match_parent" android:layout_weight="1"/>
                             <Button
                                     android:text="Select"
                                     android:onClick="showHotel"
-                                    android:layout_width="120dp"
+                                    android:layout_width="113dp"
                                     android:layout_height="33dp" android:id="@+id/DetailsHotel"
                                     android:textColor="#fff" android:textSize="18sp"
-                                    android:background="@drawable/btnun" android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="20dp" android:gravity="center"/>
+                                    android:layout_gravity="center|right"
+                                    android:background="@drawable/btnun" android:layout_marginLeft="0dp"
+                                    android:layout_marginRight="5dp" android:gravity="center"/>
                         </LinearLayout>
 
 

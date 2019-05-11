@@ -63,7 +63,26 @@ class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
 
         Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
             .into(holder.view.LogoAirDO)
+        var mN=depDateAndTime.subSequence(6, 7)
+        when(mN){
+            "1"->holder.view?.mounthN.text="Jan"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "2"->holder.view?.mounthN.text="Feb"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "3"->holder.view?.mounthN.text="Mar"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "4"->holder.view?.mounthN.text="April"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "5"->holder.view?.mounthN.text="May"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "6"->holder.view?.mounthN.text="June"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "7"->holder.view?.mounthN.text="July"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "8"->holder.view?.mounthN.text="August"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "9"->holder.view?.mounthN.text="Sep"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "10"->holder.view?.mounthN.text="Oct"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "11"->holder.view?.mounthN.text="Nov"+" "+depDateAndTime.subSequence(8, 10).toString()
+            "12"->holder.view?.mounthN.text="Dec"+" "+depDateAndTime.subSequence(8, 10).toString()
 
+
+
+
+        }
+        holder.view?.mounthN
 
 
 

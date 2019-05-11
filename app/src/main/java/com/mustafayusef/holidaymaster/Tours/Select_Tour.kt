@@ -157,7 +157,7 @@ class Select_Tour : AppCompatActivity() {
         view.ApplayT.setOnClickListener {
             dateTour.text=date
             wrap.visibility=View.VISIBLE
-            seatsNo.text="Available Seats:"+tour!!.Data?.get(index)!!.ToursSets
+            seatsNo.text="Available Seats:"+((tour!!.Data?.get(index)!!.ToursSets)!!.toInt())
             adNo.text="1"
             priceButton.text=tour!!.price.toString()+" $"
             mBottomSheetDialog.dismiss()

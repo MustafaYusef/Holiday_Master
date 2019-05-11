@@ -7,11 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 import com.mustafayusef.holidaymaster.Hotels.DetailsHotel
 import com.mustafayusef.holidaymaster.Models.hotel
 
 import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.cardtowway.view.*
 import kotlinx.android.synthetic.main.hotel_card.view.*
 
 
@@ -62,11 +67,15 @@ class HotelsAdapter(val context: Context, val HotelsFeed:List<hotel>?) : Recycle
         }else{
             holder.view?.BreakImg.setBackgroundResource(R.drawable.bread1)
         }
+        var requestOptions = RequestOptions()
+        requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(10))
+        Glide.with(holder.view).load("https://favorite-holiday.herokuapp.com/"+Hotels.img.toString()).apply(requestOptions).into(holder.view?.HotelImage)
 
 
 
 
-       // Glide.with(context).load(Hotels?.img).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.HotelImage)
+
+        // Glide.with(context).load(Hotels?.img).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.HotelImage)
 
         holder.itemView.DetailsHotel.setOnClickListener{
             val intent = Intent(context, DetailsHotel::class.java)

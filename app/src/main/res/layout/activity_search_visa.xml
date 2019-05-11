@@ -13,7 +13,8 @@
             android:scaleType="centerCrop"
             app:lottie_rawRes="@raw/animation2"
             app:lottie_loop="true"
-            app:lottie_autoPlay="true" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+
+            app:lottie_autoPlay="false" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:foregroundGravity="center" android:translationZ="1dp"

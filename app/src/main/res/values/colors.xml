@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="gry">#D8D4C6</color>
     <color name="my_spinner_text_color">#fff</color>
+    <color name="secondary">#FF7500</color>
 </resources>

@@ -29,23 +29,23 @@
             android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
             android:weightSum="3"
             app:layout_constraintHorizontal_bias="1.0">
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="79dp"
-                android:layout_height="75dp" android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="54dp"
-                    android:layout_height="wrap_content">
-                <ImageButton
-                        android:layout_marginTop="10dp"
-                        android:layout_width="43dp"
-                        android:layout_height="26dp" app:srcCompat="@drawable/left_arrow23"
-                        android:id="@+id/jjjjj" android:background="#6F499C"
-                        style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelSearch"
-                        android:scaleType="fitCenter"/>
-            </LinearLayout>
-        </LinearLayout>
+        <!--<LinearLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="79dp"-->
+                <!--android:layout_height="75dp" android:layout_weight="1">-->
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="54dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="43dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="26dp" app:srcCompat="@drawable/left_arrow23"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/jjjjj" android:background="#6F499C"&ndash;&gt;-->
+                        <!--&lt;!&ndash;style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backHotelSearch"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:scaleType="fitCenter"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--</LinearLayout>-->
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                         android:text="Hotels"
                         android:textAlignment="center"
                         android:textSize="20dp"
-                        android:paddingRight="60dp"
+
                         android:textColor="#fff"
 
                         android:id="@+id/textView14" android:fontFamily="sans-serif" android:paddingTop="16dp"/>
@@ -68,7 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="37dp"
                         android:text="Hotels"
-                        android:textAlignment="textStart"
+                      android:paddingLeft="18dp"
                         android:textColor="#fff"
 
                         android:paddingTop="5dp" android:gravity="bottom"

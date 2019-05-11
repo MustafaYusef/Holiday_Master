@@ -212,7 +212,7 @@ class searchActivity : AppCompatActivity() {
 
         val dpd = DatePickerDialog(
             this,
-            android.R.style.Theme_Material_Light_Dialog,
+
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
                 depText.text= "$year-${month+1}-$dayOfMonth"
@@ -244,7 +244,7 @@ class searchActivity : AppCompatActivity() {
 
         val dpd = DatePickerDialog(
             this,
-            android.R.style.Theme_Material_Light_Dialog,
+
             DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
 
                 retunText.text = "$year-${month+1}-$dayOfMonth"
