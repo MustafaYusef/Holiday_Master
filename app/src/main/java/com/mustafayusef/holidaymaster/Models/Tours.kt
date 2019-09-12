@@ -4,7 +4,7 @@ import java.io.Serializable
 
 
 data class Tours (
-val Data: List<Data>? = null,
+var Data: List<Data>? = null,
 val id: String? = null,
 val name: String? = null,
 val body: String? = null,
@@ -20,5 +20,5 @@ val __v: Long? = null
 data class Data (
     val id: Long? = null,
     val ToursDate: String? = null,
-    val ToursSets: Long? = null
+    var ToursSets: Double? = null
 ):Serializable

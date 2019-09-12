@@ -3,7 +3,6 @@ package com.mustafayusef.holidaymaster.Hotels
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,22 +15,21 @@ import kotlinx.android.synthetic.main.activity_search_hotels.*
 import java.util.*
 
 import android.os.Handler
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Models.namesContry
 import com.mustafayusef.holidaymaster.R
-import com.mustafayusef.holidaymaster.dashboard
-import kotlinx.android.synthetic.main.activity_search.*
 import okhttp3.*
 import java.io.IOException
-import kotlin.to
 
 
-@Suppress("NAME_SHADOWING")
-class SearchHotels : AppCompatActivity() {
+class SearchHotels : Fragment() {
      var chAge= mutableListOf<Int>(0,0,0,0,0)
-    val context: Context = this
+
     var checkIn: String = ""
     var checkOut: String = ""
     var AdultNo: Int = 0
@@ -45,9 +43,17 @@ class SearchHotels : AppCompatActivity() {
     var chAge5=0
 
     var country= mutableListOf<String>()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_hotels)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_search_hotels, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 //        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         //  ratingBar.rating= 2F
         PickersCh.visibility=View.INVISIBLE
@@ -55,7 +61,7 @@ class SearchHotels : AppCompatActivity() {
         val options = arrayOf(1, 2, 3,4,5,6,7)
 
         // val AdultHot = findViewById(R.id.spinner) as Spinner
-        AdultHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options)
+        AdultHot.adapter = ArrayAdapter<Int>(context!!, android.R.layout.simple_list_item_1, options)
         AdultHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // result.text = "Please Select an Option"
@@ -94,7 +100,7 @@ class SearchHotels : AppCompatActivity() {
 
 
         val options1 = arrayOf(0,1, 2, 3,4,5)
-        ChildHot.adapter = ArrayAdapter<Int>(this, android.R.layout.simple_list_item_1, options1)
+        ChildHot.adapter = ArrayAdapter<Int>(context!!, android.R.layout.simple_list_item_1, options1)
         ChildHot.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // result.text = "Please Select an Option"
@@ -156,13 +162,13 @@ class SearchHotels : AppCompatActivity() {
 //
 //        }
 
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, country)
+        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, country)
 
         CityHotel.setAdapter(adapter)
 
         CityHotel.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             CityHot= country!![position]
-            closeKeyboard()
+
             // Display the clicked item using toast
 //            Toast.makeText(applicationContext,"Selected : $selectedItem",Toast.LENGTH_SHORT).show()
         }
@@ -173,23 +179,35 @@ class SearchHotels : AppCompatActivity() {
             if(b){
                 Handler().postDelayed(Runnable {
                     //CityHotel.showDropDown()
-                    closeKeyboard()
                 }, 100)
                 // Display the suggestion dropdown on focus
-
             }
         }
 
 
 
     }
-    fun closeKeyboard() {
-        val view = this.currentFocus
-        if (view != null) {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        checkInB.setOnClickListener {
+            chIn()
+        }
+
+        checkOutB.setOnClickListener {
+            chout()
+        }
+        hotSearch.setOnClickListener {
+            goToHotels()
         }
     }
+//    fun closeKeyboard() {
+//        val view = this.currentFocus
+//        if (view != null) {
+//            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//            imm.hideSoftInputFromWindow(view.windowToken, 0)
+//        }
+//    }
  fun checkPicker(){
      if(ChildNo>0){
          PickersCh.visibility=View.VISIBLE
@@ -296,7 +314,7 @@ class SearchHotels : AppCompatActivity() {
      }
  }
         @SuppressLint("SetTextI18n")
-        fun chIn(view: View) {
+        fun chIn() {
             val c = Calendar.getInstance()
             val day = c.get(Calendar.DAY_OF_MONTH).toInt()
             val month = c.get(Calendar.MONTH)
@@ -304,7 +322,7 @@ class SearchHotels : AppCompatActivity() {
 var month1=""
             var day1=""
             var dpd = DatePickerDialog(
-                this,
+                context!!,
 
                 DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
                     if(month.toString().length<2){
@@ -333,7 +351,7 @@ var month1=""
 
 
     @SuppressLint("SetTextI18n")
-        fun chout(view: View) {
+        fun chout() {
             val c = Calendar.getInstance()
             val day = c.get(Calendar.DAY_OF_MONTH).toInt()
             val month = c.get(Calendar.MONTH)
@@ -341,7 +359,7 @@ var month1=""
         var month1=""
         var day1=""
             val dpd = DatePickerDialog(
-                this,
+                context!!,
 
                 DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
                     if(month.toString().length<2){
@@ -374,7 +392,7 @@ var month1=""
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }
-    fun goToHotels(view:View){
+    fun goToHotels(){
         chAge[0]=chAge1
         chAge[1]=chAge2
         chAge[2]=chAge3
@@ -383,55 +401,42 @@ var month1=""
 
             if(CityHot!=""){
                 if(checkIn!="" && checkOut!="" ){
-                if (verifyAvailableNetwork(this@SearchHotels)) {
-                    val intent=Intent(this@SearchHotels,ShowHotels::class.java)
-                    intent.putExtra("checkIn",checkIn)
-                    intent.putExtra("checkOut",checkOut)
-                    intent.putExtra("CityHotel",CityHot)
-                    intent.putExtra("Adult",AdultNo)
-                    intent.putExtra("Child",ChildNo)
+
+                    val intent=Bundle()
+                    intent.putString("checkIn",checkIn)
+                    intent.putString("checkOut",checkOut)
+                    intent.putString("CityHotel",CityHot)
+                    intent.putInt("Adult",AdultNo)
+                    intent.putInt("Child",ChildNo)
                     println(chAge)
-                    intent.putExtra("chAge1",chAge[0])
-                    intent.putExtra("chAge2",chAge[1])
-                    intent.putExtra("chAge3",chAge[2])
-                    intent.putExtra("chAge4",chAge[3])
-                    intent.putExtra("chAge5",chAge[4])
+                    intent.putInt("chAge1",chAge[0])
+                    intent.putInt("chAge2",chAge[1])
+                    intent.putInt("chAge3",chAge[2])
+                    intent.putInt("chAge4",chAge[3])
+                    intent.putInt("chAge5",chAge[4])
+                   view?.findNavController()?.navigate(R.id.showHotels,intent)
 
+//                    startActivity(intent)
 
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(applicationContext, "There is no Internet connection", Toast.LENGTH_SHORT).show()
-
-                }
             }else{
-                    Toast.makeText(applicationContext, "should fill checkin and checkout date", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "should fill checkin and checkout date", Toast.LENGTH_SHORT).show()
 
                 }
 
         }else{
-                CityHotel.startAnimation(AnimationUtils.loadAnimation(this@SearchHotels,R.anim.shake))
+                CityHotel.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
                 CityHotel.text.clear()
                 CityHotel.hint="Select from List"
                 CityHotel.setHintTextColor(-0x01ffff)
                 CityHotel.highlightColor=-0x01ffff
-                Toast.makeText(applicationContext, "You should select from list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
         }
 
     }
-    fun backMain(view: View){
-        val intent=Intent(this@SearchHotels,dashboard::class.java)
-        startActivity(intent)
-    }
+
 
     fun RunCountry(){
-        //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
-
-
-
         val client= OkHttpClient()
-
-
-
 
         val request = Request.Builder()
             .url("https://favorite-holiday.herokuapp.com/api/holet/cities")

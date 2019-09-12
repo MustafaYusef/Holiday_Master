@@ -10,9 +10,9 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.mustafayusef.holidaymaster.tickets.DetailsOne
+import com.mustafayusef.holidaymaster.Models.Data1
+import com.mustafayusef.holidaymaster.tickets.oneWay.DetailsOne
 
-import com.mustafayusef.holidaymaster.Models.modelOne
 import com.mustafayusef.holidaymaster.R
 
 
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
 
-class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
+class OneWayAdapter(val context:Context,val holidayFeed:List<Data1>?,val SessionId:String?,val adult:Int?) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
 //
 
 
@@ -40,7 +40,7 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
         }
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-            holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.zoom_in))
+            holder.view.OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.zoom_in))
             //holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_in_list))
 
             // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
@@ -48,21 +48,26 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<modelOne>?) : Recyc
             val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
                       val holidays=holidaysSort?.get(position)
 
-                holder.view?.stops.text=holidays?.stops.toString()+" Stops"
-            holder.view?.priceOne .text=holidays?.price+"$"
-            holder.view?.depTime.text= holidays?.depDateAndTime!![0].subSequence(11,holidays.depDateAndTime[0].length-3)
-            holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex].subSequence(11,holidays?.arrDateAndTime[0].length-3)
-            holder.view?.AirNameDep.text=holidays?.departingAirportName[0].subSequence(0,11)
+              //  holder.view?.stops.text=holidays?.stops.toString()+" Stops"
+            holder.view?.priceOne .text=holidays?.price.toString()+"$"
+            holder.view?.depTime.text= holidays?.depDateAndTime!![0]
+            holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex]        //  holder.view?.AirNameDep.text=holidays?.departingAirportName[0].subSequence(0,11)
             holder.view?.duration.text=holidays?.totalDuration
-            holder.view?.airNameArr .text=holidays?.arrAirportName[holidays?.arrAirportName.lastIndex].subSequence(0,11)
-
-
-            Glide.with(context).load(holidays?.logoCover).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.LogoAir)
+            holder.view?.AirNameDep .text=holidays?.depCityName [0]
+            holder.view?.airNameArr .text=holidays?.arrCityName [holidays?.arrDateAndTime.lastIndex]
+            holder.view?.companyNameOne.text=holidays.AirlineName
+            holder.view?.duration .text=holidays.layoverTime[0]
+            holder.view?.stops.text="Stops:"+holidays.stops.toString()
+            Glide.with(context).load(holidays?.mainLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
 
             holder.itemView.Details.setOnClickListener{
                 val intent = Intent(context, DetailsOne::class.java)
-                    intent.putExtra("holidaysTow",holidays)
+                    intent.putExtra("oneway",holidays)
+                intent.putExtra("Id",holidays._id)
+                intent.putExtra("adult",adult)
+                intent.putExtra("sessionId",SessionId)
                 context.startActivity(intent)
+
             }
 
         }

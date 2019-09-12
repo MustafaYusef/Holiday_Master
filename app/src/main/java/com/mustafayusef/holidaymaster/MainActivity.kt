@@ -4,79 +4,99 @@ import android.content.Intent
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.splash.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
-        member.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.left_to_right))
-        userBrows.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.right_to_left))
-        //userBrows.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.shake))
-//        member.animate()
-//            .translationXBy(-700f)
-//            .duration = 2000
-//        userBrows.animate()
-//            .translationXBy(700f)
-//            .duration = 2000
-       // member.animate().scaleX(0.2f).scaleY(0.2f).duration=2000
-//        member.animate()
-//            .translationXBy(500f)
-//            .duration = 3000
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar> (R.id.ToolBar)
+//        view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
+//            if(destination.id == R.id.mainActivity) {
 //
+//                toolbar?.visibility = View.GONE
+//            } else {
+//
+//                toolbar?.visibility = View.VISIBLE
+//            }
+//
+//        }
+
+
+        member.startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
+        userBrows.startAnimation(AnimationUtils.loadAnimation(context,R.anim.right_to_left))
+        member.setOnClickListener {
+            member.animate()
+                .translationXBy(-750f)
+                .duration = 1200
+            Handler().postDelayed({
+
+                Handler().postDelayed({
+
+                    view?.findNavController().navigate(R.id.LoginFragment)
+
+                },10)
+            },1000)
+        }
+        userBrows.setOnClickListener {
+            userBrows.animate()
+                .translationXBy(750f)
+                .duration = 1200
+            Handler().postDelayed({
+
+                Handler().postDelayed({
+
+                    view?.findNavController().navigate(R.id.dashboard2)
+
+                },10)
+            },1000)
+        }
+    }
+
+//    fun goToLogin (view: View) {
 //        userBrows.animate()
-//            .translationXBy(-500f)
-//            .duration = 3000
-
-
+//            .translationXBy(750f)
+//            .duration = 1200
 //        Handler().postDelayed({
 //
 //            Handler().postDelayed({
 //
+//                view?.findNavController().navigate(R.id.dashboard2)
 //
+//            },10)
+//        },1000)
 //
-//            },100)
-//        },2500)
-
-
-    }
-
-    fun goToLogin (view: View) {
-        member.animate()
-            .translationXBy(-750f)
-            .duration = 1200
-        Handler().postDelayed({
-
-            Handler().postDelayed({
-
-                val intent=Intent(this@MainActivity,LoginMember::class.java)
-                startActivity(intent)
-                finish()
-            },10)
-        },1000)
-    }
-    fun goToSearch (view:View){
-        userBrows.animate()
-            .translationXBy(750f)
-            .duration = 1200
-        Handler().postDelayed({
-
-            Handler().postDelayed({
-
-                val intent=Intent(this@MainActivity,dashboard::class.java)
-                startActivity(intent)
-                finish()
-            },10)
-        },1000)
-
-    }
+//    }
+//    fun goToSearch (view:View){
+//        userBrows.animate()
+//            .translationXBy(750f)
+//            .duration = 1200
+//        Handler().postDelayed({
+//
+//            Handler().postDelayed({
+//
+//                view?.findNavController().navigate(R.id.dashboard2)
+//
+//            },10)
+//        },1000)
+//
+//    }
 
 
 }

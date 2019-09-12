@@ -4,21 +4,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mustafayusef.holidaymaster.Models.modelTow
+import com.mustafayusef.holidaymaster.Models.DataTow
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.card_nested.view.*
-import kotlinx.android.synthetic.main.nested.view.*
-import java.text.SimpleDateFormat
 
-class MainAdapter(val context: Context, val holiday: modelTow, val header:List<String>): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(val context: Context, val holiday: DataTow, val header:List<String>): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
 //    val byDates = locationList.groupBy { it["time"] }
 
-    override fun onBindViewHolder(holder: MainAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder:ViewHolder, position: Int) {
         // Update date label
 //        val sdf = SimpleDateFormat("MM/dd/yyyy")
 //        val dateList = byDates.values.toMutableList()
@@ -27,18 +24,18 @@ class MainAdapter(val context: Context, val holiday: modelTow, val header:List<S
 
         holder.rv?.locationList?.layoutManager = LinearLayoutManager(holder.itemView.context)
         if(position==0){
-//                    detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
+
+
+                   // detailsTowList.layoutManager= LinearLayoutManager(this) as RecyclerView.LayoutManager?
 ////        detailsTowList.addItemDecoration(detailsTowList.)
-            holder.rv?.locationList!!.adapter= OneDetailsAdapter(context, holiday.arrCityName!!,
-            holiday.depCityName!!, holiday.depDateAndTime!!, holiday.arrDateAndTime!!
-            , holiday.airlineLogo!!, holiday.totalDuration!!, holiday.layOverCity!!, holiday.airlineName!!
-            , holiday.flightModel!!)
+            holder.rv?.locationList!!.adapter= OneDetailsAdapter(context, holiday.depDateAndTime,
+                holiday.arrDateAndTime,holiday.layoverTime,holiday.depCityName
+                ,holiday.arrCityName,holiday.Duration,holiday.logos,holiday.airNames)
         }else{
-            holder.rv?.locationList!!.adapter= OneDetailsAdapter(context,
-            holiday.ReturnArrCityName!!,
-            holiday.ReturnDepCityName!!, holiday.ReturnAepDateAndTime!!, holiday.ReturnArrDateAndTime!!
-            , holiday.ReturnairlineLogo!!, holiday.ReturnTotalDuration!!, holiday.ReturnLayOverCity!!
-            , holiday.ReturnAirlineName!!, holiday.ReturnFlightModel!!)
+            holder.rv?.locationList!!.adapter= OneDetailsAdapter(context, holiday.return_depDateAndTime,
+                holiday.return_arrDateAndTime,holiday.return_layoverTime,holiday.return_depCityName
+                ,holiday.return_arrCityName,
+                holiday.return_Duration,holiday.return_logos,holiday.return_airNames)
 
         }
         // Access RecyclerView Adapter and load the data

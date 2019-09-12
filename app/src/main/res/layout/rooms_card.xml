@@ -3,58 +3,65 @@
               xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" android:padding="5dp" android:background="@drawable/cardback"
-              android:layout_marginLeft="20dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp"
-              android:layout_marginBottom="10dp"
-android:elevation="10dp">
+              android:elevation="10dp" android:layout_margin="10dp">
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="334dp"
-            android:layout_height="137dp" android:layout_margin="10dp">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="43dp"
-                android:layout_height="135dp" android:background="@drawable/btnb" android:gravity="center">
-            <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="51dp" app:srcCompat="@drawable/name" android:id="@+id/imageView6"/>
-            <ImageView
-                    android:layout_width="33dp"
-                    android:layout_height="49dp" app:srcCompat="@drawable/dollar_symbol"
-                    android:id="@+id/imageView7"/>
-            <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="31dp" app:srcCompat="@drawable/bed" android:id="@+id/imageView8"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_margin="10dp"
+    android:weightSum="2">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="horizontal">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="43dp"
+                    android:layout_height="135dp" android:background="@drawable/btnb" android:gravity="center">
+                <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="51dp" app:srcCompat="@drawable/name" android:id="@+id/imageView6"/>
+                <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="49dp" app:srcCompat="@drawable/dollar_symbol"
+                        android:id="@+id/imageView7"/>
+                <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="31dp" app:srcCompat="@drawable/bed" android:id="@+id/imageView8"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="109dp"
+                    android:layout_height="match_parent" android:layout_marginLeft="10dp" android:weightSum="3">
+                <TextView
+                        android:text="TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/nameRoom" android:layout_weight="1"
+                        android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
+                <TextView
+                        android:text="TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/priceRoom" android:layout_weight="1"
+                        android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
+                <TextView
+                        android:text="TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/bedNo" android:layout_weight="1"
+                        android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
+            </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="109dp"
-                android:layout_height="match_parent" android:layout_marginLeft="10dp" android:weightSum="3">
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/nameRoom" android:layout_weight="1"
-                    android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/priceRoom" android:layout_weight="1"
-                    android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/bedNo" android:layout_weight="1"
-                    android:gravity="center_vertical" android:textSize="16sp" android:textColor="#000"/>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="114dp"
-                android:layout_height="match_parent" android:gravity="bottom|right">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|right"
+        android:layout_weight="1">
             <Button
                     android:text="Book"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
                     android:layout_height="32dp" android:id="@+id/button" android:background="@drawable/btnun"
-                    android:layout_marginBottom="5dp" android:textColor="#fff" android:onClick="showOptions"/>
+                 android:layout_margin="5dp" android:textColor="#fff" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

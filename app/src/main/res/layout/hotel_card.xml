@@ -8,7 +8,7 @@
         android:orientation="vertical"
         android:background="@drawable/cardback"
 
-        android:layout_alignParentEnd="true" android:layout_alignParentStart="true"
+
         android:layout_alignParentTop="true"
         android:weightSum="2" android:gravity="center" android:layout_margin="10dp" android:elevation="5dp"
         android:padding="2dp" android:id="@+id/OneContainerHotel">
@@ -57,7 +57,7 @@
                         android:layout_gravity="left">
                     <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="145dp" android:id="@+id/HotelImage"
+                            android:layout_height="120dp" android:id="@+id/HotelImage"
                             android:src="@drawable/hotel_placeholder" android:scaleType="centerCrop"/>
                 </LinearLayout>
                 <LinearLayout
@@ -102,7 +102,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="134dp" android:id="@+id/BodyHotel"
                             android:layout_weight="1" android:textColor="#000"
-                            android:textSize="14sp" android:paddingLeft="3dp" android:textAlignment="textStart"/>
+                            android:textSize="14sp" android:paddingLeft="3dp"/>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="horizontal"

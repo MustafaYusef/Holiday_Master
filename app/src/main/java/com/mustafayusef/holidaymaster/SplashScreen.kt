@@ -6,6 +6,8 @@ import android.os.Handler
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.splash.*
 
 class SplashScreen : AppCompatActivity() {
@@ -18,6 +20,7 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
+
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         imageSplash.startAnimation(AnimationUtils.loadAnimation(this@SplashScreen,R.anim.splash_in))
 
@@ -25,7 +28,7 @@ class SplashScreen : AppCompatActivity() {
             imageSplash.startAnimation(AnimationUtils.loadAnimation(this@SplashScreen,R.anim.splash_out))
             Handler().postDelayed({
                 imageSplash.visibility = View.GONE
-                val intent=Intent(this@SplashScreen,Lottie::class.java)
+                val intent=Intent(this@SplashScreen,mainNavigation::class.java)
                 startActivity(intent)
                 finish()
             },100)

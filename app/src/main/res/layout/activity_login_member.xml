@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
 
+             tools:context=".login.LoginMember">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        tools:context=".LoginMember" android:background="@color/cardview_light_background"
+       android:background="@color/cardview_light_background"
         android:orientation="vertical">
     <LinearLayout android:layout_width="match_parent" android:layout_height="508dp" android:layout_gravity="top"
                   android:orientation="vertical" android:background="@drawable/backsearch">
@@ -30,7 +37,7 @@
                     android:layout_height="55dp"
                     android:inputType="textPersonName"
                     android:paddingLeft="5dp"
-
+                    android:backgroundTint="#fff"
                     android:id="@+id/UserName" android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_gravity="center"
@@ -51,6 +58,7 @@
                     android:paddingLeft="5dp"
                     android:layout_marginTop="30dp"
                     android:hint="Password"
+                    android:backgroundTint="#fff"
                     android:layout_gravity="center" android:textColor="#fff"
                     android:textColorHint="@color/browser_actions_bg_grey"
                     android:textAlignment="center" android:textColorLink="#fff"/>
@@ -59,17 +67,19 @@
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    <LinearLayout android:layout_width="match_parent" android:layout_height="62dp"
                   android:gravity="right" android:layout_marginTop="-20dp">
 
         <Button
                 android:text="Login"
                 android:layout_width="208dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/button2"
-                android:background="@drawable/btn" android:textSize="24sp" android:onClick="Login"
+                android:id="@+id/logBtn"
+                android:background="@drawable/btn" android:textSize="24sp"
                 android:textColor="#fff"/>
     </LinearLayout>
 </LinearLayout>
+    </ScrollView>
+</FrameLayout>

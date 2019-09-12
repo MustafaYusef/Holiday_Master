@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +7,9 @@
         android:layout_height="match_parent"
         tools:context=".dashboard"
         android:background="#fff">
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
     <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
                   android:layout_height="wrap_content">
 
@@ -30,7 +33,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"
                         android:background="@drawable/cardback" android:layout_marginRight="5dp"
-                        android:onClick="searchFlight" android:id="@+id/flight">
+                        android:id="@+id/flight">
                     <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp" app:srcCompat="@drawable/travel"
@@ -52,7 +55,7 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback" android:onClick="searchHotel"
+                            android:background="@drawable/cardback"
                             android:id="@+id/hotel">
                         <ImageView
                                 android:layout_width="match_parent"
@@ -77,14 +80,15 @@
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:elevation="10dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
                         android:layout_marginRight="5dp"
                 >
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback" android:onClick="searchVisa"
+                            android:background="@drawable/cardback"
                             android:id="@+id/visa">
                         <ImageView
                                 android:layout_width="match_parent"
@@ -107,7 +111,7 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback" android:onClick="showOrofile"
+                            android:background="@drawable/cardback"
                             android:id="@+id/prof">
                         <ImageView
                                 android:layout_width="match_parent"
@@ -141,7 +145,7 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback" android:onClick="goToTours"
+                            android:background="@drawable/cardback"
                             android:id="@+id/Tours" android:gravity="center">
                         <ImageView
                                 android:layout_width="match_parent"
@@ -165,7 +169,8 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback" android:onClick="goToGroups"
+                            android:background="@drawable/cardback"
+
                             android:id="@+id/groups" android:gravity="center">
                         <ImageView
                                 android:layout_width="match_parent"
@@ -188,5 +193,5 @@
 
     </LinearLayout>
 
-
-</ScrollView>
+    </ScrollView>
+</FrameLayout>

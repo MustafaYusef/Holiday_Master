@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".tickets.searchActivity"
+            tools:context=".tickets.searchTicket.searchActivity"
 >
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -13,135 +16,52 @@
             android:orientation="vertical" android:background="@color/cardview_light_background">
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="229dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/backsearch"
 
-                android:padding="10dp"
-                android:paddingRight="0dp" android:paddingLeft="10dp" android:gravity="center">
+                android:gravity="center">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp" android:layout_gravity="center">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="194dp"
-                        android:layout_height="match_parent">
-                    <ImageButton
-                            android:layout_width="40dp"
-                            android:layout_height="25dp" app:srcCompat="@drawable/left_arrow23"
-                            android:id="@+id/btnBack" android:background="#6F499C"
-                            style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="backSearch"
-                            android:layout_weight="1" android:layout_gravity="left" android:scaleType="centerInside"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="171dp"
-                            android:layout_height="match_parent" android:layout_weight="2">
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_height="10dp" android:layout_gravity="center">
+
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:gravity="right">
-                    <ImageButton
-                            android:layout_width="57dp"
-                            android:layout_height="29dp" app:srcCompat="@drawable/user2"
-                            android:id="@+id/imageButton10" android:background="#6F499C"
-                            style="@android:style/Widget.DeviceDefault.Light.ImageButton" android:onClick="profile"
-                            android:scaleType="fitStart" android:layout_gravity="top"/>
+                        android:layout_height="10dp" android:gravity="right">
+
+
                 </LinearLayout>
             </LinearLayout>
             <TextView
                     android:layout_width="221dp"
                     android:layout_height="wrap_content"
                     android:textColor="#ffffff"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     android:layout_marginTop="10dp"
-                    android:textSize="25sp"
-                    android:text="Book your Flight" android:gravity="center"/>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp" android:gravity="center">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                              android:layout_height="match_parent" android:layout_marginRight="20dp">
-                    <ImageView
-                            android:layout_width="42dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_plane"
-                    />
-                    <TextView
-                            android:layout_width="49dp"
-                            android:layout_height="match_parent"
-                            android:text="@string/flight"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="2dp"
-                            android:textColor="#ffffff"
-                            android:layout_marginRight="5dp"/>
-                </LinearLayout>
+                    android:textSize="20sp"
+                    android:text="Book Your Flight" android:gravity="center"/>
 
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                              android:layout_height="match_parent" android:layout_marginRight="20dp">
-                    <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_home"
-                            android:layout_marginLeft="30dp"
-
-                            android:layout_marginStart="0dp"/>
-                    <TextView
-                            android:layout_width="51dp"
-                            android:layout_height="match_parent"
-                            android:text="@string/hotel"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="0dp"
-                            android:textColor="#ffffff"
-                            android:layout_marginStart="2dp" android:textAlignment="center"
-                            android:onClick="goToHotel"/>
-                </LinearLayout>
-
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
-                              android:orientation="horizontal">
-                    <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/visa1"
-                            android:layout_marginLeft="30dp"
-
-                            android:layout_marginStart="0dp" android:layout_marginBottom="4dp"/>
-                    <TextView
-                            android:layout_width="47dp"
-                            android:layout_height="match_parent"
-                            android:text="Visa"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="0dp"
-                            android:textColor="#ffffff"
-                            android:layout_marginStart="2dp" android:textAlignment="center"
-                            android:onClick="goToHotel"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="396dp"
-                    android:layout_height="wrap_content" android:layout_marginTop="20dp" android:paddingBottom="20dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginTop="25dp" android:paddingBottom="20dp">
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:weightSum="3" android:gravity="center">
+                        android:layout_height="44dp" android:weightSum="3" android:gravity="center">
                     <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="129dp"
-                            android:layout_height="match_parent" android:gravity="center|top"
-                            android:layout_weight="0.5">
+                            android:layout_height="match_parent" android:gravity="top"
+                            android:layout_weight="1">
                         <Button
-                                android:text="RoundTrip"
-                                android:layout_width="148dp"
-                                android:layout_height="wrap_content" android:id="@+id/button10"
+                                android:text="Tow Way"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:id="@+id/towWay"
                                 android:layout_weight="0.5" android:background="@drawable/roundone"
-                                android:onClick="TowWay" android:textColor="#fff"/>
+                               android:textColor="#fff" android:layout_marginRight="2dp"/>
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="horizontal"
@@ -149,11 +69,11 @@
                             android:layout_height="match_parent" android:gravity="top" android:layout_weight="1">
                         <Button
                                 android:text="OneWay"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent" android:id="@+id/button17"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:id="@+id/oneWay"
                                 android:layout_weight="0.5" android:background="@drawable/roundone"
-                                android:onClick="Oneway"
-                                android:layout_marginLeft="5dp" android:textColor="#fff"/>
+
+                                android:layout_marginLeft="2dp" android:textColor="#fff"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -169,49 +89,88 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="45dp"
                     android:orientation="horizontal"
                     android:weightSum="2"
                     android:gravity="center"
+
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp" android:layout_marginTop="5dp">
 
-                <AutoCompleteTextView
+                <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="from"
-                        android:id="@+id/fromCity"
-                        android:layout_weight="1"
-
-                        android:textColor="#000"
-
-                        android:textColorHint="@color/cardview_dark_background"
-                        android:completionThreshold="2"
-                        android:popupBackground="#6F499C"
-                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
-                        android:textColorLink="#000" android:layout_marginRight="5dp"/>
-
-                <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#000"
-
-
-                        android:completionThreshold="2"
-                        android:popupBackground="#6F499C"
+                        android:layout_height="match_parent"
+                        android:textColor="#fff"
+                        android:text="From"
+                        android:background="@drawable/btnb"
+                        android:textSize="18sp"
+                       android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                        android:drawablePadding="5dp"
                         android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/to"
-                        android:id="@+id/to"
+                        android:id="@+id/FromBtn"
+                        android:layout_marginRight="5dp"
                         android:textColorHint="@color/cardview_dark_background"
-                        android:textColorLink="#6F499C"/>
+                        android:textColorLink="#6F499C"
+                        android:gravity="left|center"
+                        android:padding="5dp"
+                      />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:text="To"
+                        android:background="@drawable/btnb"
+                        android:textSize="18sp"
+                        android:padding="5dp"
+                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="#fff"
+                        android:id="@+id/toBtn"
+                        />
+
+<!--                <AutoCompleteTextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="From"-->
+<!--                        android:id="@+id/fromCity"-->
+<!--                        android:layout_weight="1"-->
+
+<!--                        android:textColor="#000"-->
+
+<!--                        android:textColorHint="@color/cardview_dark_background"-->
+<!--                        android:completionThreshold="2"-->
+<!--                        android:popupBackground="#CCFFFFFF"-->
+<!--                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"-->
+<!--                        android:textColorLink="#000" android:layout_marginRight="2dp"-->
+<!--                        android:inputType="textNoSuggestions|text" android:textColorHighlight="@color/colorPrimary"/>-->
+
+<!--                <AutoCompleteTextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="2dp"-->
+<!--                        android:textColor="#000"-->
+
+
+<!--                        android:completionThreshold="2"-->
+<!--                        android:popupBackground="#CCFFFFFF"-->
+<!--                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:hint="@string/to"-->
+<!--                        android:id="@+id/to"-->
+<!--                        android:textColorHint="@color/cardview_dark_background"-->
+<!--                        android:textColorLink="#6F499C"-->
+<!--                        android:inputType="textNoSuggestions|text"/>-->
 
             </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:weightSum="2"
@@ -219,62 +178,78 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
 
-            >
+                    android:layout_weight="1">
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:orientation="horizontal"
                               android:layout_weight="1"
+
+                              android:id="@+id/contDep"
                               android:layout_marginRight="5dp" android:background="@drawable/btnb"
-                              android:paddingLeft="5dp">
+                              android:paddingLeft="5dp"
+
+                >
                     <ImageView
-                            android:layout_width="5dp"
-                            android:layout_height="35dp"
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.5"
                             android:layout_gravity="center"
                             android:gravity="center"
 
                             android:src="@drawable/ic_calendar"/>
-                    <Button
+                    <TextView
+
+
+                            android:id="@+id/depText"
+                            android:layout_margin="7dp"
+                            android:background="#6B4AA3"
+
+
+                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:hint="departure"
-                            android:id="@+id/dep"
-                            android:background="@drawable/btnb"
-                            android:layout_weight="1"
+                            android:gravity="center_vertical"
 
-                            android:onClick="funDate"
+
                             android:textColor="#fff"
-                            android:textAlignment="textStart" android:selectAllOnFocus="false"
-                            android:text="Departure" android:textStyle="normal"
-                            android:textColorLink="#6F499C" android:paddingLeft="5dp"/>
+
+
+                            android:textSize="16dp"
+                            android:text="Departure Date" android:textStyle="normal"
+                            android:paddingLeft="0dp"/>
                 </LinearLayout>
 
 
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:orientation="horizontal"
+                              android:id="@+id/contRet"
                               android:layout_weight="1"
+
                               android:layout_marginLeft="5dp" android:background="@drawable/btnb"
                               android:paddingLeft="5dp">
                     <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="34dp"
+                            android:layout_width="1dp"
+                            android:layout_height="wrap_content"
+
                             android:layout_gravity="center"
                             android:gravity="center"
 
-                            android:src="@drawable/ic_calendar" android:id="@+id/imageView3"/>
-                    <Button
-                            android:layout_weight="3"
+                            android:src="@drawable/ic_calendar" android:id="@+id/imageView3"
+                            android:layout_weight="0.5"/>
+                    <TextView
+                            android:layout_weight="1"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="return"
-                            android:onClick="dateRet"
-                            android:background="@drawable/btnb"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_margin="7dp"
+                            android:background="#6B4AA3"
                             android:textColor="#fff"
-                            android:id="@+id/retun"
+                            android:id="@+id/retunText"
 
-                            android:text="Return" android:textStyle="normal" android:textAlignment="textStart"
-                            android:paddingLeft="5dp"/>
+                            android:textSize="16dp"
+                            android:text="Return Date" android:textStyle="normal"
+                            android:paddingLeft="0dp"/>
                 </LinearLayout>
 
 
@@ -284,7 +259,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_marginRight="10dp" android:baselineAligned="false">
 
                 <LinearLayout
                         android:orientation="horizontal"
@@ -296,7 +271,7 @@
                             android:layout_height="38dp" android:id="@+id/textView2"
                             android:layout_weight="1" android:textAlignment="center"
                             android:textColor="#000" android:gravity="center"
-                    />
+                            tools:ignore="NestedWeights"/>
 
 
                     <TextView
@@ -304,14 +279,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="38dp" android:id="@+id/textView6"
                             android:layout_weight="1" android:textAlignment="center"
-                            android:textColor="#000" android:gravity="center"/>
+                            android:textColor="#000" android:gravity="center" android:layout_marginLeft="5dp"/>
 
                     <TextView
                             android:text="infant"
                             android:layout_width="wrap_content"
                             android:layout_height="38dp" android:id="@+id/textView7"
                             android:layout_weight="1" android:textAlignment="center"
-                            android:textColor="#000" android:gravity="center"/>
+                            android:textColor="#000" android:gravity="center" android:layout_marginLeft="5dp"/>
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent"
@@ -330,136 +305,113 @@
             </LinearLayout>
 
 
-                    </LinearLayout>
+        </LinearLayout>
 
-        <LinearLayout android:orientation="horizontal" android:weightSum="2" android:layout_width="wrap_content"
-                      android:layout_height="79dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+        <LinearLayout android:orientation="horizontal" android:weightSum="2" android:layout_width="match_parent"
+                      android:layout_height="117dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
             <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:background="@drawable/btnsearch" android:paddingBottom="4dp" android:paddingTop="4dp">
                 <NumberPicker
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:descendantFocusability="blocksDescendants"
+
                         android:scrollbarStyle="outsideOverlay"
                         android:id="@+id/AdultPicker"
-                        android:solidColor="@color/cardview_light_background"
+                        android:theme="@style/AppTheme.Picker"
+                        android:solidColor="#6B4AA3"
                         android:isScrollContainer="false"
-                        android:background="#6F499C"></NumberPicker>
+                        android:background="#6B4AA3"
+                        android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"></NumberPicker>
 
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/childPicker"
+                              android:descendantFocusability="blocksDescendants"
+
+                              android:theme="@style/AppTheme.Picker"
                               android:layout_height="match_parent"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
                               android:filterTouchesWhenObscured="true"
-                              android:solidColor="@color/cardview_light_background"
+                              android:solidColor="#6B4AA3"
                               android:textDirection="firstStrong"
-                              android:background="#6F499C"
-                ></NumberPicker>
+                              android:background="#6B4AA3"
+                              android:layout_marginBottom="5dp" android:layout_marginTop="5dp"/>
 
                 <NumberPicker android:layout_weight="1"
                               android:layout_width="match_parent"
                               android:id="@+id/InfantPicker"
+                              android:descendantFocusability="blocksDescendants"
+
                               android:layout_height="match_parent"
                               android:scrollbarStyle="outsideOverlay"
                               android:focusable="auto"
+                              android:theme="@style/AppTheme.Picker"
                               android:filterTouchesWhenObscured="true"
-                              android:solidColor="@color/cardview_light_background"
-                              android:textDirection="firstStrong"
-                              android:background="#6F499C"></NumberPicker>
+                              android:solidColor="#6B4AA3"
 
+                              android:background="#6B4AA3" android:layout_marginRight="5dp"
+                              android:layout_marginBottom="5dp" android:layout_marginTop="5dp"/>
 
-                <!--&lt;!&ndash;<NumberPicker android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:scrollbarStyle="outsideOverlay"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/InfantPicker"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:solidColor="@color/cardview_light_background"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:scrollbarAlwaysDrawHorizontalTrack="false"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:background="#6F499C"></NumberPicker>&ndash;&gt; -->
 
             </LinearLayout>
-            <!--<LinearLayout-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="178dp"-->
-            <!--android:layout_height="match_parent">-->
-
-            <!--<NumberPicker android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:scrollbarStyle="outsideOverlay"-->
-            <!--android:id="@+id/AdultPicker"-->
-            <!--android:solidColor="@color/cardview_light_background"-->
-            <!--android:isScrollContainer="false"-->
-            <!--android:background="#6F499C"></NumberPicker>-->
-
-            <!--<NumberPicker android:layout_width="match_parent"-->
-            <!--android:id="@+id/childPicker"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:scrollbarStyle="outsideOverlay"-->
-            <!--android:focusable="auto"-->
-            <!--android:filterTouchesWhenObscured="true"-->
-            <!--android:solidColor="@color/cardview_light_background"-->
-            <!--android:textDirection="firstStrong"-->
-            <!--android:background="#6F499C"></NumberPicker>-->
-
-
-            <!--<NumberPicker android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:scrollbarStyle="outsideOverlay"-->
-            <!--android:id="@+id/InfantPicker"-->
-            <!--android:solidColor="@color/cardview_light_background"-->
-            <!--android:scrollbarAlwaysDrawHorizontalTrack="false"-->
-            <!--android:background="#6F499C"></NumberPicker>-->
-            <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
 
 
             <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="183dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-                <Spinner
+                    android:layout_marginRight="5dp" android:layout_weight="1"
+                    android:background="@drawable/btnsearch">
+                <NumberPicker
+                        android:id="@+id/TypePicker"
                         android:layout_width="match_parent"
-                        android:layout_height="69dp" android:id="@+id/spinner"
-                        android:animateLayoutChanges="true"
-                        android:background="@drawable/spinner"
-                        android:popupBackground="@drawable/spinner" android:isScrollContainer="true"
-                        android:layout_marginLeft="5dp" android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"/>
+                        android:descendantFocusability="blocksDescendants"
+                        android:layout_height="match_parent"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:defaultFocusHighlightEnabled="true"
+                        android:focusable="auto"
+                        android:theme="@style/AppTheme.Picker"
+                        android:filterTouchesWhenObscured="true"
+                        android:solidColor="#6B4AA3"
+                        android:textDirection="firstStrong"
+                        android:background="#6B4AA3" android:layout_marginRight="5dp"
+                        android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                        android:layout_marginLeft="5dp" android:clickable="false" android:longClickable="false"
+                        android:overScrollMode="ifContentScrolls"/>
             </LinearLayout>
+        </LinearLayout>
+
+
+        <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" android:gravity="right" android:layout_gravity="bottom">-->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="187dp" android:gravity="center|right" android:weightSum="2">
+            <Button
+                    android:text="Search Flights "
+                    android:layout_width="299dp"
+                    android:layout_height="65dp" android:id="@+id/showHoliday"
+                    android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
+                     android:textColor="#fff"
+                    android:layout_marginBottom="20dp" android:layout_weight="1"/>
         </LinearLayout>
 
 
 
 
 
-
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="93dp" android:gravity="right">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" android:gravity="bottom|right">
-                    <Button
-                            android:text="Search Flights "
-                            android:layout_width="351dp"
-                            android:layout_height="69dp" android:id="@+id/button5" android:layout_weight="1"
-                            android:textSize="20sp" android:textStyle="normal" android:background="@drawable/btn"
-                            android:onClick="showHolidys" android:textColor="#fff"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-
     </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</FrameLayout>

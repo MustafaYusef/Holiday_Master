@@ -35,25 +35,33 @@
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="1dp"
                   android:background="#000"
-                  android:layout_marginBottom="7dp" android:layout_marginEnd="7dp"
-                  android:layout_marginLeft="7dp" android:layout_marginRight="7dp"
-                  android:layout_marginStart="7dp" android:layout_marginTop="12dp"></LinearLayout>
+
+                  android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="3dp"
+                android:layout_marginTop="10dp"></LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
+
+            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp" android:gravity="right">
+            android:layout_height="wrap_content" android:gravity="center">
         <Button
                 android:text="Read more"
                 android:layout_width="120dp"
-                android:layout_height="match_parent" android:id="@+id/readMore" android:background="@drawable/btnun"
-                android:layout_marginBottom="5dp" android:textColor="#fff"
-                android:layout_marginRight="10dp" android:onClick="readTour"/>
+                android:layout_marginRight="5dp"
+                android:layout_height="40dp"
+                android:id="@+id/readMore"
+                android:background="@drawable/check"
+                android:textColor="#fff"
+                 android:onClick="readTour"/>
         <Button
                 android:text="Select"
                 android:layout_width="120dp"
-                android:layout_height="match_parent" android:id="@+id/SelectTour" android:background="@drawable/btnb"
-                android:layout_marginBottom="5dp" android:textColor="#fff"
-                android:layout_marginRight="10dp" android:onClick="selectTour"/>
+                android:layout_marginLeft="5dp"
+                android:layout_height="40dp" android:id="@+id/SelectTour" android:background="@drawable/uncheck"
+                android:textColor="#fff"
+                 android:onClick="selectTour"/>
 
     </LinearLayout>
 </LinearLayout>

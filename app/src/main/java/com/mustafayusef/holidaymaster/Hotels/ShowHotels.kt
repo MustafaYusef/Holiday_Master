@@ -1,21 +1,50 @@
 package com.mustafayusef.holidaymaster.Hotels
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Adapters.HotelsAdapter
+import com.mustafayusef.holidaymaster.Models.group
 import com.mustafayusef.holidaymaster.Models.hotel
+import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.login.LoginViewModel
+import com.mustafayusef.holidaymaster.login.LoginViewModelFactory
+import com.mustafayusef.holidaymaster.networks.myApis
+import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_show_hotels.*
 import okhttp3.*
 import java.io.IOException
 import okhttp3.FormBody
 
 
-class ShowHotels : AppCompatActivity() {
+class ShowHotels : Fragment(),lesener {
+    override fun OnStart() {
+        animation_viewHotel?.visibility=View.VISIBLE
+        animation_viewHotel?.playAnimation()
+    }
+
+    override fun onFailer(message: String) {
+        animation_viewHotel?.visibility=View.GONE
+        animation_viewHotel?.pauseAnimation()
+        noResultHot?.text="no Result found"
+    }
+
+    override fun onSucsess(Response: List<hotel>) {
+        Hotels_list?.layoutManager= LinearLayoutManager(context)
+        Hotels_list?.adapter= HotelsAdapter(context!!,Response)
+        animation_viewHotel?.visibility=View.GONE
+        animation_viewHotel?.pauseAnimation()
+        noResultHot?.text=Response?.size.toString()+" Result found"
+    }
+
     var checkIn: String = ""
     var checkOut: String = ""
     var AdultNo: Int = 0
@@ -27,108 +56,50 @@ class ShowHotels : AppCompatActivity() {
     var chAge4:Int=0
     var chAge5:Int=0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(com.mustafayusef.holidaymaster.R.layout.activity_show_hotels)
-        animation_view2.playAnimation()
-        animation_view2.speed= 3F
-        checkIn=intent.getStringExtra("checkIn")
-        checkOut= intent.getStringExtra("checkOut")
-        CityHot=intent.getStringExtra("CityHotel").toLowerCase()
-        AdultNo=intent.getIntExtra("Adult",0)
-        ChildNo=intent.getIntExtra("Child",0)
-       chAge1=intent.getIntExtra("chAge1",0)
-        chAge2=intent.getIntExtra("chAge2",0)
-        chAge3=intent.getIntExtra("chAge3",0)
-        chAge4=intent.getIntExtra("chAge4",0)
-        chAge5=intent.getIntExtra("chAge5",0)
+    var hotelsViewModel:HotelsViewModel?=null
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_show_hotels, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+        checkIn=arguments?.getString("checkIn")!!
+        checkOut= arguments?.getString("checkOut")!!
+        CityHot=arguments!!.getString("CityHotel")!!.toLowerCase()
+        AdultNo=arguments!!.getInt("Adult")
+        ChildNo=arguments!!.getInt("Child")
+       chAge1=arguments!!.getInt("chAge1")
+        chAge2=arguments!!.getInt("chAge2")
+        chAge3=arguments!!.getInt("chAge3")
+        chAge4=arguments!!.getInt("chAge4")
+        chAge5=arguments!!.getInt("chAge5")
 
         CityDateHot.text=CityHot+"   "+checkIn+"   "+checkOut+"  "+AdultNo+"Adult  "+ChildNo+"Child"
 
+        val networkIntercepter= networkIntercepter(context!!)
+        val api= myApis(networkIntercepter)
+        val repostary= userRepostary(api)
+        val factory= hotelViewModelFactory(repostary)
+        hotelsViewModel = ViewModelProviders.of(this,factory).get(HotelsViewModel::class.java)
+        hotelsViewModel?.dataLesener=this
 
-
-
+        hotelsViewModel!!.GetHotels( checkIn,
+                checkOut,
+         AdultNo.toString(),
+         ChildNo.toString(),
+         CityHot,
+         chAge1.toString(),
+         chAge2.toString(),
+         chAge3.toString(),
+         chAge4.toString(),
+         chAge5.toString())
        // val url:String="https://favorite-holiday.herokuapp.com/api/holet/all?adt=$AdultNo&in=$checkIn&infint=$InfantNo&ch=$ChildNo&out=$checkOut&city=$CityHot"
-        runRequest()
-    }
-    fun backHotelSearch(view: View){
-        val intent=Intent(this@ShowHotels,SearchHotels::class.java)
-        startActivity(intent)
-    }
-    fun runRequest(){
-        //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
-        Hotels_list.layoutManager= LinearLayoutManager(this)
-
-
-        val client=OkHttpClient()
-
-        val body = FormBody.Builder()
-            .add("in",checkIn)
-            .add("out",checkOut)
-            .add("adt",AdultNo.toString())
-            .add("ch",ChildNo.toString())
-            .add("city",CityHot)
-            .add("chAge1",chAge1.toString())
-            .add("chAge2",chAge2.toString())
-            .add("chAge3",chAge3.toString())
-            .add("chAge4",chAge4.toString())
-            .add("chAge5",chAge5.toString())
-
-
-            .build()
-
-
-        val request = Request.Builder()
-            .url("https://favorite-holiday.herokuapp.com/api/holet/all/v2")
-            .post(body)
-            .build()
-
-        try {
-            client.newCall(request).enqueue(object : Callback {
-
-                override fun onResponse(call: Call, response: Response) {
-                    val body=response.body()?.string()
-                    println(body)
-                    if(body!!.length>50){
-                        val gson= GsonBuilder().create()
-
-                        val HotelsFeed:List<hotel> = gson.fromJson(body, Array<hotel>::class.java).toList()
-
-                        // println(HotelsFeed)
-
-                        runOnUiThread {
-
-                            noResultHot?.text=HotelsFeed?.size.toString()+" Result Found"
-
-                            Hotels_list?.adapter= HotelsAdapter(this@ShowHotels,HotelsFeed)
-                            animation_view2.translationZ= 0F
-                            animation_view2.pauseAnimation()
-                        }
-                    }else{
-                        runOnUiThread {
-                            noResultHot?.setTextColor(-0x01ffff)
-                            noResultHot?.text="Ther is No result Found"
-                            animation_view2.translationZ= 0F
-                            animation_view2.pauseAnimation()
-                        }
-                    }
-
-                }
-
-                override fun onFailure(call: Call, e: IOException) {
-                    val intent=Intent(this@ShowHotels, ShowHotels::class.java)
-                    noResultHot.text="there is no result"
-                    startActivity(intent)
-                    //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-                }
-
-
-            })
-        }catch (e:Exception){
-
-            Toast.makeText(applicationContext, "something Wrong", Toast.LENGTH_SHORT).show()
-
-        }
 
     }
 

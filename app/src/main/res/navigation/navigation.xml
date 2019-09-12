@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
+            app:startDestination="@id/lottie2">
+
+    <fragment android:id="@+id/dashboard2" android:name="com.mustafayusef.holidaymaster.dashboard"
+              android:label="activity_dashboard" tools:layout="@layout/activity_dashboard">
+        <action android:id="@+id/dashToSearchTecket" app:destination="@id/searchActivity"/>
+        <action android:id="@+id/dashToSearchHotel" app:destination="@id/searchHotels"/>
+        <action
+                android:id="@+id/dashToSearchVisa"
+                app:destination="@id/searchVisa"
+                app:popUpTo="@+id/dashboard2" />
+        <action
+                android:id="@+id/fromDashToGroup"
+                app:destination="@id/main_group"
+                app:popUpTo="@+id/dashboard2" />
+        <action
+                android:id="@+id/fromDashToTour"
+                app:destination="@id/tours_main"
+                app:popUpTo="@+id/dashboard2" />
+        <action
+                android:id="@+id/fromDashToProfile"
+                app:destination="@id/profile"
+                app:popUpTo="@+id/dashboard2" />
+    </fragment>
+    <fragment android:id="@+id/searchActivity"
+              android:name="com.mustafayusef.holidaymaster.tickets.searchTicket.searchActivity"
+              android:label="activity_search" tools:layout="@layout/activity_search">
+        <action android:id="@+id/searchTecketToShow" app:destination="@id/showHoliday"/>
+    </fragment>
+    <fragment android:id="@+id/showHoliday" android:name="com.mustafayusef.holidaymaster.tickets.showHoliday"
+              android:label="showHoliday"/>
+    <fragment android:id="@+id/searchHotels" android:name="com.mustafayusef.holidaymaster.Hotels.SearchHotels"
+              android:label="activity_search_hotels" tools:layout="@layout/activity_search_hotels">
+        <action android:id="@+id/searchHotelToShow" app:destination="@id/showHotels"/>
+    </fragment>
+    <fragment android:id="@+id/showHotels" android:name="com.mustafayusef.holidaymaster.Hotels.ShowHotels"
+              android:label="activity_show_hotels" tools:layout="@layout/activity_show_hotels"/>
+    <fragment android:id="@+id/searchVisa" android:name="com.mustafayusef.holidaymaster.Visa.searchVisa"
+              android:label="activity_search_visa" tools:layout="@layout/activity_search_visa">
+        <action android:id="@+id/fromVisaToFormOne" app:destination="@id/formOne"/>
+    </fragment>
+    <fragment android:id="@+id/formOne" android:name="com.mustafayusef.holidaymaster.Visa.formOne"
+              android:label="fragment_form_one" tools:layout="@layout/fragment_form_one"/>
+    <fragment android:id="@+id/main_group" android:name="com.mustafayusef.holidaymaster.Groups.main_group"
+              android:label="activity_main_group" tools:layout="@layout/activity_main_group">
+        <action android:id="@+id/fromGroupToSelect" app:destination="@id/select_group"/>
+        <action android:id="@+id/fromGroupToDetails" app:destination="@id/details_group"/>
+    </fragment>
+    <fragment android:id="@+id/details_group" android:name="com.mustafayusef.holidaymaster.Groups.details_group"
+              android:label="activity_details_group" tools:layout="@layout/activity_details_group"/>
+    <fragment android:id="@+id/select_group" android:name="com.mustafayusef.holidaymaster.Groups.BookGroup.select_group"
+              android:label="activity_select_group" tools:layout="@layout/activity_select_group">
+        <action
+                android:id="@+id/action_select_group_to_bookForm"
+                app:destination="@id/bookForm" />
+    </fragment>
+    <fragment android:id="@+id/tours_main" android:name="com.mustafayusef.holidaymaster.Tours.Tours_main"
+              android:label="activity_tours" tools:layout="@layout/activity_tours">
+        <action android:id="@+id/fromToursToDetails" app:destination="@id/detailsTour"/>
+        <action android:id="@+id/fromTourToSelect" app:destination="@id/select_Tour"/>
+    </fragment>
+    <fragment android:id="@+id/detailsTour" android:name="com.mustafayusef.holidaymaster.Tours.DetailsTour"
+              android:label="activity_details_tour" tools:layout="@layout/activity_details_tour"/>
+    <fragment android:id="@+id/select_Tour" android:name="com.mustafayusef.holidaymaster.Tours.bookTours.Select_Tour"
+              android:label="activity_select__tour" tools:layout="@layout/activity_select__tour"/>
+    <fragment android:id="@+id/profile" android:name="com.mustafayusef.holidaymaster.login.profile.Profile"
+              android:label="activity_profile" tools:layout="@layout/activity_profile"/>
+    <fragment android:id="@+id/LoginFragment" android:name="com.mustafayusef.holidaymaster.login.LoginMember"
+              android:label="activity_login_member" tools:layout="@layout/activity_login_member"/>
+    <fragment android:id="@+id/mainActivity" android:name="com.mustafayusef.holidaymaster.MainActivity"
+              android:label="activity_main" tools:layout="@layout/activity_main"/>
+    <fragment android:id="@+id/lottie2" android:name="com.mustafayusef.holidaymaster.Lottie"
+              android:label="activity_lottie" tools:layout="@layout/activity_lottie"/>
+    <fragment
+            android:id="@+id/bookForm"
+            android:name="com.mustafayusef.holidaymaster.Tours.bookTours.BookForm"
+            android:label="book_form_fragment"
+            tools:layout="@layout/book_form_fragment" />
+    <fragment
+            android:id="@+id/groupBook"
+            android:name="com.mustafayusef.holidaymaster.Groups.groupBook"
+            android:label="group_book_fragment"
+            tools:layout="@layout/group_book_fragment" />
+</navigation>

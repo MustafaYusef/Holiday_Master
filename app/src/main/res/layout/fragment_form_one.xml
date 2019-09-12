@@ -1,135 +1,546 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".Visa.formOne">
+<LinearLayout
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
 android:id="@+id/frag_one">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="478dp"
-                  android:orientation="vertical" android:padding="10dp" android:background="#fff"
-                  android:layout_marginTop="10dp" android:id="@+id/frag1">
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:layout_marginBottom="-15dp" android:translationZ="1dp">
-            <TextView
-                    android:text="Personal info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView17"
-                    android:textColor="@color/colorPrimary" android:textSize="20sp"
-                    android:layout_marginLeft="30dp" android:background="#fff"/>
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="441dp"
-                      android:orientation="vertical" android:background="@drawable/back_form_visa"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginRight="5dp" android:paddingTop="20dp" android:paddingLeft="20dp"
-                      android:paddingRight="15dp">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <LinearLayout
+            android:id="@+id/frag1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/back_form_visa"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="15dp">
 
             <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
                         android:text="First Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView18"
                         android:textColor="#000"
-                        android:textSize="20sp" android:layout_marginLeft="10dp" android:gravity="center_vertical"
-                        android:layout_marginTop="10dp" android:layout_marginBottom="10dp"/>
+                        android:textSize="20sp" />
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/firstNameV"
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:hint="First Name" android:background="@drawable/edittext"
-                        android:paddingTop="5dp" android:paddingBottom="5dp"
-                        android:paddingLeft="5dp" android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" android:id="@+id/firstName"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edittext"
+                        android:hint="First Name"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
 
             </LinearLayout>
+
             <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                 <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
                         android:text="Last Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView19"
                         android:textColor="#000"
-                        android:textSize="20sp" android:layout_marginLeft="10dp" android:gravity="center_vertical"
-                        android:layout_marginTop="10dp" android:layout_marginBottom="10dp"/>
+                        android:textSize="20sp" />
+
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lastNameV"
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:hint="Last Name" android:background="@drawable/edittext"
-                        android:paddingTop="5dp" android:paddingBottom="5dp"
-                        android:paddingLeft="5dp" android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" android:id="@+id/lastName"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edittext"
+                        android:hint="Last Name"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
             </LinearLayout>
 
             <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                 <TextView
-                        android:text="Nationality"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView20"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Nationality"
                         android:textColor="#000"
-                        android:textSize="20sp" android:layout_marginLeft="10dp" android:gravity="center_vertical"
-                        android:layout_marginTop="10dp" android:layout_marginBottom="10dp"/>
+                        android:textSize="20sp" />
+
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nationalityV"
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:hint="Nationality" android:background="@drawable/edittext"
-                        android:paddingTop="5dp" android:paddingBottom="5dp"
-                        android:paddingLeft="5dp" android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" android:id="@+id/nationality"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edittext"
+                        android:hint="Nationality"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
             </LinearLayout>
+
             <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="150dp"
-                    android:layout_height="35dp" android:background="@drawable/btnb"
-                    android:layout_margin="10dp" android:onClick="DateOfBirth">
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/btnb"
+
+                    android:orientation="horizontal">
+
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
 
-                        android:src="@drawable/ic_calendar" android:layout_marginLeft="10dp"/>
+                        android:gravity="center"
+                        android:src="@drawable/ic_calendar" />
+
                 <Button
+
+                        android:layout_width="match_parent"
+                        android:id="@+id/dateBirthV"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:background="@drawable/btnb"
+                        android:text="Date of Birth"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Photo Scan"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/photoScanVisa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="7dp"
+                        android:text="Photo Scan"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+                <ImageView
+                        android:layout_width="60dp"
+                        android:id="@+id/photoScanImageV"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/corner_text"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Passport No"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passPortNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edittext"
+                        android:hint="Passport No"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:inputType="number"
+                        android:paddingBottom="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/btnb"
+                    android:orientation="horizontal">
+
+                <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/checkin"
-                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
 
-                        android:textColor="#fff"
-                        android:selectAllOnFocus="false"
-                        android:text="Date of Birth" android:textStyle="normal"
-                        android:textColorLink="#6F499C" android:background="@drawable/btnb"
-                        android:textSize="12sp"/>
+                        android:gravity="center"
+                        android:src="@drawable/ic_calendar" />
 
-
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="85dp">
-                <TextView
-                        android:text="Photo Scan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView21"
-                        android:textColor="#000"
-                        android:textSize="20sp" android:layout_marginLeft="10dp" android:gravity="center_vertical"
-                        android:layout_marginBottom="5dp"/>
                 <Button
-                        android:text="Select File"
-                        android:layout_width="156dp"
-                        android:layout_height="35dp" android:id="@+id/button3"
-                        android:background="@drawable/btnb" android:textColor="#fff"
-                        android:textAlignment="textStart" android:paddingLeft="10dp"
-                        android:layout_marginLeft="10dp" android:onClick="UploadPhoto"/>
+
+                        android:layout_width="match_parent"
+                        android:id="@+id/passDateV"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:background="@drawable/btnb"
+                        android:text="Passport Issue Date"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        />
+
+
             </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/btnb"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+
+                        android:gravity="center"
+                        android:src="@drawable/ic_calendar" />
+
+                <Button
+
+                        android:layout_width="match_parent"
+                        android:id="@+id/passExpirDateV"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:background="@drawable/btnb"
+                        android:text="Passport Expiry Date"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Passport Scan"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/passScanBtnV"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/btnb"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="7dp"
+                            android:text="Select File"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:id="@+id/PassImageV"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/corner_text"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Other"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/OtherImageV"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/btnb"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="7dp"
+                            android:text="Select File"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:id="@+id/OtherImageVisa"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/corner_text"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Front Page of Identity"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/FrontIdentImageBtn"
+                            android:layout_weight="1"
+                            android:background="@drawable/btnb"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="7dp"
+                            android:text="Select File"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:id="@+id/FrontIdentImage"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/corner_text"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Back Page of Identity"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/backIdentImageBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/btnb"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="7dp"
+                            android:text="Select File"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:id="@+id/backIdentImage"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/corner_text"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
         </LinearLayout>
 
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+            <Button
+                    android:id="@+id/ApplayVisa"
+                    android:layout_width="175dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btnrud"
+                    android:text="Applay"
+                    android:textColor="#fff"
+                    android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
+</FrameLayout>

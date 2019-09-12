@@ -2,23 +2,42 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.mustafayusef.holidaymaster">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/logoplain"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@drawable/logoplain"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Tours.Select_Tour">
+        <activity android:name=".mainNavigation">
         </activity>
-        <activity android:name=".Tours.DetailsTour"
-                  android:theme="@style/HotelDTheme">
+        <activity android:name=".tickets.towWay.ReturnTowWay">
+        </activity>
+        <activity android:name=".tickets.breakUp.breakUp">
+        </activity>
+        <activity android:name=".tickets.FareRules.description">
+        </activity>
+        <activity android:name=".tickets.FareRules.Fare">
+        </activity>
+        <activity android:name=".tickets.Buggage.buggage">
+        </activity>
+        <activity android:name=".Groups.BookGroup.select_group">
+        </activity>
+        <activity android:name=".Groups.details_group">
+        </activity>
+        <activity android:name=".Groups.main_group">
+        </activity>
+        <activity android:name=".Tours.bookTours.Select_Tour">
+        </activity>
+        <activity
+                android:name=".Tours.DetailsTour"
+                android:theme="@style/HotelDTheme">
         </activity>
         <activity android:name=".Tours.Tours_main">
         </activity>
@@ -66,20 +85,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Profile">
+        <activity android:name=".login.profile.Profile">
         </activity>
-        <activity android:name=".tickets.DetailsTow">
+        <activity android:name=".tickets.towWay.DetailsTow">
         </activity>
-        <activity android:name=".tickets.DetailsOne">
+        <activity android:name=".tickets.oneWay.DetailsOne">
         </activity>
         <activity android:name=".tickets.showHoliday">
         </activity>
         <activity android:name=".dailogPass">
         </activity>
-        <activity android:name=".tickets.searchActivity">
+        <activity android:name=".tickets.searchTicket.searchActivity">
         </activity>
         <activity
-                android:name=".LoginMember"
+                android:name=".login.LoginMember"
                 android:label="@string/title_activity_login_member">
         </activity>
     </application>

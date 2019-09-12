@@ -10,14 +10,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 import com.mustafayusef.holidaymaster.R
-import kotlinx.android.synthetic.main.details_card.view.*
+import kotlinx.android.synthetic.main.onewaycard.view.*
+//holder.rv?.locationList!!.adapter= OneDetailsAdapter(context, holiday.depDateAndTime,
+//holiday.arrDateAndTime,holiday.layoverTime,holiday.depCityName
+//,holiday.arrCityName,holiday.totalDuration,holiday.logos,holiday.airNames)
 
-
-class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
-                        val depCityName:List<String>,val depDateAndTime:List<String>,
-                        val arrDateAndTime:List<String>,val airlineLogo:List<String>
-                        ,val totalDuration:String,val layOverCity:List<String>,val airlineName:List<String>
-,val flightModel:List<String>) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
+class OneDetailsAdapter(
+    val context: Context, val depDateAndTime:List<String>,
+    val arrDateAndTime:List<String>, val layoverTime:List<String>,
+    val depCityName:List<String>, val arrCityName:List<String>,val totalDuration:List<String>
+    , val logos:List<String>, val airNames:List<String>
+    ) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
 
 
 
@@ -25,7 +28,7 @@ class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
 
 
         val layoutInflater = LayoutInflater.from(parent.context)
-        val cardItem = layoutInflater.inflate(R.layout.details_card, parent, false)
+        val cardItem = layoutInflater.inflate(R.layout.onewaycard, parent, false)
         return CustomViewHolder(cardItem)
     }
 
@@ -42,67 +45,50 @@ class OneDetailsAdapter(val context: Context, val arrCityName:List<String>,
         val arrCityName = arrCityName.get(position)
         val depCityName = depCityName.get(position)
         val depDateAndTime = depDateAndTime.get(position)
-        val airlineLogo = airlineLogo.get(position)
+        val airlineLogo = logos.get(position)
         val arrDateAndTime = arrDateAndTime.get(position)
 
-        val layOverCity=layOverCity.get(position)
-        val airlineName=airlineName.get(position)
-        val flightModel=flightModel.get(position)
-        "2019-03-13T19:35:00"
+        val layOverTime=layoverTime.get(0)
+        val airlineName=airNames.get(position)
+        val totalDuration=totalDuration.get(position)
+
+        holder.view?.line.visibility=View.VISIBLE
+        holder.view?.bottonsCon.visibility=View.GONE
 
 
-        holder.view?.FromTo.text="From "+depCityName+" to "+arrCityName
-        holder.view?.depTimeDO .text = depDateAndTime.subSequence(11, depDateAndTime.length-3)
-        holder.view?.arrTimeDO .text = arrDateAndTime.subSequence(11, arrDateAndTime.length-3)
-        holder.view?.durationDO.text=totalDuration
-        holder.view?.AirNameDepDO.text=depCityName
-        holder.view?.LayOver.text="Layover:"+layOverCity
-        holder.view?.FlightModel.text=flightModel
-        holder.view?.AirLineName .text=airlineName
-        holder.view?.airNameArrDO .text=arrCityName
+        holder.view?.depTime.text= depDateAndTime
+        holder.view?.arrTime.text=arrDateAndTime
+        holder.view?.duration.text=totalDuration
+        holder.view?.AirNameDep .text=depCityName
+        holder.view?.airNameArr .text=arrCityName
+        holder.view?.companyNameOne.text=airlineName
+        holder.view?.duration .text=layOverTime
 
-        Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
-            .into(holder.view.LogoAirDO)
-        var mN=depDateAndTime.subSequence(6, 7)
-        when(mN){
-            "1"->holder.view?.mounthN.text="Jan"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "2"->holder.view?.mounthN.text="Feb"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "3"->holder.view?.mounthN.text="Mar"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "4"->holder.view?.mounthN.text="April"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "5"->holder.view?.mounthN.text="May"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "6"->holder.view?.mounthN.text="June"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "7"->holder.view?.mounthN.text="July"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "8"->holder.view?.mounthN.text="August"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "9"->holder.view?.mounthN.text="Sep"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "10"->holder.view?.mounthN.text="Oct"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "11"->holder.view?.mounthN.text="Nov"+" "+depDateAndTime.subSequence(8, 10).toString()
-            "12"->holder.view?.mounthN.text="Dec"+" "+depDateAndTime.subSequence(8, 10).toString()
+        Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
+
+        // Glide.with(context).load(holidays?.mainLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
 
 
 
-
-        }
-        holder.view?.mounthN
-
-
-
-        // holder.view.stopsRet.text = holidays.stops.toString() + " Stops"
-        //holder.view.priceOne.text = holidays.price + "$"
-//            holder.view.depTime.text = holidays.depDateAndTime[position].subSequence(11, holidays.depDateAndTime[position].length)
-//            holder.view.arrTime.text = holidays.arrDateAndTime[position].subSequence(
-//                11,
-//                holidays.arrDateAndTime[position].length
-//            )
-//            holder.view.AirNameDep.text = holidays.departingAirportName[position].subSequence(0, 11)
-//            holder.view.duration.text = holidays.totalDuration
-//            holder.view.airNameArr.text = holidays.arrAirportName[position].subSequence(0, 11)
+       // holder.view?.mounthN.text=depDateAndTime.toString()
+//        when(mN){
+//            "1"->holder.view?.mounthN.text="Jan"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "2"->holder.view?.mounthN.text="Feb"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "3"->holder.view?.mounthN.text="Mar"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "4"->holder.view?.mounthN.text="April"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "5"->holder.view?.mounthN.text="May"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "6"->holder.view?.mounthN.text="June"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "7"->holder.view?.mounthN.text="July"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "8"->holder.view?.mounthN.text="August"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "9"->holder.view?.mounthN.text="Sep"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "10"->holder.view?.mounthN.text="Oct"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "11"->holder.view?.mounthN.text="Nov"+" "+depDateAndTime.subSequence(8, 10).toString()
+//            "12"->holder.view?.mounthN.text="Dec"+" "+depDateAndTime.subSequence(8, 10).toString()
 //
 //
-//            Glide.with(context).load(holidays.airlineLogo[position]).apply(RequestOptions.centerCropTransform().circleCrop())
-//                .into(holder.view.LogoAir)
-
-        //index++
-
+//
+//
+//        }
 
     }
     class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {

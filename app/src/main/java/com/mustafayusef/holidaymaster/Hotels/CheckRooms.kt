@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.Adapters.RoomsAdapter
-import com.mustafayusef.holidaymaster.LoginMember.cacheObj.ListCost
+import com.mustafayusef.holidaymaster.login.LoginMember.cacheObj.ListCost
 import com.mustafayusef.holidaymaster.Models.hotel
 import kotlinx.android.synthetic.main.activity_check_rooms.*
 
@@ -107,11 +107,11 @@ class CheckRooms : AppCompatActivity() {
         )
         mBottomSheetDialog.setContentView(view)
         mBottomSheetDialog.setCancelable(true)
-        mBottomSheetDialog.window.setLayout(
+        mBottomSheetDialog.window!!.setLayout(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        mBottomSheetDialog.window.setGravity(Gravity.BOTTOM)
+        mBottomSheetDialog.window!!.setGravity(Gravity.BOTTOM)
         view.OptionList.layoutManager= LinearLayoutManager(this)
         view.OptionList.adapter = OptionsAdapter(this@CheckRooms, hotel)
         mBottomSheetDialog.show()

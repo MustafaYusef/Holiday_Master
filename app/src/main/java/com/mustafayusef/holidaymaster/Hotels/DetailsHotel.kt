@@ -20,7 +20,7 @@ class DetailsHotel : AppCompatActivity() {
         setContentView(R.layout.activity_details_hotel)
 
 
-         hotel=intent.getSerializableExtra("Hotels")as hotel
+         hotel=intent.getSerializableExtra("hotels")as hotel
         if(hotel.address!!.length>30){
             AdressD.text= hotel.address!!.subSequence(0,35).toString()+".."
         }else{

@@ -1,81 +1,79 @@
 package com.mustafayusef.holidaymaster.Tours
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
-import com.mustafayusef.holidaymaster.Adapters.ToursAdapter
+import com.mustafayusef.holidaymaster.Groups.groupViewModelFactory
+import com.mustafayusef.holidaymaster.Groups.groupsViewModel
+import com.mustafayusef.holidaymaster.Models.TourOrder
 import com.mustafayusef.holidaymaster.Models.Tours
 import com.mustafayusef.holidaymaster.R
-import com.mustafayusef.holidaymaster.dashboard
+import com.mustafayusef.holidaymaster.networks.msg
+import com.mustafayusef.holidaymaster.networks.myApis
+import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.holidaymaster.utils.toast
+import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_show_holiday.*
 import kotlinx.android.synthetic.main.activity_tours.*
 import okhttp3.*
 import java.io.IOException
 
-class Tours_main : AppCompatActivity() {
+class Tours_main : Fragment(),lesener {
+    override fun onSucsessGetOrder(Response: TourOrder) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tours)
-        animation_viewTour.playAnimation()
-        animation_viewTour.speed= 3F
-
-        Run()
-    }
-    fun backtoDash(view: View){
-        val intent= Intent(this@Tours_main, dashboard::class.java)
-        startActivity(intent)
     }
 
-    fun Run(){
-     Tours_list?.layoutManager= LinearLayoutManager(this)
-        val url="https://favorite-holiday.herokuapp.com/api/Tours/all"
-        val request= Request.Builder().url(url).build()
-        val client= OkHttpClient()
-
-        client.newCall(request).enqueue(object : Callback {
-
-
-            override fun onResponse(call: Call, response: Response) {
-
-                val body=response.body()?.string()
-                if(body!!.length>50){
-                    println(body)
-                    val gson= GsonBuilder().create()
-                    val TourFeed:List<Tours>? = gson.fromJson(body, Array<Tours>::class.java).toList()
-                    println("the array objects")
-
-                    runOnUiThread {
-
-//                        noResult?.text=holidayFeed?.size.toString()+" Result Found"
-                        Tours_list?.adapter= ToursAdapter(this@Tours_main,TourFeed)
-                        animation_viewTour.translationZ= 0F
-                        animation_viewTour.pauseAnimation()
-                    }
-                }else{
-                    runOnUiThread {
-//                        noResult?.setTextColor(-0x01ffff)
-//                        noResult?.text=" There is no result Found"
-                        animation_view.translationZ= 0F
-                        animation_view.pauseAnimation()
-                    }
-                }
-
-
-            }
-            override fun onFailure(call: Call, e: IOException) {
-                val intent=Intent(this@Tours_main, Tours::class.java)
-                startActivity(intent)
-//                   Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-            }
-
-
-        })
+    override fun onSucsessBookTour(message: msg) {
+       // context?.toast("Done")
     }
 
+
+    override fun onSucsessBook(Response: tok) {
+     //   context?.toast(Response.orderToken)
+    }
+
+
+    var GroupviewModel:ToursViewModel?=null
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_tours, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val networkIntercepter= networkIntercepter(context!!)
+        val api= myApis(networkIntercepter)
+        val repostary= userRepostary(api)
+        val factory= toursViewModelFactory(repostary)
+        GroupviewModel = ViewModelProviders.of(this,factory).get(ToursViewModel::class.java)
+        GroupviewModel?.dataLesener=this
+        GroupviewModel?.GetTours()
+
+
+    }
+
+    override fun OnStart() {
+ //context?.toast("start")
+    }
+
+    override fun onFailer(message: String) {
+    }
+
+    override fun onSucsess(Response: List<Tours>) {
+        Tours_list?.layoutManager= LinearLayoutManager(context)
+        Tours_list?.adapter= ToursAdapter(context!!, Response)
+        animation_viewTour?.visibility=View.GONE
+                        animation_viewTour?.pauseAnimation()
+    }
 
 }

@@ -1,33 +1,39 @@
 package com.mustafayusef.holidaymaster.Tours
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.shape.RoundedCornerTreatment
 import com.mustafayusef.holidaymaster.Models.Tours
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_details_tour.*
-import kotlinx.android.synthetic.main.tour_card.view.*
-import kotlin.math.round
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 
 
 
-class DetailsTour : AppCompatActivity() {
+class DetailsTour : Fragment() {
     var tour: Tours? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(com.mustafayusef.holidaymaster.R.layout.activity_details_tour)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_details_tour, container, false)
+    }
 
-        tour= intent.getSerializableExtra("Tour") as Tours?
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        ImageTourD.clipToOutline=true
+
+        tour= arguments!!.getSerializable ("Tour") as Tours?
+
+
 
         var requestOptions = RequestOptions()
        requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(40))
@@ -40,8 +46,4 @@ class DetailsTour : AppCompatActivity() {
         bodyTourD.text= tour!!.body
     }
 
-    fun backToTour(view: View){
-        val intent= Intent(this@DetailsTour, Tours::class.java)
-        startActivity(intent)
-    }
 }

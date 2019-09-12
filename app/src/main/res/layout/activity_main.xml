@@ -22,25 +22,28 @@
                 android:textColor="@color/cardview_light_background"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-                android:textAlignment="textEnd" android:layout_marginTop="88dp"
+                 android:layout_marginTop="88dp"
 
-                android:background="@drawable/btnleft" android:paddingEnd="15dp" android:onClick="goToLogin"/>
+                android:background="@drawable/btnleft" android:paddingEnd="15dp"
+
+                android:paddingRight="15dp" android:gravity="right|center" android:layout_marginRight="8dp"/>
         <Button
                 android:text="@string/browse_as_a_user"
                 android:layout_width="262dp"
                 android:layout_height="72dp"
                 android:id="@+id/userBrows"
                 android:textSize="16sp"
-                android:textColor="@color/cardview_light_background" android:textAlignment="viewStart"
+                android:textColor="@color/cardview_light_background" android:gravity="left|center"
                 android:background="@drawable/btn"
                 android:textStyle="bold"
                 android:paddingStart="15dp"
-                android:onClick="goToSearch"
+
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="116dp" android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"
                 android:layout_marginBottom="132dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_gravity="right"/>
+                android:layout_gravity="right" android:paddingLeft="15dp" android:layout_marginLeft="116dp"
+                android:layout_marginRight="0dp"/>
     </FrameLayout>
     <ImageView
             android:layout_width="411dp"

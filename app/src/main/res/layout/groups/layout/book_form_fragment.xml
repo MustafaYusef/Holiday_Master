@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".Tours.bookTours.BookForm">
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+   <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@drawable/backsearch">
+
+           <TextView
+                   android:id="@+id/textViewqqq"
+                   android:layout_width="match_parent"
+                   android:layout_height="65dp"
+                   android:fontFamily="sans-serif"
+
+                   android:gravity="center"
+                   android:text="Tours"
+
+                   android:textAlignment="center"
+                   android:textColor="#fff"
+                   android:textSize="24dp" />
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:elevation="5dp"
+               android:orientation="horizontal"
+               android:weightSum="2">
+
+           <LinearLayout
+                   android:layout_width="322dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:background="@drawable/left_cor"
+                   android:orientation="vertical">
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Reservation Type"
+                       android:textColor="#fff"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Price"
+                       android:textColor="#fff"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Adults"
+                       android:textColor="#fff"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Children"
+                       android:textColor="#fff"
+                       android:textSize="16sp" />
+           </LinearLayout>
+
+
+           <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                    android:orientation="vertical"
+                   android:layout_weight="1"
+                   android:background="@drawable/right_cor">
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Tours"
+                       android:textColor="#000"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Price"
+                       android:id="@+id/priceB"
+                       android:textColor="#000"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Adults"
+                       android:id="@+id/adultB"
+                       android:textColor="#000"
+                       android:textSize="16sp" />
+
+               <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="5dp"
+                       android:text="Children"
+                       android:id="@+id/childB"
+                       android:textColor="#000"
+                       android:textSize="16sp" />
+           </LinearLayout>
+       </LinearLayout>
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+    android:orientation="vertical" android:layout_gravity="center">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Emailaddress"
+
+            android:textColor="#000"
+            android:textSize="18sp" />
+    <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:textColor="#000"
+            android:id="@+id/emailB"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/corner_text"/>
+</LinearLayout>
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Phone number with Whatsapp"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/phoneB"
+                   android:inputType="phone"
+
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Full Name"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/nameB"
+
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Nationality"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/nationalB"
+
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Hotel Name"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/hotelB"
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Hotel Room Number"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/hotelRoomB"
+                   android:inputType="number"
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="Hotel Address"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:id="@+id/hotelAddressB"
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical" android:layout_gravity="center">
+
+           <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:padding="5dp"
+                   android:text="infant (0-2) Number"
+
+                   android:textColor="#000"
+                   android:textSize="18sp" />
+           <androidx.appcompat.widget.AppCompatEditText
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_margin="5dp"
+                   android:textColor="#000"
+                   android:inputType="number"
+                   android:id="@+id/infantB"
+                   android:gravity="center"
+                   android:background="@drawable/corner_text"/>
+       </LinearLayout>
+
+       <LinearLayout android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="bottom|center" android:orientation="vertical"
+               android:layout_gravity="bottom">
+           <Button
+                   android:text="Book"
+                   android:layout_width="261dp"
+                   android:layout_height="49dp" android:id="@+id/BookTour" android:textSize="18sp"
+                   android:background="@drawable/check" android:textColor="#fff"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   android:layout_marginTop="15dp" android:layout_marginBottom="20dp"/>
+       </LinearLayout>
+   </LinearLayout>
+
+</ScrollView>
+</FrameLayout>

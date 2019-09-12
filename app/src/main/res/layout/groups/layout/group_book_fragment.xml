@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".Groups.groupBook">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookGroupCon">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/backsearch">
+
+                <TextView
+                        android:id="@+id/textViewqqq"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:fontFamily="sans-serif"
+
+                        android:gravity="center"
+                        android:text="Groups"
+
+                        android:textAlignment="center"
+                        android:textColor="#fff"
+                        android:textSize="24dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+            </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical" android:layout_gravity="center">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Person 1"
+                    android:id="@+id/personNum"
+                    android:textStyle="bold"
+
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+        </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" android:layout_gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="First Name"
+
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:textColor="#000"
+                        android:id="@+id/firstNameGroup"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:background="@drawable/corner_text"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" android:layout_gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Last Name"
+
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:textColor="#000"
+                        android:id="@+id/lastNameGroup"
+                        android:inputType="text"
+
+                        android:gravity="center"
+                        android:background="@drawable/corner_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" android:layout_gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Passport No"
+
+
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:textColor="#000"
+                        android:id="@+id/passNoGroup"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:background="@drawable/corner_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical" android:layout_gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Nationality"
+
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:textColor="#000"
+                        android:id="@+id/nationalGroup"
+
+                        android:gravity="center"
+                        android:background="@drawable/corner_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/dateBookGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingRight="15dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:paddingBottom="7dp"
+                        android:text="Date of Birth"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/DatePassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="7dp"
+                        android:text="Password issue Date"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/DateExpairPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="7dp"
+                        android:text="Password Expiry Date"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/PassportImageBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="7dp"
+                        android:text="Passport Scan"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                <ImageView
+                        android:id="@+id/PassportImage"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/corner_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/photoScanBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btnb"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="7dp"
+                        android:text="Photo Scan"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+                <ImageView
+                        android:layout_width="60dp"
+                        android:id="@+id/photoScanImage"
+                        android:background="@drawable/corner_text"
+                        android:layout_height="50dp" />
+
+            </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/OtherImageBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btnb"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="7dp"
+                    android:text="Others Scan"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+            <ImageView
+                    android:layout_width="60dp"
+                    android:id="@+id/OtherImage"
+
+                    android:background="@drawable/corner_text"
+                    android:layout_height="50dp" />
+
+        </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|center" android:orientation="vertical"
+                    android:layout_gravity="bottom">
+                <Button
+                        android:text="Next"
+                        android:layout_width="261dp"
+                        android:layout_height="49dp" android:id="@+id/nextPerson" android:textSize="18sp"
+                        android:background="@drawable/check" android:textColor="#fff"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="15dp" android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    </FrameLayout>
+

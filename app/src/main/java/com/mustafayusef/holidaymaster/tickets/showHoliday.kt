@@ -1,227 +1,138 @@
 package com.mustafayusef.holidaymaster.tickets
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.airbnb.lottie.LottieAnimationView
-import com.google.gson.GsonBuilder
 
 
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Adapters.TowWayAdapter
-import com.mustafayusef.holidaymaster.Models.modelOne
-import com.mustafayusef.holidaymaster.Models.modelTow
+import com.mustafayusef.holidaymaster.Models.Data1
+import com.mustafayusef.holidaymaster.Models.Result
+import com.mustafayusef.holidaymaster.Models.ResultTow
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.tickets.leseners.getDataLesener
+import com.mustafayusef.holidaymaster.networks.myApis
+import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModel
+import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModelFactory
+import com.mustafayusef.holidaymaster.utils.snackbar
+import com.mustafayusef.holidaymaster.utils.toast
+import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 
 import kotlinx.android.synthetic.main.activity_show_holiday.*
-import okhttp3.*
 
-import java.io.IOException
+class showHoliday : Fragment(), getDataLesener {
 
-class showHoliday : AppCompatActivity() {
+
     var flag:Boolean=true
     var adult:Int=0
     var child:Int=0
-    var ifant:Int=0
+    var infant:Int=0
     var departure=""
     var Return=""
-    var type=""
+    var cabin=1
     var from=""
     var to=""
+    var direct=0
+
+ var searchviewModel:searchViewModel?=null
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_show_holiday, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
+        val networkIntercepter=networkIntercepter(context!!)
+        val api=myApis(networkIntercepter)
+        val repostary=userRepostary(api)
+        val factory=searchViewModelFactory(repostary)
+                  flag=arguments!!.getBoolean("flage",true)
+         adult= arguments!!.getInt("adult",1)
+         child=arguments!!.getInt("child",0)
+        infant=arguments!!.getInt("infant",0)
+         departure=arguments!!.getString("departure")!!
+         Return= arguments!!.getString("Return") !!
+        cabin =arguments!!.getInt("Type",1)
+         from=arguments!!.getString("fromSelect")!!
+         to=arguments!!.getString("toSelect")!!
+        direct=arguments!!.getInt("Direct",0)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_show_holiday)
-        animation_view.playAnimation()
-        animation_view.speed= 2F
-
-      println("ddddddddddddddddddddddddddddddddd after animation")
-
-
-          flag=intent.getBooleanExtra("flage",true)
-         adult=intent.getIntExtra("adult",1)
-         child=intent.getIntExtra("child",0)
-         ifant=intent.getIntExtra("infant",0)
-         departure=intent.getStringExtra("departure")
-         Return=intent.getStringExtra("Return")
-         type=intent.getStringExtra("Type")
-         from=intent.getStringExtra("fromSelect")
-         to=intent.getStringExtra("toSelect")
-        println("ddddddddddddddddddddddddddddddddd after get extras")
+        searchviewModel = ViewModelProviders.of(this,factory).get(searchViewModel::class.java)
+        searchviewModel?.dataLesener=this
+        searchviewModel!!.getdata(infant,child,
+            adult,departure,
+            Return,
+            from, to,
+            direct,cabin,flag)
 
 
-        //Holiday_list.layoutManager= LinearLayoutManager(this)
-        fromcity.text=from
-        toShow.text=to
-        classShow.text= "Adult:$adult Children:$child class:$type Dep:$departure"
-        println("ddddddddddddddddddddddddddddddddd after set text view")
+        fromcity?.text=from
+        toShow?.text=to
+        classShow?.text= "Adult:${adult} Children:${child}" +
+                " class:${cabin} Dep:${departure}"
+
 
 
 
         var url:String=""
-        if(type=="Economy"){type="e"}
-        if(type=="Business"){type="b"}
-        if(type=="First"){type="f"}
+
         println("ddddddddddddddddddddddddddddddddd after change economy ")
 
 
 
-        if(flag){
-            // url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=BGW&to=BEY&data=2019-03-24&adt=1&type=e&chd=0"
-            println("ddddddddddddddddddddddddddddddddd after check flage one ")
-            runRequestOne()
-        } else{
-//            https://favorite-holiday.herokuapp.com/api/orders/twoway?from=BGW&to=BEY&Ddata=2019-03-22&adt=1&type=e&chd=0&Rdata=2019-04-14
+    }
 
-            println("ddddddddddddddddddddddddddddddddd after check flage tow ")
+    override fun OnStart() {
+   // this.toast("start")
+    animation_view?.playAnimation()
+    animation_view?.visibility=View.VISIBLE
+    }
 
-            runRequestTow()
+    override fun onSucsess(ResponseOneWay: Result) {
+       // this.toast(ResponseOneWay.sessionID)
+        if(ResponseOneWay.data!=null|| ResponseOneWay.data?.get(0)?.Duration?.isNotEmpty()!!){
+            noResult?.text=ResponseOneWay.data?.size .toString()+" Result Found"
+            Holiday_list?.layoutManager= LinearLayoutManager(context!!)
+            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay.data as List<Data1>?,ResponseOneWay.sessionID,adult)
+            // animation_view.enableMergePathsForKitKatAndAbove(true)
+
+        }else{
+            noResult?.text=" Result not Found"
+
         }
-
-
-
-
-    }
-    fun backSearch(view: View){
-        val intent = Intent(this, searchActivity::class.java)
-        startActivity(intent)
+        animation_view?.visibility=View.GONE
     }
 
+    override fun onSucsessTow(TowWayResponse: ResultTow) {
+        if(TowWayResponse.data!=null|| TowWayResponse.data?.get(0)?.Duration?.isNotEmpty()!!){
+            noResult?.text=TowWayResponse.data?.size .toString()+" Result Found"
+            Holiday_list?.layoutManager= LinearLayoutManager(context)
+            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse.data,TowWayResponse.sessionID,adult)
+            // animation_view.enableMergePathsForKitKatAndAbove(true)
 
-    fun runRequestOne(){
-        println("ddddddddddddddddddddddddddddddddd Request one ")
-        println(from)
-        println(to)
-        println(departure)
-        println(adult)
-        println(type)
-        println(child)
-        println(ifant)
-       val url="https://favorite-holiday.herokuapp.com/api/orders/oneway?from=$from&to=$to&data=$departure&adt=$adult&type=$type&chd=$child&Infant=$ifant"
-      println(url)
-        val request=Request.Builder().url(url).build()
-         val client=OkHttpClient()
+        }else{
+            noResult?.text=" Result not Found"
 
-            client.newCall(request).enqueue(object :Callback {
-
-
-                override fun onResponse(call: Call, response: Response) {
-
-                    val body=response.body()?.string()
-                     if(body!!.length>50){
-                         println(body)
-                         val gson= GsonBuilder().create()
-                         val holidayFeed:List<modelOne>? = gson.fromJson(body, Array<modelOne>::class.java).toList()
-                         println("the array objects")
-                         println(holidayFeed)
-                         runOnUiThread {
-
-                             noResult?.text=holidayFeed?.size.toString()+" Result Found"
-                             Holiday_list.layoutManager= LinearLayoutManager(this@showHoliday)
-                             Holiday_list?.adapter= OneWayAdapter(this@showHoliday,holidayFeed)
-                             animation_view.enableMergePathsForKitKatAndAbove(true)
-                             animation_view.translationZ= 0F
-                             animation_view.pauseAnimation()
-                         }
-                     }else{
-                         runOnUiThread {
-                             noResult?.setTextColor(-0x01ffff)
-                             noResult?.text=" There is no result Found"
-                             animation_view.enableMergePathsForKitKatAndAbove(true)
-                             animation_view.translationZ= 0F
-                             animation_view.pauseAnimation()
-                         }
-                     }
-
-
-                }
-                override fun onFailure(call: Call, e: IOException) {
-//                    val intent=Intent(this@showHoliday, searchActivity::class.java)
-//                    startActivity(intent)
-                    runOnUiThread {
-                       // Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-                        runRequestOne()
-                    }
-                }
-
-
-            })
-
-
+        }
+        animation_view?.visibility=View.GONE
     }
 
 
-    fun runRequestTow(){
-       //val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return"
-        println("ddddddddddddddddddddddddddddddddd Request towwwww ")
-        println(from)
-        println(to)
-        println(departure)
-        println(Return)
-        println(adult)
-        println(type)
-        println(child)
-        println(ifant)
 
-       val url="https://favorite-holiday.herokuapp.com/api/orders/twoway?from=$from&to=$to&Ddata=$departure&adt=$adult&type=$type&chd=$child&Rdata=$Return&Infant=$ifant"
-        println(url)
-        val request=Request.Builder().url(url).build()
-        val client=OkHttpClient()
-            client.newCall(request).enqueue(object :Callback {
-
-
-                override fun onResponse(call: Call, response: Response) {
-
-                    val body=response.body()?.string()
-                    if(body!!.length>50){
-                    println(body)
-                    val gson= GsonBuilder().create()
-                    val holidayFeedTow:List<modelTow>? = gson.fromJson(body, Array<modelTow>::class.java).toList()
-                     println("the array objects")
-                    println(holidayFeedTow)
-
-                    runOnUiThread {
-                        noResult?.text=holidayFeedTow?.size.toString()+" Result Found"
-                        Holiday_list.layoutManager= LinearLayoutManager(this@showHoliday)
-                        Holiday_list?.adapter= TowWayAdapter(this@showHoliday,holidayFeedTow)
-                    animation_view.enableMergePathsForKitKatAndAbove(true)
-                        animation_view.translationZ= 0F
-                        animation_view.pauseAnimation()
-                    }
-                }
-                else{
-                        runOnUiThread {
-                            noResult?.setTextColor(-0x01ffff)
-
-                            noResult?.text=" There is no result Found"
-                            //animation_view.enableMergePathsForKitKatAndAbove(true)
-
-                            animation_view.translationZ= 0F
-                            animation_view.pauseAnimation()
-                        }
-                    }}
-
-                override fun onFailure(call: Call, e: IOException) {
-//                    val intent=Intent(this@showHoliday, searchActivity::class.java)
-//                    startActivity(intent)
-                    runOnUiThread {
-                        //Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
-                        runRequestTow()
-                    }
-
-                }
-
-
-            })
-
-
-    }
+    override fun onFailer(message: String) {
+     context?.toast(message)
+        animation_view?.visibility=View.GONE}
 
 }
 
