@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.Models.country
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.networks.msg
 
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
@@ -22,6 +23,9 @@ import kotlinx.android.synthetic.main.show_national.view.*
 
 
 class searchVisa : Fragment(),lesener {
+    override fun onSucsessBook(message: msg) {
+
+    }
 
     var country:String=""
 

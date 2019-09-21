@@ -22,15 +22,48 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.mustafayusef.holidaymaster.MainActivity
+import com.mustafayusef.holidaymaster.Models.country
 import com.mustafayusef.holidaymaster.R
+import com.mustafayusef.holidaymaster.login.LoginMember
+import com.mustafayusef.holidaymaster.networks.msg
+import com.mustafayusef.holidaymaster.networks.myApis
+import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
+import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_form_one.*
 import kotlinx.android.synthetic.main.group_book_fragment.*
+import kotlinx.android.synthetic.main.progress.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import java.io.File
 import java.util.*
 
-class formOne:Fragment(){
+class formOne:Fragment(),lesener{
+    override fun OnStart() {
+        progLoading?.visibility=View.VISIBLE
+    }
+
+    override fun onFailer(message: String) {
+        context?.toast(message)
+        progLoading?.visibility=View.GONE
+    }
+
+    override fun onSucsess(Response: List<country>) {
+    }
+
+    override fun onSucsessSearch(Response: List<country>) {
+    }
+
+    override fun onSucsessBook(message: msg) {
+        context?.toast(message.msg)
+        progLoading?.visibility=View.GONE
+    }
 
     private val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE=123
    var photoScanImageVUri:Uri?=null
@@ -38,25 +71,40 @@ class formOne:Fragment(){
     var OtherImageVisaUri:Uri?=null
     var FrontIdentImageUri:Uri?=null
     var backIdentImageUri:Uri?=null
+
+    var photoScanImageVBody : MultipartBody.Part?=null
+    var PassImageVUriBody:MultipartBody.Part?=null
+    var OtherImageVisaBody:MultipartBody.Part?=null
+    var FrontIdentImageBody:MultipartBody.Part?=null
+    var backIdentImageBody:MultipartBody.Part?=null
+
+    var visaViewModel:VisaViewModel?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_form_one,container,false)
-
     }
-
+    var visa:country?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.ToolBar)
-        view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.formOne) {
+//        val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.ToolBar)
+//        view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
+//            if (destination.id == R.id.formOne) {
+//
+//                toolbar?.visibility = View.VISIBLE
+//            } else {
+//
+//                toolbar?.visibility = View.GONE
+//            }
 
-                toolbar?.visibility = View.VISIBLE
-            } else {
+//        }
 
-                toolbar?.visibility = View.GONE
-            }
+        val networkIntercepter= networkIntercepter(context!!)
+        val api= myApis(networkIntercepter)
+        val repostary= userRepostary(api)
+        val factory= VisaViewModelFactory(repostary)
+        visaViewModel = ViewModelProviders.of(this,factory).get(VisaViewModel::class.java)
+        visaViewModel?.dataLesener=this
 
-        }
-
+           visa= arguments!!.getSerializable("visa") as country?
 
 
         dateBirthV?.setOnClickListener {
@@ -90,10 +138,24 @@ class formOne:Fragment(){
 
           if(!firstNameV?.text.toString().isNullOrEmpty()&&!lastNameV?.text.toString().isNullOrEmpty()&&
               !nationalityV?.text.toString().isNullOrEmpty()
-              &&!passPortNum?.text.toString().isNullOrEmpty())  {
+              &&!passPortNum?.text.toString().isNullOrEmpty()){
 
-              context?.toast("You book Visa Successfully ")
-              view?.findNavController()?.navigate(R.id.searchVisa)
+              visaViewModel!!.BookVis(LoginMember.cacheObj.token,firstNameV?.text.toString(),
+                  lastNameV?.text.toString(),
+                  passPortNum?.text.toString(),
+                  nationalityV?.text.toString(),
+                  dateBirthV.text.toString(),
+                  passDateV.text.toString(),
+                  passExpirDateV.text.toString(),
+                  visa!!,
+                  photoScanImageVBody,
+               PassImageVUriBody,
+               OtherImageVisaBody,
+               FrontIdentImageBody,
+               backIdentImageBody
+                  )
+
+
           }else{
               context?.toast("Please Fill all required Field")
           }
@@ -180,7 +242,7 @@ class formOne:Fragment(){
             val bitmap= MediaStore.Images.Media.getBitmap(context?.contentResolver,photoScanImageVUri)
             photoScanImageV.setImageBitmap(bitmap)
             //circleImageView.setImageBitmap(bitmap)
-
+            photoScanImageVBody=getFile(photoScanImageVUri!!,0)
 //            getPathFromURI(imageUri!!)
 //            var oregnal = File(imagePath)
 ////                        var oregnal = File(getPathFromURI(imageUri))
@@ -201,6 +263,8 @@ class formOne:Fragment(){
 
             val bitmap= MediaStore.Images.Media.getBitmap(context?.contentResolver,PassImageVUri)
             PassImageV.setImageBitmap(bitmap)
+            PassImageVUriBody=getFile(PassImageVUri!!,1)
+
 
         }else if (requestCode == 2 && resultCode == Activity.RESULT_OK
             && null != data
@@ -212,6 +276,7 @@ class formOne:Fragment(){
             OtherImageVisaUri=imageUri
             val bitmap= MediaStore.Images.Media.getBitmap(context?.contentResolver,OtherImageVisaUri)
             OtherImageVisa.setImageBitmap(bitmap)
+            OtherImageVisaBody=getFile(OtherImageVisaUri!!,2)
         }else if (requestCode == 3 && resultCode == Activity.RESULT_OK
             && null != data
         ) {
@@ -222,6 +287,7 @@ class formOne:Fragment(){
             FrontIdentImageUri=imageUri
             val bitmap= MediaStore.Images.Media.getBitmap(context?.contentResolver,FrontIdentImageUri)
             FrontIdentImage.setImageBitmap(bitmap)
+            FrontIdentImageBody=getFile(FrontIdentImageUri!!,3)
         }else if (requestCode == 4 && resultCode == Activity.RESULT_OK
             && null != data
         ) {
@@ -230,10 +296,23 @@ class formOne:Fragment(){
             // val bitmapDrawable= BitmapDrawable(bitmap)
 
             backIdentImageUri=imageUri
+
             val bitmap= MediaStore.Images.Media.getBitmap(context?.contentResolver,backIdentImageUri)
             backIdentImage.setImageBitmap(bitmap)
+            backIdentImageBody=getFile(backIdentImageUri!!,4)
         }
 
+    }
+    fun getFile(imageUri:Uri,i:Int):MultipartBody.Part{
+       var path= getPathFromURI(imageUri!!)
+        var oregnal = File(path)
+//  var oregnal = File(getPathFromURI(imageUri))
+        var imageFile = RequestBody.create(
+            MediaType.parse(context?.contentResolver?.getType(imageUri)!!),
+            oregnal
+        )
+        var imagesBodyRequest= MultipartBody.Part.createFormData("image$i", oregnal.name, imageFile)
+          return imagesBodyRequest
     }
     @SuppressLint("NewApi")
     fun getPathFromURI(uri: Uri):String {

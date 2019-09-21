@@ -9,7 +9,25 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
 android:id="@+id/frag_one">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
 
+            android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
+            android:weightSum="3"
+            android:gravity="center"
+
+            >
+
+        <TextView
+                android:text="Book Visa"
+                android:layout_width="221dp"
+                android:layout_height="52dp"
+                android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
+                android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1"
+                android:gravity="center"/>
+    </LinearLayout>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -64,6 +82,7 @@ android:id="@+id/frag_one">
                         android:layout_marginRight="10dp"
                         android:background="@drawable/edittext"
                         android:hint="First Name"
+                        android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp" />
@@ -95,6 +114,7 @@ android:id="@+id/frag_one">
                         android:layout_marginRight="10dp"
                         android:background="@drawable/edittext"
                         android:hint="Last Name"
+                        android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp" />
@@ -124,6 +144,7 @@ android:id="@+id/frag_one">
                         android:layout_marginRight="10dp"
                         android:background="@drawable/edittext"
                         android:hint="Nationality"
+                        android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp" />
@@ -241,6 +262,7 @@ android:id="@+id/frag_one">
                         android:background="@drawable/edittext"
                         android:hint="Passport No"
                         android:paddingLeft="5dp"
+                        android:gravity="center"
                         android:paddingTop="5dp"
                         android:inputType="number"
                         android:paddingBottom="5dp" />

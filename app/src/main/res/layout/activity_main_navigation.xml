@@ -8,27 +8,7 @@
         tools:context=".mainNavigation" android:orientation="vertical">
 
 
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/ToolBar"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="gone"
-                android:background="@drawable/backsearch" android:gravity="center"
-                android:layout_gravity="top"
 
-        >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                   android:text="title"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:textColor="#fff"
-
-                    android:id="@+id/title"
-                    />
-
-        </androidx.appcompat.widget.Toolbar>
 
         <fragment android:id="@+id/navHost"
                   android:layout_width="match_parent" android:layout_height="wrap_content"

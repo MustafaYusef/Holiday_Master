@@ -35,6 +35,9 @@ import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.group_book_fragment.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 import java.util.*
 
@@ -81,6 +84,9 @@ var group:TourOrder?=null
     var photoScanImageArray= mutableListOf<String>()
     var OtherImageArray= mutableListOf<String>()
 
+    var Photos:MutableList<MultipartBody.Part> ?=mutableListOf<MultipartBody.Part>()
+
+
     var PassportImageUri:Uri?=null
     var photoScanImageUri:Uri?=null
     var OtherImageUri:Uri?=null
@@ -95,7 +101,7 @@ var group:TourOrder?=null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
       var token=arguments?.getString("token")
-        indexArray= arguments?.getInt("persons")!!-1
+        indexArray= arguments?.getInt("persons")!!
         context?.toast(indexArray.toString())
         val networkIntercepter= networkIntercepter(context!!)
         val api= myApis(networkIntercepter)
@@ -106,26 +112,34 @@ var group:TourOrder?=null
         GroupviewModel?.getOrderGroup(token!!)
     }
    var indexPerson:Int=0
+    var i=0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         nextPerson?.setOnClickListener {
-            if (indexArray != 0) {
+            if (indexArray >1) {
                 if(!firstNameGroup.text.isNullOrEmpty()&&!lastNameGroup.text.isNullOrEmpty()&&
                     !passNoGroup.text.isNullOrEmpty()&&!nationalGroup.text.isNullOrEmpty()
                     &&!dateBirth.isNullOrEmpty()
-                    &&!datePass.isNullOrEmpty()&&!dateExpir.isNullOrEmpty()){
-                    indexArray--
+                    &&!datePass.isNullOrEmpty()&&!dateExpir.isNullOrEmpty()
+                    &&PassportImageUri!=null&&photoScanImageUri!=null){
+
+
                     bookGroupCon?.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
                     bookGroupCon?.smoothScrollTo(0,0)
                     personNum?.text = "Person ${indexPerson  +2}"
-                    firstNameGroupArray.add(indexPerson, firstNameGroup.text.toString())
-                    lastNameGroupArray.add(indexPerson, lastNameGroup.text.toString())
-                    passNoGroupArray.add(indexPerson, passNoGroup.text.toString())
-                    nationalGroupArray.add(indexPerson, nationalGroup.text.toString())
-                    dateBookGroupArray.add(indexPerson, dateBirth)
-                    DatePasswordArray.add(indexPerson, datePass)
-                    DateExpairPasswordArray.add(indexPerson, dateExpir)
-                    indexPerson++
+                    Photos!!.add(getFile(PassportImageUri!!,i++))
+                    Photos!!.add(getFile(photoScanImageUri!!,i++))
+                    if(OtherImageUri!=null){
+                       Photos!!.add(getFile(OtherImageUri!!,i++))
+                    }
+                    firstNameGroupArray.add( firstNameGroup.text.toString())
+                    lastNameGroupArray.add( lastNameGroup.text.toString())
+                    passNoGroupArray.add( passNoGroup.text.toString())
+                    nationalGroupArray.add( nationalGroup.text.toString())
+                    dateBookGroupArray.add( dateBirth)
+                    DatePasswordArray.add( datePass)
+                    DateExpairPasswordArray.add( dateExpir)
+
                     firstNameGroup?.setText("")
                     lastNameGroup?.setText("")
                     passNoGroup?.setText("")
@@ -137,13 +151,44 @@ var group:TourOrder?=null
                     PassportImage?.setImageResource(0)
                     photoScanImage?.setImageResource(0)
                     OtherImage?.setImageResource(0)
+                     PassportImageUri=null
+                     photoScanImageUri=null
+                     OtherImageUri=null
+                    indexPerson++
+                    indexArray--
                 }else{
                     context?.toast("Fill all required field ")
                 }
 
-            }else{
-               context?.toast("You book Group Successfully ")
-                view?.findNavController()?.navigate(R.id.groups)
+            }else if(indexArray==1){
+                if(!firstNameGroup.text.isNullOrEmpty()&&!lastNameGroup.text.isNullOrEmpty()&&
+                    !passNoGroup.text.isNullOrEmpty()&&!nationalGroup.text.isNullOrEmpty()
+                    &&!dateBirth.isNullOrEmpty()
+                    &&!datePass.isNullOrEmpty()&&!dateExpir.isNullOrEmpty()
+                    &&PassportImageUri!=null&&photoScanImageUri!=null){
+
+
+                    Photos!!.add(getFile(PassportImageUri!!,i++))
+                    Photos!!.add(getFile(photoScanImageUri!!,i++))
+                    if(OtherImageUri!=null){
+                        Photos!!.add(getFile(OtherImageUri!!,i++))
+                    }
+                    firstNameGroupArray.add( firstNameGroup.text.toString())
+                    lastNameGroupArray.add( lastNameGroup.text.toString())
+                    passNoGroupArray.add( passNoGroup.text.toString())
+                    nationalGroupArray.add( nationalGroup.text.toString())
+                    dateBookGroupArray.add( dateBirth)
+                    DatePasswordArray.add( datePass)
+                    DateExpairPasswordArray.add( dateExpir)
+
+
+
+
+                    indexArray--
+                }else{
+                    context?.toast("Fill all required field ")
+                }
+                println("Debage       "+ firstNameGroupArray)
             }
         }
 
@@ -167,7 +212,17 @@ var group:TourOrder?=null
             openImage(2)
         }
     }
-
+    fun getFile(imageUri:Uri,i:Int):MultipartBody.Part{
+        var path= getPathFromURI(imageUri!!)
+        var oregnal = File(path)
+//  var oregnal = File(getPathFromURI(imageUri))
+        var imageFile = RequestBody.create(
+            MediaType.parse(context?.contentResolver?.getType(imageUri)!!),
+            oregnal
+        )
+        var imagesBodyRequest= MultipartBody.Part.createFormData("image$i", oregnal.name, imageFile)
+        return imagesBodyRequest
+    }
    fun openImage(flage:Int){
        if (Build.VERSION.SDK_INT < 19) {
            var intent = Intent()
@@ -216,10 +271,13 @@ var group:TourOrder?=null
              var  date = "$year-${month + 1}-$dayOfMonth"
                if(flage==0){
                    dateBookGroup.text=date
+                   dateBirth=date
                }else if(flage==1){
                    DatePassword?.text=date
+                   datePass=date
                }else{
                    DateExpairPassword.text= date
+                   dateExpir=date
                }
            },
            year,

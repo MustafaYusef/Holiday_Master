@@ -7,6 +7,9 @@ import com.mustafayusef.holidaymaster.Tours.bookTours.TourBook
 import com.mustafayusef.holidaymaster.Tours.bookTours.gg
 import com.mustafayusef.holidaymaster.Tours.tok
 import com.mustafayusef.holidaymaster.networks.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class userRepostary(val api:myApis):SafeApiRequest() {
     suspend fun getdataOneWay(
@@ -131,4 +134,63 @@ class userRepostary(val api:myApis):SafeApiRequest() {
            api.getProfile(token)
        }
    }
+    suspend fun BookVisa(token:String, FirstName:String,
+                          LastName:String,
+                          PassportNo:String,
+                          Nationality:String,
+                          DateofBirth:String,
+                          PassportIssueDate:String,
+                          PassportExpiryDate:String,visa:country
+                         ,imge0: MultipartBody.Part?
+                         , imge1: MultipartBody.Part?
+                         , imge2: MultipartBody.Part?
+                         , imge3: MultipartBody.Part?, imge4: MultipartBody.Part?):msg{
+        val filter=HashMap<Int,MultipartBody.Part>()
+
+
+            imge0?.let { filter.put(0, it) }
+            imge1?.let { filter.put(1, it) }
+            imge2?.let { filter.put(2, it) }
+            imge3?.let { filter.put(3, it) }
+            imge4?.let { filter.put(4, it) }
+
+
+
+        var inf=info(FirstName=RequestBody.create(MediaType.parse("text/plain"),FirstName)
+            ,LastName=RequestBody.create(MediaType.parse("text/plain"),LastName),
+            PassportNo=RequestBody.create(MediaType.parse("text/plain"),PassportNo),
+            Nationality=RequestBody.create(MediaType.parse("text/plain"),Nationality)
+            , DateofBirth=RequestBody.create(MediaType.parse("text/plain"),DateofBirth),
+            PassportIssueDate=RequestBody.create(MediaType.parse("text/plain"),PassportIssueDate),
+            PassportExpiryDate=RequestBody.create(MediaType.parse("text/plain"),PassportExpiryDate))
+
+
+//        var info1=RequestBody.create(MediaType.parse("multipart/form-data"),inf)
+        return SafeRequest {
+            api.BookVisa(token,inf.FirstName,inf.LastName,inf.PassportNo,inf.Nationality,
+                inf.DateofBirth,inf.PassportIssueDate,inf.PassportExpiryDate,
+                RequestBody.create(MediaType.parse("text/plain"),visa._id),
+                RequestBody.create(MediaType.parse("text/plain"), visa.name),
+                RequestBody.create(MediaType.parse("text/plain"), visa.country),
+                RequestBody.create(MediaType.parse("text/plain"), visa.price.toString()),
+                RequestBody.create(MediaType.parse("text/plain"), visa.Description),
+                RequestBody.create(MediaType.parse("text/plain"), visa.offers.toString()) ,
+                RequestBody.create(MediaType.parse("text/plain"), visa.APPROVED) ,
+                RequestBody.create(MediaType.parse("text/plain"), visa.Nationality) ,
+                RequestBody.create(MediaType.parse("text/plain"), visa.uptime),
+                RequestBody.create(MediaType.parse("text/plain"), visa.__v.toString())
+                ,filter[0],filter[1],filter[2],filter[3],filter[4])
+        }
+    }
+
+
 }
+data class  info(
+    var FirstName:RequestBody,
+    var LastName:RequestBody,
+    var PassportNo:RequestBody,
+    var Nationality:RequestBody,
+    var DateofBirth:RequestBody,
+    var PassportIssueDate:RequestBody,
+    var PassportExpiryDate:RequestBody
+)

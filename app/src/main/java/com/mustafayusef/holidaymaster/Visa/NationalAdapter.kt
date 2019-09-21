@@ -2,6 +2,7 @@ package com.mustafayusef.holidaymaster.Visa
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,9 @@ class NationalAdapter(val context: Context, val countryFeed:List<country>?) : Re
         // Glide.with(context).load(hotels?.img).apply(RequestOptions.centerCropTransform().circleCrop()).into(holder.view.HotelImage)
 
         holder.itemView.SelectVisa.setOnClickListener{
-          holder.itemView.findNavController()?.navigate(R.id.fromVisaToFormOne)
+            var bundel=Bundle()
+            bundel.putSerializable("visa",Visa)
+          holder.itemView.findNavController()?.navigate(R.id.fromVisaToFormOne,bundel)
         }
 
     }

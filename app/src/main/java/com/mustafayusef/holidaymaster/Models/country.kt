@@ -1,5 +1,7 @@
 package com.mustafayusef.holidaymaster.Models
 
+import java.io.Serializable
+
 data class country (
 val _id: String? = null,
 val name: String? = null,
@@ -13,4 +15,4 @@ val uptime: String? = null,
 val __v: Long? = null
 
 
-)
+):Serializable

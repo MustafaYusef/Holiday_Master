@@ -6,6 +6,7 @@ import com.mustafayusef.holidaymaster.Models.*
 import com.mustafayusef.holidaymaster.Tours.bookTours.TourBook
 import com.mustafayusef.holidaymaster.Tours.bookTours.gg
 import com.mustafayusef.holidaymaster.Tours.tok
+import com.mustafayusef.sharay.data.networks.repostorys.info
 import okhttp3.*
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -120,8 +121,44 @@ interface myApis {
     @POST("incomplete/ToursOrderV3")
     suspend fun BookTourFinal(
         @Header("token") token:String ,@Body aa: gg
+    ):Response<msg>
+
+    @Multipart
+    @POST("incomplete/addVisaV3")
+    suspend fun BookVisa(
+        @Header("token") token:String,
+        @Part("FirstName") FirstName:RequestBody,
+    @Part("LastName")   LastName:RequestBody,
+    @Part("PassportNo")  PassportNo:RequestBody,
+    @Part("Nationality")  Nationality:RequestBody,
+    @Part("DateofBirth")  DateofBirth:RequestBody,
+    @Part("PassportIssueDate") PassportIssueDate:RequestBody,
+    @Part("PassportExpiryDate") PassportExpiryDate:RequestBody,
+
+    @Part("_id_Visa")  _id:RequestBody,
+    @Part("name_Visa") name:RequestBody,
+    @Part("country_Visa") country:RequestBody,
+    @Part("price_Visa")  price:RequestBody,
+    @Part("Description_Visa")  Description:RequestBody,
+    @Part("offers_Visa")  offers:RequestBody ,
+    @Part("APPROVED_Visa")  APPROVED:RequestBody ,
+    @Part("Nationality_Visa") Nationality_Visa:RequestBody ,
+    @Part("uptime_Visa") uptime:RequestBody,
+    @Part("__v_Visa")   __v:RequestBody,
+        @Part image1: MultipartBody.Part?,
+        @Part image2: MultipartBody.Part?,
+        @Part image3: MultipartBody.Part?,
+        @Part image4: MultipartBody.Part?,
+        @Part image5: MultipartBody.Part?
 
     ):Response<msg>
+    @Multipart
+    @POST("incomplete/n3al")
+    suspend fun BookFinalGroup(
+        @Header("token") token:String,
+        ):Response<msg>
+
+
     companion object{
 
         operator fun invoke(

@@ -229,7 +229,7 @@ class searchActivity : Fragment(){
                         }
                     }else{
                         toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                        toBtn.text=""
+                        toBtn.setText("")
                         toBtn.hint="select from List"
                         toBtn.setHintTextColor(-0x01ffff)
                         toBtn.highlightColor=-0x01ffff
@@ -239,7 +239,7 @@ class searchActivity : Fragment(){
 
                 }else{
                     FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                    FromBtn.text=""
+                    FromBtn.setText("")
                     FromBtn.hint="select from List"
                     FromBtn.setHintTextColor(-0x01ffff)
                     FromBtn.highlightColor=-0x01ffff
@@ -280,7 +280,7 @@ class searchActivity : Fragment(){
                         }
                     }else{
                         toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                        toBtn.text=""
+                        toBtn.setText("")
                         toBtn.hint="select from List"
                         toBtn.setHintTextColor(-0x01ffff)
                         toBtn.highlightColor=-0x01ffff
@@ -290,7 +290,7 @@ class searchActivity : Fragment(){
 
                 }else{
                     FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                    FromBtn.text=""
+                    FromBtn.setText("")
                     FromBtn.hint="select from List"
                     FromBtn.setHintTextColor(-0x01ffff)
                     FromBtn.highlightColor=-0x01ffff
@@ -331,7 +331,7 @@ class searchActivity : Fragment(){
             LinearLayout.LayoutParams.MATCH_PARENT
         )
         mBottomSheetDialog.show()
-        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, names)
+        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_2, names)
 
        view?. fromCity?.setAdapter(adapter)
 
@@ -348,11 +348,11 @@ class searchActivity : Fragment(){
 
           if(flag==0){
               fromSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
-              FromBtn.text=names[names.indexOf(parent.getItemAtPosition(position).toString())]
+              FromBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
               mBottomSheetDialog?.dismiss()
           }else{
               toSelect= short[names.indexOf(parent.getItemAtPosition(position).toString())]
-              toBtn.text=names[names.indexOf(parent.getItemAtPosition(position).toString())]
+              toBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
               mBottomSheetDialog?.dismiss()
           }
 

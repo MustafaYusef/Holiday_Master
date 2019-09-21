@@ -98,39 +98,39 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp" android:layout_marginTop="5dp">
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="#fff"
-                        android:text="From"
-                        android:background="@drawable/btnb"
+                        android:textColor="#000"
+
+
                         android:textSize="18sp"
-                       android:drawableLeft="@drawable/ic_location_on_black_24dp"
+
                         android:drawablePadding="5dp"
-                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:layout_weight="1"
+                        android:focusable="false"
+                        android:hint="From"
                         android:id="@+id/FromBtn"
                         android:layout_marginRight="5dp"
-                        android:textColorHint="@color/cardview_dark_background"
-                        android:textColorLink="#6F499C"
+
+
                         android:gravity="left|center"
                         android:padding="5dp"
                       />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
-                        android:text="To"
-                        android:background="@drawable/btnb"
+                        android:hint="To"
+                        android:focusable="false"
                         android:textSize="18sp"
                         android:padding="5dp"
-                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+
                         android:drawablePadding="5dp"
                         android:gravity="left|center"
-                        android:dropDownHeight="wrap_content" android:dropDownWidth="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="#fff"
+                        android:textColor="#000"
                         android:id="@+id/toBtn"
                         />
 
