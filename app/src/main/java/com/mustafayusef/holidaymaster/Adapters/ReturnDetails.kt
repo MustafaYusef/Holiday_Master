@@ -66,49 +66,6 @@ class ReturnDetails(val context: Context, val holiday: modelTow) : RecyclerView.
     Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
         .into(holder.view.LogoAirDO)
 }
-//       else if(position>=holiday.layOverMinutes!!.size){
-//            val arrCityName = holiday.ReturnArrCityName!!.get(position)
-//            val depCityName = holiday.ReturnDepCityName!!.get(position)
-//            val depDateAndTime =holiday.ReturnAepDateAndTime!!.get(position)
-//            val airlineLogo = holiday.ReturnairlineLogo!!.get(position)
-//            val arrDateAndTime = holiday.ReturnArrDateAndTime!!.get(position)
-//            "2019-03-13T19:35:00"
-//
-//
-//            holder.view?.FromTo.text="From "+depCityName+" to "+arrCityName
-//            holder.view?.depTimeDO .text = depDateAndTime.subSequence(11, depDateAndTime.length-3)
-//            holder.view?.arrTimeDO .text = arrDateAndTime.subSequence(11, arrDateAndTime.length-3)
-//            holder.view?.durationDO.text=holiday.totalDuration
-//            holder.view?.AirNameDepDO.text=depCityName
-//            holder.view?.airNameArrDO .text=arrCityName
-//            Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().circleCrop())
-//                .into(holder.view.LogoAirDO)
-//        }
-
-
-
-
-
-
-
-
-
-        // holder.view.stopsRet.text = holidays.stops.toString() + " Stops"
-        //holder.view.priceOne.text = holidays.price + "$"
-//            holder.view.depTime.text = holidays.depDateAndTime[position].subSequence(11, holidays.depDateAndTime[position].length)
-//            holder.view.arrTime.text = holidays.arrDateAndTime[position].subSequence(
-//                11,
-//                holidays.arrDateAndTime[position].length
-//            )
-//            holder.view.AirNameDep.text = holidays.departingAirportName[position].subSequence(0, 11)
-//            holder.view.duration.text = holidays.totalDuration
-//            holder.view.airNameArr.text = holidays.arrAirportName[position].subSequence(0, 11)
-//
-//
-//            Glide.with(context).load(holidays.airlineLogo[position]).apply(RequestOptions.centerCropTransform().circleCrop())
-//                .into(holder.view.LogoAir)
-
-        //index++
 
 
     }

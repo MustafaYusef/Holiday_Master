@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".spicialOffers.SpicialGroup">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:weightSum="2">
+
+        <TextView
+                android:id="@+id/textViewqqq"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/backsearch"
+                android:fontFamily="sans-serif"
+                android:paddingTop="16dp"
+                android:text="Spicial Offers"
+
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="24dp" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:background="#fff">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/SpicialOff_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" android:scrollbars="vertical"
+                    >
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/progress2"/>
+
+</FrameLayout>

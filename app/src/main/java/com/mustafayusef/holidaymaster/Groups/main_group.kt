@@ -14,6 +14,7 @@ import com.mustafayusef.holidaymaster.Models.TourOrder
 import com.mustafayusef.holidaymaster.Models.group
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.Tours.tok
+import com.mustafayusef.holidaymaster.networks.msg
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModel
@@ -21,10 +22,16 @@ import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModelFactor
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_main_group.*
+import kotlinx.android.synthetic.main.progress.*
+import kotlinx.android.synthetic.main.progress2.*
 import okhttp3.*
 import java.io.IOException
 
 class main_group : Fragment(),lesener {
+    override fun onSucsessFinalBookGroup(Response: msg) {
+
+    }
+
     override fun onSucsessGetOrderGroup(Response: TourOrder) {
 
     }
@@ -54,18 +61,18 @@ class main_group : Fragment(),lesener {
         GroupviewModel?.GetGroups()
     }
     override fun OnStart() {
-
+        animation_viewTourPub?.visibility= View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
-        animation_viewGroup?.visibility= View.GONE
-        animation_viewGroup?.pauseAnimation()
+        animation_viewTourPub?.visibility= View.GONE
+
     }
 
     override fun onSucsess(BuggageResponse: List<group>) {
-        animation_viewGroup?.visibility= View.GONE
-        animation_viewGroup?.pauseAnimation()
+        animation_viewTourPub?.visibility= View.GONE
+
         Groups_list?.layoutManager= LinearLayoutManager(context)
         Groups_list?.adapter= groupsAdapter(context!!, BuggageResponse)
     }

@@ -312,4 +312,5 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/progress"/>
 </FrameLayout>

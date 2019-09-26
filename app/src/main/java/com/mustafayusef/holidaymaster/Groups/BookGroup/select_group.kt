@@ -21,24 +21,31 @@ import com.mustafayusef.holidaymaster.Models.group
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.Tours.bookTours.InfoOb
 import com.mustafayusef.holidaymaster.Tours.tok
+import com.mustafayusef.holidaymaster.networks.msg
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_select_group.*
 import kotlinx.android.synthetic.main.bottom_sheet_date_tour.view.*
+import kotlinx.android.synthetic.main.progress.*
 
 class select_group : Fragment(), lesener {
+    override fun onSucsessFinalBookGroup(Response: msg) {
+
+    }
+
     override fun onSucsessGetOrderGroup(Response: TourOrder) {
 
     }
 
     override fun OnStart() {
-        context?.toast("start")
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response:List<group>) {
@@ -46,13 +53,23 @@ class select_group : Fragment(), lesener {
     }
 
     override fun onSucsessBook(Response:tok) {
-        context?.toast(Response.orderToken)
+        //context?.toast(Response.orderToken)
         var bundel=Bundle()
         bundel.putString("token",Response.orderToken)
         bundel.putInt("persons",persons)
-        view?.findNavController()?.navigate(R.id.groupBook,bundel)
 
+        bundel.putInt("adult",adNoGroup.text.toString().toInt())
+        bundel.putInt("child",chNoGroup.text.toString().toInt())
+        bundel.putInt("infant",infNoGroup.text.toString().toInt())
+
+
+        view?.findNavController()?.navigate(R.id.groupBook,bundel)
+        bookLoading?.visibility=View.GONE
     }
+//var adult:Int=0
+//    var child:Int=0
+//    var infant:Int=0
+
 
     var tour: group? = null
     var date=""
@@ -90,8 +107,6 @@ class select_group : Fragment(), lesener {
                 priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
 
             }
-
-
         }
         plusAdGroup.setOnClickListener {
             var adnum=adNoGroup.text.toString().toInt()
@@ -121,7 +136,7 @@ class select_group : Fragment(), lesener {
             if(chNoGroup.text.toString().toInt()<10){
                 if(seat>0) {
                 adnum++
-                seat-=0.5
+                seat--
                 seatsNoGroup.text="Available Seats:"+seat
                 chNoGroup.text=adnum.toString()
                 priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() +tour!!.priceCh!!.toInt()).toString()+" $")
@@ -137,7 +152,7 @@ class select_group : Fragment(), lesener {
 
             if(chNoGroup.text.toString().toInt()>0){
                 adnum--
-                seat+=0.5
+                seat++
                 seatsNoGroup.text="Available Seats:"+seat
                 chNoGroup.text=adnum.toString()
                 priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.priceCh!!.toInt()).toString()+" $")
@@ -219,7 +234,9 @@ class select_group : Fragment(), lesener {
                 ToursSets= seat.toString())
             var dat=tour!!.Data
             println("date "+dat)
-            dat?.get(index)?.ToursSets =seat.toDouble()
+            dat?.get(index)?.ToursSets =(dat?.get(index)?.ToursSets)!! - (
+
+                    adNoGroup.text.toString().toInt()+chNoGroup.text.toString().toInt()   )
             println("date change "+dat)
             var Book=
                 dat?.let { it1 ->

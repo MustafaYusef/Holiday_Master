@@ -16,7 +16,7 @@
             android:filterTouchesWhenObscured="false"
             android:solidColor="#6F499C"
             android:descendantFocusability="blocksDescendants"
-            android:background="#6F499C"></NumberPicker>
+            android:background="#6F499C"/>
 
 
     <Button android:layout_width="283dp" android:layout_height="wrap_content"

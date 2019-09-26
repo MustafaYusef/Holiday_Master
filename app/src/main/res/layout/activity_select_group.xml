@@ -382,4 +382,5 @@
     </LinearLayout>
     </LinearLayout>
     </ScrollView>
+    <include layout="@layout/progress"/>
 </FrameLayout>

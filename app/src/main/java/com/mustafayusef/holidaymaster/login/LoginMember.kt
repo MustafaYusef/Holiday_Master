@@ -2,23 +2,14 @@ package com.mustafayusef.holidaymaster.login
 
 import android.os.Bundle
 import android.view.View
-import android.content.Context
-import android.content.Intent
-import android.net.ConnectivityManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.KotprefModel
-import com.google.gson.GsonBuilder
 import com.mustafayusef.holidaymaster.Auth.auth
-import com.mustafayusef.holidaymaster.Groups.groupViewModelFactory
-import com.mustafayusef.holidaymaster.Groups.groupsViewModel
-import com.mustafayusef.holidaymaster.Lottie
 import com.mustafayusef.holidaymaster.Models.profileAuth
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.networks.myApis
@@ -28,10 +19,6 @@ import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 
 
 import kotlinx.android.synthetic.main.activity_login_member.*
-import okhttp3.*
-import org.json.JSONObject
-import java.io.IOException
-import java.lang.Exception
 
 
 class LoginMember : Fragment() ,lesener{

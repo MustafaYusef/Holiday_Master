@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 
 import com.mustafayusef.holidaymaster.Adapters.OneWayAdapter
 import com.mustafayusef.holidaymaster.Adapters.TowWayAdapter
-import com.mustafayusef.holidaymaster.Models.Data1
 import com.mustafayusef.holidaymaster.Models.Result
 import com.mustafayusef.holidaymaster.Models.ResultTow
 import com.mustafayusef.holidaymaster.R
@@ -21,7 +19,6 @@ import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModel
 import com.mustafayusef.holidaymaster.tickets.searchTicket.searchViewModelFactory
-import com.mustafayusef.holidaymaster.utils.snackbar
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 
@@ -104,7 +101,7 @@ class showHoliday : Fragment(), getDataLesener {
         if(ResponseOneWay.data!=null|| ResponseOneWay.data?.get(0)?.Duration?.isNotEmpty()!!){
             noResult?.text=ResponseOneWay.data?.size .toString()+" Result Found"
             Holiday_list?.layoutManager= LinearLayoutManager(context!!)
-            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay.data as List<Data1>?,ResponseOneWay.sessionID,adult)
+            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay)
             // animation_view.enableMergePathsForKitKatAndAbove(true)
 
         }else{
@@ -118,7 +115,7 @@ class showHoliday : Fragment(), getDataLesener {
         if(TowWayResponse.data!=null|| TowWayResponse.data?.get(0)?.Duration?.isNotEmpty()!!){
             noResult?.text=TowWayResponse.data?.size .toString()+" Result Found"
             Holiday_list?.layoutManager= LinearLayoutManager(context)
-            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse.data,TowWayResponse.sessionID,adult)
+            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse)
             // animation_view.enableMergePathsForKitKatAndAbove(true)
 
         }else{

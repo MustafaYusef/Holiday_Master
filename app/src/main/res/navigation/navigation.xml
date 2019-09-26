@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
-            app:startDestination="@id/lottie2">
+            app:startDestination="@id/dashboard2">
 
     <fragment android:id="@+id/dashboard2" android:name="com.mustafayusef.holidaymaster.dashboard"
               android:label="activity_dashboard" tools:layout="@layout/activity_dashboard">
@@ -72,8 +72,7 @@
               android:label="activity_login_member" tools:layout="@layout/activity_login_member"/>
     <fragment android:id="@+id/mainActivity" android:name="com.mustafayusef.holidaymaster.MainActivity"
               android:label="activity_main" tools:layout="@layout/activity_main"/>
-    <fragment android:id="@+id/lottie2" android:name="com.mustafayusef.holidaymaster.Lottie"
-              android:label="activity_lottie" tools:layout="@layout/activity_lottie"/>
+
     <fragment
             android:id="@+id/bookForm"
             android:name="com.mustafayusef.holidaymaster.Tours.bookTours.BookForm"
@@ -84,4 +83,64 @@
             android:name="com.mustafayusef.holidaymaster.Groups.groupBook"
             android:label="group_book_fragment"
             tools:layout="@layout/group_book_fragment" />
+    <fragment
+            android:id="@+id/ticketDetails"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookOneWay.ticketDetails"
+            android:label="fragment_ticket_details"
+            tools:layout="@layout/fragment_ticket_details" />
+    <fragment
+            android:id="@+id/ticketDetailsTow"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookOneWay.ticketDetailsTow"
+            android:label="fragment_ticket_details_tow"
+            tools:layout="@layout/fragment_ticket_details_tow" />
+    <fragment
+            android:id="@+id/bookFinalTicket"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookOneWay.BookFinalTicket"
+            android:label="fragment_book_final_ticket"
+            tools:layout="@layout/fragment_book_final_ticket" />
+    <fragment
+            android:id="@+id/successTicket"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookOneWay.successTicket"
+            android:label="fragment_success_ticket"
+            tools:layout="@layout/fragment_success_ticket" />
+    <fragment
+            android:id="@+id/spicialGroup"
+            android:name="com.mustafayusef.holidaymaster.spicialOffers.SpicialGroup"
+            android:label="spicial_group_fragment"
+            tools:layout="@layout/spicial_group_fragment" />
+    <fragment
+            android:id="@+id/spicialTour"
+            android:name="com.mustafayusef.holidaymaster.spicialOffers.SpicialTour"
+            android:label="SpicialTour" />
+    <fragment
+            android:id="@+id/bookFinalTicketTow"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookTowWay.BookFinalTicketTow"
+            android:label="BookFinalTicketTow" />
+    <fragment
+            android:id="@+id/ticketDetailstowWay"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookTowWay.ticketDetailstowWay"
+            android:label="ticketDetailstowWay" />
+    <fragment
+            android:id="@+id/ticketDetailsTowTow"
+            android:name="com.mustafayusef.holidaymaster.tickets.BookTowWay.ticketDetailsTowTow"
+            android:label="ticketDetailsTowTow" />
+    <fragment
+            android:id="@+id/navigateOrders"
+            android:name="com.mustafayusef.holidaymaster.login.profile.dashBoard.navigateOrders"
+            android:label="fragment_navigate_orders"
+            tools:layout="@layout/fragment_navigate_orders" />
+    <fragment
+            android:id="@+id/orderTickets"
+            android:name="com.mustafayusef.holidaymaster.login.profile.dashBoard.orderTickets"
+            android:label="order_tickets_fragment"
+            tools:layout="@layout/order_tickets_fragment" />
+    <fragment
+            android:id="@+id/otherOrder2"
+            android:name="com.mustafayusef.holidaymaster.login.profile.dashBoard.OtherOrder"
+            android:label="OtherOrder" />
+    <fragment
+            android:id="@+id/returnTowWay"
+            android:name="com.mustafayusef.holidaymaster.tickets.towWay.ReturnTowWay"
+            android:label="activity_return_tow_way"
+            tools:layout="@layout/activity_return_tow_way" />
 </navigation>

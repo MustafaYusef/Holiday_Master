@@ -24,33 +24,39 @@ import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_select__tour.*
 import kotlinx.android.synthetic.main.book_form_fragment.*
+import kotlinx.android.synthetic.main.progress.*
 
 class BookForm : Fragment(),lesener {
     override fun onSucsessBookTour(message: msg) {
         context?.toast(message.msg.toString())
         view?.findNavController()?.navigate(R.id.tours_main)
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessGetOrder(Response: TourOrder) {
         //context?.toast(Response.toString())
         myOrder=Response
+        bookLoading?.visibility=View.GONE
     }
   var myOrder:TourOrder?=null
 
 
     override fun OnStart() {
       //  context?.toast("start")
+        bookLoading?.visibility=View.VISIBLE
 
     }
 
     override fun onFailer(message: String) {
         context?.toast(message.toString())
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<Tours>) {
     }
 
     override fun onSucsessBook(Response: tok) {
+        bookLoading?.visibility=View.GONE
     }
 
     companion object {

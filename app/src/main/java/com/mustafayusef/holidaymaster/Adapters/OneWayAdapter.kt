@@ -2,15 +2,17 @@ package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.mustafayusef.holidaymaster.Models.Data1
+import com.mustafayusef.holidaymaster.Models.Result
 import com.mustafayusef.holidaymaster.tickets.oneWay.DetailsOne
 
 import com.mustafayusef.holidaymaster.R
@@ -20,7 +22,10 @@ import kotlinx.android.synthetic.main.onewaycard.view.*
 
 
 
-class OneWayAdapter(val context:Context,val holidayFeed:List<Data1>?,val SessionId:String?,val adult:Int?) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
+class OneWayAdapter(
+    val context:Context,
+    val holidayFeed: Result
+ ) : RecyclerView.Adapter<OneWayAdapter.CustomViewHolder>(){
 //
 
 
@@ -35,7 +40,7 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<Data1>?,val Session
 
         override fun getItemCount(): Int {
            // count=holidayFeed!!.count().toString()
-        return holidayFeed?.count()!!
+        return holidayFeed?.data!!.size!!
 
         }
 
@@ -45,8 +50,8 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<Data1>?,val Session
 
             // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
 
-            val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
-                      val holidays=holidaysSort?.get(position)
+            //val holidaysSort=holidayFeed?.sortedWith(compareBy({ it.price }))
+                      val holidays=holidayFeed?.data!! .get(position)
 
               //  holder.view?.stops.text=holidays?.stops.toString()+" Stops"
             holder.view?.priceOne .text=holidays?.price.toString()+"$"
@@ -64,11 +69,18 @@ class OneWayAdapter(val context:Context,val holidayFeed:List<Data1>?,val Session
                 val intent = Intent(context, DetailsOne::class.java)
                     intent.putExtra("oneway",holidays)
                 intent.putExtra("Id",holidays._id)
-                intent.putExtra("adult",adult)
-                intent.putExtra("sessionId",SessionId)
+                intent.putExtra("adult",holidayFeed.searchParams.Adult)
+                intent.putExtra("sessionId",holidayFeed.sessionID)
                 context.startActivity(intent)
 
             }
+            holder.view.purch?.setOnClickListener {
+                var bundel=Bundle()
+                bundel.putSerializable("ticket",holidayFeed)
+                bundel.putString("Id",holidays._id)
+                holder.view.findNavController()?.navigate(R.id.ticketDetails,bundel)
+            }
+
 
         }
 //  Glide.with(fragment)

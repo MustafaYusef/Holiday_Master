@@ -15,178 +15,353 @@
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content" android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="204dp"
-                          android:background="@drawable/dash_scroll" android:orientation="horizontal"
-                          android:layout_marginBottom="20dp" android:gravity="top">
-                <ImageView android:layout_width="match_parent" android:layout_height="123dp"
-                           android:src="@drawable/logoplain" android:scaleType="fitCenter"
-                           android:layout_marginTop="10dp"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" android:weightSum="2" android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:elevation="10dp" android:layout_marginTop="-70dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                          android:layout_marginBottom="20dp"
+                    android:gravity="center">
                 <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"
-                        android:background="@drawable/cardback" android:layout_marginRight="5dp"
-                        android:id="@+id/flight">
+                        android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="10dp"
+                            android:id="@+id/whats"
+                            android:src="@drawable/whatsapp"/>
+
                     <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="100dp" app:srcCompat="@drawable/travel"
-                            android:id="@+id/imageView9"/>
-                    <TextView
-                            android:text="Find your Flight"
-                            android:layout_width="match_parent"
-                            android:layout_height="31dp" android:id="@+id/textView16"
-                            android:textAlignment="center" android:textColor="@color/colorPrimary"
-                            android:gravity="center" android:textSize="16dp"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:layout_weight="1"
-                        android:elevation="10dp" android:layout_marginLeft="5dp"
-                >
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback"
-                            android:id="@+id/hotel">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/hotel11"
-                                android:id="@+id/imageView91"/>
-                        <TextView
-                                android:text="Find Hotels"
-                                android:layout_width="match_parent"
-                                android:layout_height="31dp" android:id="@+id/textView116"
-                                android:textAlignment="center" android:textColor="@color/colorPrimary"
-                                android:gravity="center"
-                                android:textSize="16dp"/>
-                    </LinearLayout>
+                            android:layout_height="160dp"
+                            android:layout_marginTop="50dp"
+
+                            android:layout_weight="1"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/logoplain" />
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="10dp"
+                            android:id="@+id/prof"
+                            android:src="@drawable/ic_account_circle_black_234dp"/>
 
                 </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_airplanemode_active_black_24dp"
+                        android:text="Flights"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                      android:layout_marginTop="50dp"
+                        android:textColor="#fff"
+                        android:id="@+id/flight"
+                        android:textSize="20sp"
+                        android:background="@drawable/btn_blue"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_location_city_black_24dp"
+                        android:text="Hotels"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#fff"
+                        android:id="@+id/hotel"
+                        android:textSize="20sp"
+                        android:background="@drawable/btn_blue"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_speaker_group_black_24dp"
+                        android:text="Visa"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#fff"
+                        android:id="@+id/visa"
+                        android:textSize="20sp"
+                        android:background="@drawable/btn_blue"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_airport_shuttle_black_24dp"
+                        android:text="Tours"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:id="@+id/Tours"
+                        android:background="@drawable/btn_blue"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_group_outline_black_24dp"
+                        android:text="Groups"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                       android:layout_marginTop="10dp"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:id="@+id/groups"
+                        android:background="@drawable/btn_blue"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/ic_offers_giftcard_black_24dp"
+                        android:text="Offers"
+                        android:gravity="left|center"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:id="@+id/SpicialOffers"
+                        android:background="@drawable/btn_blue"/>
             </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" android:layout_marginTop="10dp">
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:elevation="10dp"
-                        android:layout_height="wrap_content" android:layout_weight="1"
-                        android:layout_marginRight="5dp"
-                >
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback"
-                            android:id="@+id/visa">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/passport"
-                                android:id="@+id/immam"/>
-                        <TextView
-                                android:text="Find your Visa"
-                                android:layout_width="match_parent"
-                                android:layout_height="31dp" android:id="@+id/tex1tView116"
-                                android:textAlignment="center" android:textColor="@color/colorPrimary"
-                                android:gravity="center" android:textSize="16dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:elevation="10dp" android:layout_height="wrap_content" android:layout_weight="1"
-                        android:layout_marginLeft="5dp">
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback"
-                            android:id="@+id/prof">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/man"
-                                android:id="@+id/imageView19"/>
-                        <TextView
-                                android:text="Show your profile"
-                                android:layout_width="match_parent"
-                                android:layout_height="31dp" android:id="@+id/tex1tView16"
-                                android:textAlignment="center" android:textColor="@color/colorPrimary"
-                                android:gravity="center" android:textSize="16dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+<!--            <LinearLayout-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="150dp" android:weightSum="2" android:layout_marginRight="10dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:elevation="10dp" android:layout_marginTop="-70dp">-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"-->
+<!--                        android:background="@drawable/cardback" android:layout_marginRight="5dp"-->
+<!--                        android:id="@+id/flight">-->
+<!--                    <ImageView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="100dp"-->
+<!--                           android:src="@drawable/travel"-->
+<!--                            android:id="@+id/imageView9"/>-->
+<!--                    <TextView-->
+<!--                            android:text="Find your Flight"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="31dp" android:id="@+id/textView16"-->
+<!--                            android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                            android:gravity="center" android:textSize="16dp"/>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent" android:layout_weight="1"-->
+<!--                        android:elevation="10dp" android:layout_marginLeft="5dp"-->
+<!--                >-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
+<!--                            android:id="@+id/hotel">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                app:srcCompat="@drawable/hotel22"-->
+<!--                                android:id="@+id/imageView91"/>-->
+<!--                        <TextView-->
+<!--                                android:text="Find Hotels"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp" android:id="@+id/textView116"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
 
-            </LinearLayout>
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp" android:layout_marginTop="10dp">-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp"-->
+<!--                        android:layout_height="wrap_content" android:layout_weight="1"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                >-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
+<!--                            android:id="@+id/visa">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                               android:src="@drawable/passport44"-->
+<!--                                android:id="@+id/immam"/>-->
+<!--                        <TextView-->
+<!--                                android:text="Find your Visa"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp" android:id="@+id/tex1tView116"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp" android:layout_height="wrap_content" android:layout_weight="1"-->
+<!--                        android:layout_marginLeft="5dp">-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
+<!--                            android:id="@+id/prof">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                android:src="@drawable/user333"-->
+<!--                                android:id="@+id/imageView19"/>-->
+<!--                        <TextView-->
+<!--                                android:text="Show your profile"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp" android:id="@+id/tex1tView16"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
 
 
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" android:layout_marginTop="10dp" android:gravity="center"
-                    android:layout_marginBottom="10dp">
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:elevation="10dp" android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1">
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback"
-                            android:id="@+id/Tours" android:gravity="center">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/destination"
-                                android:id="@+id/imaaa"/>
-                        <TextView
-                                android:text="Find Tour"
-                                android:layout_width="match_parent"
-                                android:layout_height="31dp" android:id="@+id/tex1tVieaw116"
-                                android:textAlignment="center" android:textColor="@color/colorPrimary"
-                                android:gravity="center" android:textSize="16dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:elevation="10dp" android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1">
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"
-                            android:background="@drawable/cardback"
+<!--            <LinearLayout-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp" android:layout_marginTop="10dp" android:gravity="center"-->
+<!--                    android:layout_marginBottom="10dp">-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp" android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1">-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
+<!--                            android:id="@+id/Tours" android:gravity="center">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                android:src="@drawable/destination1"-->
+<!--                                android:id="@+id/imaaa"/>-->
+<!--                        <TextView-->
+<!--                                android:text="Find Tour"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp" android:id="@+id/tex1tVieaw116"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp" android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1">-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
 
-                            android:id="@+id/groups" android:gravity="center">
-                        <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp" app:srcCompat="@drawable/connecting"
-                                android:id="@+id/im1aaa"/>
-                        <TextView
-                                android:text="Find Group"
-                                android:layout_width="match_parent"
-                                android:layout_height="31dp" android:id="@+id/tex1t9Vieaw116"
-                                android:textAlignment="center" android:textColor="@color/colorPrimary"
-                                android:gravity="center" android:textSize="16dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+<!--                            android:id="@+id/groups" android:gravity="center">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                android:src="@drawable/team"-->
+<!--                                android:id="@+id/im1aaa"/>-->
+<!--                        <TextView-->
+<!--                                android:text="Find Group"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp" android:id="@+id/tex1t9Vieaw116"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="150dp" android:weightSum="2" android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp" android:layout_marginTop="10dp" android:gravity="center"-->
+<!--                    android:layout_marginBottom="10dp">-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp" android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1">-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
+<!--                            android:id="@+id/SpicalOffers" android:gravity="center">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                               android:src="@drawable/gift"-->
+<!--                              />-->
+<!--                        <TextView-->
+<!--                                android:text="Spicial Offers"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:elevation="10dp" android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1">-->
+<!--                    <LinearLayout-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content" android:layout_weight="1" android:padding="10dp"-->
+<!--                            android:background="@drawable/cardback"-->
 
+<!--                            android:id="@+id/Dash" android:gravity="center">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                android:src="@drawable/home"-->
+<!--                            />-->
+<!--                        <TextView-->
+<!--                                android:text="Dashboard"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="31dp"-->
+<!--                                android:textAlignment="center" android:textColor="@color/colorPrimary"-->
+<!--                                android:gravity="center" android:textSize="16dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

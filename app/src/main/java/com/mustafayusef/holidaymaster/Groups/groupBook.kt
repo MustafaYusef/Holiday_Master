@@ -30,11 +30,15 @@ import com.mustafayusef.holidaymaster.Models.group
 
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.Tours.tok
+import com.mustafayusef.holidaymaster.login.LoginMember
+import com.mustafayusef.holidaymaster.networks.msg
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
+import kotlinx.android.synthetic.main.activity_select__tour.*
 import kotlinx.android.synthetic.main.group_book_fragment.*
+import kotlinx.android.synthetic.main.progress.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -42,9 +46,14 @@ import java.io.File
 import java.util.*
 
 class groupBook : Fragment(),lesener {
+    override fun onSucsessFinalBookGroup(Response: msg) {
+        bookLoading?.visibility=View.GONE
+    }
+
     override fun onSucsessGetOrderGroup(Response: TourOrder) {
        // context?.toast(Response.toString())
         group=Response
+        bookLoading?.visibility=View.GONE
     }
 
     private val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE=123
@@ -53,32 +62,57 @@ var group:TourOrder?=null
     var datePass=""
    var dateExpir=""
     var imagePath=""
-    override fun OnStart() {
+    var adultFirstNameArr= mutableListOf<RequestBody>()
+    var adultLastNameArr= mutableListOf<RequestBody>()
+    var adultPassportNoArr= mutableListOf<RequestBody>()
+    var adultNationalityArr= mutableListOf<RequestBody>()
+    var adultBirthArr= mutableListOf<RequestBody>()
+    var adultIssueArr= mutableListOf<RequestBody>()
+    var adultExpiryArr= mutableListOf<RequestBody>()
 
+    var childFirstNameArr= mutableListOf<RequestBody>()
+    var  childLastNameArr= mutableListOf<RequestBody>()
+    var  childPassportNoArr= mutableListOf<RequestBody>()
+    var  childNationalityArr= mutableListOf<RequestBody>()
+    var   childBirthArr= mutableListOf<RequestBody>()
+    var childIssueArr= mutableListOf<RequestBody>()
+    var  childExpiryArr= mutableListOf<RequestBody>()
+
+    var infantFirstNameArr= mutableListOf<RequestBody>()
+    var infantLastNameArr= mutableListOf<RequestBody>()
+    var infantPassportNoArr= mutableListOf<RequestBody>()
+    var  infantNationalityArr= mutableListOf<RequestBody>()
+    var infantBirthArr= mutableListOf<RequestBody>()
+    var  infantIssueArr= mutableListOf<RequestBody>()
+    var infantExpiryArr= mutableListOf<RequestBody>()
+    var  images= mutableListOf<MultipartBody.Part>()
+    override fun OnStart() {
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message.toString())
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<group>) {
-
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessBook(Response: tok) {
-
+        bookLoading?.visibility=View.GONE
     }
 
     companion object {
         fun newInstance() = groupBook()
     }
-    var firstNameGroupArray= mutableListOf<String>()
-    var lastNameGroupArray= mutableListOf<String>()
-    var passNoGroupArray= mutableListOf<String>()
-    var nationalGroupArray= mutableListOf<String>()
-    var dateBookGroupArray= mutableListOf<String>()
-    var DatePasswordArray= mutableListOf<String>()
-    var DateExpairPasswordArray= mutableListOf<String>()
+    var firstNameGroupArray= mutableListOf<RequestBody>()
+    var lastNameGroupArray= mutableListOf<RequestBody>()
+    var passNoGroupArray= mutableListOf<RequestBody>()
+    var nationalGroupArray= mutableListOf<RequestBody>()
+    var dateBookGroupArray= mutableListOf<RequestBody>()
+    var DatePasswordArray= mutableListOf<RequestBody>()
+    var DateExpairPasswordArray= mutableListOf<RequestBody>()
 
     var PassportImageArray= mutableListOf<String>()
     var photoScanImageArray= mutableListOf<String>()
@@ -91,6 +125,9 @@ var group:TourOrder?=null
     var photoScanImageUri:Uri?=null
     var OtherImageUri:Uri?=null
     var indexArray=0
+    var numAd=0
+    var numCh=0
+    var numInf=0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,7 +139,11 @@ var group:TourOrder?=null
         super.onActivityCreated(savedInstanceState)
       var token=arguments?.getString("token")
         indexArray= arguments?.getInt("persons")!!
+        numAd=arguments?.getInt("adult")!!
+         numCh=arguments?.getInt("child")!!
+         numInf=arguments?.getInt("infant")!!
         context?.toast(indexArray.toString())
+        context?.toast("infant  :"+numInf.toString())
         val networkIntercepter= networkIntercepter(context!!)
         val api= myApis(networkIntercepter)
         val repostary= userRepostary(api)
@@ -132,13 +173,13 @@ var group:TourOrder?=null
                     if(OtherImageUri!=null){
                        Photos!!.add(getFile(OtherImageUri!!,i++))
                     }
-                    firstNameGroupArray.add( firstNameGroup.text.toString())
-                    lastNameGroupArray.add( lastNameGroup.text.toString())
-                    passNoGroupArray.add( passNoGroup.text.toString())
-                    nationalGroupArray.add( nationalGroup.text.toString())
-                    dateBookGroupArray.add( dateBirth)
-                    DatePasswordArray.add( datePass)
-                    DateExpairPasswordArray.add( dateExpir)
+                    firstNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),firstNameGroup.text.toString()) )
+                    lastNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),lastNameGroup.text.toString() ))
+                    passNoGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),passNoGroup.text.toString() ))
+                    nationalGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),nationalGroup.text.toString() ))
+                    dateBookGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),dateBirth ))
+                    DatePasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),datePass))
+                    DateExpairPasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),dateExpir))
 
                     firstNameGroup?.setText("")
                     lastNameGroup?.setText("")
@@ -173,23 +214,79 @@ var group:TourOrder?=null
                     if(OtherImageUri!=null){
                         Photos!!.add(getFile(OtherImageUri!!,i++))
                     }
-                    firstNameGroupArray.add( firstNameGroup.text.toString())
-                    lastNameGroupArray.add( lastNameGroup.text.toString())
-                    passNoGroupArray.add( passNoGroup.text.toString())
-                    nationalGroupArray.add( nationalGroup.text.toString())
-                    dateBookGroupArray.add( dateBirth)
-                    DatePasswordArray.add( datePass)
-                    DateExpairPasswordArray.add( dateExpir)
+                    firstNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),firstNameGroup.text.toString()) )
+                    lastNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),lastNameGroup.text.toString() ))
+                    passNoGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),passNoGroup.text.toString() ))
+                    nationalGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),nationalGroup.text.toString() ))
+                    dateBookGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),dateBirth ))
+                    DatePasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),datePass))
+                    DateExpairPasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),dateExpir))
+
 
 
 
 
                     indexArray--
+                    getArrays(numAd,numCh,numInf)
+                    GroupviewModel?.BookFinalGroup(LoginMember.cacheObj.token,
+                        group!!,
+                        adultFirstNameArr,
+                        adultLastNameArr,
+                        adultPassportNoArr,
+                        adultNationalityArr,
+                        adultBirthArr,
+                        adultIssueArr,
+                        adultExpiryArr,
+                        childFirstNameArr,
+                        childLastNameArr,
+                        childPassportNoArr,
+                        childNationalityArr,
+                        childBirthArr,
+                        childIssueArr,
+                        childExpiryArr,
+                        infantFirstNameArr,
+                        infantLastNameArr,
+                        infantPassportNoArr,
+                        infantNationalityArr,
+                        infantBirthArr,
+                        infantIssueArr,
+                        infantExpiryArr,
+                        Photos!!
+                    )
+
                 }else{
                     context?.toast("Fill all required field ")
                 }
                 println("Debage       "+ firstNameGroupArray)
             }
+//            else if(indexArray==0){
+//                GroupviewModel?.BookFinalGroup(LoginMember.cacheObj.token,
+//                    group!!,
+//                    adultFirstNameArr,
+//                    adultLastNameArr,
+//                    adultPassportNoArr,
+//                    adultNationalityArr,
+//                    adultBirthArr,
+//                    adultIssueArr,
+//                    adultExpiryArr,
+//                    childFirstNameArr,
+//                    childLastNameArr,
+//                    childPassportNoArr,
+//                    childNationalityArr,
+//                    childBirthArr,
+//                    childIssueArr,
+//                    childExpiryArr,
+//                    infantFirstNameArr,
+//                    infantLastNameArr,
+//                    infantPassportNoArr,
+//                    infantNationalityArr,
+//                    infantBirthArr,
+//                    infantIssueArr,
+//                    infantExpiryArr,
+//                    Photos!!
+//                )
+//                context?.toast(" kdjkfj nfm 0 index")
+//            }
         }
 
 
@@ -211,6 +308,35 @@ var group:TourOrder?=null
         OtherImageBtn?.setOnClickListener {
             openImage(2)
         }
+    }
+    fun getArrays(adult:Int,child:Int,Infant:Int){
+                adultFirstNameArr=firstNameGroupArray.subList(0,adult)
+                adultLastNameArr=lastNameGroupArray.subList(0,adult)
+                adultPassportNoArr=passNoGroupArray.subList(0,adult)
+                adultNationalityArr=nationalGroupArray.subList(0,adult)
+                adultBirthArr= dateBookGroupArray.subList(0,adult)
+                adultIssueArr=DatePasswordArray.subList(0,adult)
+                adultExpiryArr= DateExpairPasswordArray.subList(0,adult)
+
+        if(child!=0){
+            childFirstNameArr=firstNameGroupArray.subList(adult,child+adult)
+            childLastNameArr=lastNameGroupArray.subList(adult,child+adult)
+            childPassportNoArr=passNoGroupArray.subList(adult,child+adult)
+            childNationalityArr=nationalGroupArray.subList(adult,child+adult)
+            childBirthArr= dateBookGroupArray.subList(adult,child+adult)
+            childIssueArr=DatePasswordArray.subList(adult,child+adult)
+            childExpiryArr= DateExpairPasswordArray.subList(adult,child+adult)
+        }
+        if(Infant!=0){
+            infantFirstNameArr=firstNameGroupArray.subList(child+adult,child+adult+Infant)
+            infantLastNameArr=lastNameGroupArray.subList(child+adult,child+adult+Infant)
+            infantPassportNoArr=passNoGroupArray.subList(child+adult,child+adult+Infant)
+            infantNationalityArr=nationalGroupArray.subList(child+adult,child+adult+Infant)
+            infantBirthArr= dateBookGroupArray.subList(child+adult,child+adult+Infant)
+            infantIssueArr=DatePasswordArray.subList(child+adult,child+adult+Infant)
+            infantExpiryArr= DateExpairPasswordArray.subList(child+adult,child+adult+Infant)
+        }
+
     }
     fun getFile(imageUri:Uri,i:Int):MultipartBody.Part{
         var path= getPathFromURI(imageUri!!)
@@ -285,8 +411,6 @@ var group:TourOrder?=null
            day
        )
        dpd.show()
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -322,9 +446,7 @@ var group:TourOrder?=null
             var imageUri: Uri? = data.data
             // val bitmap=MediaStore.Images.Media.getBitmap(context?.contentResolver,imageUri)
             // val bitmapDrawable= BitmapDrawable(bitmap)
-
             photoScanImageUri=imageUri
-
             val bitmap=MediaStore.Images.Media.getBitmap(context?.contentResolver,photoScanImageUri)
             photoScanImage.setImageBitmap(bitmap)
 
@@ -339,7 +461,6 @@ var group:TourOrder?=null
             val bitmap=MediaStore.Images.Media.getBitmap(context?.contentResolver,OtherImageUri)
             OtherImage.setImageBitmap(bitmap)
         }
-
     }
     @SuppressLint("NewApi")
     fun getPathFromURI(uri: Uri):String {

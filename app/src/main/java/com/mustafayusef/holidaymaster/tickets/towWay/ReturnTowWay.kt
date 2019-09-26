@@ -3,23 +3,38 @@ package com.mustafayusef.holidaymaster.tickets.towWay
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mustafayusef.holidaymaster.Models.DataTow
+import com.mustafayusef.holidaymaster.Models.ResultTow
 import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_return_tow_way.*
 
-class ReturnTowWay : AppCompatActivity() {
+class ReturnTowWay : Fragment() {
     lateinit var holidays: DataTow
-    var session=""
-    var adult=0
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_return_tow_way)
+    lateinit var holidaysAll: ResultTow
 
-        holidays= intent.getSerializableExtra("TowWay") as DataTow
-        session= intent.getStringExtra("sessionId")
-        adult=intent.getIntExtra("adult",0)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_return_tow_way, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+        holidays= arguments?.getSerializable("TowWay") as DataTow
+        holidaysAll= arguments?.getSerializable("TowWayAll") as ResultTow
+
 
         priceOne .text=holidays?.price.toString()+"$"
        depTime.text= holidays?.return_depDateAndTime!![0]
@@ -35,13 +50,20 @@ class ReturnTowWay : AppCompatActivity() {
 
         Details.setOnClickListener {
 
-            val intent = Intent(this@ReturnTowWay, DetailsTow::class.java)
+            val intent = Intent(context, DetailsTow::class.java)
 //
            intent.putExtra("TowWay",holidays)
-            intent.putExtra("session", session)
+            intent.putExtra("session", holidaysAll.sessionID)
             intent.putExtra("Id", holidays._id)
             intent.putExtra("type","RT")
             startActivity(intent)}
+
+        purch?.setOnClickListener {
+            var bundel= Bundle()
+            bundel.putSerializable("ticket",holidaysAll)
+            bundel.putString("Id",holidays._id)
+            view?.findNavController()?.navigate(R.id.ticketDetailstowWay,bundel)
+        }
         }
 
 }

@@ -1,0 +1,36 @@
+package com.mustafayusef.holidaymaster.login.profile.dashBoard
+
+import android.content.Context
+import android.net.Uri
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.findNavController
+
+import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.fragment_navigate_orders.*
+
+class navigateOrders : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_navigate_orders, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        ticketOrder?.setOnClickListener {
+         view?.findNavController()?.navigate(R.id.orderTickets)
+        }
+        otherOrder?.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.otherOrder2)
+        }
+    }
+
+
+}

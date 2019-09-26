@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+>
+
+    <item android:id="@+id/spicialTour"
+          android:icon="@drawable/ic_public_black_24dp"
+          android:title="Tours">
+
+    </item>
+
+    <item android:id="@+id/spicialGroup"
+            android:icon="@drawable/ic_directions_bus_black_24dp"
+            android:title="Groups">
+
+    </item>
+</menu>

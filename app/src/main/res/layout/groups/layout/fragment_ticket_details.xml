@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/gry"
+        tools:context=".tickets.BookOneWay.ticketDetails">
+
+
+     <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+
+             android:gravity="center|top"
+             android:orientation="vertical"
+       >
+         <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="70dp"
+
+                 android:layout_margin="0dp" android:background="@drawable/backsearch" android:id="@+id/linearLayout"
+                 android:weightSum="3"
+                 android:gravity="center"
+                 android:layout_marginTop="4dp" app:layout_constraintEnd_toEndOf="parent">
+             <!--<ImageButton-->
+             <!--android:layout_width="0dp"-->
+             <!--android:layout_height="39dp" app:srcCompat="@drawable/left_arrow23"-->
+             <!--android:id="@+id/imageButton3" android:layout_weight="1" android:background="@drawable/backsearch"-->
+             <!--android:onClick="backToOne" android:scaleType="fitCenter" android:layout_gravity="center"/>-->
+             <TextView
+                     android:text="Summery of Travel"
+                     android:layout_width="221dp"
+                     android:layout_height="52dp" android:id="@+id/toShow2"
+                     android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
+                     android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1"
+                     android:gravity="center"/>
+         </LinearLayout>
+         <TextView
+                 android:layout_width="match_parent"
+                 android:textSize="20sp"
+                 android:textColor="#fff"
+                 android:layout_height="50dp"
+                 android:layout_margin="10dp"
+                 android:background="@drawable/btnb"
+                 android:gravity="center"
+                 android:text="Flight Value"/>
+         <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:weightSum="1"
+                 android:id="@+id/conD">
+
+
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:layout_weight="1"
+                 android:orientation="horizontal" android:weightSum="4" android:elevation="5dp"
+                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:padding="5dp">
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center" android:textColor="#fff"
+                     android:background="@drawable/fare_back1"
+                     android:layout_weight="3"
+                     android:text="Adult Fare" android:textSize="16sp"
+                     android:paddingBottom="15dp" android:paddingTop="15dp"/>
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center|left"
+                     android:text="Airline"
+                     android:textSize="18sp" android:padding="15dp"
+                     android:background="@drawable/fare_back2"
+                     android:layout_weight="1" android:id="@+id/AdulFare"/>
+         </LinearLayout>
+
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:layout_weight="1"
+                 android:id="@+id/ChildCon"
+                 android:orientation="horizontal" android:weightSum="4" android:elevation="5dp"
+                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:padding="5dp">
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center" android:textColor="#fff"
+                     android:background="@drawable/fare_back1"
+                     android:layout_weight="3" android:text="Child Fare" android:textSize="16sp"
+                     android:paddingBottom="15dp" android:paddingTop="15dp"/>
+             <TextView android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:gravity="center|left"
+                     android:text="Airline"
+                     android:textSize="18sp" android:padding="15dp"
+                     android:background="@drawable/fare_back2"
+                     android:layout_weight="1" android:id="@+id/ChildFare"/>
+         </LinearLayout>
+
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:layout_weight="1"
+                 android:id="@+id/infCon"
+                 android:orientation="horizontal" android:weightSum="4" android:elevation="5dp"
+                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:padding="5dp">
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center" android:textColor="#fff"
+                     android:background="@drawable/fare_back1"
+                     android:layout_weight="3" android:text="Infant Fare" android:textSize="16sp"
+                     android:paddingBottom="15dp" android:paddingTop="15dp"/>
+             <TextView android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:gravity="center|left"
+                     android:text="Airline"
+                     android:textSize="18sp" android:padding="15dp"
+                     android:background="@drawable/fare_back2"
+                     android:layout_weight="1" android:id="@+id/InfantFare"/>
+         </LinearLayout>
+
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:orientation="horizontal" android:weightSum="4" android:elevation="5dp"
+                 android:id="@+id/AirLinBtn"
+                 android:layout_weight="1"
+                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:padding="5dp">
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center" android:textColor="#fff"
+                     android:background="@drawable/fare_back1"
+                     android:layout_weight="3" android:text="Taxes and Fees" android:textSize="16sp"
+                     android:paddingBottom="15dp" android:paddingTop="15dp"/>
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center|left"
+                     android:text="Airline"
+                     android:textSize="18sp" android:padding="15dp"
+                     android:background="@drawable/fare_back2"
+                     android:layout_weight="1" android:id="@+id/TaxFareD"/>
+         </LinearLayout>
+
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:orientation="horizontal" android:weightSum="4" android:elevation="5dp"
+                 android:id="@+id/TotalPrice"
+                 android:layout_weight="1"
+                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:padding="5dp">
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center" android:textColor="#fff"
+                     android:background="@drawable/fare_back1"
+                     android:layout_weight="3" android:text="Total" android:textSize="16sp"
+                     android:paddingBottom="15dp" android:paddingTop="15dp"/>
+             <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                     android:gravity="center|left"
+                     android:text="Airline"
+                     android:textSize="18sp" android:padding="15dp"
+                     android:background="@drawable/fare_back2"
+                     android:layout_weight="1" android:id="@+id/totalPriceD"/>
+         </LinearLayout>
+         </LinearLayout>
+     </LinearLayout>
+    <Button
+            android:text="Next"
+            android:layout_width="261dp"
+            android:layout_height="49dp" android:id="@+id/nextTicketBook" android:textSize="18sp"
+            android:background="@drawable/check"
+            android:textColor="#fff"
+            android:visibility="gone"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="15dp" android:layout_marginBottom="20dp"/>
+    <include layout="@layout/progress2"/>
+
+</FrameLayout>

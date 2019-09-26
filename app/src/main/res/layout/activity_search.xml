@@ -104,7 +104,7 @@
                         android:textColor="#000"
 
 
-                        android:textSize="18sp"
+                        android:textSize="16sp"
 
                         android:drawablePadding="5dp"
                         android:layout_weight="1"
@@ -124,7 +124,7 @@
                         android:layout_marginLeft="2dp"
                         android:hint="To"
                         android:focusable="false"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:padding="5dp"
 
                         android:drawablePadding="5dp"

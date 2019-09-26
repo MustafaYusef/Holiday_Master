@@ -46,12 +46,12 @@ import java.util.*
 
 class formOne:Fragment(),lesener{
     override fun OnStart() {
-        progLoading?.visibility=View.VISIBLE
+       // progLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
-        progLoading?.visibility=View.GONE
+      //  progLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<country>) {
@@ -62,7 +62,7 @@ class formOne:Fragment(),lesener{
 
     override fun onSucsessBook(message: msg) {
         context?.toast(message.msg)
-        progLoading?.visibility=View.GONE
+       // progLoading?.visibility=View.GONE
     }
 
     private val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE=123

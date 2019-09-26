@@ -22,6 +22,7 @@ import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_show_holiday.*
 import kotlinx.android.synthetic.main.activity_tours.*
+import kotlinx.android.synthetic.main.progress2.*
 import okhttp3.*
 import java.io.IOException
 
@@ -64,16 +65,18 @@ class Tours_main : Fragment(),lesener {
 
     override fun OnStart() {
  //context?.toast("start")
+        animation_viewTourPub?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
+        animation_viewTourPub?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<Tours>) {
         Tours_list?.layoutManager= LinearLayoutManager(context)
         Tours_list?.adapter= ToursAdapter(context!!, Response)
-        animation_viewTour?.visibility=View.GONE
-                        animation_viewTour?.pauseAnimation()
+        animation_viewTourPub?.visibility=View.GONE
+
     }
 
 }

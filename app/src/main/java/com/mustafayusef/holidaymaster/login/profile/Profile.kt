@@ -18,8 +18,10 @@ import com.mustafayusef.holidaymaster.login.LoginViewModelFactory
 import com.mustafayusef.holidaymaster.login.lesener
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.progress.*
 
 class Profile : Fragment() ,lesener{
     override fun onSucsessProfile(response: profileAuth) {
@@ -29,17 +31,20 @@ class Profile : Fragment() ,lesener{
   LoginMember.cacheObj.moneyP=response.sesson.money
 
 
-        username.text= LoginMember.cacheObj.nameP
-        Email.text= LoginMember.cacheObj.emailP
-        Phone.text= LoginMember.cacheObj.phoneP
-        Money.text= LoginMember.cacheObj.moneyP.toString()
+        username?.text= LoginMember.cacheObj.nameP
+        Email?.text= LoginMember.cacheObj.emailP
+        Phone?.text= LoginMember.cacheObj.phoneP
+        Money?.text= LoginMember.cacheObj.moneyP.toString()
+        bookLoading?.visibility=View.GONE
     }
 
     override fun OnStart() {
-
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
+        bookLoading?.visibility=View.GONE
+        context?.toast(message)
     }
 
     override fun onSucsess(Response: auth) {
@@ -55,7 +60,10 @@ class Profile : Fragment() ,lesener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        username?.text= LoginMember.cacheObj.nameP
+        Email?.text= LoginMember.cacheObj.emailP
+        Phone?.text= LoginMember.cacheObj.phoneP
+        Money?.text= LoginMember.cacheObj.moneyP.toString()
         LogOUT?.setOnClickListener {
             LoginMember.cacheObj.bulk {
                 token=""
@@ -99,6 +107,11 @@ class Profile : Fragment() ,lesener{
         logViewModel = ViewModelProviders.of(this,factory).get(LoginViewModel::class.java)
         logViewModel?.dataLesener=this
         logViewModel?.Profile(LoginMember.cacheObj.token)
+
+        dashboardBtn?.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.navigateOrders)
+        }
+
     }
 //    fun backsearch(view:View){
 //        val intent= Intent(this@Profile,dashboard::class.java)

@@ -26,6 +26,7 @@ import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.activity_select__tour.*
 import kotlinx.android.synthetic.main.bottom_sheet_date_tour.view.*
+import kotlinx.android.synthetic.main.progress.*
 
 class Select_Tour : Fragment(),lesener {
     override fun onSucsessGetOrder(Response: TourOrder) {
@@ -44,15 +45,16 @@ class Select_Tour : Fragment(),lesener {
         bundel.putInt("child",chNo?.text.toString().toInt())
         bundel.putInt("adult",adNo?.text.toString().toInt())
         view?.findNavController()?.navigate(R.id.bookForm,bundel)
-
+        bookLoading?.visibility=View.GONE
     }
 
     override fun OnStart() {
-
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<Tours>) {

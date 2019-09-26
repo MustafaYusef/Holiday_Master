@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.Adapters.OptionsAdapter
 import com.mustafayusef.holidaymaster.login.LoginMember
 import com.mustafayusef.holidaymaster.tickets.showHoliday
+import com.mustafayusef.holidaymaster.utils.toast
 import kotlinx.android.synthetic.main.activity_check_rooms.*
 import kotlinx.android.synthetic.main.activity_options.view.*
 import kotlinx.android.synthetic.main.activity_search_hotels.*
@@ -200,62 +201,15 @@ class searchActivity : Fragment(){
 
 
         showHoliday.setOnClickListener {
-            if(flage){
-                if(fromSelect!=""){
-                    if(toSelect!=""){
-                        if(departure!=""){
+            if(adult>=infant){
+                if(flage){
+                    if(fromSelect!=""){
+                        if(toSelect!=""){
+                            if(departure!=""){
 
-                            //  sss.getdata()
-                            val intent =Bundle()
+                                //  sss.getdata()
+                                val intent =Bundle()
 //
-                            intent.putBoolean("flage", flage)
-                            intent.putInt("adult", adult)
-                            intent.putInt("child", child)
-                            intent.putInt("infant", infant)
-                            intent.putString("departure", departure)
-                            intent.putString("Return", Return)
-                            intent.putInt("Type", type)
-                            intent.putString("fromSelect", fromSelect)
-                            intent.putString("toSelect", toSelect)
-                            intent.putInt("Direct", direct)
-                            view?.findNavController()?.navigate(R.id.searchTecketToShow,intent)
-
-
-                        }else{
-
-                            Toast.makeText(context, "should set a departure date", Toast.LENGTH_SHORT).show()
-                            contDep.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-
-                        }
-                    }else{
-                        toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                        toBtn.setText("")
-                        toBtn.hint="select from List"
-                        toBtn.setHintTextColor(-0x01ffff)
-                        toBtn.highlightColor=-0x01ffff
-                        Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
-
-                    }
-
-                }else{
-                    FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                    FromBtn.setText("")
-                    FromBtn.hint="select from List"
-                    FromBtn.setHintTextColor(-0x01ffff)
-                    FromBtn.highlightColor=-0x01ffff
-                    Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
-
-                }
-
-
-            }else{
-                if(fromSelect!=""){
-                    if(toSelect!=""){
-                        if(departure!=""){
-                            if(Return!=""){
-
-                                val intent = Bundle()
-
                                 intent.putBoolean("flage", flage)
                                 intent.putInt("adult", adult)
                                 intent.putInt("child", child)
@@ -267,37 +221,89 @@ class searchActivity : Fragment(){
                                 intent.putString("toSelect", toSelect)
                                 intent.putInt("Direct", direct)
                                 view?.findNavController()?.navigate(R.id.searchTecketToShow,intent)
+
+
                             }else{
-                                Toast.makeText(context, "should set a Return date", Toast.LENGTH_SHORT).show()
-                                contRet.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+
+                                Toast.makeText(context, "should set a departure date", Toast.LENGTH_SHORT).show()
+                                contDep.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+
                             }
-
                         }else{
-
-                            Toast.makeText(context, "should set a departure date", Toast.LENGTH_SHORT).show()
-                            contDep.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                            toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                            toBtn.setText("")
+                            toBtn.hint="select from List"
+                            toBtn.setHintTextColor(-0x01ffff)
+                            toBtn.highlightColor=-0x01ffff
+                            Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
 
                         }
+
                     }else{
-                        toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                        toBtn.setText("")
-                        toBtn.hint="select from List"
-                        toBtn.setHintTextColor(-0x01ffff)
-                        toBtn.highlightColor=-0x01ffff
+                        FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                        FromBtn.setText("")
+                        FromBtn.hint="select from List"
+                        FromBtn.setHintTextColor(-0x01ffff)
+                        FromBtn.highlightColor=-0x01ffff
                         Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
 
                     }
 
-                }else{
-                    FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
-                    FromBtn.setText("")
-                    FromBtn.hint="select from List"
-                    FromBtn.setHintTextColor(-0x01ffff)
-                    FromBtn.highlightColor=-0x01ffff
-                    Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
 
+                }else{
+                    if(fromSelect!=""){
+                        if(toSelect!=""){
+                            if(departure!=""){
+                                if(Return!=""){
+
+                                    val intent = Bundle()
+
+                                    intent.putBoolean("flage", flage)
+                                    intent.putInt("adult", adult)
+                                    intent.putInt("child", child)
+                                    intent.putInt("infant", infant)
+                                    intent.putString("departure", departure)
+                                    intent.putString("Return", Return)
+                                    intent.putInt("Type", type)
+                                    intent.putString("fromSelect", fromSelect)
+                                    intent.putString("toSelect", toSelect)
+                                    intent.putInt("Direct", direct)
+                                    view?.findNavController()?.navigate(R.id.searchTecketToShow,intent)
+                                }else{
+                                    Toast.makeText(context, "should set a Return date", Toast.LENGTH_SHORT).show()
+                                    contRet.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                                }
+
+                            }else{
+
+                                Toast.makeText(context, "should set a departure date", Toast.LENGTH_SHORT).show()
+                                contDep.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+
+                            }
+                        }else{
+                            toBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                            toBtn.setText("")
+                            toBtn.hint="select from List"
+                            toBtn.setHintTextColor(-0x01ffff)
+                            toBtn.highlightColor=-0x01ffff
+                            Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
+
+                        }
+
+                    }else{
+                        FromBtn.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake))
+                        FromBtn.setText("")
+                        FromBtn.hint="select from List"
+                        FromBtn.setHintTextColor(-0x01ffff)
+                        FromBtn.highlightColor=-0x01ffff
+                        Toast.makeText(context, "You should select from list", Toast.LENGTH_SHORT).show()
+
+                    }
                 }
+            }else{
+                context?.toast("the number of Infant Should Not be more than Adults")
             }
+
         }
     }
      fun closeKeyboard() {
@@ -331,7 +337,7 @@ class searchActivity : Fragment(){
             LinearLayout.LayoutParams.MATCH_PARENT
         )
         mBottomSheetDialog.show()
-        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_2, names)
+        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, names)
 
        view?. fromCity?.setAdapter(adapter)
 
@@ -339,7 +345,6 @@ class searchActivity : Fragment(){
         view?.fromCity?.onFocusChangeListener = View.OnFocusChangeListener{
                 view, b ->
             if(b){
-
                     view?.fromCity?.showDropDown()
                 // Display the suggestion dropdown on focus
             }
