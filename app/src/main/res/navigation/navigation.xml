@@ -143,4 +143,9 @@
             android:name="com.mustafayusef.holidaymaster.tickets.towWay.ReturnTowWay"
             android:label="activity_return_tow_way"
             tools:layout="@layout/activity_return_tow_way" />
+    <fragment
+            android:id="@+id/webView2"
+            android:name="com.mustafayusef.holidaymaster.login.profile.dashBoard.webView"
+            android:label="fragment_web_view"
+            tools:layout="@layout/fragment_web_view" />
 </navigation>

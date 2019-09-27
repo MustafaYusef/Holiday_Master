@@ -47,21 +47,27 @@ import java.util.*
 class formOne:Fragment(),lesener{
     override fun OnStart() {
        // progLoading?.visibility=View.VISIBLE
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
       //  progLoading?.visibility=View.GONE
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(Response: List<country>) {
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessSearch(Response: List<country>) {
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessBook(message: msg) {
         context?.toast(message.msg)
+        bookLoading?.visibility=View.GONE
+        view?.findNavController()?.navigate(R.id.searchVisa)
        // progLoading?.visibility=View.GONE
     }
 
@@ -136,9 +142,16 @@ class formOne:Fragment(),lesener{
 
         ApplayVisa?.setOnClickListener {
 
-          if(!firstNameV?.text.toString().isNullOrEmpty()&&!lastNameV?.text.toString().isNullOrEmpty()&&
+          if(!firstNameV?.text.toString().isNullOrEmpty()&&
+              !lastNameV?.text.toString().isNullOrEmpty()&&
               !nationalityV?.text.toString().isNullOrEmpty()
-              &&!passPortNum?.text.toString().isNullOrEmpty()){
+              &&!passPortNum?.text.toString().isNullOrEmpty()
+
+              &&!photoScanImageVBody?.toString().isNullOrEmpty()
+              &&!PassImageVUriBody?.toString().isNullOrEmpty()
+              &&!OtherImageVisaBody?.toString().isNullOrEmpty()
+              &&!FrontIdentImageBody?.toString().isNullOrEmpty()
+              &&!backIdentImageBody?.toString().isNullOrEmpty()){
 
               visaViewModel!!.BookVis(LoginMember.cacheObj.token,firstNameV?.text.toString(),
                   lastNameV?.text.toString(),

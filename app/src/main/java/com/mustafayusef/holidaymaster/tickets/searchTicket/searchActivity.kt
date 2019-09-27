@@ -27,10 +27,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Adapters.OptionsAdapter
 import com.mustafayusef.holidaymaster.login.LoginMember
 import com.mustafayusef.holidaymaster.tickets.showHoliday
@@ -41,8 +43,10 @@ import kotlinx.android.synthetic.main.activity_search_hotels.*
 import kotlinx.android.synthetic.main.bottom_sheet_airport.view.*
 
 
-class searchActivity : Fragment(){
+class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteLisener2{
 
+
+    var mBottomSheetDialog:Dialog?=null
 
     lateinit var myDialog: Dialog
 
@@ -69,6 +73,17 @@ class searchActivity : Fragment(){
     ): View? {
         return inflater.inflate(R.layout.activity_search, container, false)
     }
+
+
+    var city = mutableListOf<String>()
+    var country = mutableListOf<String>()
+    var nameAir = mutableListOf<String>()
+    var short =mutableListOf<String>()
+
+    var cityT =mutableListOf<String>()
+    var countryT =mutableListOf<String>()
+    var nameAirT = mutableListOf<String>()
+    var shortT =mutableListOf<String>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -105,20 +120,22 @@ class searchActivity : Fragment(){
         suggest = gson.fromJson(objectArrayString, Array<AutoCom>::class.java)
         // println("suggestion\n"+suggest)
 
-        var names = mutableListOf("")
-        var short = mutableListOf("")
-
-      FromBtn?.setOnClickListener {
-          showDailog(names,short,0)
-      }
-        toBtn?.setOnClickListener {
-            showDailog(names,short,1)
-        }
 
         for (i in suggest) {
-            names.add(i.city+","+i.country+","+i.name)
+            city.add(i.city)
+            country.add(i.country)
+            nameAir.add(i.name)
             short.add(i.iata)
         }
+
+      FromBtn?.setOnClickListener {
+          showDailog1()
+      }
+        toBtn?.setOnClickListener {
+            showDailog2()
+        }
+
+
 
         AdultPicker.setOnValueChangedListener { picker, oldVal, newVal ->
 
@@ -316,7 +333,8 @@ class searchActivity : Fragment(){
 
 
 
-    fun showDailog(names:MutableList<String>,short:MutableList<String>,flag:Int){
+    fun showDailog2(){
+
         val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_airport , null)
         val display =activity!!.windowManager.defaultDisplay
         val size = Point()
@@ -324,48 +342,167 @@ class searchActivity : Fragment(){
         val width = size.x
         val height = size.y
 
-
+        view?.airportList?.layoutManager=LinearLayoutManager(context)
+        view?.airportList?.adapter=context?.let {
+            cityAdapter2(it ,this@searchActivity, city,country,nameAir,short) }
         view.minimumHeight=600
-        val mBottomSheetDialog = Dialog(
+        mBottomSheetDialog = Dialog(
             context!!,
             com.mustafayusef.holidaymaster.R.style.MaterialDialogSheet
         )
-        mBottomSheetDialog.setContentView(view)
-        mBottomSheetDialog.setCancelable(true)
-        mBottomSheetDialog.window!!.setLayout(
+        mBottomSheetDialog!!.setContentView(view)
+        mBottomSheetDialog!!.setCancelable(true)
+        mBottomSheetDialog!!.window!!.setLayout(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
         )
-        mBottomSheetDialog.show()
-        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, names)
+        mBottomSheetDialog!!.show()
 
-       view?. fromCity?.setAdapter(adapter)
+        view?.fromCity?.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
 
-
-        view?.fromCity?.onFocusChangeListener = View.OnFocusChangeListener{
-                view, b ->
-            if(b){
-                    view?.fromCity?.showDropDown()
-                // Display the suggestion dropdown on focus
+                return false
             }
-        }
-        view?.fromCity?.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
 
-          if(flag==0){
-              fromSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
-              FromBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
-              mBottomSheetDialog?.dismiss()
-          }else{
-              toSelect= short[names.indexOf(parent.getItemAtPosition(position).toString())]
-              toBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
-              mBottomSheetDialog?.dismiss()
-          }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if(!newText!!.isEmpty()){
+                    filter(newText.toString())
+                    view?.airportList?.layoutManager=LinearLayoutManager(context)
 
-        }
+                    view?.airportList?.adapter=context?.let { cityAdapter2(it ,this@searchActivity, cityT
+                        ,countryT,nameAirT,shortT) }
+                }
+
+                return false
+            }
+        })
 
     }
 
-}
+    fun showDailog1(){
+
+        val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_airport , null)
+        val display =activity!!.windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = size.x
+        val height = size.y
+
+//        view?.airportList?.layoutManager=LinearLayoutManager(context)
+//        view?.airportList?.adapter=context?.let {
+//            cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
+        view.minimumHeight=600
+         mBottomSheetDialog = Dialog(
+            context!!,
+            com.mustafayusef.holidaymaster.R.style.MaterialDialogSheet
+        )
+        mBottomSheetDialog!!.setContentView(view)
+        mBottomSheetDialog!!.setCancelable(true)
+        mBottomSheetDialog!!.window!!.setLayout(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        mBottomSheetDialog!!.show()
+        mBottomSheetDialog!!.setOnShowListener {
+
+//            cityT=city.subList(0,city.size)
+//            countryT=country.subList(0,city.size)
+//            nameAirT=nameAir.subList(0,city.size)
+//            shortT=short.subList(0,city.size)
+//            view?.airportList?.layoutManager=LinearLayoutManager(context)
+//            view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
+
+        }
+//        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, names)
+//
+//       view?. fromCity?.setAdapter(adapter)
+
+
+        view?.fromCity?.onFocusChangeListener = View.OnFocusChangeListener{ view: View,
+                                                                            b: Boolean ->
+//            view?.airportList?.layoutManager=LinearLayoutManager(context)
+//            view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
+
+
+                // Display the suggestion dropdown on focus
+
+        }
+        view?.fromCity?.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // do something on text submit
+
+                   // filter(query.toString())
+//                view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
+
+
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if(!newText!!.isEmpty()){
+                    filter(newText.toString())
+                    view?.airportList?.layoutManager=LinearLayoutManager(context)
+
+                    view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, cityT
+                        ,countryT,nameAirT,shortT) }
+                }
+
+                return false
+            }
+        })
+//
+//          if(flag==0){
+//              fromSelect = short[names.indexOf(parent.getItemAtPosition(position).toString())]
+//              FromBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
+//              mBottomSheetDialog?.dismiss()
+//          }else{
+//              toSelect= short[names.indexOf(parent.getItemAtPosition(position).toString())]
+//              toBtn.setText(names[names.indexOf(parent.getItemAtPosition(position).toString())])
+//              mBottomSheetDialog?.dismiss()
+//          }
+
+    }
+
+    fun filter(text:String){
+        // context?.toast("start filter")
+        countryT.clear()
+        cityT.clear()
+        nameAirT.clear()
+        shortT.clear()
+
+        for(i in 0 until country.size){
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if(country[i].toLowerCase().contains(text.toLowerCase().trim())||
+                city[i].toLowerCase().contains(text.toLowerCase().trim())
+                ||nameAir[i].toLowerCase().contains(text.toLowerCase().trim())
+                ||short[i].toLowerCase().contains(text.toLowerCase().trim())){
+                countryT.add(country[i])
+                cityT.add(city[i])
+                nameAirT.add(nameAir[i])
+                shortT.add(short[i])
+
+            }
+        }
+    }
+    override fun onNoteClick(position: Int) {
+              fromSelect = shortT[position]
+              FromBtn.setText(nameAirT[position]+","+fromSelect)
+
+
+        mBottomSheetDialog!!.dismiss()
+    }
+    override fun onNoteClick2(position: Int) {
+        toSelect= shortT[position]
+        toBtn.setText(nameAirT[position]+","+toSelect)
+        mBottomSheetDialog!!.dismiss()
+    }
+    }
+
+
 
 
 

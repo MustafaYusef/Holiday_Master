@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="#fff"
         android:id="@+id/popup_window"
         android:orientation="vertical">
@@ -29,17 +29,17 @@
         android:background="#d3d3d3"
         android:orientation="vertical">
 
-    <AutoCompleteTextView
+    <androidx.appcompat.widget.SearchView
             android:id="@+id/fromCity"
             android:layout_width="match_parent"
             android:padding="5dp"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_search_black_24dp"
-            android:completionThreshold="0"
+
             android:drawablePadding="10dp"
             android:textSize="18sp"
-
+            android:inputType="textFilter"
+            app:iconifiedByDefault="false"
             android:dropDownWidth="match_parent"
             android:dropDownHeight="wrap_content"
 
@@ -50,7 +50,10 @@
             android:textColorHighlight="@color/colorPrimary"
             />
 </LinearLayout>
-
+<androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/airportList"/>
 
 
 </LinearLayout>

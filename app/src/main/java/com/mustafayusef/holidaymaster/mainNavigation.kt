@@ -57,6 +57,12 @@ class mainNavigation : AppCompatActivity() {
             navController.navigate(R.id.dashboard2)
         }else if(navController.currentDestination?.id==R.id.searchActivity){
             navController.navigate(R.id.dashboard2)
+        }else if(navController.currentDestination?.id==R.id.searchVisa){
+            navController.navigate(R.id.dashboard2)
+        }else if(navController.currentDestination?.id==R.id.main_group){
+            navController.navigate(R.id.dashboard2)
+        }else if(navController.currentDestination?.id==R.id.tours_main){
+            navController.navigate(R.id.dashboard2)
         }
         else {
             super.onBackPressed()

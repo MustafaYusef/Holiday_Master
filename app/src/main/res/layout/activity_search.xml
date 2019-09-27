@@ -57,7 +57,7 @@
                             android:layout_height="match_parent" android:gravity="top"
                             android:layout_weight="1">
                         <Button
-                                android:text="Tow Way"
+                                android:text="Round Trip"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" android:id="@+id/towWay"
                                 android:layout_weight="0.5" android:background="@drawable/roundone"
@@ -209,11 +209,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
-
-
                             android:textColor="#fff"
-
-
                             android:textSize="16dp"
                             android:text="Departure Date" android:textStyle="normal"
                             android:paddingLeft="0dp"/>

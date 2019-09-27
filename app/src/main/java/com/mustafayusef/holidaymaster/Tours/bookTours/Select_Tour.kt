@@ -30,10 +30,11 @@ import kotlinx.android.synthetic.main.progress.*
 
 class Select_Tour : Fragment(),lesener {
     override fun onSucsessGetOrder(Response: TourOrder) {
-
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessBookTour(message: msg) {
+        bookLoading?.visibility=View.GONE
     }
 
 
@@ -58,7 +59,7 @@ class Select_Tour : Fragment(),lesener {
     }
 
     override fun onSucsess(Response: List<Tours>) {
-
+        bookLoading?.visibility=View.GONE
     }
     var pric=0
     var tour: Tours? = null

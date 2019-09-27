@@ -19,6 +19,7 @@ import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 
 
 import kotlinx.android.synthetic.main.activity_login_member.*
+import kotlinx.android.synthetic.main.progress.*
 
 
 class LoginMember : Fragment() ,lesener{
@@ -28,17 +29,21 @@ class LoginMember : Fragment() ,lesener{
 
     override fun OnStart() {
         logBtn.isClickable=false
+        bookLoading?.visibility=View.VISIBLE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
         logBtn.isClickable=true
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsess(AuthInfo: auth) {
         cacheObj.token = AuthInfo.token
+        bookLoading?.visibility=View.GONE
       context?.toast("You are login Successfully")
         view?.findNavController()?.navigate(R.id.dashboard2)
+
     }
 
     object cacheObj : KotprefModel() {

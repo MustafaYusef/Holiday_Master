@@ -1,11 +1,13 @@
 package com.mustafayusef.holidaymaster.login.profile.dashBoard.adaptersProfile
 
 import android.content.Context
+import android.os.Bundle
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Models.TicketOrder.TicketOrderRes
 
@@ -43,6 +45,20 @@ class orderTicketAdapter(
             holder.view.TimeO.text=data.uptime
             holder.view.priceO.text=data.price+"$"
             holder.view. statuse.text=data.issue
+           holder.view.viewT?.setOnClickListener {
+               var bundel=Bundle()
+
+               if(data.type=="holiday"){
+//                   https://fholiday.herokuapp.com/holidayPhone?item=5d823afbfdd2895f609517b7
+                   bundel.putString("url","https://fholiday.herokuapp.com/holidayPhone?item=${data._id}")
+               }else{
+                   bundel.putString("url","https://fholiday.herokuapp.com/ShowTicketPhone?item=${data.AirPNR}")
+               }
+
+               holder.view.findNavController().navigate(R.id.webView2,bundel)
+           }
+
+
         }
 //  Glide.with(fragment)
 //    .load(currentUrl)

@@ -111,15 +111,18 @@
                                 android:textSize="20sp" />
 
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                                android:background="@drawable/corner_text"
+                                android:textSize="16sp"
+                                android:layout_height="45dp"
                                 android:id="@+id/firstNameT"
                                 android:layout_width="match_parent"
-                                android:layout_height="43dp"
+
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:background="@drawable/edittext"
+
                                 android:gravity="center"
-                                android:hint="First Name"
+
                                 android:paddingLeft="5dp"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp" />
@@ -143,14 +146,17 @@
                                 android:textColor="#000"
                                 android:textSize="20sp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                                android:background="@drawable/corner_text"
+                                android:textSize="16sp"
+                                android:layout_height="45dp"
                                 android:id="@+id/lastNameT"
                                 android:layout_width="match_parent"
-                                android:layout_height="43dp"
+
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:background="@drawable/edittext"
-                                android:hint="Last Name"
+
+
                                 android:gravity="center"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="5dp"
@@ -173,14 +179,17 @@
                                 android:textColor="#000"
                                 android:textSize="20sp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                                android:background="@drawable/corner_text"
+                                android:textSize="16sp"
+                                android:layout_height="45dp"
                                 android:id="@+id/nationalityT"
                                 android:layout_width="match_parent"
-                                android:layout_height="43dp"
+
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:background="@drawable/edittext"
-                                android:hint="Nationality"
+
+
                                 android:gravity="center"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="5dp"
@@ -203,14 +212,17 @@
                                 android:textSize="20sp" />
 
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <androidx.appcompat.widget.AppCompatEditText
+                                android:background="@drawable/corner_text"
+                                android:textSize="16sp"
+                                android:layout_height="45dp"
                                 android:id="@+id/passPortNumT"
                                 android:layout_width="match_parent"
-                                android:layout_height="43dp"
+
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:background="@drawable/edittext"
-                                android:hint="Passport No"
+
+
                                 android:paddingLeft="5dp"
                                 android:gravity="center"
                                 android:paddingTop="5dp"

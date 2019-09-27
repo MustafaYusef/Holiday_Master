@@ -192,11 +192,19 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                    >
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:text="Available seats " android:textColor="#fff"
-                          android:textSize="18sp" android:background="@drawable/btnleft"
-                          android:id="@+id/seatsNoGroup" android:paddingBottom="7dp" android:paddingLeft="15dp"
-                          android:paddingStart="7dp" android:paddingTop="7dp" />
+
+                <TextView
+                        android:id="@+id/seatsNoGroup"
+                        android:layout_width="206dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btnleft"
+                        android:paddingStart="7dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:text="Available seats "
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
 
                <HorizontalScrollView
                        android:layout_width="wrap_content"

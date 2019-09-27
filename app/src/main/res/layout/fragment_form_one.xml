@@ -67,21 +67,22 @@ android:id="@+id/frag_one">
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
                         android:text="First Name"
                         android:textColor="#000"
                         android:textSize="20sp" />
 
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/firstNameV"
                         android:layout_width="match_parent"
-                        android:layout_height="43dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/edittext"
-                        android:hint="First Name"
+                        android:textSize="16sp"
+
+                        android:background="@drawable/corner_text"
                         android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
@@ -100,20 +101,20 @@ android:id="@+id/frag_one">
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
                         android:text="Last Name"
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/lastNameV"
                         android:layout_width="match_parent"
-                        android:layout_height="43dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/edittext"
-                        android:hint="Last Name"
+                        android:background="@drawable/corner_text"
+                        android:textSize="16sp"
                         android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
@@ -130,7 +131,7 @@ android:id="@+id/frag_one">
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center_vertical"
                         android:text="Nationality"
                         android:textColor="#000"
@@ -139,17 +140,50 @@ android:id="@+id/frag_one">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/nationalityV"
                         android:layout_width="match_parent"
-                        android:layout_height="43dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/edittext"
-                        android:hint="Nationality"
+                        android:background="@drawable/corner_text"
+
                         android:gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
+                        android:textSize="16sp"
                         android:paddingBottom="5dp" />
             </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Passport No"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/passPortNum"
+                        android:layout_width="match_parent"
+
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/corner_text"
+                      android:textSize="16sp"
+                        android:layout_height="45dp"
+                        android:paddingLeft="5dp"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:inputType="number"
+                        android:paddingBottom="5dp" />
+
+            </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -185,89 +219,9 @@ android:id="@+id/frag_one">
 
             </LinearLayout>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="50dp"
-                    android:orientation="vertical">
-                <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Photo Scan"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        >
 
 
-                <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/photoScanVisa"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
 
-                        android:layout_weight="1"
-                        android:background="@drawable/btnb"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="7dp"
-                        android:paddingRight="15dp"
-                        android:paddingBottom="7dp"
-                        android:text="Photo Scan"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textSize="18sp" />
-                <ImageView
-                        android:layout_width="60dp"
-                        android:id="@+id/photoScanImageV"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/corner_text"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:gravity="center_vertical"
-                        android:text="Passport No"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/passPortNum"
-                        android:layout_width="match_parent"
-                        android:layout_height="43dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/edittext"
-                        android:hint="Passport No"
-                        android:paddingLeft="5dp"
-                        android:gravity="center"
-                        android:paddingTop="5dp"
-                        android:inputType="number"
-                        android:paddingBottom="5dp" />
-
-            </LinearLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -340,7 +294,59 @@ android:id="@+id/frag_one">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="vertical">
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Photo Scan"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/photoScanVisa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_weight="1"
+                            android:background="@drawable/btnb"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="7dp"
+                            android:text="Photo Scan"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:id="@+id/photoScanImageV"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/corner_text"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:orientation="vertical">
@@ -391,7 +397,7 @@ android:id="@+id/frag_one">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:orientation="vertical">
@@ -442,7 +448,7 @@ android:id="@+id/frag_one">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:orientation="vertical">
@@ -494,7 +500,7 @@ android:id="@+id/frag_one">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:orientation="vertical">

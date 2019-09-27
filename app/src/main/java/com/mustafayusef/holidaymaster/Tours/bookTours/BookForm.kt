@@ -97,20 +97,30 @@ class BookForm : Fragment(),lesener {
 
 
         BookTour.setOnClickListener {
-            email=emailB.text.toString()
-            phone=phoneB.text.toString()
-            name=nameB.text.toString()
-            hotel=hotelB.text.toString()
-            national=nationalB.text.toString()
-            infant=infantB.text.toString().toInt()
+            if(!emailB.text.toString().isNullOrEmpty()
+                &&!phoneB.text.toString().isNullOrEmpty()
+                &&!nameB.text.toString().isNullOrEmpty()
+                &&!hotelB.text.toString().isNullOrEmpty()
+                &&!nationalB.text.toString().isNullOrEmpty()
+                &&!infantB.text.toString().isNullOrEmpty()){
+                email=emailB.text.toString()
+                phone=phoneB.text.toString()
+                name=nameB.text.toString()
+                hotel=hotelB.text.toString()
+                national=nationalB.text.toString()
+                infant=infantB.text.toString().toInt()
 
 
-            var aa= AdultsData(Email=email,Phone=phone,Nationality=national,Name=name,Hotel=hotel,
-                INFANT=infant.toString(),Room=hotelRoomB.text.toString(),address=hotelAddressB.text.toString())
-           var bb=gg(AdultsData=aa,data=myOrder!!)
-            GroupviewModel.SubmetBookTours(LoginMember.cacheObj.token,bb)
-            println(bb.AdultsData)
-            println(bb.data)
+                var aa= AdultsData(Email=email,Phone=phone,Nationality=national,Name=name,Hotel=hotel,
+                    INFANT=infant.toString(),Room=hotelRoomB.text.toString(),address=hotelAddressB.text.toString())
+                var bb=gg(AdultsData=aa,data=myOrder!!)
+                GroupviewModel.SubmetBookTours(LoginMember.cacheObj.token,bb)
+                println(bb.AdultsData)
+                println(bb.data)
+            }else{
+                context?.toast("Please fill all the field")
+            }
+
         }
     }
 

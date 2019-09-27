@@ -49,7 +49,7 @@ class select_group : Fragment(), lesener {
     }
 
     override fun onSucsess(Response:List<group>) {
-
+        bookLoading?.visibility=View.GONE
     }
 
     override fun onSucsessBook(Response:tok) {
@@ -220,7 +220,7 @@ class select_group : Fragment(), lesener {
         val factory= groupViewModelFactory(repostary)
         GroupviewModel = ViewModelProviders.of(this,factory).get(groupsViewModel::class.java)
         GroupviewModel?.dataLesener=this
-        GroupviewModel?.GetGroups()
+       // GroupviewModel?.GetGroups()
         dateGroupSelect.setOnClickListener {
             selectDateGroup()
         }

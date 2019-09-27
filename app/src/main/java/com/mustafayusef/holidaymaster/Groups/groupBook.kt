@@ -48,6 +48,8 @@ import java.util.*
 class groupBook : Fragment(),lesener {
     override fun onSucsessFinalBookGroup(Response: msg) {
         bookLoading?.visibility=View.GONE
+        context?.toast(Response.msg)
+        view?.findNavController()?.navigate(R.id.main_group)
     }
 
     override fun onSucsessGetOrderGroup(Response: TourOrder) {
