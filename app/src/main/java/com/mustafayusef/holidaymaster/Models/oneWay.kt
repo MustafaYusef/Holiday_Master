@@ -35,7 +35,7 @@ data class Data1(
     val totalDuration: String
 ):Serializable
 data class Result(
-    val `data`: List<Data1?>?=null,
+    var `data`: List<Data1?>?=null,
     val sessionID: String,
     val searchParams: SearchParams
 ):Serializable

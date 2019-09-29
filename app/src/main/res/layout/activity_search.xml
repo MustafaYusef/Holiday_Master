@@ -102,18 +102,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="#000"
-
-
-                        android:textSize="16sp"
-
-                        android:drawablePadding="5dp"
+                        android:textSize="14sp"
                         android:layout_weight="1"
                         android:focusable="false"
                         android:hint="From"
+
                         android:id="@+id/FromBtn"
-                        android:layout_marginRight="5dp"
-
-
+                        android:layout_marginRight="2dp"
                         android:gravity="left|center"
                         android:padding="5dp"
                       />
@@ -124,10 +119,8 @@
                         android:layout_marginLeft="2dp"
                         android:hint="To"
                         android:focusable="false"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:padding="5dp"
-
-                        android:drawablePadding="5dp"
                         android:gravity="left|center"
                         android:layout_weight="1"
                         android:textColor="#000"

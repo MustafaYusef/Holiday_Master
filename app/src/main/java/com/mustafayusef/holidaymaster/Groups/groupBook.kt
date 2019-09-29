@@ -164,16 +164,21 @@ var group:TourOrder?=null
                     !passNoGroup.text.isNullOrEmpty()&&!nationalGroup.text.isNullOrEmpty()
                     &&!dateBirth.isNullOrEmpty()
                     &&!datePass.isNullOrEmpty()&&!dateExpir.isNullOrEmpty()
-                    &&PassportImageUri!=null&&photoScanImageUri!=null){
+                    ){
 
 
                     bookGroupCon?.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
                     bookGroupCon?.smoothScrollTo(0,0)
                     personNum?.text = "Person ${indexPerson  +2}"
-                    Photos!!.add(getFile(PassportImageUri!!,i++))
-                    Photos!!.add(getFile(photoScanImageUri!!,i++))
+
+                    if(PassportImageUri!=null){
+                        Photos!!.add(getFile(PassportImageUri!!,i++))
+                    }
+                    if(photoScanImageUri!=null){
+                        Photos!!.add(getFile(photoScanImageUri!!,i++))
+                    }
                     if(OtherImageUri!=null){
-                       Photos!!.add(getFile(OtherImageUri!!,i++))
+                        Photos!!.add(getFile(OtherImageUri!!,i++))
                     }
                     firstNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),firstNameGroup.text.toString()) )
                     lastNameGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),lastNameGroup.text.toString() ))
@@ -203,16 +208,19 @@ var group:TourOrder?=null
                     context?.toast("Fill all required field ")
                 }
 
-            }else if(indexArray==1){
+            }else {
                 if(!firstNameGroup.text.isNullOrEmpty()&&!lastNameGroup.text.isNullOrEmpty()&&
                     !passNoGroup.text.isNullOrEmpty()&&!nationalGroup.text.isNullOrEmpty()
                     &&!dateBirth.isNullOrEmpty()
                     &&!datePass.isNullOrEmpty()&&!dateExpir.isNullOrEmpty()
-                    &&PassportImageUri!=null&&photoScanImageUri!=null){
+                  ){
 
-
-                    Photos!!.add(getFile(PassportImageUri!!,i++))
-                    Photos!!.add(getFile(photoScanImageUri!!,i++))
+                    if(PassportImageUri!=null){
+                        Photos!!.add(getFile(PassportImageUri!!,i++))
+                    }
+                    if(photoScanImageUri!=null){
+                        Photos!!.add(getFile(photoScanImageUri!!,i++))
+                    }
                     if(OtherImageUri!=null){
                         Photos!!.add(getFile(OtherImageUri!!,i++))
                     }
@@ -223,8 +231,6 @@ var group:TourOrder?=null
                     dateBookGroupArray.add(RequestBody.create(MediaType.parse("text/plain"),dateBirth ))
                     DatePasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),datePass))
                     DateExpairPasswordArray.add(RequestBody.create(MediaType.parse("text/plain"),dateExpir))
-
-
 
 
 

@@ -149,9 +149,7 @@ class formOne:Fragment(),lesener{
 
               &&!photoScanImageVBody?.toString().isNullOrEmpty()
               &&!PassImageVUriBody?.toString().isNullOrEmpty()
-              &&!OtherImageVisaBody?.toString().isNullOrEmpty()
-              &&!FrontIdentImageBody?.toString().isNullOrEmpty()
-              &&!backIdentImageBody?.toString().isNullOrEmpty()){
+             ){
 
               visaViewModel!!.BookVis(LoginMember.cacheObj.token,firstNameV?.text.toString(),
                   lastNameV?.text.toString(),
@@ -162,10 +160,9 @@ class formOne:Fragment(),lesener{
                   passExpirDateV.text.toString(),
                   visa!!,
                   photoScanImageVBody,
-               PassImageVUriBody,
-               OtherImageVisaBody,
-               FrontIdentImageBody,
-               backIdentImageBody
+               PassImageVUriBody, OtherImageVisaBody
+              ,FrontIdentImageBody,
+              backIdentImageBody
                   )
 
 

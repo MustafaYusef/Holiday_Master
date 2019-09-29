@@ -273,7 +273,7 @@
                    android:layout_margin="5dp"
                    android:textColor="#000"
                    android:id="@+id/hotelRoomB"
-                   android:inputType="number"
+                   android:inputType="text"
                    android:gravity="center"
                    android:background="@drawable/corner_text"/>
        </LinearLayout>

@@ -50,9 +50,9 @@ class orderTicketAdapter(
 
                if(data.type=="holiday"){
 //                   https://fholiday.herokuapp.com/holidayPhone?item=5d823afbfdd2895f609517b7
-                   bundel.putString("url","https://fholiday.herokuapp.com/holidayPhone?item=${data._id}")
+                   bundel.putString("url","https://www.favorite-holiday.com/holidayPhone?item=${data._id}")
                }else{
-                   bundel.putString("url","https://fholiday.herokuapp.com/ShowTicketPhone?item=${data.AirPNR}")
+                   bundel.putString("url","https://https://www.favorite-holiday.com/ShowTicketPhone?item=${data.AirPNR}")
                }
 
                holder.view.findNavController().navigate(R.id.webView2,bundel)

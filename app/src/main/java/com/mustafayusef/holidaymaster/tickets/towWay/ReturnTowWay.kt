@@ -50,13 +50,15 @@ class ReturnTowWay : Fragment() {
 
         Details.setOnClickListener {
 
-            val intent = Intent(context, DetailsTow::class.java)
+            val bundel = Bundle()
 //
-           intent.putExtra("TowWay",holidays)
-            intent.putExtra("session", holidaysAll.sessionID)
-            intent.putExtra("Id", holidays._id)
-            intent.putExtra("type","RT")
-            startActivity(intent)}
+            bundel.putSerializable ("TowWay",holidays)
+            bundel.putSerializable("tecketTow",holidaysAll)
+            bundel.putString("session", holidaysAll.sessionID)
+            bundel.putString("Id", holidays._id)
+            bundel.putString("type","RT")
+            view?.findNavController()?.navigate(R.id.detailsTow2,bundel)
+        }
 
         purch?.setOnClickListener {
             var bundel= Bundle()

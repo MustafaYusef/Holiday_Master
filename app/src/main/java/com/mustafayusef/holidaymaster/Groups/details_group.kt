@@ -1,5 +1,7 @@
 package com.mustafayusef.holidaymaster.Groups
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,12 +35,19 @@ class details_group : Fragment() {
 
         var requestOptions = RequestOptions()
         requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(40))
-        Glide.with(context!!).load("https://favorite-holiday.herokuapp.com/"+group!!.img).apply(requestOptions)
+        Glide.with(context!!).load("https://favorite-holiday.com/server/"+group!!.img).apply(requestOptions)
             .into(ImageGroupD)
 
 
         //ImageTourD.setBackgroundResource(R.drawable.img_rudus)
         NameGroupD.text= group!!.name
         bodyGroupD.text= group!!.body
+
+        showPdf?.setOnClickListener {
+            var browserIntent =  Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://favorite-holiday.com/server/"+group?.pdf));
+            startActivity(browserIntent);
+
+        }
     }
 }

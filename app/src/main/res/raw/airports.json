@@ -1,4 +1,4 @@
-﻿ [{
+﻿[{
     "name": "Madang",
     "city": "Madang",
     "country": "Papua New Guinea",
@@ -13144,9 +13144,9 @@
     "country": "United States",
     "iata": "WRI"
 }, {
-    "name": "Cherry Point Mcas",
-    "city": "Cherry Point",
-    "country": "United States",
+    "name": "Sirnak Airport",
+    "city": "Sirnak",
+    "country": "Turkey",
     "iata": "NKT"
 }, {
     "name": "Emanuel Co",
@@ -29394,6 +29394,4 @@
     "country": "United States",
     "iata": "OLT"
 }
-
-
 ]

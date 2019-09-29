@@ -62,7 +62,7 @@ class groupsAdapter(val context:Context,val GroupsFeed:List<group>?) : RecyclerV
 
 
 
-        Glide.with(context).load("https://favorite-holiday.herokuapp.com/"+img)
+        Glide.with(context).load("https://favorite-holiday.com/server/"+img)
             .apply(requestOptions).into(holder.view.imageTour)
 
 

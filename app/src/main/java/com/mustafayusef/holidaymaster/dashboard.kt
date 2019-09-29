@@ -27,7 +27,7 @@ class dashboard : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         whats?.setOnClickListener {
-            val contact ="07712790071"  // use country code with your phone number
+            val contact ="+905384433030"  // use country code with your phone number
             val url = "https://api.whatsapp.com/send?phone=$contact"
             try {
                 val pm = context?.packageManager

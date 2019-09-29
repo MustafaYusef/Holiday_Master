@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.chibatching.kotpref.Kotpref
 import com.mustafayusef.holidaymaster.login.LoginMember
 import kotlinx.android.synthetic.main.activity_main_navigation.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -28,7 +29,7 @@ class mainNavigation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_navigation)
-
+        Kotpref.init(this!!)
         navController= Navigation.findNavController(this, R.id.navHost)
       //  bottomNav.setupWithNavController(navController)
         bottomNav.setupWithNavController(navController)

@@ -2,15 +2,20 @@ package com.mustafayusef.holidaymaster.Visa
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.holidaymaster.Models.country
 import com.mustafayusef.holidaymaster.R
 import kotlinx.android.synthetic.main.visa_card.view.*
+import kotlinx.android.synthetic.main.visa_popup.view.*
 
 class NationalAdapter(val context: Context, val countryFeed:List<country>?) : RecyclerView.Adapter<NationalAdapter.CustomViewHolder>(){
 //
@@ -40,12 +45,23 @@ class NationalAdapter(val context: Context, val countryFeed:List<country>?) : Re
         holder.view.nameCountry.text= Visa!!.name
         holder.view.Country .text= Visa!!.country
         holder.view.Approv .text= Visa!!.APPROVED
-        holder.view.Description .text= Visa!!.Description
+       // holder.view.Description .text= Visa!!.Description
 
         holder.view.PriceVisa .text= Visa!!.price.toString()+" $"
 
 
+        holder.view.detVisa.setOnClickListener {
+            val dview: View = View.inflate(context, R.layout.visa_popup, null)
+            val builder = context?.let { AlertDialog.Builder(it).setView(dview) }
+            val malert= builder?.show()
 
+            malert?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dview?.detailsVisa?.text=Visa!!.Description
+
+//                context?.toast(context?.getResources().getString(R.string.deletSucc))
+
+        }
 
 
 

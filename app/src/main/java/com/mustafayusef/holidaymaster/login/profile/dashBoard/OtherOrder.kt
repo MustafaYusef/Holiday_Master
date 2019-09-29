@@ -16,6 +16,7 @@ import com.mustafayusef.holidaymaster.login.LoginViewModelFactory
 import com.mustafayusef.holidaymaster.login.profile.dashBoard.adaptersProfile.OtherTicketAdapter
 import com.mustafayusef.holidaymaster.networks.myApis
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.sharay.data.networks.repostorys.userRepostary
 import kotlinx.android.synthetic.main.order_tickets_fragment.*
 import kotlinx.android.synthetic.main.progress2.*
@@ -26,7 +27,8 @@ class OtherOrder : Fragment(),Dashlesener {
     }
 
     override fun onFailer(message: String) {
-        animation_viewTourPub?.visibility=View.VISIBLE
+        animation_viewTourPub?.visibility=View.GONE
+        context?.toast(message)
     }
 
     override fun onSucsessTicket(Response: TicketOrderRes) {

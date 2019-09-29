@@ -61,7 +61,7 @@ class ToursAdapter(val context:Context,val ToursFeed:List<Tours>?) : RecyclerVie
 
 
 
-       Glide.with(context).load("https://favorite-holiday.herokuapp.com/"+img)
+       Glide.with(context).load("https://favorite-holiday.com/server/"+img)
            .apply(requestOptions).into(holder.view.imageTour)
 
       // Picasso.with(context) .load().resize(100,100) .into(holder.view.imageTour)

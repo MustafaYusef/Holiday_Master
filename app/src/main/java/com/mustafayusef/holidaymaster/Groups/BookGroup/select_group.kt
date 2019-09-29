@@ -77,13 +77,14 @@ class select_group : Fragment(), lesener {
     var seat:Double=0.0
     var GroupviewModel: groupsViewModel?=null
     var persons=0
+    var priceT:Long?=null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.activity_select_group, container, false)
     }
-
+  var basePrice=0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -91,20 +92,34 @@ class select_group : Fragment(), lesener {
         //priceButton.visibility=View.INVISIBLE
         wrapGroup.visibility= View.INVISIBLE
 
-        seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toDouble()
+        basePrice=tour!!.priceSingle!!.toInt()
 
-        priceAdultGroup.text= tour!!.price!!.toString()+" $"
+        seat=(tour!!.Data?.get(index)!!.ToursSets)!!.toDouble()
+        seat--
+        priceT=tour?.priceSingle
+        priceAdultGroup.text= tour!!.price !!.toString()+" $"
         priceChildGroup.text= tour!!.priceCh!!.toString()+" $"
+        infPrice?.text= tour!!.priceINf!!.toString()+" $"
+        groupTitle?.text=tour?.name
 
         subAdGroup.setOnClickListener {
             var adnum=adNoGroup.text.toString().toInt()
-
             if(adNoGroup.text.toString().toInt()>1){
                 adnum--
                 seat++
                 seatsNoGroup.text="Available Seats:"+seat
                 adNoGroup.text=adnum.toString()
-                priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.price!!.toInt()).toString()+" $")
+                priceButtonGroup.text="Price :"+priceT+"$"
+
+                if(adNoGroup.text.toString().toInt()==1){
+                    basePrice=tour?.price!!.toInt()
+                }
+                   priceT= priceT!!-basePrice
+
+                priceButtonGroup.text="Price :"+priceT+"$"
+//                priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,
+//                priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.
+//                price!!.toInt()).toString()+" $")
 
             }
         }
@@ -114,14 +129,25 @@ class select_group : Fragment(), lesener {
 
             if(adNoGroup.text.toString().toInt()<10){
                 if(seat>0) {
+
                     adnum++
                     seat--
                     seatsNoGroup.text = "Available Seats:" + seat
                     adNoGroup.text = adnum.toString()
-                    priceButtonGroup.text = ((priceButtonGroup.text.toString().subSequence(
-                        0,
-                        priceButtonGroup.text.toString().length - 2
-                    ).toString().toInt() + tour!!.price!!.toInt()).toString() + " $")
+                    if(adnum==2){
+                        basePrice=tour!!.price!!.toInt()
+                    }
+                        priceT=priceT!!+basePrice
+
+
+
+
+
+                    priceButtonGroup.text="Price :"+priceT+"$"
+//                    priceButtonGroup.text = ((priceButtonGroup.text.toString().subSequence(
+//                        0,
+//                        priceButtonGroup.text.toString().length - 2
+//                    ).toString().toInt() + tour!!.price!!.toInt()).toString() + " $")
                 }
             }
 
@@ -139,8 +165,11 @@ class select_group : Fragment(), lesener {
                 seat--
                 seatsNoGroup.text="Available Seats:"+seat
                 chNoGroup.text=adnum.toString()
-                priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() +tour!!.priceCh!!.toInt()).toString()+" $")
-
+                    priceT=tour?.priceCh!!+priceT!!
+//                priceButtonGroup.text= ((priceButtonGroup.text.toString().
+//                    subSequence(0,priceButtonGroup.text.toString().length-2)
+//                    .toString().toInt() +tour!!.priceCh!!.toInt()).toString()+" $")
+                    priceButtonGroup.text="Price :"+priceT+"$"
             }}
 
 
@@ -155,8 +184,9 @@ class select_group : Fragment(), lesener {
                 seat++
                 seatsNoGroup.text="Available Seats:"+seat
                 chNoGroup.text=adnum.toString()
-                priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.priceCh!!.toInt()).toString()+" $")
-
+                priceT=priceT!!-tour?.priceCh!!
+               // priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.priceCh!!.toInt()).toString()+" $")
+                priceButtonGroup.text="Price :"+priceT+"$"
             }
         }
 
@@ -187,11 +217,12 @@ class select_group : Fragment(), lesener {
             if(infNoGroup.text.toString().toInt()<10){
                 if(seat>0) {
                     adnum++
+                    priceT=tour?.priceINf!!+priceT!!
 //                    seat-=0.5
 //                    seatsNoGroup.text="Available Seats:"+seat
                     infNoGroup.text=adnum.toString()
                    // priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() +tour!!.priceCh!!.toInt()).toString()+" $")
-
+                    priceButtonGroup.text="Price :"+priceT+"$"
                 }}
 
 
@@ -203,11 +234,12 @@ class select_group : Fragment(), lesener {
 
             if(infNoGroup.text.toString().toInt()>0){
                 adnum--
+                priceT=priceT!!-tour?.priceINf!!
 //                seat+=0.5
 //                seatsNoGroup.text="Available Seats:"+seat
                 infNoGroup.text=adnum.toString()
                // priceButtonGroup.text= ((priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length-2).toString().toInt() -tour!!.priceCh!!.toInt()).toString()+" $")
-
+                priceButtonGroup.text="Price :"+priceT+"$"
             }
         }
     }
@@ -224,10 +256,12 @@ class select_group : Fragment(), lesener {
         dateGroupSelect.setOnClickListener {
             selectDateGroup()
         }
+
+
+
         priceButtonGroup.setOnClickListener {
             persons=adNoGroup.text.toString().toInt()+chNoGroup.text.toString().toInt()+infNoGroup.text.toString().toInt()
-           var pric= (priceButtonGroup.text.toString().subSequence(0,priceButtonGroup.text.toString().length - 2
-            ).toString().toInt())
+           var pric= priceT
             var info = InfoOb(ChildrenNumber= chNoGroup.text.toString().toInt(),
                 ADULTSNumber= adNoGroup.text.toString().toInt(),
                 ToursDate= date,
@@ -242,7 +276,7 @@ class select_group : Fragment(), lesener {
                 dat?.let { it1 ->
                     GroupBook(
                         type = "Group",
-                        price = pric,
+                        price = priceT!!.toInt(),
                         info = info,
                         dates = it1,
                         item = tour!!,
@@ -309,7 +343,8 @@ class select_group : Fragment(), lesener {
             seatsNoGroup.text="Available Seats:"+((tour!!.Data?.get(index)!!.ToursSets)!!.toInt())
             adNoGroup.text="1"
             seat=tour!!.Data?.get(index)!!.ToursSets!!.toDouble()
-            priceButtonGroup.text=tour!!.price.toString()+" $"
+            priceT=tour!!.priceSingle
+            priceButtonGroup.text="Price :"+tour!!.priceSingle .toString()+" $"
             mBottomSheetDialog.dismiss()
         }
 

@@ -82,18 +82,11 @@
                 android:text="Select your country"
                 android:textColor="#fff"
                 android:textSize="18sp" />
-        <TextView android:id="@+id/available"
-                  android:layout_width="match_parent" android:layout_height="38dp"
-                  android:textAlignment="center"
-                  android:text="" android:gravity="center" android:textSize="17sp"/>
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:paddingBottom="0dp" android:layout_marginTop="3dp"
-                android:background="#fff" android:splitMotionEvents="false">
+<!--        <TextView android:id="@+id/available"-->
+<!--                  android:layout_width="match_parent" android:layout_height="38dp"-->
+<!--                  android:textAlignment="center"-->
+<!--                  android:text="" android:gravity="center" android:textSize="17sp"/>-->
+<!--   -->
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Visa_list"
                     android:layout_width="match_parent"
@@ -103,7 +96,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" android:scrollbars="vertical"
             />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

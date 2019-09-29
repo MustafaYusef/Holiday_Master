@@ -148,4 +148,14 @@
             android:name="com.mustafayusef.holidaymaster.login.profile.dashBoard.webView"
             android:label="fragment_web_view"
             tools:layout="@layout/fragment_web_view" />
+    <fragment
+            android:id="@+id/detailsOne2"
+            android:name="com.mustafayusef.holidaymaster.tickets.oneWay.DetailsOne"
+            android:label="activity_details_one"
+            tools:layout="@layout/activity_details_one" />
+    <fragment
+            android:id="@+id/detailsTow2"
+            android:name="com.mustafayusef.holidaymaster.tickets.towWay.DetailsTow"
+            android:label="activity_details_tow"
+            tools:layout="@layout/activity_details_tow" />
 </navigation>

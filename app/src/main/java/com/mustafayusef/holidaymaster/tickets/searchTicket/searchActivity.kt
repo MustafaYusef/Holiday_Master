@@ -57,7 +57,7 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
     var adult = 1
     var child = 0
     var infant = 0
-    var type = 1
+    var type = 3
     var departure = ""
     var Return = ""
     var fromSelect = ""
@@ -67,6 +67,8 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
     var email: String = ""
     var phone: String = ""
     var money: String = ""
+
+    var flage1=false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -88,20 +90,20 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
         super.onViewCreated(view, savedInstanceState)
 
         AdultPicker.minValue = 1
-        AdultPicker.maxValue = 7
+        AdultPicker.maxValue = 10
         AdultPicker.wrapSelectorWheel = true
         childPicker.minValue = 0
-        childPicker.maxValue = 5
+        childPicker.maxValue = 10
         childPicker.wrapSelectorWheel = true
         InfantPicker.minValue = 0
-        InfantPicker.maxValue = 5
+        InfantPicker.maxValue = 10
         InfantPicker.wrapSelectorWheel = true
 
         oneWay.isActivated = true
         flage = true
 
         contRet.visibility = View.INVISIBLE
-        val options = arrayOf("First","Business","Economy ")
+        val options = arrayOf("Economy","Business","First")
         TypePicker.minValue=0
         TypePicker.maxValue=options.size-1
         TypePicker.displayedValues=options
@@ -109,7 +111,14 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
         TypePicker.setOnValueChangedListener { picker, oldVal, newVal ->
 
             //Display the newly selected number to text view
-        type =newVal+1
+            if(options[newVal]=="Economy"){
+                type =3
+            }else if(options[newVal]=="Business"){
+                type =2
+            }else{
+                type =1
+            }
+
         }
         val suggest: Array<AutoCom>
         var json: String = ""
@@ -167,8 +176,6 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
 
                     depText.text= "$year-${month+1}-$dayOfMonth"
                     departure = "$year-${month+1}-$dayOfMonth"
-
-
                 },
                 year,
                 month,
@@ -334,7 +341,7 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
 
 
     fun showDailog2(){
-
+        flage1=true
         val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_airport , null)
         val display =activity!!.windowManager.defaultDisplay
         val size = Point()
@@ -357,6 +364,15 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
             LinearLayout.LayoutParams.MATCH_PARENT
         )
         mBottomSheetDialog!!.show()
+//        mBottomSheetDialog!!.setOnShowListener {
+//            flage1=true
+//
+//            view?.airportList?.layoutManager=LinearLayoutManager(context)
+//            view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
+//
+//        }
+
+
 
         view?.fromCity?.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
@@ -366,12 +382,16 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
                 if(!newText!!.isEmpty()){
+                    flage1=false
                     filter(newText.toString())
                     view?.airportList?.layoutManager=LinearLayoutManager(context)
 
                     view?.airportList?.adapter=context?.let { cityAdapter2(it ,this@searchActivity, cityT
                         ,countryT,nameAirT,shortT) }
+                }else{
+                    flage1=true
                 }
 
                 return false
@@ -381,14 +401,16 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
     }
 
     fun showDailog1(){
-
+        flage1=true
         val view = layoutInflater.inflate(com.mustafayusef.holidaymaster.R.layout.bottom_sheet_airport , null)
         val display =activity!!.windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
         val width = size.x
         val height = size.y
-
+        view?.airportList?.layoutManager=LinearLayoutManager(context)
+        view?.airportList?.adapter=context?.let {
+            cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
 //        view?.airportList?.layoutManager=LinearLayoutManager(context)
 //        view?.airportList?.adapter=context?.let {
 //            cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
@@ -404,26 +426,14 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
             LinearLayout.LayoutParams.MATCH_PARENT
         )
         mBottomSheetDialog!!.show()
-        mBottomSheetDialog!!.setOnShowListener {
 
-//            cityT=city.subList(0,city.size)
-//            countryT=country.subList(0,city.size)
-//            nameAirT=nameAir.subList(0,city.size)
-//            shortT=short.subList(0,city.size)
-//            view?.airportList?.layoutManager=LinearLayoutManager(context)
-//            view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
-
-        }
 //        var adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, names)
 //
 //       view?. fromCity?.setAdapter(adapter)
 
 
         view?.fromCity?.onFocusChangeListener = View.OnFocusChangeListener{ view: View,
-                                                                            b: Boolean ->
-//            view?.airportList?.layoutManager=LinearLayoutManager(context)
-//            view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, city,country,nameAir,short) }
-
+                                                        b: Boolean ->
 
                 // Display the suggestion dropdown on focus
 
@@ -443,11 +453,14 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if(!newText!!.isEmpty()){
+                    flage1=false
                     filter(newText.toString())
                     view?.airportList?.layoutManager=LinearLayoutManager(context)
 
                     view?.airportList?.adapter=context?.let { cityAdapter(it ,this@searchActivity, cityT
                         ,countryT,nameAirT,shortT) }
+                }else{
+                    flage1=true
                 }
 
                 return false
@@ -489,15 +502,31 @@ class searchActivity : Fragment(),cityAdapter.OnNoteLisener,cityAdapter2.OnNoteL
         }
     }
     override fun onNoteClick(position: Int) {
-              fromSelect = shortT[position]
-              FromBtn.setText(nameAirT[position]+","+fromSelect)
 
+        if(flage1){
+            fromSelect = short[position]
+                FromBtn.setText(city[position]+"("+fromSelect+")")
+        }else{
+            fromSelect = shortT[position]
+                FromBtn.setText(cityT[position]+"("+fromSelect+")")
+        }
 
         mBottomSheetDialog!!.dismiss()
     }
     override fun onNoteClick2(position: Int) {
-        toSelect= shortT[position]
-        toBtn.setText(nameAirT[position]+","+toSelect)
+        if(flage1){
+            toSelect= short[position]
+
+                toBtn.setText(city[position]+"("+toSelect+")")
+
+        }else{
+            toSelect= shortT[position]
+
+                toBtn.setText(cityT[position]+"("+toSelect+")")
+        }
+
+
+
         mBottomSheetDialog!!.dismiss()
     }
     }

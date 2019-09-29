@@ -2,10 +2,18 @@ package com.mustafayusef.holidaymaster.tickets.oneWay
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.Adapters.OneDetailsAdapter
 import com.mustafayusef.holidaymaster.Models.Data1
+import com.mustafayusef.holidaymaster.Models.Result
 
 import com.mustafayusef.holidaymaster.R
 import com.mustafayusef.holidaymaster.tickets.Buggage.buggage
@@ -13,41 +21,42 @@ import com.mustafayusef.holidaymaster.tickets.FareRules.Fare
 import com.mustafayusef.holidaymaster.tickets.breakUp.breakUp
 
 import kotlinx.android.synthetic.main.activity_details_one.*
+import kotlinx.android.synthetic.main.activity_details_one.view.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 
-class DetailsOne : AppCompatActivity() {
+class DetailsOne : Fragment() {
     lateinit var holiday: Data1
     var session=""
     var adult=0
     var Id=""
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details_one)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.activity_details_one, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         var i:Int=0
-        holiday= intent.getSerializableExtra("oneway") as Data1
-        session=intent.getStringExtra("sessionId")
-        adult= intent.getIntExtra("adult",0)
-        Id= intent.getStringExtra("Id")
-//        holder.view?.stops.text=holidays?.stops.toString()+" Stops"
-//        holder.view?.priceOne .text=holidays?.price.toString()+"$"
-//        holder.view?.depTime.text= holidays?.depDateAndTime!![0]
-//        holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex]        //  holder.view?.AirNameDep.text=holidays?.departingAirportName[0].subSequence(0,11)
-//        holder.view?.duration.text=holidays?.totalDuration
-//        holder.view?.AirNameDep .text=holidays?.depCityName [0]
-//        holder.view?.airNameArr .text=holidays?.arrCityName [holidays?.arrDateAndTime.lastIndex]
-//        holder.view?.companyNameOne.text=holidays.AirlineName
-//        holder.view?.duration .text=holidays.layoverTime[0]
-//
-//        Glide.with(context).load(holidays?.mainLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
+        holiday= arguments!!.getSerializable("oneway") as Data1
+        session=arguments!!.getString("sessionId")!!
+        adult= arguments!!.getInt("adult",0)
+        Id= arguments!!.getString("Id")!!
+
+       var tecket: Result =arguments!!.getSerializable("tecket") as Result
 
 
-        this.detailsOneList.layoutManager= LinearLayoutManager(this)
-        detailsOneList.adapter= OneDetailsAdapter(this@DetailsOne,holiday.depDateAndTime,
+        this.detailsOneList.layoutManager= LinearLayoutManager(context)
+        detailsOneList.adapter= OneDetailsAdapter(context!!,holiday.depDateAndTime,
             holiday.arrDateAndTime,holiday.layoverTime,holiday.depCityName
             ,holiday.arrCityName,holiday.Duration,holiday.logos,holiday.airNames)
 
         BuggageBtn.setOnClickListener {
-            val intent = Intent(this@DetailsOne, buggage::class.java)
+            val intent = Intent(context, buggage::class.java)
 //
             intent.putExtra("session", session)
             intent.putExtra("Id", holiday._id)
@@ -55,7 +64,7 @@ class DetailsOne : AppCompatActivity() {
         startActivity(intent)}
 
         FareBtn.setOnClickListener {
-            val intent = Intent(this@DetailsOne, Fare::class.java)
+            val intent = Intent(context, Fare::class.java)
 //
             intent.putExtra("session", session)
             intent.putExtra("Id", holiday._id)
@@ -63,7 +72,7 @@ class DetailsOne : AppCompatActivity() {
             startActivity(intent)}
 
         breakBtn.setOnClickListener {
-            val intent = Intent(this@DetailsOne, breakUp::class.java)
+            val intent = Intent(context, breakUp::class.java)
 //
             intent.putExtra("adult", adult.toString())
             intent.putExtra("AdultBaseFare", holiday.AdultBaseFare.toString())
@@ -71,7 +80,14 @@ class DetailsOne : AppCompatActivity() {
             intent.putExtra("price", holiday.price .toString())
             startActivity(intent)}
 
-            purOne.text="Purchase for "+holiday.price+" $"
+        purOneD.text="Purchase for "+holiday.price+" $"
+
+       purOneD?.setOnClickListener {
+            var bundel= Bundle()
+            bundel.putSerializable("ticket",tecket)
+            bundel.putString("Id",holiday._id)
+           view?.findNavController()?.navigate(R.id.ticketDetails,bundel)
+        }
          //   typ="OW"
 
 

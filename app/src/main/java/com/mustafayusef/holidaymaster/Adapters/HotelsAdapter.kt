@@ -69,7 +69,7 @@ class HotelsAdapter(val context: Context, val HotelsFeed:List<hotel>?) : Recycle
         var requestOptions = RequestOptions()
         requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(10))
         Glide.with(holder.view)
-            .load("https://favorite-holiday.herokuapp.com/"+Hotels.img.toString())
+            .load("https://favorite-holiday.com/server/"+Hotels.img.toString())
             .placeholder(R.drawable.hotel_placeholder)
             .apply(requestOptions).into(holder.view?.HotelImage)
 

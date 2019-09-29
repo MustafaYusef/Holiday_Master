@@ -1,26 +1,36 @@
 package com.mustafayusef.holidaymaster.Adapters
 
 import android.content.Context
+import android.os.Bundle
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mustafayusef.holidaymaster.Models.Result
 
 import com.mustafayusef.holidaymaster.R
+import kotlinx.android.synthetic.main.activity_details_one.view.*
 import kotlinx.android.synthetic.main.onewaycard.view.*
 //holder.rv?.locationList!!.adapter= OneDetailsAdapter(context, holiday.depDateAndTime,
 //holiday.arrDateAndTime,holiday.layoverTime,holiday.depCityName
 //,holiday.arrCityName,holiday.totalDuration,holiday.logos,holiday.airNames)
 
 class OneDetailsAdapter(
-    val context: Context, val depDateAndTime:List<String>,
-    val arrDateAndTime:List<String>, val layoverTime:List<String>,
-    val depCityName:List<String>, val arrCityName:List<String>,val totalDuration:List<String>
-    , val logos:List<String>, val airNames:List<String>
-    ) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
+    val context: Context,
+    val depDateAndTime: List<String>,
+    val arrDateAndTime: List<String>,
+    val layoverTime: List<String>,
+    val depCityName: List<String>,
+    val arrCityName: List<String>,
+    val totalDuration: List<String>
+    ,
+    val logos: List<String>,
+    val airNames: List<String>
+) : RecyclerView.Adapter<OneDetailsAdapter.CustomViewHolder>() {
 
 
 
@@ -47,8 +57,14 @@ class OneDetailsAdapter(
         val depDateAndTime = depDateAndTime.get(position)
         val airlineLogo = logos.get(position)
         val arrDateAndTime = arrDateAndTime.get(position)
+         println("layover "+layoverTime)
+        if(position<layoverTime.size ){
+            val layOverTime=layoverTime.get(position)
+            holder.view?. stops.text="Transit time:"+layOverTime
+        }else{
+            holder.view?. stops.text=""
+        }
 
-        val layOverTime=layoverTime.get(0)
         val airlineName=airNames.get(position)
         val totalDuration=totalDuration.get(position)
 
@@ -62,7 +78,10 @@ class OneDetailsAdapter(
         holder.view?.AirNameDep .text=depCityName
         holder.view?.airNameArr .text=arrCityName
         holder.view?.companyNameOne.text=airlineName
-        holder.view?.duration .text=layOverTime
+        holder.view?.duration .text="duration:"+totalDuration
+
+
+
 
         Glide.with(context).load(airlineLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
 

@@ -65,7 +65,7 @@ class LoginMember : Fragment() ,lesener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Kotpref.init(context!!)
+
         val networkIntercepter= networkIntercepter(context!!)
         val api= myApis(networkIntercepter)
         val repostary= userRepostary(api)

@@ -98,7 +98,9 @@ class showHoliday : Fragment(), getDataLesener {
 
     override fun onSucsess(ResponseOneWay: Result) {
        // this.toast(ResponseOneWay.sessionID)
+
         if(ResponseOneWay.data!=null|| ResponseOneWay.data?.get(0)?.Duration?.isNotEmpty()!!){
+            ResponseOneWay.data=ResponseOneWay?.data!!.sortedBy { it!!.price }
             noResult?.text=ResponseOneWay.data?.size .toString()+" Result Found"
             Holiday_list?.layoutManager= LinearLayoutManager(context!!)
             Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay)
@@ -113,6 +115,7 @@ class showHoliday : Fragment(), getDataLesener {
 
     override fun onSucsessTow(TowWayResponse: ResultTow) {
         if(TowWayResponse.data!=null|| TowWayResponse.data?.get(0)?.Duration?.isNotEmpty()!!){
+            TowWayResponse.data=TowWayResponse?.data!!.sortedBy { it!!.price }
             noResult?.text=TowWayResponse.data?.size .toString()+" Result Found"
             Holiday_list?.layoutManager= LinearLayoutManager(context)
             Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse)

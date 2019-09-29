@@ -45,13 +45,13 @@ class TowWayAdapter(
         val holidays=holidayTowWay?.data.get(position)
 
         holder.view?.priceOne .text=holidays?.price.toString()+"$"
-        holder.view?.depTime.text= holidays?.depDateAndTime!![0]
+        holder.view?.depTime .text= holidays?.depDateAndTime!![0]
         holder.view?.arrTime.text=holidays?.arrDateAndTime[holidays?.arrDateAndTime.lastIndex]        //  holder.view?.AirNameDep.text=holidays?.departingAirportName[0].subSequence(0,11)
         holder.view?.duration.text=holidays?.totalDuration
         holder.view?.AirNameDep .text=holidays?.depCityName [0]
         holder.view?.airNameArr .text=holidays?.arrCityName [holidays?.arrDateAndTime.lastIndex]
         holder.view?.companyNameOne.text=holidays.AirlineName
-        holder.view?.duration .text=holidays.layoverTime[0]
+       // holder.view?.duration .text=holidays.totalDuration
         holder.view?.stops.text="Stops:"+holidays.stops.toString()
         Glide.with(context).load(holidays?.mainLogo).apply(RequestOptions.centerCropTransform().centerInside()).into(holder.view.LogoAir)
 

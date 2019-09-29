@@ -52,7 +52,7 @@ data class DataTow(
 ):Serializable
 
 data class ResultTow(
-    val `data`: List<DataTow>,
+    var `data`: List<DataTow>,
     val searchParams: SearchParamsTow,
     val sessionID: String
 ):Serializable

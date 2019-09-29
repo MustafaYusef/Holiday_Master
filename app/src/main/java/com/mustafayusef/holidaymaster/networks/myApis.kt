@@ -87,7 +87,7 @@ interface myApis {
     suspend fun getTours(
     ):Response<List<Tours>>
 
-    @GET("offers/Tour")
+    @GET("offers/Tours")
     suspend fun getSpicialTours(
     ):Response<List<Tours>>
 
@@ -200,7 +200,7 @@ interface myApis {
     @Part("infantBirthArr") infantBirthArr:List<@JvmSuppressWildcards RequestBody>,
     @Part("infantIssueArr") infantIssueArr:List<@JvmSuppressWildcards RequestBody>,
     @Part("infantExpiryArr") infantExpiryArr:List<@JvmSuppressWildcards RequestBody>,
-        @Part images:List<@JvmSuppressWildcards MultipartBody.Part>
+        @Part images:List<@JvmSuppressWildcards MultipartBody.Part>?
         ):Response<msg>
 
     @FormUrlEncoded
@@ -290,9 +290,10 @@ interface myApis {
 
             return Retrofit.Builder()
                 .client(client.build())
-                .baseUrl("https://favorite-holiday.herokuapp.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
 
+//
+                .baseUrl("https://favorite-holiday.com/server/api/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build().create(myApis::class.java)
         }
     }

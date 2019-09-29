@@ -226,7 +226,7 @@
                                 android:paddingLeft="5dp"
                                 android:gravity="center"
                                 android:paddingTop="5dp"
-                                android:inputType="number"
+                                android:inputType="text"
                                 android:paddingBottom="5dp" />
 
                     </LinearLayout>

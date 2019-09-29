@@ -28,10 +28,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginBottom="5dp">
                 <TextView
-                        android:text="Ticket info"
+                        android:text="Tour info"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/toShow2"
-                        android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
+                        android:layout_height="match_parent" android:id="@+id/TourTitle"
+                        android:layout_gravity="top" android:textSize="22sp" android:textStyle="bold"
                         android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1"
                         android:gravity="center"/>
             </LinearLayout>
@@ -82,7 +82,7 @@
                                 android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                         <TextView
                                 android:paddingLeft="5dp"
-                                android:text="10 years old and above"
+                                android:text="11 years old and above"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" android:id="@+id/text2View24"
                                 android:layout_weight="1"/>
@@ -125,7 +125,7 @@
                                 android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                         <TextView
                                 android:paddingLeft="5dp"
-                                android:text="10 years old and above"
+                                android:text="2 years old to 11"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" android:id="@+id/te3xtView24"
                                 android:layout_weight="1"/>
@@ -167,7 +167,7 @@
                                 android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                         <TextView
                                 android:paddingLeft="5dp"
-                                android:text="10 years old and above"
+                                android:text="From 0 to 2 Year"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" android:id="@+id/textView24"
                                 android:layout_weight="1"/>

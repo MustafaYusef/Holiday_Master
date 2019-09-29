@@ -50,21 +50,21 @@ class ticketDetailstowWay : Fragment(),lesenerTicketOne {
         conD?.visibility=View.VISIBLE
         nextTicketBook?.visibility=View.VISIBLE
         animation_viewTourPub?.visibility=View.GONE
-        totalPriceD?.text=Response.result.data[0].price.toString()
+        totalPriceD?.text=Response.result.data[0].price.toString()+"$"
         TaxFareD?.text=(Response.result.data[0].AdultTax+Response.result.data[0].ChildTax+
-                Response.result.data[0].InfantTax).toString()
+                Response.result.data[0].InfantTax).toString()+"$"
         if(Response.result.data[0].InfantBaseFare==0.0){
             infCon?.visibility=View.GONE
 
         }else{
-            InfantFare?.text=Response.result.data[0].InfantBaseFare.toString()
+            InfantFare?.text=Response.result.data[0].InfantBaseFare.toString()+"$"
         }
         if (Response.result.data[0].ChildBaseFare==0.0){
             ChildCon?.visibility=View.GONE
         }else{
-            ChildFare?.text= Response.result.data[0].ChildBaseFare.toString()
+            ChildFare?.text= Response.result.data[0].ChildBaseFare.toString()+"$"
         }
-        AdulFare?.text=  Response.result.data[0].AdultBaseFare.toString()
+        AdulFare?.text=  Response.result.data[0].AdultBaseFare.toString()+"$"
         ticket1=Response.result
 
     }

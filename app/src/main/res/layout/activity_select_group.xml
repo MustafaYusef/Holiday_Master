@@ -34,7 +34,7 @@
             <TextView
                     android:text="Select Group"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/toShow2"
+                    android:layout_height="match_parent" android:id="@+id/groupTitle"
                     android:layout_gravity="top" android:textSize="24sp" android:textStyle="bold"
                     android:paddingTop="10dp" android:textColor="#fff" android:layout_weight="1"
                     android:gravity="center"/>
@@ -86,7 +86,7 @@
                             android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                     <TextView
                             android:paddingLeft="5dp"
-                            android:text="10 years old and above"
+                            android:text="11 years old and above"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/text2View24"
                             android:layout_weight="1"/>
@@ -122,14 +122,14 @@
 
                     <TextView
                             android:paddingLeft="5dp"
-                            android:text="Adults"
+                            android:text="Children"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/t1extView23"
                             android:layout_weight="1" android:gravity="center_vertical"
                             android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                     <TextView
                             android:paddingLeft="5dp"
-                            android:text="10 years old and above"
+                            android:text="2 years old to 11"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/te3xtView24"
                             android:layout_weight="1"/>
@@ -164,14 +164,14 @@
 
                     <TextView
                             android:paddingLeft="5dp"
-                            android:text="Adults"
+                            android:text="Infants"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/textView23"
                             android:layout_weight="1" android:gravity="center_vertical"
                             android:textColor="@color/browser_actions_text_color" android:textSize="18sp"/>
                     <TextView
                             android:paddingLeft="5dp"
-                            android:text="10 years old and above"
+                            android:text="From 0 to 2 Years"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/textView24"
                             android:layout_weight="1"/>
@@ -182,7 +182,7 @@
                     <TextView
                             android:text="Free"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/textViewuu2"
+                            android:layout_height="match_parent" android:id="@+id/infPrice"
                             android:textColor="@color/colorPrimary" android:gravity="center"
                             android:textSize="16sp"/>
                 </LinearLayout>

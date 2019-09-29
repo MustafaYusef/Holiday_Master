@@ -126,6 +126,7 @@ class Select_Tour : Fragment(),lesener {
 
 
          tour= arguments!!.getSerializable ("Tour") as Tours
+        TourTitle?.text=tour?.name
         //priceButton.visibility=View.INVISIBLE
         wrap.visibility=View.INVISIBLE
 

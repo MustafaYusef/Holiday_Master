@@ -64,15 +64,22 @@
 
 
         </LinearLayout>
+
         <Button
-                android:text="Purchase"
+                android:id="@+id/purTow"
                 android:layout_width="261dp"
-                android:layout_height="49dp" android:id="@+id/purTow" android:textSize="16sp"
-                android:background="@drawable/btnun" android:textColor="#fff"
-                android:layout_gravity="center" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btnrud"
+                android:text="Purchase"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
 
 

@@ -37,7 +37,7 @@ class DetailsTour : Fragment() {
 
         var requestOptions = RequestOptions()
        requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(40))
-        Glide.with(this).load("https://favorite-holiday.herokuapp.com/"+tour!!.img).apply(requestOptions)
+        Glide.with(this).load("https://favorite-holiday.com/server/"+tour!!.img).apply(requestOptions)
          .into(ImageTourD)
 
 

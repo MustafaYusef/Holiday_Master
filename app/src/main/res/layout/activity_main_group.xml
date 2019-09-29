@@ -23,7 +23,7 @@
                 android:background="@drawable/backsearch"
                 android:fontFamily="sans-serif"
                 android:paddingTop="16dp"
-                android:text="Group"
+                android:text="Groups"
 
                 android:textAlignment="center"
                 android:textColor="#fff"
