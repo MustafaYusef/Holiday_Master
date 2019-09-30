@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.mustafayusef.holidaymaster.login.LoginMember
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.splash.*
 
@@ -38,6 +39,9 @@ class MainActivity : Fragment() {
 //
 //        }
 
+        if (LoginMember.cacheObj.token!=""){
+            view?.findNavController()?.navigate(R.id.dashboard2)
+        }
 
         member.startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
         userBrows.startAnimation(AnimationUtils.loadAnimation(context,R.anim.right_to_left))

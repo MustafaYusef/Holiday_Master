@@ -10,10 +10,10 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@drawable/logoplain"
+            android:icon="@drawable/iconapp"
             android:label="@string/app_name"
-            android:roundIcon="@drawable/logoplain"
-            android:supportsRtl="true"
+            android:roundIcon="@drawable/iconapp"
+            android:supportsRtl="false"
             android:theme="@style/AppTheme">
         <activity android:name=".mainNavigation">
         </activity>
@@ -41,10 +41,7 @@
         </activity>
         <activity android:name=".Tours.Tours_main">
         </activity>
-        <activity android:name=".Visa.Visa_Form2">
-        </activity>
-        <activity android:name=".Visa.Visa_Form1">
-        </activity>
+
         <activity android:name=".Visa.searchVisa">
         </activity>
         <activity android:name=".dashboard">

@@ -28,10 +28,10 @@ class SplashScreen : AppCompatActivity() {
             imageSplash.startAnimation(AnimationUtils.loadAnimation(this@SplashScreen,R.anim.splash_out))
             Handler().postDelayed({
                 imageSplash.visibility = View.GONE
-                val intent=Intent(this@SplashScreen,mainNavigation::class.java)
+                val intent=Intent(this@SplashScreen,Lottie::class.java)
                 startActivity(intent)
                 finish()
-            },100)
+            },1)
         },1500)
 
 

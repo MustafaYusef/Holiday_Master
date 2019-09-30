@@ -38,6 +38,8 @@ class showHoliday : Fragment(), getDataLesener {
     var to=""
     var direct=0
 
+    var TowWayResponse: ResultTow?=null
+   var ResponseOneWay: Result?=null
  var searchviewModel:searchViewModel?=null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,11 +69,28 @@ class showHoliday : Fragment(), getDataLesener {
 
         searchviewModel = ViewModelProviders.of(this,factory).get(searchViewModel::class.java)
         searchviewModel?.dataLesener=this
-        searchviewModel!!.getdata(infant,child,
-            adult,departure,
-            Return,
-            from, to,
-            direct,cabin,flag)
+
+        if(ResponseOneWay==null&&flag){
+            searchviewModel!!.getdata(infant,child,
+                adult,departure,
+                Return,
+                from, to,
+                direct,cabin,flag)
+        }else if (ResponseOneWay!=null&&flag){
+            Holiday_list?.layoutManager= LinearLayoutManager(context!!)
+            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay!!)
+        }else if(TowWayResponse==null&&!flag){
+            searchviewModel!!.getdata(infant,child,
+                adult,departure,
+                Return,
+                from, to,
+                direct,cabin,flag)
+
+        }else if(TowWayResponse!=null&&!flag){
+            Holiday_list?.layoutManager= LinearLayoutManager(context)
+            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse!!)
+        }
+
 
 
         fromcity?.text=from
@@ -87,7 +106,15 @@ class showHoliday : Fragment(), getDataLesener {
         println("ddddddddddddddddddddddddddddddddd after change economy ")
 
 
-
+        refresh?.setOnRefreshListener {
+            searchviewModel!!.getdata(infant,child,
+                adult,departure,
+                Return,
+                from, to,
+                direct,cabin,flag)
+            Holiday_list?.visibility=View.GONE
+            refresh?.isRefreshing=false
+        }
     }
 
     override fun OnStart() {
@@ -96,14 +123,15 @@ class showHoliday : Fragment(), getDataLesener {
     animation_view?.visibility=View.VISIBLE
     }
 
-    override fun onSucsess(ResponseOneWay: Result) {
+    override fun onSucsess(ResponseOneWay1: Result) {
        // this.toast(ResponseOneWay.sessionID)
-
-        if(ResponseOneWay.data!=null|| ResponseOneWay.data?.get(0)?.Duration?.isNotEmpty()!!){
-            ResponseOneWay.data=ResponseOneWay?.data!!.sortedBy { it!!.price }
-            noResult?.text=ResponseOneWay.data?.size .toString()+" Result Found"
+        ResponseOneWay=ResponseOneWay1
+        if(ResponseOneWay?.data!=null|| ResponseOneWay?.data?.get(0)?.Duration?.isNotEmpty()!!){
+            ResponseOneWay?.data=ResponseOneWay?.data!!.sortedBy { it!!.price }
+            noResult?.text=ResponseOneWay?.data?.size .toString()+" Result Found"
+            Holiday_list?.visibility=View.VISIBLE
             Holiday_list?.layoutManager= LinearLayoutManager(context!!)
-            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay)
+            Holiday_list?.adapter= OneWayAdapter(context!!, ResponseOneWay!!)
             // animation_view.enableMergePathsForKitKatAndAbove(true)
 
         }else{
@@ -113,12 +141,14 @@ class showHoliday : Fragment(), getDataLesener {
         animation_view?.visibility=View.GONE
     }
 
-    override fun onSucsessTow(TowWayResponse: ResultTow) {
-        if(TowWayResponse.data!=null|| TowWayResponse.data?.get(0)?.Duration?.isNotEmpty()!!){
-            TowWayResponse.data=TowWayResponse?.data!!.sortedBy { it!!.price }
-            noResult?.text=TowWayResponse.data?.size .toString()+" Result Found"
+    override fun onSucsessTow(TowWayResponse1: ResultTow) {
+        TowWayResponse=TowWayResponse1
+        if(TowWayResponse?.data!=null|| TowWayResponse?.data?.get(0)?.Duration?.isNotEmpty()!!){
+            TowWayResponse?.data=TowWayResponse?.data!!.sortedBy { it!!.price }
+            noResult?.text=TowWayResponse?.data?.size .toString()+" Result Found"
+            Holiday_list?.visibility=View.VISIBLE
             Holiday_list?.layoutManager= LinearLayoutManager(context)
-            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse)
+            Holiday_list?.adapter= TowWayAdapter(context!!, TowWayResponse!!)
             // animation_view.enableMergePathsForKitKatAndAbove(true)
 
         }else{
@@ -132,7 +162,9 @@ class showHoliday : Fragment(), getDataLesener {
 
     override fun onFailer(message: String) {
      context?.toast(message)
-        animation_view?.visibility=View.GONE}
+        animation_view?.visibility=View.GONE
+        noResult?.text=" Result not Found"
+    }
 
 }
 

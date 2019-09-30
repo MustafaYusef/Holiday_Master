@@ -25,7 +25,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:text="Hotels"
-                        android:textAlignment="center"
+                        android:gravity="center"
                         android:textSize="20dp"
 
                         android:textColor="#fff"

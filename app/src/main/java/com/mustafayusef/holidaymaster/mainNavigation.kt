@@ -29,9 +29,11 @@ class mainNavigation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_navigation)
-        Kotpref.init(this!!)
+        Kotpref.init(this)
         navController= Navigation.findNavController(this, R.id.navHost)
       //  bottomNav.setupWithNavController(navController)
+
+
         bottomNav.setupWithNavController(navController)
         navController.addOnDestinationChangedListener {controller, destination, arguments ->
             if(destination.id==R.id.spicialGroup||destination.id==R.id.spicialTour){
@@ -39,7 +41,12 @@ class mainNavigation : AppCompatActivity() {
             }else{
                 bottomNav.visibility=View.GONE
             }
+
+
+
         }
+
+
        // showDailog()
     }
     override fun onSupportNavigateUp(): Boolean {
@@ -48,7 +55,8 @@ class mainNavigation : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (navController.currentDestination?.id == R.id.mainActivity||
-            navController.currentDestination?.id==R.id.dashboard2) {
+            navController.currentDestination?.id==R.id.dashboard2
+                ) {
             finish()
 
             // do nothing
@@ -65,6 +73,7 @@ class mainNavigation : AppCompatActivity() {
         }else if(navController.currentDestination?.id==R.id.tours_main){
             navController.navigate(R.id.dashboard2)
         }
+
         else {
             super.onBackPressed()
         }
