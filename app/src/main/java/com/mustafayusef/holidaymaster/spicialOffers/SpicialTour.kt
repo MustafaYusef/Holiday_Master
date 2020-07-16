@@ -35,9 +35,6 @@ class SpicialTour : Fragment(),lesenerOffers {
         SpicialOff_list?.layoutManager= LinearLayoutManager(context)
         SpicialOff_list?.adapter= ToursAdapter(context!!, Response)
         animation_viewTourPub?.visibility=View.GONE
-
-
-
     }
 
     override fun onSucsessGroup(Response: List<group>) {

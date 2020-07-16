@@ -45,7 +45,7 @@ class details_group : Fragment() {
 
         showPdf?.setOnClickListener {
             var browserIntent =  Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://favorite-holiday.com/server/"+group?.pdf));
+                Uri.parse("https://favorite-holiday.com//"+group?.pserverdf));
             startActivity(browserIntent);
 
         }

@@ -22,7 +22,7 @@
                 android:paddingTop="16dp"
                 android:text="Spicial Offers"
 
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textColor="#fff"
                 android:textSize="24dp" />
         <LinearLayout
